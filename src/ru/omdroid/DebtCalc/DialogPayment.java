@@ -4,7 +4,6 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,11 +27,9 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
     ProgressBar progressBar;
     Button button;
 
-    String TAG = "Dialog";
     String defaultPayment;
     String updateValuePayment;
     int position;
-    int seekDirection = 0;
 
     boolean updatePayment = false;
 
@@ -43,7 +40,7 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
         this.position = position;
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        getDialog().setTitle("Платеж");
+        getDialog().setTitle(getResources().getString(R.string.list_dialog_label_title));
         View view = inflater.inflate(R.layout.dialog_form, null);
         view.findViewById(R.id.but).setOnClickListener(this);
 
