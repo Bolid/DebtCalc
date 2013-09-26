@@ -64,7 +64,7 @@
             android:id="@+id/etPercentCredit" android:layout_alignRight="@+id/labelCreditSum"
             android:layout_below="@+id/markerPercentCredit" android:layout_alignLeft="@+id/labelPercendCredit"
             android:gravity="center_vertical|right"
-            android:inputType="numberDecimal" android:maxLength="4"/>
+            android:inputType="numberDecimal" android:maxLength="5"/>
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

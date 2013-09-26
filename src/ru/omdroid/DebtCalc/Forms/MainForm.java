@@ -47,7 +47,15 @@ public class MainForm extends Activity {
         butStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                String notify = "Пожалуйста, введите следующие параметры для кредита:";
+                String notify = "";
+                if (!etPercend.getText().toString().equals(""))
+                    if (Double.valueOf(etPercend.getText().toString().replace(",",".")) > 100){
+                        notify = "Процентная ставка может быть не более 100%\n";
+                        notify = notify + "Пожалуйста, введите следующие параметры для кредита:";
+                    }
+                    else
+                        notify = notify + "Пожалуйста, введите следующие параметры для кредита:";
+
                 if (etSumCredit.getText().toString().equals("") || etSumCredit.getText().toString().equals("0"))
                     notify = notify + "\nСумму кредита.";
                 if (etTermCredit.getText().toString().equals("") || etTermCredit.getText().toString().equals("0"))

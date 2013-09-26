@@ -1,8 +1,7 @@
 package ru.omdroid.DebtCalc.Listener;
 
-import android.text.*;
-import android.util.Log;
-import android.view.View;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageView;
 import ru.omdroid.DebtCalc.R;
@@ -24,14 +23,12 @@ public class InControlFieldSumCredit implements TextWatcher{
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        Log.v("Позиция i i2 i3: ", charSequence.toString());
         beforeText = charSequence.toString();
 
     }
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        Log.v("Позиция i i2 i3: ", charSequence.toString());
         String s = "";
         position = etSumCredit.getSelectionStart();
         for (int j = etSumCredit.getText().length(); j > 0; j--) {
@@ -40,7 +37,6 @@ public class InControlFieldSumCredit implements TextWatcher{
         }
 
         if (!s.equals("")){
-            Log.v("Позиция курсора: ", String.valueOf(position));
             s = String.valueOf(numberFormat.format(Double.valueOf(s)));
             etSumCredit.removeTextChangedListener(this);
             etSumCredit.setText(s);
