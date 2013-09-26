@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Кредитный калькулятор</string>
+    <string name="labelName">Кредитный калькулятор</string>
+    <string name="action_menu_rasch">Расчет</string>
+    <string name="action_menu_analitic">Аналитика</string>
+    <!--Label-->
+    <string name="main_layout_label_title">Параметры кредита</string>
+    <string name="main_layout_label_credit_sum">Сумма кредита</string>
+    <string name="main_layout_label_credit_term">Срок кредита (мес)</string>
+    <string name="main_layout_label_credit_dopPayment">Досрочное погашение</string>
+    <string name="main_layout_label_credit_percend">Процент</string>
+    <string name="result_layout_label_payment">Если платить по:</string>
+    <string name="list_dialog_label_dopPaymentMouth">Если в этом месяце заплатить:</string>
+    <!--Value-->
+    <string name="main_layout_value_credit_sum">900000</string>
+    <string name="main_layout_value_credit_percend">12</string>
+    <string name="main_layout_value_credit_term">120</string>
+    <!--Button-->
+    <string name="buttonNextMainLayout">Далее</string>
+    <string name="buttonNextListDialog">Далее</string>
+    <!--Array-->
+    <array name="array_keys_for_hashmap">
+        <item>Number</item>
+        <item>Payment</item>
+        <item>Image</item>
+        <item>Dolg</item>
+        <item>Delta</item>
+    </array>
+</resources>
