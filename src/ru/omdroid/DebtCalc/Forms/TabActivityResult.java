@@ -19,11 +19,11 @@ public class TabActivityResult extends TabActivity {
         tabHost.setup();
 
         TabHost.TabSpec tabSpec = tabHost.newTabSpec("tab3");
-        tabSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_launcher));
+        /*tabSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_launcher));
         tabSpec.setContent(new Intent(this, MainForm.class));
-        tabHost.addTab(tabSpec);
+        tabHost.addTab(tabSpec);*/
 
-        tabSpec = tabHost.newTabSpec("tab1");
+        /*tabSpec = tabHost.newTabSpec("tab1");
         tabSpec.setContent(new Intent(this, ResultForm.class));
         tabSpec.setIndicator("", getResources().getDrawable(R.drawable.tab_bar_style));
         tabHost.addTab(tabSpec);
@@ -33,7 +33,7 @@ public class TabActivityResult extends TabActivity {
         tabSpec.setContent(new Intent(this, ListResultForm.class));
         tabHost.addTab(tabSpec);
 
-        tabHost.setCurrentTab(0);
+        tabHost.setCurrentTab(0);*/
 
     }
 }

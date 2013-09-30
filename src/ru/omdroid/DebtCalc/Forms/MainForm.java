@@ -14,8 +14,8 @@ import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.Fragment.MainFragment;
 import ru.omdroid.DebtCalc.Fragment.ResultFragment;
-import ru.omdroid.DebtCalc.Listener.InControlFieldPercendCredit;
-import ru.omdroid.DebtCalc.Listener.InControlFieldSumCredit;
+import ru.omdroid.DebtCalc.Fragment.TableFragment;
+import ru.omdroid.DebtCalc.Listener.InControlFieldPercentCredit;
 import ru.omdroid.DebtCalc.Listener.InControlFieldTermCredit;
 import ru.omdroid.DebtCalc.Listener.TabListener;
 import ru.omdroid.DebtCalc.R;
@@ -30,7 +30,7 @@ public class MainForm extends Activity{
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.main);
-       // createActionBar();
+        createActionBar();
         Button butStart = (Button)findViewById(R.id.butStart);
         final EditText etSumCredit = (EditText)findViewById(R.id.etCreditSum);
         final EditText etTermCredit = (EditText)findViewById(R.id.etTermCredit);
@@ -43,11 +43,11 @@ public class MainForm extends Activity{
         Log.v("Размер экрана: ", displayMetrics.widthPixels + " на " + displayMetrics.heightPixels);
 
         //etSumCredit.addTextChangedListener(new InControlFieldSumCredit((ImageView)findViewById(R.id.markerSumCredit), etSumCredit, ));
-        etPercend.addTextChangedListener(new InControlFieldPercendCredit((ImageView)findViewById(R.id.markerPercentCredit)));
-        etTermCredit.addTextChangedListener(new InControlFieldTermCredit((ImageView)findViewById(R.id.markerTermCredit)));
+        //etPercend.addTextChangedListener(new InControlFieldPercentCredit((ImageView)findViewById(R.id.markerPercentCredit)));
+        //etTermCredit.addTextChangedListener(new InControlFieldTermCredit((ImageView)findViewById(R.id.markerTermCredit)));
 
         etSumCredit.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(etSumCredit.getText().toString())));
-
+        butStart.setVisibility(View.INVISIBLE);
         butStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -77,10 +77,11 @@ public class MainForm extends Activity{
                     param[1] = etTermCredit.getText().toString();
                     param[2] = etPercend.getText().toString();
                     //new AppDate(param);
-                    Intent intent = new Intent(getBaseContext(), TabActivityResult.class);
+                    getActionBar().setSelectedNavigationItem(1);
+                    //Intent intent = new Intent(getBaseContext(), TabActivityResult.class);
                     //intent.putExtra(TAG, param);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    //startActivity(intent);
                 }
             }
         });
@@ -89,7 +90,7 @@ public class MainForm extends Activity{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_menu, menu);
+        //inflater.inflate(R.menu.action_menu, menu);
         return true;
     }
 
@@ -114,12 +115,19 @@ public class MainForm extends Activity{
         ActionBar.Tab tab = actionBar.newTab();
         tab.setText("Закладка 1");
         tab.setTabListener(new TabListener<MainFragment>(
-                this, "main", MainFragment.class, actionBar));
+                this, "main", MainFragment.class));
         actionBar.addTab(tab);
+
         tab = actionBar.newTab();
         tab.setText("Закладка 2");
         tab.setTabListener(new TabListener<ResultFragment>(
-                this, "main", ResultFragment.class, actionBar));
+                this, "main", ResultFragment.class));
+        actionBar.addTab(tab);
+
+        tab = actionBar.newTab();
+        tab.setText("Закладка 3");
+        tab.setTabListener(new TabListener<TableFragment>(
+                this, "main", TableFragment.class));
         actionBar.addTab(tab);
 
     }

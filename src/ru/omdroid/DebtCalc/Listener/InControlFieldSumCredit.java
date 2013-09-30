@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageView;
+import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.ErrorMessage;
 import ru.omdroid.DebtCalc.R;
 
@@ -17,17 +18,20 @@ public class InControlFieldSumCredit implements TextWatcher{
     EditText etSumCredit;
     String beforeText;
     ErrorMessage errorMessage;
+    AppData appData;
+    String valueDefault;
     int position;
-    public InControlFieldSumCredit(ImageView markerCreditSum, EditText etSumCredit, ErrorMessage errorMessage){
+    public InControlFieldSumCredit(ImageView markerCreditSum, EditText etSumCredit, ErrorMessage errorMessage, AppData appData, String valueDefault){
         this.markerCreditSum = markerCreditSum;
         this.etSumCredit = etSumCredit;
         this.errorMessage = errorMessage;
+        this.appData = appData;
+        this.valueDefault = valueDefault;
     }
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
         beforeText = charSequence.toString();
-
     }
 
     @Override
@@ -38,6 +42,18 @@ public class InControlFieldSumCredit implements TextWatcher{
             if ("1234567890".contains(String.valueOf(etSumCredit.getText().toString().charAt(j-1))))
                 s = etSumCredit.getText().toString().charAt(j-1) + s;
         }
+
+        if (markerCreditSum != null)
+            if (charSequence.toString().length() == 0){
+                markerCreditSum.setImageResource(R.drawable.marker_red_one);
+                errorMessage.readErrorMessageSumCredit();
+                appData.addSumCredit(valueDefault);
+            }
+            else{
+                markerCreditSum.setImageResource(R.drawable.marker_green_one);
+                errorMessage.clearErrorMessageSumCredit();
+                appData.addSumCredit(s);
+            }
 
         if (!s.equals("")){
             s = String.valueOf(numberFormat.format(Double.valueOf(s)));
@@ -51,15 +67,6 @@ public class InControlFieldSumCredit implements TextWatcher{
                 else
                     etSumCredit.setSelection(position);
         }
-        if (markerCreditSum != null)
-            if (charSequence.toString().length() == 0){
-                markerCreditSum.setImageResource(R.drawable.marker_red_one);
-                errorMessage.readErrorMessageSumCredit();
-            }
-            else{
-                markerCreditSum.setImageResource(R.drawable.marker_green_one);
-                errorMessage.clearErrorMessageSumCredit();
-            }
     }
 
     @Override
