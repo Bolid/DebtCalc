@@ -20,7 +20,7 @@ import java.text.NumberFormat;
 public class ResultFragment extends Fragment {
     static Double newPayment;
     public static Arithmetic arithmetic;
-    static boolean paymentUpdate;
+    static boolean paymentUpdate = true;
     static boolean overPayment;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState){
@@ -38,6 +38,10 @@ public class ResultFragment extends Fragment {
         overPayment = false;
 
         arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[1]), Double.valueOf(AppData.param[2]));
+
+        overPayment = false;
+        MainFragment.arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[1]), Double.valueOf(AppData.param[2]));
+
         newPayment = Double.valueOf(Arithmetic.allResult.get(4));
         SeekBar seekBar = (SeekBar)v.findViewById(R.id.seekBar);
         textView.setText(numberFormat.format(newPayment));
@@ -54,6 +58,11 @@ public class ResultFragment extends Fragment {
                 Arithmetic.allResult.set(6, String.valueOf(Integer.valueOf(params[1]) - i));
                 view.invalidate();
                 paymentUpdate = true;
+                newPayment = MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i);
+                textView.setText(MainFragment.arithmetic.setMask(MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i)));
+                MainFragment.arithmetic.getDeltaDefault(MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i), Integer.valueOf(params[1]) - i);
+                Arithmetic.allResult.set(6, String.valueOf(Integer.valueOf(params[1]) - i));
+                view.invalidate();
             }
 
             @Override
@@ -62,6 +71,7 @@ public class ResultFragment extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                paymentUpdate = true;
             }
         });
         return v;

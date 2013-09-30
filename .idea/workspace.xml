@@ -24,7 +24,16 @@
     </option>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" name="Default" comment="Изменнение вкладок" />
+    <list default="true" id="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" name="Default" comment="Изменнение вкладок">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DebtCalc.apk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/hardware_mouse.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/ErrorMessage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/MainFragment.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/MainFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="DebtCalc.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/main.xml" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1379619614247" ignored="false" />
@@ -242,7 +251,7 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="140" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="149" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -257,7 +266,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="141" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="150" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -272,7 +281,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="142" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="151" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -287,7 +296,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="143" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="152" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -302,7 +311,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="144" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="153" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -317,7 +326,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="145" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" line="154" class="ru.omdroid.DebtCalc.DialogPayment" package="ru.omdroid.DebtCalc">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -332,67 +341,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/MainFragment.java" line="72" class="ru.omdroid.DebtCalc.Fragment.MainFragment$1" package="ru.omdroid.DebtCalc.Fragment">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/MainFragment.java" line="78" class="ru.omdroid.DebtCalc.Fragment.MainFragment$1" package="ru.omdroid.DebtCalc.Fragment">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java" line="34" class="ru.omdroid.DebtCalc.Fragment.ResultFragment" package="ru.omdroid.DebtCalc.Fragment">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="32" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="33" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java" line="35" class="ru.omdroid.DebtCalc.Fragment.ResultFragment" package="ru.omdroid.DebtCalc.Fragment">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -422,52 +371,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="52" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="51" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="50" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="31" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="35" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -497,7 +401,52 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="37" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="56" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="55" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="54" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="33" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -557,7 +506,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="41" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="42" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -572,7 +521,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="47" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="43" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -587,7 +536,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="48" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="51" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -602,7 +551,22 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="49" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="52" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" line="53" class="ru.omdroid.DebtCalc.Fragment.TableFragment$1" package="ru.omdroid.DebtCalc.Fragment">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -637,10 +601,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TabListener.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TabListener.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/TabListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="75" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0">
+            <state line="23" column="75" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0433526">
               <folding />
             </state>
           </provider>
@@ -658,16 +622,7 @@
       <file leaf-file-name="MainFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/MainFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="73" selection-start="4211" selection-end="4211" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResultFragment.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="73" selection-start="537" selection-end="537" vertical-scroll-proportion="0.04477612">
+            <state line="43" column="64" selection-start="2241" selection-end="2241" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -684,19 +639,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TableFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java">
+      <file leaf-file-name="ErrorMessage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/ErrorMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="97" selection-start="2022" selection-end="2022" vertical-scroll-proportion="0.0">
+            <state line="3" column="13" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DialogPayment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java">
+      <file leaf-file-name="InControlFieldAddPayment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldAddPayment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="38" selection-start="4891" selection-end="4897" vertical-scroll-proportion="0.0">
+            <state line="13" column="13" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InControlFieldPercentCredit.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldPercentCredit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="31" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InControlFieldSumCredit.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldSumCredit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="0" selection-start="1811" selection-end="2033" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InControlFieldTermCredit.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldTermCredit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="55" selection-start="1310" selection-end="1310" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -738,12 +720,12 @@
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/TabListener.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldPercentCredit.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldTermCredit.java" />
-        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/ErrorMessage.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/TabActivityResult.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainForm.java" />
-        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/MainFragment.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/MainFragment.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java" />
       </list>
     </option>
@@ -837,6 +819,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="DebtCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DebtCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DebtCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DebtCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Listener" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1250,16 +1254,103 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java">
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="38" selection-start="4891" selection-end="4897" vertical-scroll-proportion="0.0">
+        <state line="34" column="39" selection-start="1569" selection-end="1569" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/Developing/Android/sdk/platforms/android-17/android.jar!/android/app/Fragment.class">
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="154" selection-end="154" vertical-scroll-proportion="-4.010695" />
+        <state line="14" column="36" selection-start="366" selection-end="366" vertical-scroll-proportion="0.5426357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/TabActivityResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="32" selection-start="1275" selection-end="1275" vertical-scroll-proportion="1.007752">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="83" selection-start="975" selection-end="975" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2753#3378#0" expanded="true" />
+            <element signature="e#3359#3360#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="49" selection-start="547" selection-end="547" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="40" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/MainFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="64" selection-start="2241" selection-end="2241" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="69" selection-start="2263" selection-end="2263" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="121" column="48" selection-start="5577" selection-end="5577" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListResultForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="55" selection-start="2292" selection-end="2292" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/ErrorMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="13" selection-start="44" selection-end="44" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldAddPayment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="330" selection-end="330" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldPercentCredit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="31" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldSumCredit.java">
@@ -1276,89 +1367,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldPercentCredit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="31" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="39" selection-start="1569" selection-end="1569" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="36" selection-start="366" selection-end="366" vertical-scroll-proportion="0.5426357">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListResultForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="55" selection-start="2292" selection-end="2292" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/TabActivityResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="32" selection-start="1275" selection-end="1275" vertical-scroll-proportion="1.007752">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="48" selection-start="5577" selection-end="5577" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/TabListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="75" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0">
+        <state line="23" column="75" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0433526">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="69" selection-start="2263" selection-end="2263" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="97" selection-start="2022" selection-end="2022" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DialogPayment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="38" selection-start="4891" selection-end="4897" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/MainFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="73" selection-start="4211" selection-end="4211" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="73" selection-start="537" selection-end="537" vertical-scroll-proportion="0.04477612">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

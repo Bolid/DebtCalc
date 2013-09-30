@@ -27,25 +27,29 @@ public class TableFragment extends Fragment {
             ListView listView;
             ArrayList <HashMap<String, String>> listResult = Arithmetic.listResult;
 
+            protected void onPreExecute(){
+                if (MainFragment.arithmetic == null)
+                    MainFragment.arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[1]), Double.valueOf(AppData.param[2]));
+                if (!ErrorMessage.nullSumCredit.equals("") || !ErrorMessage.nullPercentCredit.equals("") || !ErrorMessage.nullTermCredit.equals(""))
+                    Toast.makeText(getActivity().getBaseContext(), ErrorMessage.errorTitle + ErrorMessage.nullSumCredit + ErrorMessage.nullPercentCredit + ErrorMessage.nullTermCredit, Toast.LENGTH_LONG).show();
+            }
+
             @Override
             protected ArrayList doInBackground(Void... voids) {
                 if (ResultFragment.paymentUpdate){
-                    ResultFragment.arithmetic.getOverpaymentAllMonth(ResultFragment.newPayment, ResultFragment.overPayment);
+                    MainFragment.arithmetic.getOverpaymentAllMonth(ResultFragment.newPayment, ResultFragment.overPayment);
                     listResult = Arithmetic.listResult;
                     ResultFragment.paymentUpdate = false;
                 }
-                else {
-                    if (!ErrorMessage.nullSumCredit.equals("") || !ErrorMessage.nullPercentCredit.equals("") || !ErrorMessage.nullTermCredit.equals(""))
-                        Toast.makeText(getActivity().getBaseContext(), ErrorMessage.errorTitle + ErrorMessage.nullSumCredit + ErrorMessage.nullPercentCredit + ErrorMessage.nullTermCredit, Toast.LENGTH_LONG).show();
-                    Arithmetic arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[1]), Double.valueOf(AppData.param[2]));
-                    arithmetic.getOverpaymentAllMonth(Double.valueOf(Arithmetic.allResult.get(4)), false);
-                    listResult = Arithmetic.listResult;
-                }
+
                 return Arithmetic.listResult;
             }
 
             protected void onPostExecute(final ArrayList element){
+
                 Log.v("Сработал onResume", "");
+
+
                 listView = (ListView)getActivity().findViewById(R.id.list);
                 String[] from = new String[]{"Number", "Payment", "Image", "Dolg", "Delta"};
                 int to[] = new int[]{R.id.tv1, R.id.tv2, R.id.iv1, R.id.tv3, R.id.tv4};

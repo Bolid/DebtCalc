@@ -13,6 +13,8 @@ import android.widget.*;
 import ru.omdroid.DebtCalc.Adapter.AdapterViewListResult;
 import ru.omdroid.DebtCalc.Forms.ResultForm;
 import ru.omdroid.DebtCalc.Fragment.ResultFragment;
+
+import ru.omdroid.DebtCalc.Fragment.MainFragment;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddPayment;
 
 import java.text.DecimalFormat;
@@ -117,6 +119,13 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
                                 ResultFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
                             else
                                 ResultFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
+
+                            ResultForm.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
+
+                            if (MainFragment.arithmetic != null)
+                                MainFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
+                            else
+                                MainFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
                         return Arithmetic.listResult;
                     }
 
