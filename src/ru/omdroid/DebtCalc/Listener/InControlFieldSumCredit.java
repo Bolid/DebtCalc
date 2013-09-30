@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageView;
+import ru.omdroid.DebtCalc.ErrorMessage;
 import ru.omdroid.DebtCalc.R;
 
 import java.text.DecimalFormat;
@@ -15,10 +16,12 @@ public class InControlFieldSumCredit implements TextWatcher{
     ImageView markerCreditSum;
     EditText etSumCredit;
     String beforeText;
+    ErrorMessage errorMessage;
     int position;
-    public InControlFieldSumCredit(ImageView markerCreditSum, EditText etSumCredit){
+    public InControlFieldSumCredit(ImageView markerCreditSum, EditText etSumCredit, ErrorMessage errorMessage){
         this.markerCreditSum = markerCreditSum;
         this.etSumCredit = etSumCredit;
+        this.errorMessage = errorMessage;
     }
 
     @Override
@@ -49,10 +52,14 @@ public class InControlFieldSumCredit implements TextWatcher{
                     etSumCredit.setSelection(position);
         }
         if (markerCreditSum != null)
-            if (charSequence.toString().length() == 0)
+            if (charSequence.toString().length() == 0){
                 markerCreditSum.setImageResource(R.drawable.marker_red_one);
-            else
+                errorMessage.readErrorMessageSumCredit();
+            }
+            else{
                 markerCreditSum.setImageResource(R.drawable.marker_green_one);
+                errorMessage.clearErrorMessageSumCredit();
+            }
     }
 
     @Override

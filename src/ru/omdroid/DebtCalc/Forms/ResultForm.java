@@ -13,8 +13,6 @@ import java.text.NumberFormat;
 
 
 public class ResultForm extends Activity {
-    final String TAG = "ru.omdroid.DebtCalc.ResultForm";
-    static Double sizeWightBar = 0.0;
     static Double newPayment;
     public static Arithmetic arithmetic;
     static boolean paymentUpdate;
@@ -25,7 +23,7 @@ public class ResultForm extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.layout_result);
 
-        final String[] params = AppDate.param;
+        final String[] params = null;//AppDate.param;
         final NumberFormat numberFormat = new DecimalFormat("###,###,###,###,###,###,##0.##");
         final View view = (View)findViewById(R.id.graphView);
 
@@ -42,16 +40,11 @@ public class ResultForm extends Activity {
                 seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                        if (i != 0)
-                            overPayment = true;
-                        else
-                            overPayment = false;
+                        overPayment = i != 0;
                         if (i == seekBar.getMax())
                             i--;
                         newPayment = arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i);
                         textView.setText(arithmetic.setMask(arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i)));
-                       // sizeWightBar = view.getWidth() / ((Double.valueOf(Arithmetic.allResult.get(1)) + arithmetic.getDeltaNew(newPayment))) / Double.valueOf(Arithmetic.allResult.get(1));
-                        //arithmetic.getDeltaNew(newPayment);
                         arithmetic.getDeltaDefault(arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i), Integer.valueOf(params[1]) - i);
                         Arithmetic.allResult.set(6, String.valueOf(Integer.valueOf(params[1]) - i));
                         view.invalidate();

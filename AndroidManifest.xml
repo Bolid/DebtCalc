@@ -36,7 +36,8 @@
                 android:screenOrientation="portrait"/>
         <activity
                 android:name=".Forms.TabActivityResult"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait">
+        </activity>
         <receiver
                 android:name=".Receiver.ReceiverArithmetic">
             <intent-filter>

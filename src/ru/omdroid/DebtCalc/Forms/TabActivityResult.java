@@ -4,6 +4,7 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.TabHost;
 import ru.omdroid.DebtCalc.R;
@@ -17,7 +18,12 @@ public class TabActivityResult extends TabActivity {
         TabHost tabHost = getTabHost();
         tabHost.setup();
 
-        TabHost.TabSpec tabSpec = tabHost.newTabSpec("tab1");
+        TabHost.TabSpec tabSpec = tabHost.newTabSpec("tab3");
+        tabSpec.setIndicator("", getResources().getDrawable(R.drawable.ic_launcher));
+        tabSpec.setContent(new Intent(this, MainForm.class));
+        tabHost.addTab(tabSpec);
+
+        tabSpec = tabHost.newTabSpec("tab1");
         tabSpec.setContent(new Intent(this, ResultForm.class));
         tabSpec.setIndicator("", getResources().getDrawable(R.drawable.tab_bar_style));
         tabHost.addTab(tabSpec);

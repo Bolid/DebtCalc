@@ -1,5 +1,6 @@
 package ru.omdroid.DebtCalc.Forms;
 
+import android.app.ActionBar;
 import android.app.Activity;
 
 import android.content.Intent;
@@ -11,22 +12,25 @@ import android.util.Log;
 import android.view.*;
 
 import android.widget.*;
+import ru.omdroid.DebtCalc.Fragment.MainFragment;
+import ru.omdroid.DebtCalc.Fragment.ResultFragment;
 import ru.omdroid.DebtCalc.Listener.InControlFieldPercendCredit;
 import ru.omdroid.DebtCalc.Listener.InControlFieldSumCredit;
 import ru.omdroid.DebtCalc.Listener.InControlFieldTermCredit;
+import ru.omdroid.DebtCalc.Listener.TabListener;
 import ru.omdroid.DebtCalc.R;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
-public class MainForm extends Activity {
+public class MainForm extends Activity{
     public static final String TAG = "ru.omdroid.DebtCalc.MainForm";
 
     @Override
     public void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.main);
+       // createActionBar();
         Button butStart = (Button)findViewById(R.id.butStart);
         final EditText etSumCredit = (EditText)findViewById(R.id.etCreditSum);
         final EditText etTermCredit = (EditText)findViewById(R.id.etTermCredit);
@@ -38,7 +42,7 @@ public class MainForm extends Activity {
 
         Log.v("Размер экрана: ", displayMetrics.widthPixels + " на " + displayMetrics.heightPixels);
 
-        etSumCredit.addTextChangedListener(new InControlFieldSumCredit((ImageView)findViewById(R.id.markerSumCredit), etSumCredit));
+        //etSumCredit.addTextChangedListener(new InControlFieldSumCredit((ImageView)findViewById(R.id.markerSumCredit), etSumCredit, ));
         etPercend.addTextChangedListener(new InControlFieldPercendCredit((ImageView)findViewById(R.id.markerPercentCredit)));
         etTermCredit.addTextChangedListener(new InControlFieldTermCredit((ImageView)findViewById(R.id.markerTermCredit)));
 
@@ -72,7 +76,7 @@ public class MainForm extends Activity {
                     }
                     param[1] = etTermCredit.getText().toString();
                     param[2] = etPercend.getText().toString();
-                    new AppDate(param);
+                    //new AppDate(param);
                     Intent intent = new Intent(getBaseContext(), TabActivityResult.class);
                     //intent.putExtra(TAG, param);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -85,7 +89,7 @@ public class MainForm extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        //inflater.inflate(R.menu.action_menu, menu);
+        inflater.inflate(R.menu.action_menu, menu);
         return true;
     }
 
@@ -101,11 +105,29 @@ public class MainForm extends Activity {
                 return  super.onOptionsItemSelected(item);
         }
     }
+    public void createActionBar(){
+        ActionBar actionBar = getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+
+        ActionBar.Tab tab = actionBar.newTab();
+        tab.setText("Закладка 1");
+        tab.setTabListener(new TabListener<MainFragment>(
+                this, "main", MainFragment.class, actionBar));
+        actionBar.addTab(tab);
+        tab = actionBar.newTab();
+        tab.setText("Закладка 2");
+        tab.setTabListener(new TabListener<ResultFragment>(
+                this, "main", ResultFragment.class, actionBar));
+        actionBar.addTab(tab);
+
+    }
 }
 
-class AppDate{
+/*public class AppDate{
     static String[] param;
     AppDate(String[] param){
         this.param = param;
     }
-}
+}*/
