@@ -19,7 +19,6 @@ import java.text.NumberFormat;
 
 public class ResultFragment extends Fragment {
     static Double newPayment;
-    public static Arithmetic arithmetic;
     static boolean paymentUpdate = true;
     static boolean overPayment;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,11 +33,6 @@ public class ResultFragment extends Fragment {
         if (!ErrorMessage.nullSumCredit.equals("") || !ErrorMessage.nullPercentCredit.equals("") || !ErrorMessage.nullTermCredit.equals(""))
             Toast.makeText(getActivity().getBaseContext(), ErrorMessage.errorTitle + ErrorMessage.nullSumCredit + ErrorMessage.nullPercentCredit + ErrorMessage.nullTermCredit, Toast.LENGTH_LONG).show();
 
-        paymentUpdate = true;
-        overPayment = false;
-
-        arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[1]), Double.valueOf(AppData.param[2]));
-
         overPayment = false;
         MainFragment.arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[1]), Double.valueOf(AppData.param[2]));
 
@@ -52,12 +46,6 @@ public class ResultFragment extends Fragment {
                 overPayment = i != 0;
                 if (i == seekBar.getMax())
                     i--;
-                newPayment = arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i);
-                textView.setText(arithmetic.setMask(arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i)));
-                arithmetic.getDeltaDefault(arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i), Integer.valueOf(params[1]) - i);
-                Arithmetic.allResult.set(6, String.valueOf(Integer.valueOf(params[1]) - i));
-                view.invalidate();
-                paymentUpdate = true;
                 newPayment = MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i);
                 textView.setText(MainFragment.arithmetic.setMask(MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i)));
                 MainFragment.arithmetic.getDeltaDefault(MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i), Integer.valueOf(params[1]) - i);

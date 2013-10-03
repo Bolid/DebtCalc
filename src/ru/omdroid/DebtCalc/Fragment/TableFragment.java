@@ -37,6 +37,8 @@ public class TableFragment extends Fragment {
             @Override
             protected ArrayList doInBackground(Void... voids) {
                 if (ResultFragment.paymentUpdate){
+                    if (ResultFragment.newPayment == null)
+                        ResultFragment.newPayment = MainFragment.arithmetic.getPayment(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[1]));
                     MainFragment.arithmetic.getOverpaymentAllMonth(ResultFragment.newPayment, ResultFragment.overPayment);
                     listResult = Arithmetic.listResult;
                     ResultFragment.paymentUpdate = false;
@@ -46,10 +48,6 @@ public class TableFragment extends Fragment {
             }
 
             protected void onPostExecute(final ArrayList element){
-
-                Log.v("Сработал onResume", "");
-
-
                 listView = (ListView)getActivity().findViewById(R.id.list);
                 String[] from = new String[]{"Number", "Payment", "Image", "Dolg", "Delta"};
                 int to[] = new int[]{R.id.tv1, R.id.tv2, R.id.iv1, R.id.tv3, R.id.tv4};
@@ -59,19 +57,16 @@ public class TableFragment extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                         try {
-                            DialogFragment dialogFragment =  new DialogPayment(listView, getActivity().getBaseContext(), Arithmetic.listDefaultPayment.get(position), position + 1);
+                            DialogFragment dialogFragment =  new DialogPayment(listView, getActivity().getBaseContext(), Arithmetic.listResult.get(position).get("Payment"), position + 1);
                             dialogFragment.show(getFragmentManager(), "dlg1");
                         }catch (IndexOutOfBoundsException ioobe)
                         {
 
                         }
-
                     }
                 });
             }
         }.execute();
-
         return v;
-
     }
 }

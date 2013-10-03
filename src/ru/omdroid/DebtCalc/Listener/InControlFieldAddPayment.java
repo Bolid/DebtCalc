@@ -17,9 +17,9 @@ public class InControlFieldAddPayment implements TextWatcher {
     EditText etSumCredit;
     Button button;
     String beforeText;
-    String defaultPayment;
+    Double defaultPayment;
     int position;
-    public InControlFieldAddPayment(EditText etSumCredit, ImageView markerDefaultPayment, Button button, String defaultPayment){
+    public InControlFieldAddPayment(EditText etSumCredit, ImageView markerDefaultPayment, Button button, Double defaultPayment){
         this.etSumCredit = etSumCredit;
         this.markerDefaultPayment = markerDefaultPayment;
         this.button = button;
@@ -49,7 +49,7 @@ public class InControlFieldAddPayment implements TextWatcher {
             button.setEnabled(false);
             markerDefaultPayment.setImageResource(R.drawable.marker_red_addpayment);
         }
-        else if (Double.valueOf(defaultPayment) > Double.valueOf(s)){
+        else if (defaultPayment > Double.valueOf(s)){
             button.setEnabled(false);
             markerDefaultPayment.setImageResource(R.drawable.marker_red_addpayment);
         }

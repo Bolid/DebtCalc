@@ -11,8 +11,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.*;
 import ru.omdroid.DebtCalc.Adapter.AdapterViewListResult;
-import ru.omdroid.DebtCalc.Forms.ResultForm;
-import ru.omdroid.DebtCalc.Fragment.ResultFragment;
 
 import ru.omdroid.DebtCalc.Fragment.MainFragment;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddPayment;
@@ -53,11 +51,12 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
         textView = (EditText) view.findViewById(R.id.valueDopPaymentMouth);
         imageView = (ImageView)view.findViewById(R.id.ivMarkerDefaulPayment);
 
-        final NumberFormat numberFormatOut = new DecimalFormat("###,###,###,###.00");
-        final InControlFieldAddPayment inControlFieldAddPayment = new InControlFieldAddPayment(textView, imageView, button, defaultPayment);
+        final NumberFormat numberFormat = new DecimalFormat("###,###,###,###.00");
+        final InControlFieldAddPayment inControlFieldAddPayment = new InControlFieldAddPayment(textView, imageView, button, formatAddPayment(defaultPayment));
 
-        textView.setText(numberFormatOut.format(Double.valueOf(defaultPayment)));
-        updateValuePayment = defaultPayment;
+        textView.setText(numberFormat.format(Double.valueOf(Arithmetic.listDefaultPayment.get(position))));
+        updateValuePayment = Arithmetic.listDefaultPayment.get(position);
+
         textView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +75,7 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                if (Double.valueOf(defaultPayment) > formatAddPayment(textView.getText().toString())){
+                if (formatAddPayment(Arithmetic.listDefaultPayment.get(position)) > formatAddPayment(textView.getText().toString())){
                     button.setEnabled(false);
                     imageView.setImageResource(R.drawable.marker_red_addpayment);
                 }
@@ -85,8 +84,8 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
                     imageView.setImageResource(R.drawable.marker_green_addpayment);
                 }
                 textView.removeTextChangedListener(inControlFieldAddPayment);
-                textView.setText(String.valueOf(numberFormatOut.format(formatAddPayment(updateValuePayment) + 1000 * i)));
-                updatePayment = !numberFormatOut.format(Double.valueOf(Arithmetic.allResult.get(4))).equals(textView.getText().toString());
+                textView.setText(String.valueOf(numberFormat.format(formatAddPayment(updateValuePayment) + 1000 * i)));
+                updatePayment = !numberFormat.format(Double.valueOf(Arithmetic.allResult.get(4))).equals(textView.getText().toString());
             }
 
             @Override
@@ -114,18 +113,12 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
 
                     @Override
                     protected ArrayList doInBackground(Void... voids) {
-                        if (updatePayment)
-                            if (ResultFragment.arithmetic != null)
-                                ResultFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
-                            else
-                                ResultFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
-
-                            ResultForm.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
-
+                        if (updatePayment)/*
                             if (MainFragment.arithmetic != null)
                                 MainFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
                             else
-                                MainFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
+                                */MainFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
+
                         return Arithmetic.listResult;
                     }
 
