@@ -28,22 +28,21 @@ public class InControlFieldAddPayment implements TextWatcher {
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        Log.v("Позиция i i2 i3: ", charSequence.toString());
+        Log.v("beforeTextChanged Позиция i i2 i3: ", charSequence.toString());
         beforeText = charSequence.toString();
-
+        position = etSumCredit.getSelectionStart();
     }
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        Log.v("Позиция i i2 i3: ", charSequence.toString());
-        String s = "";
-        position = etSumCredit.getSelectionStart();
+        String s = "", oldText = etSumCredit.getText().toString();
 
-        for (int j = etSumCredit.getText().length(); j > 0; j--) {
-            if ("1234567890".contains(String.valueOf(etSumCredit.getText().toString().charAt(j-1))))
-                s = etSumCredit.getText().toString().charAt(j-1) + s;
-            else if (j-1 == etSumCredit.getText().toString().length() - 2 || j-1 == etSumCredit.getText().toString().length() - 2)
+        for (int j = oldText.length(); j > 0; j--) {
+            if ("1234567890".contains(String.valueOf(oldText.charAt(j-1))))
+                s = oldText.charAt(j-1) + s;
+            else if (j-1 == oldText.length() - 2 || j-1 == oldText.length() - 1){
                 s = "." + s;
+            }
         }
         if (s.equals("")){
             button.setEnabled(false);
@@ -59,17 +58,11 @@ public class InControlFieldAddPayment implements TextWatcher {
         }
 
         if (!s.equals("")){
-            Log.v("Позиция курсора: ", String.valueOf(position));
             s = String.valueOf(numberFormat.format(Double.valueOf(s)));
             etSumCredit.removeTextChangedListener(this);
             etSumCredit.setText(s);
             etSumCredit.addTextChangedListener(this);
-            if (((beforeText.length() - s.length()) > 1 & position != 0) || (position > s.length()))
-                etSumCredit.setSelection(position - 1);
-            else if ((s.length() - beforeText.length()) > 1 & position != s.length())
-                etSumCredit.setSelection(position + 1);
-            else
-                etSumCredit.setSelection(position);
+            etSumCredit.setSelection(position + (s.length() - beforeText.length()));
         }
     }
 

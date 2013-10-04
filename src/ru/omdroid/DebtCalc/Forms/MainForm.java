@@ -2,8 +2,12 @@ package ru.omdroid.DebtCalc.Forms;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.Toast;
+import ru.omdroid.DebtCalc.DB.DebtCalcDB;
+import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.Fragment.MainFragment;
 import ru.omdroid.DebtCalc.Fragment.ResultFragment;
 import ru.omdroid.DebtCalc.Fragment.TableFragment;
@@ -18,6 +22,8 @@ public class MainForm extends Activity{
         requestWindowFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.main);
         createActionBar();
+        WorkDB workDB = new WorkDB(getBaseContext());
+        Toast.makeText(getBaseContext(), String.valueOf(workDB.countDataInDataBase("SELECT id FROM debts_table")), Toast.LENGTH_LONG).show();
     }
 
     public void createActionBar(){

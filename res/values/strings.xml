@@ -18,7 +18,7 @@
     <string name="main_layout_value_credit_percend">12</string>
     <string name="main_layout_value_credit_term">120</string>
     <!--Button-->
-    <string name="buttonNextMainLayout">Далее</string>
+    <string name="buttonNextMainLayout">Добавить в БД</string>
     <string name="buttonNextListDialog">Далее</string>
     <!--Array-->
     <array name="array_keys_for_hashmap">

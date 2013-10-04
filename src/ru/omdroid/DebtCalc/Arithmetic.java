@@ -20,9 +20,7 @@ public class Arithmetic {
 
 
     int termCredit = 0;
-    Double sumCredit = 0.0;
-    Double percend = 0.0;
-    Double dopPlatej;
+    Double sumCredit = 0.0, percend = 0.0, dopPlatej;
 
     public Arithmetic(Double sumCredit, Integer termCredit, Double percend){
         this.sumCredit = sumCredit;
@@ -49,8 +47,7 @@ public class Arithmetic {
 
 
     public Double getPayment(Double sumCredit, int termCredit){
-        Double result = Rounding(sumCredit * ((percend / 100. / 12) * Math.pow((1 + (percend / 100. / 12)), termCredit)) / (Math.pow((1 + (percend / 100. / 12)), termCredit) - 1));
-        return result;
+        return Rounding(sumCredit * ((percend / 100. / 12) * Math.pow((1 + (percend / 100. / 12)), termCredit)) / (Math.pow((1 + (percend / 100. / 12)), termCredit) - 1));
     }
 
     public Double getDeltaDefault(Double payment, int termCredit){
@@ -61,7 +58,6 @@ public class Arithmetic {
 
    public void getOverpaymentAllMonth(Double addPayment, boolean overPayment){
        hmPaymentMonth.clear();
-
        Double sumCredit = Double.valueOf(allResult.get(1));
        Double allPer = 0.0;
        int i = 0;
@@ -152,7 +148,7 @@ public class Arithmetic {
             if (!hmPaymentMonth.containsKey(i)){
                 if (sumCredit < addPayment)
                     addPayment = sumCredit + (sumCredit * (percend/100.) / 12);
-                hm.put(from[1], setMask(addPayment));
+                hm.put(from[1], setMask(Rounding(getPayment(sumCredit, termCredit))));
                 hm.put(from[3], setMask(Rounding(addPayment - (sumCredit * (percend / 100.) / 12))));
                 hm.put(from[4], setMask(Rounding((sumCredit * (percend / 100.) / 12))));
                 sumCredit = Rounding(sumCredit - (getPayment(sumCredit, termCredit) - (sumCredit * (percend/100.) / 12)));

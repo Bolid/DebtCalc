@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,11 +29,10 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
     ProgressBar progressBar;
     Button button;
 
-    String defaultPayment;
-    String updateValuePayment;
+    String defaultPayment, updateValuePayment;
     int position;
 
-    boolean updatePayment = false;
+    boolean updatePayment = false, listener = false;
 
     public DialogPayment(ListView listView, Context context, String defaultPayment, int position){
         this.listView = listView;
@@ -51,7 +51,7 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
         textView = (EditText) view.findViewById(R.id.valueDopPaymentMouth);
         imageView = (ImageView)view.findViewById(R.id.ivMarkerDefaulPayment);
 
-        final NumberFormat numberFormat = new DecimalFormat("###,###,###,###.00");
+        final NumberFormat numberFormat = new DecimalFormat("###,###,###,###.##");
         final InControlFieldAddPayment inControlFieldAddPayment = new InControlFieldAddPayment(textView, imageView, button, formatAddPayment(defaultPayment));
 
         textView.setText(numberFormat.format(Double.valueOf(Arithmetic.listDefaultPayment.get(position))));
@@ -60,14 +60,18 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
         textView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                textView.addTextChangedListener(inControlFieldAddPayment);
+                if (!listener){
+                    textView.addTextChangedListener(inControlFieldAddPayment);
+                    listener = true;
+                }
             }
         });
         textView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 updatePayment = true;
-                updateValuePayment = textView.getText().toString();
+                updateValuePayment = String.valueOf(formatAddPayment(textView.getText().toString()));
+                Log.v("Платеж: ", updateValuePayment);
                 return false;
             }
         });
@@ -84,6 +88,7 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
                     imageView.setImageResource(R.drawable.marker_green_addpayment);
                 }
                 textView.removeTextChangedListener(inControlFieldAddPayment);
+                listener = false;
                 textView.setText(String.valueOf(numberFormat.format(formatAddPayment(updateValuePayment) + 1000 * i)));
                 updatePayment = !numberFormat.format(Double.valueOf(Arithmetic.allResult.get(4))).equals(textView.getText().toString());
             }
@@ -113,12 +118,8 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
 
                     @Override
                     protected ArrayList doInBackground(Void... voids) {
-                        if (updatePayment)/*
-                            if (MainFragment.arithmetic != null)
-                                MainFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
-                            else
-                                */MainFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
-
+                        if (updatePayment)
+                            MainFragment.arithmetic.getOverpaymentSomeMonth(formatAddPayment(textView.getText().toString()), formatAddPayment(defaultPayment), position);
                         return Arithmetic.listResult;
                     }
 
@@ -145,6 +146,7 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
     }
 
     private Double formatAddPayment(String addPayment){
+        Log.v("Аргумент: ", addPayment);
         String newAddPayment = "";
         for (int j = 0; j < addPayment.length(); j++) {
             if ("1234567890".contains(String.valueOf(addPayment.charAt(j)))){
@@ -154,6 +156,10 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
                 newAddPayment = newAddPayment + ".";
             }
         }
-        return Double.valueOf(newAddPayment);
+        Log.v("Аргумент после: ", newAddPayment);
+        if (newAddPayment.equals(""))
+            return 0.00;
+        else
+            return Double.valueOf(newAddPayment);
     }
 }
