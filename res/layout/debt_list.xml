@@ -14,14 +14,7 @@
                 android:id="@+id/llContainer"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
         </LinearLayout>
     </ScrollView>
-    <Button
-            android:layout_width="fill_parent"
-            android:layout_height="75dp"
-            android:text="Новый кредит"
-            android:id="@+id/butAddDebt" android:background="@drawable/but_style_start"
-            android:textColor="@color/color_style" android:layout_alignParentBottom="true" android:textSize="24sp"/>
 </RelativeLayout>

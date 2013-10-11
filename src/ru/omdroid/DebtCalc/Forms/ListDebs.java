@@ -5,13 +5,15 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.R;
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 
 public class ListDebs extends Activity {
@@ -22,18 +24,6 @@ public class ListDebs extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.debt_list);
-        Button butAddDebt = (Button)findViewById(R.id.butAddDebt);
-        butAddDebt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AppData appData = new AppData();
-                appData.addSumCredit("1000000");
-                appData.addPercentCredit("12");
-                appData.addTermCredit("120");
-                appData.addTypeCredit("\nНовый");
-                startActivity(new Intent(getBaseContext(), MainForm.class));
-            }
-        });
     }
 
 
@@ -60,16 +50,16 @@ public class ListDebs extends Activity {
             cursorForPayment = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS +
                                                             " FROM " + DebtCalcDB.TABLE_NAME_PAYMENTS +
                                                             " WHERE " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + numCredit + "'");
+            cursorForPayment.moveToNext();
             Log.v("Сохраненные кредиты: ", cursorForPayment.getPosition() + ") сумма: " +
                     cursorForPayment.getString(cursorForPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
-            cursorForPayment.moveToNext();
             addPlate(layoutInflater,
                     linearLayout,
                     cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_BALANCE_DEBT)),
                     cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_PERCENT_DEBT)),
                     cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TERM_DEBT)),
-                    cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_STR_START_DEBT)),
                     cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TYPE_DEBT)),
+                    cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_STR_START_DEBT)),
                     cursorForPayment.getString(cursorForPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
             Log.v("Сохраненные кредиты: ", cursor.getPosition() + ") сумма: " +
                     cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_BALANCE_DEBT)) + " процент: " +
@@ -95,9 +85,9 @@ public class ListDebs extends Activity {
         TextView tvDateCredit = (TextView)tableRow.findViewById(R.id.containerDate);
         Button butPayment = (Button)tableRow.findViewById(R.id.containerBut);
         tvTypeCredit.setText(typeCredit);
-        tvDebtCredit.setText(balanceCredit);
+        tvDebtCredit.setText(new DecimalFormat("###,###,###,###.##").format(Double.valueOf(balanceCredit)));
         tvDateCredit.setText(dateCredit);
-        butPayment.setText(paymentCredit);
+        butPayment.setText(new DecimalFormat("###,###,###,###.##").format(Double.valueOf(paymentCredit)));
         tableRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,5 +100,28 @@ public class ListDebs extends Activity {
             }
         });
         linearLayout.addView(tableRow);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater actionMenu = getMenuInflater();
+        actionMenu.inflate(R.menu.action_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.action_menu_addCredit_item:
+                AppData appData = new AppData();
+                appData.addSumCredit("1000000");
+                appData.addPercentCredit("12");
+                appData.addTermCredit("120");
+                appData.addTypeCredit("\nНовый");
+                startActivity(new Intent(getBaseContext(), MainForm.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

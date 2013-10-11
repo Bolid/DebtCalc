@@ -22,7 +22,7 @@ public class WorkDB {
     }
 
     public void insertValueToTablePayment(String requestIns){
-        sql.rawQuery(requestIns, null);
+        sql.execSQL(requestIns);
 
     }
 

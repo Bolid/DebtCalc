@@ -58,8 +58,8 @@ public class MainFragment extends Fragment {
                     arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Double.valueOf(AppData.param[1]), Integer.valueOf(AppData.param[2]));
 
                     workDB.insertValueToTableDebt("INSERT INTO " + DebtCalcDB.TABLE_NAME_CREDITS + " (" +
-                            DebtCalcDB.FIELD_SUM_DEBT + ", " +
                             DebtCalcDB.FIELD_ID_DEBT + ", " +
+                            DebtCalcDB.FIELD_SUM_DEBT + ", " +
                             DebtCalcDB.FIELD_PERCENT_DEBT + ", " +
                             DebtCalcDB.FIELD_TERM_DEBT + ", " +
                             DebtCalcDB.FIELD_TYPE_DEBT + ", " +
@@ -67,8 +67,8 @@ public class MainFragment extends Fragment {
                             DebtCalcDB.FIELD_DATE_STR_START_DEBT + ", " +
                             DebtCalcDB.FIELD_BALANCE_DEBT + ") " +
                             "VALUES ('" +
-                            AppData.param[0] + "', '" +
                             numCredit + "', '" +
+                            AppData.param[0] + "', '" +
                             AppData.param[1] + "', '" +
                             AppData.param[2] + "', 'Квартира', '" +
                             Calendar.getInstance().get(Calendar.MILLISECOND) +
