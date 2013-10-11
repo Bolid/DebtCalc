@@ -64,18 +64,20 @@ public class MainFragment extends Fragment {
                             DebtCalcDB.FIELD_TERM_DEBT + ", " +
                             DebtCalcDB.FIELD_TYPE_DEBT + ", " +
                             DebtCalcDB.FIELD_DATE_LONG_START_DEBT + ", " +
-                            DebtCalcDB.FIELD_DATE_STR_START_DEBT + ") " +
+                            DebtCalcDB.FIELD_DATE_STR_START_DEBT + ", " +
+                            DebtCalcDB.FIELD_BALANCE_DEBT + ") " +
                             "VALUES ('" +
                             AppData.param[0] + "', '" +
                             numCredit + "', '" +
                             AppData.param[1] + "', '" +
-                            AppData.param[2] + "', '11.09.2013', '" +
+                            AppData.param[2] + "', 'Квартира', '" +
                             Calendar.getInstance().get(Calendar.MILLISECOND) +
-                            "', 'Квартира')");
+                            "', '11.09.2013'" + ", '" +
+                            AppData.param[0] + "')");
 
                     workDB.insertValueToTablePayment("INSERT INTO " + DebtCalcDB.TABLE_NAME_PAYMENTS + " (" +
                             DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + ", " +
-                            DebtCalcDB.FIELD_PAYMENTS_PAYMENTS + ")" + " VALUES ('" +
+                            DebtCalcDB.FIELD_PAYMENT_PAYMENTS + ")" + " VALUES ('" +
                             numCredit + "', '" +
                             arithmetic.getPayment(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[2])) +"')");
                 }

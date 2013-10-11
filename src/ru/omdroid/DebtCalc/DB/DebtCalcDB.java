@@ -21,7 +21,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String TABLE_NAME_PAYMENTS = "payments_table";
     public static final String FIELD_ID_NUM = "_id";
     public static final String FIELD_ID_DEBT_PAYMENTS = "id_debt_payments";
-    public static final String FIELD_PAYMENTS_PAYMENTS = "payments_payments";
+    public static final String FIELD_PAYMENT_PAYMENTS = "payments_payments";
     public static final String REQUEST_CREATE_TABLE_DEBTS = "CREATE TABLE " +
                                                                 TABLE_NAME_CREDITS + " (" +
                                                                     FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -31,14 +31,14 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     FIELD_TERM_DEBT + " INTEGER, " +
                                                                     FIELD_TYPE_DEBT + " STRING, " +
                                                                     FIELD_DATE_LONG_START_DEBT + " LONG, " +
-                                                                    FIELD_BALANCE_DEBT + " DOUBLE, " +
-                                                                    FIELD_DATE_STR_START_DEBT + " STRING);";
+                                                                    FIELD_DATE_STR_START_DEBT + " STRING, " +
+                                                                    FIELD_BALANCE_DEBT + " STRING);";
 
     public static final String REQUEST_CREATE_TABLE_PAYMENTS = "CREATE TABLE " +
                                                                 TABLE_NAME_PAYMENTS + " (" +
                                                                     FIELD_ID_NUM + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                                                     FIELD_ID_DEBT_PAYMENTS + " INTEGER, " +
-                                                                    FIELD_PAYMENTS_PAYMENTS + " DOUBLE);";
+                                                                    FIELD_PAYMENT_PAYMENTS + " DOUBLE);";
 
     public DebtCalcDB(Context context) {
         super(context, DATABASE_NAME, null, 1);

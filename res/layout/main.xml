@@ -10,13 +10,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/main_layout_label_title"
-            android:id="@+id/lalelTitleMain" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:textColor="#021460" android:paddingLeft="10dp" android:textSize="18sp" android:textStyle="bold"/>
+            android:id="@+id/labelTitleMain" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            android:textColor="@color/colorValue" android:paddingLeft="10dp" android:textSize="18sp" android:textStyle="bold"/>
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="2dp"
             android:id="@+id/line_1Main" android:layout_alignParentLeft="true"
-            android:layout_below="@+id/lalelTitleMain" android:background="#021460"
+            android:layout_below="@+id/labelTitleMain" android:background="#021460"
             android:layout_marginLeft="5dp" android:layout_marginRight="5dp"/>
     <TextView
             style="@style/styleLabel"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="Кредит"
             android:textSize="30sp"
-            android:layout_below="@+id/lalelTitleMain"
+            android:layout_below="@+id/labelTitleMain"
             android:id="@+id/labelCreditType"
             android:gravity="right"
             android:layout_marginTop="5dp"
@@ -41,7 +41,7 @@
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/markerSumCredit" android:layout_alignLeft="@+id/lalelTitleMain" android:layout_below="@id/labelDebtTypeIco"
+            android:id="@+id/markerSumCredit" android:layout_alignLeft="@+id/labelTitleMain" android:layout_below="@id/labelDebtTypeIco"
             android:src="@drawable/marker_green_one" android:layout_marginLeft="25dp" android:layout_marginTop="25dp"/>
     <TextView
             style="@style/styleLabel"
