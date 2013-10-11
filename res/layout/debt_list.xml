@@ -9,12 +9,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/scrollView" android:layout_gravity="left|center_vertical"
-            android:layout_above="@+id/butAddDebt">
+            android:layout_above="@+id/labelValueTotalPayment">
         <LinearLayout
                 android:id="@+id/llContainer"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
         </LinearLayout>
     </ScrollView>
+    <TextView
+            style="@style/styleLabel"
+            android:id="@+id/labelValueTotalPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_above="@id/textView1"
+            android:text="@string/list_debt_label_total_payment"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+            android:id="@+id/textView1"
+            android:background="@color/colorValue"
+            android:layout_above="@+id/valueTotalPayment"/>
+    <TextView
+            android:id="@+id/valueTotalPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingTop="8dp" android:paddingBottom="8dp"
+            android:text="@string/list_debt_value_total_payment"
+            android:layout_alignParentBottom="true"
+            android:textSize="36sp"/>
 </RelativeLayout>

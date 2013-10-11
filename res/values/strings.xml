@@ -15,11 +15,12 @@
     <string name="list_dialog_label_dopPaymentMouth">Если в этом месяце заплатить:</string>
     <string name="container_balance_credit">Долг</string>
     <string name="container_date_credit">Дата</string>
+    <string name="list_debt_label_total_payment">Итого в месяц</string>
     <!--Value-->
-    <string name="main_layout_value_credit_sum">900 000
-    12%  120</string>
-    <string name="main_layout_value_credit_percend">12</string>
+    <string name="main_layout_value_credit_sum">900 000</string>
+    <string name="main_layout_value_credit_percent">12</string>
     <string name="main_layout_value_credit_term">120</string>
+    <string name="list_debt_value_total_payment">0.0</string>
     <!--Button-->
     <string name="buttonNextMainLayout">Добавить в БД</string>
     <string name="buttonNextListDialog">Далее</string>

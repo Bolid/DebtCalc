@@ -12,8 +12,8 @@ import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.R;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 
 public class ListDebs extends Activity {
@@ -30,11 +30,24 @@ public class ListDebs extends Activity {
     @Override
     public void onResume(){
         super.onResume();
+
+        final WorkDB workDB = new WorkDB(getBaseContext());
+
         LayoutInflater layoutInflater = (LayoutInflater)getSystemService(getBaseContext().LAYOUT_INFLATER_SERVICE);
         LinearLayout linearLayout = (LinearLayout)findViewById(R.id.llContainer);
         linearLayout.removeAllViews();
+
+        TextView tvTotalPayment = (TextView)findViewById(R.id.valueTotalPayment);
+        cursorForPayment = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS +
+                " FROM " + DebtCalcDB.TABLE_NAME_PAYMENTS);
+        BigDecimal valueTotalPayment = BigDecimal.valueOf(0.0);
+        while (cursorForPayment.moveToNext()){
+            valueTotalPayment = valueTotalPayment.add(BigDecimal.valueOf(cursorForPayment.getDouble(cursorForPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS))));
+        }
+        tvTotalPayment.setText(String.valueOf(new DecimalFormat("###,###,###,###.##").format(valueTotalPayment)));
+        cursorForPayment.close();
+
         tableRow = null;
-        final WorkDB workDB = new WorkDB(getBaseContext());
         cursor = workDB.readValueFromDataBase("SELECT " +
                 DebtCalcDB.FIELD_ID + ", " +
                 DebtCalcDB.FIELD_ID_DEBT + ", " +

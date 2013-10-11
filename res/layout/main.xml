@@ -79,7 +79,7 @@
             style="@style/styleValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_layout_value_credit_percend"
+            android:text="@string/main_layout_value_credit_percent"
             android:id="@+id/etPercentCredit" android:layout_alignRight="@+id/labelCreditSum"
             android:layout_below="@+id/markerPercentCredit" android:layout_alignLeft="@+id/labelPercendCredit"
             android:gravity="center_vertical|right"
