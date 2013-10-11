@@ -9,4 +9,6 @@
     <color name="colorIconText">#ffffc97e</color>
     <color name="colorIconTextShadow">#ff3d3d3d</color>
     <color name="colorIconDebt">#ff1eae26</color>
+    <color name="butPress">#ff9d0609</color>
+    <color name="butDefault">#ffd9070c</color>
 </resources>
