@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/llDebtConteiner"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@color/background"
+              android:paddingBottom="10dp" android:paddingLeft="5dp" android:paddingRight="5dp"
+              android:layout_gravity="center">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ипотека"
+            android:id="@+id/conteinerType" android:layout_gravity="left|top"
+            style="@style/styleLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="15dp" android:layout_marginLeft="5dp"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:id="@+id/textView1"
+            android:background="@color/colorValue"
+            android:layout_below="@id/conteinerType"
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Долг"
+            android:id="@+id/textView2"
+            android:textStyle="bold" style="@style/styleValue"
+            android:layout_alignLeft="@+id/conteinerType" android:layout_below="@+id/textView1"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/conteinerBut"
+            android:layout_alignRight="@+id/textView1" android:layout_below="@+id/textView1"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/conteinerDolg"
+            style="@style/styleValue"
+            android:layout_toLeftOf="@+id/conteinerBut" android:layout_below="@+id/textView1"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Дата"
+            android:id="@+id/textView4"
+            style="@style/styleValue" android:textStyle="bold"
+            android:layout_alignLeft="@+id/conteinerType" android:layout_below="@+id/textView2"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/conteinerDate"
+            style="@style/styleValue"
+            android:layout_toLeftOf="@+id/conteinerBut" android:layout_below="@+id/textView2"/>
+</RelativeLayout>

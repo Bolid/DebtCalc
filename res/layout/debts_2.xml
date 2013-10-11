@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@color/background">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView" android:layout_gravity="left|center_vertical"
+            android:layout_above="@+id/butAddDebt">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:id="@+id/llConteiner"
+                >
+        </LinearLayout>
+    </ScrollView>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="75dp"
+            android:text="Новый кредит"
+            android:id="@+id/butAddDebt" android:background="@drawable/but_style_start"
+            android:textColor="@color/color_style" android:layout_alignParentBottom="true" android:textSize="24sp"/>
+</RelativeLayout>

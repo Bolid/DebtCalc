@@ -8,7 +8,7 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:src="@drawable/substrate_layout_result"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true" android:background="@color/substrate"/>
     <ru.omdroid.DebtCalc.CustomView.DrawingBar
             android:id="@+id/graphView"
             android:layout_height="wrap_content"
@@ -33,19 +33,22 @@
             android:layout_marginBottom="55dp"
             android:layout_alignBottom="@+id/valuePayment"/>
 
-    <TextView
+    <EditText
             android:id="@+id/valuePayment"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:textSize="45sp"
             android:text="123456"
             android:textStyle="bold"
             android:textColor="#021460"
             android:typeface="sans"
             android:lines="1"
+            android:inputType="numberDecimal"
+            android:drawableRight="@drawable/pen_read"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="65dp"
-            android:layout_alignBottom="@+id/seekBar"/>
+            android:layout_alignBottom="@+id/seekBar" android:background="@android:color/transparent"
+            android:gravity="center_horizontal" android:paddingRight="10dp" android:paddingLeft="10dp"/>
     <SeekBar
             android:id="@+id/seekBar"
             android:layout_height="wrap_content"

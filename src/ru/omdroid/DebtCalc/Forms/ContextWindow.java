@@ -52,9 +52,9 @@ public class ContextWindow extends Activity {
             public void onClick(View view) {
                 Arithmetic arithmetic = null;
                 if (etDopPlatej.getText().toString().equals("") || Double.valueOf(etDopPlatej.getText().toString()) == 0)
-                    arithmetic = new Arithmetic(Double.valueOf(result.get(1)), Integer.valueOf(result.get(2)), Double.valueOf(result.get(3)));
+                    arithmetic = new Arithmetic(Double.valueOf(result.get(1)), Double.valueOf(result.get(3)), Integer.valueOf(result.get(2)));
                 else
-                    arithmetic = new Arithmetic(Double.valueOf(result.get(1)), Integer.valueOf(result.get(2)), Double.valueOf(result.get(3)));
+                    arithmetic = new Arithmetic(Double.valueOf(result.get(1)), Double.valueOf(result.get(3)), Integer.valueOf(result.get(2)));
                             resultShow(arithmetic.allResult);
             }
         });

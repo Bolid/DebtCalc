@@ -2,8 +2,11 @@
 <resources>
     <color name="buttonNextPress">#ffbecac2</color>
     <color name="buttonNextStroke">#ffbecac2</color>
-    <color name="transparent">#e7f4eb</color>
+    <color name="background">#e7f4eb</color>
     <color name="substrate">#eafdf4</color>
     <color name="colorLabel">#fc9c14</color>
     <color name="colorValue">#021460</color>
+    <color name="colorIconText">#ffffc97e</color>
+    <color name="colorIconTextShadow">#ff3d3d3d</color>
+    <color name="colorIconDebt">#ff1eae26</color>
 </resources>

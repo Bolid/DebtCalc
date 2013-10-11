@@ -14,7 +14,8 @@
     <string name="list_dialog_label_title">Платеж</string>
     <string name="list_dialog_label_dopPaymentMouth">Если в этом месяце заплатить:</string>
     <!--Value-->
-    <string name="main_layout_value_credit_sum">900000</string>
+    <string name="main_layout_value_credit_sum">900 000
+    12%  120</string>
     <string name="main_layout_value_credit_percend">12</string>
     <string name="main_layout_value_credit_term">120</string>
     <!--Button-->

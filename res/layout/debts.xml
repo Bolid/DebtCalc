@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+
+<TableLayout
+              android:id="@+id/linearLayoutPlate"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true">
+   <!-- <ListView
+            android:id="@+id/listDebts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    </ListView>-->
+</TableLayout>
+    <Button
+        android:id="@+id/butAddDebt"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="Новый кредит"
+        android:textSize="25sp"
+        android:background="@drawable/but_style_start"
+        android:textColor="@color/color_style"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

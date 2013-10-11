@@ -32,7 +32,7 @@ public class ResultForm extends Activity {
         paymentUpdate = true;
         overPayment = false;
 
-        arithmetic = new Arithmetic(Double.valueOf(params[0]), Integer.valueOf(params[1]), Double.valueOf(params[2]));
+        arithmetic = new Arithmetic(Double.valueOf(params[0]), Double.valueOf(params[2]), Integer.valueOf(params[1]));
         newPayment = Double.valueOf(Arithmetic.allResult.get(4));
         SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
         textView.setText(numberFormat.format(newPayment));

@@ -5,6 +5,7 @@ public class ErrorMessage {
     static public String nullSumCredit = "";
     static public String nullTermCredit = "";
     static public String nullPercentCredit = "";
+    static public String nullPayment = "";
     static public String errorTitle = "";
 
     public void readErrorMessageSumCredit(){
@@ -22,6 +23,10 @@ public class ErrorMessage {
         nullPercentCredit = "Процентную ставку. Расчет выполнен для ставки по умолчанию - 12 %.\n";
     }
 
+    public void readErrorMessagePaymentCredit(){
+        nullPayment = "Внимание! Указанный платеж меньше установленного. Расчет произведен по установленному платежу.\n";
+    }
+
     public void clearErrorMessageSumCredit(){
         errorTitle = "";
         nullSumCredit = "";
@@ -35,6 +40,10 @@ public class ErrorMessage {
     public void clearErrorMessagePercendCredit(){
         errorTitle = "";
         nullPercentCredit = "";
+    }
+
+    public void clearErrorMessagePaymentCredit(){
+        nullPayment = "";
     }
 
     public void downPercentCredit(){

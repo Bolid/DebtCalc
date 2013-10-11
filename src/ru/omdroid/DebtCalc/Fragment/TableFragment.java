@@ -29,8 +29,11 @@ public class TableFragment extends Fragment {
 
             protected void onPreExecute(){
                 if (MainFragment.arithmetic == null)
-                    MainFragment.arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[1]), Double.valueOf(AppData.param[2]));
-                if (!ErrorMessage.nullSumCredit.equals("") || !ErrorMessage.nullPercentCredit.equals("") || !ErrorMessage.nullTermCredit.equals(""))
+                    MainFragment.arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Double.valueOf(AppData.param[2]), Integer.valueOf(AppData.param[1]));
+                if (!ErrorMessage.nullSumCredit.equals("") ||
+                    !ErrorMessage.nullPercentCredit.equals("") ||
+                    !ErrorMessage.nullTermCredit.equals("") ||
+                    !ErrorMessage.nullPayment.equals(""))
                     Toast.makeText(getActivity().getBaseContext(), ErrorMessage.errorTitle + ErrorMessage.nullSumCredit + ErrorMessage.nullPercentCredit + ErrorMessage.nullTermCredit, Toast.LENGTH_LONG).show();
             }
 
@@ -38,7 +41,7 @@ public class TableFragment extends Fragment {
             protected ArrayList doInBackground(Void... voids) {
                 if (ResultFragment.paymentUpdate){
                     if (ResultFragment.newPayment == null)
-                        ResultFragment.newPayment = MainFragment.arithmetic.getPayment(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[1]));
+                        ResultFragment.newPayment = MainFragment.arithmetic.getPayment(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[2]));
                     MainFragment.arithmetic.getOverpaymentAllMonth(ResultFragment.newPayment, ResultFragment.overPayment);
                     listResult = Arithmetic.listResult;
                     ResultFragment.paymentUpdate = false;

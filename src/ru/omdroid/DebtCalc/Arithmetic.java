@@ -22,10 +22,10 @@ public class Arithmetic {
     int termCredit = 0;
     Double sumCredit = 0.0, percend = 0.0, dopPlatej;
 
-    public Arithmetic(Double sumCredit, Integer termCredit, Double percend){
+    public Arithmetic(Double sumCredit, Double percend, Integer termCredit){
         this.sumCredit = sumCredit;
-        this.termCredit = termCredit;
         this.percend = percend;
+        this.termCredit = termCredit;
 
         allResult = new ArrayList<String>();
         listDefaultPayment = new ArrayList<String>();
@@ -101,8 +101,8 @@ public class Arithmetic {
         }
         Log.d(TAG, "Общая переплата: " + allPer);
         allPer = Rounding(allPer);
-        allResult.set(8, String.valueOf(allPer)); //Общая переплата
-        allResult.set(9, String.valueOf(i)); //Срок погашения
+        allResult.set(5, String.valueOf(allPer)); //Общая переплата
+        allResult.set(6, String.valueOf(i)); //Срок погашения
 
 
         hm = new HashMap<String, String>();

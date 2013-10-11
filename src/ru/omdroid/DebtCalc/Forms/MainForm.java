@@ -22,8 +22,6 @@ public class MainForm extends Activity{
         requestWindowFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.main);
         createActionBar();
-        WorkDB workDB = new WorkDB(getBaseContext());
-        Toast.makeText(getBaseContext(), String.valueOf(workDB.countDataInDataBase("SELECT id FROM debts_table")), Toast.LENGTH_LONG).show();
     }
 
     public void createActionBar(){
@@ -49,6 +47,5 @@ public class MainForm extends Activity{
         tab.setTabListener(new TabListener<TableFragment>(
                 this, "main", TableFragment.class));
         actionBar.addTab(tab);
-
     }
 }

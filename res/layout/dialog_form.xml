@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-        android:background="@color/transparent"
+        android:background="@android:color/transparent"
         android:orientation="vertical">
     <TextView
             style="@style/styleLabel"
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:background="@color/transparent"
+            android:background="@android:color/transparent"
             android:drawableRight="@drawable/pen_read"
             android:inputType="number"
             android:maxLength="10"

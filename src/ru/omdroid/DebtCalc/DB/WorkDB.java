@@ -13,16 +13,25 @@ public class WorkDB {
         sql = debtCalcDB.getWritableDatabase();
     }
 
-    public void insertValueToDataBase(String requestIns){
+    public void insertValueToTableDebt(String requestIns){
         sql.execSQL(requestIns);
-        sql.close();
     }
 
     public Cursor readValueFromDataBase(String requestSelect){
         return sql.rawQuery(requestSelect, null);
     }
 
+    public void insertValueToTablePayment(String requestIns){
+        sql.rawQuery(requestIns, null);
+
+    }
+
     public int countDataInDataBase(String requestCount){
         return sql.rawQuery(requestCount, null).getCount();
+    }
+
+    public void disconnectDataBase(){
+        sql.close();
+        debtCalcDB.close();
     }
 }
