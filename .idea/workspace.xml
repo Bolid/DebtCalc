@@ -26,11 +26,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" name="Default" comment="Коммит перед чисткой/Два варианта главного экрана">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/debt_conteiner.xml" afterPath="$PROJECT_DIR$/res/layout/debt_conteiner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/debt_list.xml" afterPath="$PROJECT_DIR$/res/layout/debt_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DebtCalc.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -93,7 +88,7 @@
     <file path="/DebtCalcDB.java" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1381476907334" ignored="false" />
     <file path="/debts.xml" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1381386273090" ignored="false" />
     <file path="/viewListDebts.xml" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1381128381600" ignored="false" />
-    <file path="/ListDebs.java" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1381491031355" ignored="false" />
+    <file path="/ListDebs.java" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1381491596720" ignored="false" />
     <file path="/view_list_debts.xml" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1381169076652" ignored="false" />
     <file path="/plate_debts.xml" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1381254101782" ignored="false" />
     <file path="/home.xml" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1381260937278" ignored="false" />
@@ -458,97 +453,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java" line="62" class="ru.omdroid.DebtCalc.Forms.ListDebs" package="ru.omdroid.DebtCalc.Forms">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java" line="68" class="ru.omdroid.DebtCalc.Forms.ListDebs" package="ru.omdroid.DebtCalc.Forms">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java" line="76" class="ru.omdroid.DebtCalc.Forms.ListDebs" package="ru.omdroid.DebtCalc.Forms">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java" line="94" class="ru.omdroid.DebtCalc.Forms.ListDebs" package="ru.omdroid.DebtCalc.Forms">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java" line="66" class="ru.omdroid.DebtCalc.Forms.ListDebs" package="ru.omdroid.DebtCalc.Forms">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java" line="44" class="ru.omdroid.DebtCalc.Forms.ListDebs" package="ru.omdroid.DebtCalc.Forms">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java" line="46" class="ru.omdroid.DebtCalc.Forms.ListDebs" package="ru.omdroid.DebtCalc.Forms">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java" line="87" class="ru.omdroid.DebtCalc.Forms.ListDebs" package="ru.omdroid.DebtCalc.Forms">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -606,7 +511,7 @@
       <file leaf-file-name="ListDebs.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="46" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.5226667">
+            <state line="66" column="72" selection-start="2895" selection-end="2895" vertical-scroll-proportion="0.6026667">
               <folding />
             </state>
           </provider>
@@ -1342,7 +1247,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="46" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.5226667">
+        <state line="66" column="72" selection-start="2895" selection-end="2895" vertical-scroll-proportion="0.6026667">
           <folding />
         </state>
       </provider>

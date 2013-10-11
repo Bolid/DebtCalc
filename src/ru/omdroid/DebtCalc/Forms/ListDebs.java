@@ -42,7 +42,8 @@ public class ListDebs extends Activity {
                 " FROM " + DebtCalcDB.TABLE_NAME_PAYMENTS);
         BigDecimal valueTotalPayment = BigDecimal.valueOf(0.0);
         while (cursorForPayment.moveToNext()){
-            valueTotalPayment = valueTotalPayment.add(BigDecimal.valueOf(cursorForPayment.getDouble(cursorForPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS))));
+            BigDecimal value = BigDecimal.valueOf(cursorForPayment.getDouble(cursorForPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
+            valueTotalPayment = valueTotalPayment.add(value);
         }
         tvTotalPayment.setText(String.valueOf(new DecimalFormat("###,###,###,###.##").format(valueTotalPayment)));
         cursorForPayment.close();
@@ -64,8 +65,6 @@ public class ListDebs extends Activity {
                                                             " FROM " + DebtCalcDB.TABLE_NAME_PAYMENTS +
                                                             " WHERE " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + numCredit + "'");
             cursorForPayment.moveToNext();
-            Log.v("Сохраненные кредиты: ", cursorForPayment.getPosition() + ") сумма: " +
-                    cursorForPayment.getString(cursorForPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
             addPlate(layoutInflater,
                     linearLayout,
                     cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_BALANCE_DEBT)),
@@ -73,13 +72,7 @@ public class ListDebs extends Activity {
                     cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TERM_DEBT)),
                     cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TYPE_DEBT)),
                     cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_STR_START_DEBT)),
-                    cursorForPayment.getString(cursorForPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
-            Log.v("Сохраненные кредиты: ", cursor.getPosition() + ") сумма: " +
-                    cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_BALANCE_DEBT)) + " процент: " +
-                    cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_PERCENT_DEBT)) + " срок: " +
-                    cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TERM_DEBT)) + " дата: " +
-                    cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_STR_START_DEBT)) + " тип: " +
-                    cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TYPE_DEBT)));
+                    cursorForPayment.getDouble(cursorForPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
             cursorForPayment.close();
         }
         workDB.disconnectDataBase();
@@ -91,7 +84,7 @@ public class ListDebs extends Activity {
                          final String termCredit,
                          final String typeCredit,
                          final String dateCredit,
-                         final String paymentCredit){
+                         final Double paymentCredit){
         tableRow = layoutInflater.inflate(R.layout.debt_conteiner, linearLayout, false);
         TextView tvTypeCredit = (TextView)tableRow.findViewById(R.id.creditType);
         TextView tvDebtCredit = (TextView)tableRow.findViewById(R.id.containerBalance);
@@ -100,7 +93,7 @@ public class ListDebs extends Activity {
         tvTypeCredit.setText(typeCredit);
         tvDebtCredit.setText(new DecimalFormat("###,###,###,###.##").format(Double.valueOf(balanceCredit)));
         tvDateCredit.setText(dateCredit);
-        butPayment.setText(new DecimalFormat("###,###,###,###.##").format(Double.valueOf(paymentCredit)));
+        butPayment.setText(new DecimalFormat("###,###,###,###.##").format(paymentCredit));
         tableRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
