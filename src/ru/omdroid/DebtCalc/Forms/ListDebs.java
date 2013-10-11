@@ -1,10 +1,10 @@
 package ru.omdroid.DebtCalc.Forms;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
@@ -19,7 +19,8 @@ import java.text.DecimalFormat;
 public class ListDebs extends Activity {
     Cursor cursor = null;
     Cursor cursorForPayment = null;
-    View tableRow = null;
+    View viewContainer = null;
+    Menu menu = null;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class ListDebs extends Activity {
         tvTotalPayment.setText(String.valueOf(new DecimalFormat("###,###,###,###.##").format(valueTotalPayment)));
         cursorForPayment.close();
 
-        tableRow = null;
+        viewContainer = null;
         cursor = workDB.readValueFromDataBase("SELECT " +
                 DebtCalcDB.FIELD_ID + ", " +
                 DebtCalcDB.FIELD_ID_DEBT + ", " +
@@ -85,16 +86,17 @@ public class ListDebs extends Activity {
                          final String typeCredit,
                          final String dateCredit,
                          final Double paymentCredit){
-        tableRow = layoutInflater.inflate(R.layout.debt_conteiner, linearLayout, false);
-        TextView tvTypeCredit = (TextView)tableRow.findViewById(R.id.creditType);
-        TextView tvDebtCredit = (TextView)tableRow.findViewById(R.id.containerBalance);
-        TextView tvDateCredit = (TextView)tableRow.findViewById(R.id.containerDate);
-        Button butPayment = (Button)tableRow.findViewById(R.id.containerBut);
+        viewContainer = layoutInflater.inflate(R.layout.debt_conteiner, linearLayout, false);
+        TextView tvTypeCredit = (TextView) viewContainer.findViewById(R.id.creditType);
+        TextView tvDebtCredit = (TextView) viewContainer.findViewById(R.id.containerBalance);
+        TextView tvDateCredit = (TextView) viewContainer.findViewById(R.id.containerDate);
+        Button butPayment = (Button) viewContainer.findViewById(R.id.containerBut);
         tvTypeCredit.setText(typeCredit);
         tvDebtCredit.setText(new DecimalFormat("###,###,###,###.##").format(Double.valueOf(balanceCredit)));
         tvDateCredit.setText(dateCredit);
         butPayment.setText(new DecimalFormat("###,###,###,###.##").format(paymentCredit));
-        tableRow.setOnClickListener(new View.OnClickListener() {
+
+        viewContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppData appData = new AppData();
@@ -105,13 +107,23 @@ public class ListDebs extends Activity {
                 startActivity(new Intent(getBaseContext(), MainForm.class));
             }
         });
-        linearLayout.addView(tableRow);
+
+        viewContainer.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                viewContainer.setBackgroundColor(getResources().getColor(R.color.containerDeleteCredit));
+                menu.getItem(0).setIcon(getResources().getDrawable(R.drawable.ico_action_bar_delete_credit));
+                return false;
+            }
+        });
+        linearLayout.addView(viewContainer);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater actionMenu = getMenuInflater();
         actionMenu.inflate(R.menu.action_menu, menu);
+        this.menu = menu;
         return super.onCreateOptionsMenu(menu);
     }
 

@@ -9,8 +9,17 @@
     </item>
     <item>
         <shape>
-            <solid android:color="@color/butDefault"/>
             <corners android:radius="3dp" />
+            <gradient
+                    android:angle="270"
+                    android:type="linear"
+                    android:startColor="@color/butDefaultStart"
+                    android:endColor="@color/butDefaultEnd"/>
+            <padding
+                    android:bottom="2dp"
+                    android:left="2dp"
+                    android:right="2dp"
+                    android:top="2dp"/>
         </shape>
     </item>
 </selector>
