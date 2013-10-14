@@ -31,6 +31,7 @@ public class ListDebs extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.debt_list);
+        tvTotalPayment = (TextView)findViewById(R.id.valueTotalPayment);
     }
 
 
