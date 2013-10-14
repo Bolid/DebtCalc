@@ -56,6 +56,10 @@ public class Arithmetic {
         return delta;
     }
 
+    public Double getBalance (Double balance, int termCredit){
+        return balance - getPayment(balance, termCredit);
+    }
+
    public void getOverpaymentAllMonth(Double addPayment, boolean overPayment){
        hmPaymentMonth.clear();
        Double sumCredit = Double.valueOf(allResult.get(1));

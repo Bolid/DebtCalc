@@ -30,6 +30,10 @@ public class WorkDB {
         return sql.rawQuery(requestCount, null).getCount();
     }
 
+    public void deleteData(String requestDelete){
+        sql.execSQL(requestDelete);
+    }
+
     public void disconnectDataBase(){
         sql.close();
         debtCalcDB.close();

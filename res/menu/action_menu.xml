@@ -2,6 +2,10 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+            android:id="@+id/action_menu_deleteCredit_item"
+            android:icon="@drawable/ico_action_bar_delete_credit"
+            android:showAsAction="always"/>
+    <item
             android:id="@+id/action_menu_addCredit_item"
             android:icon="@drawable/ico_action_bar_add_credit"
             android:showAsAction="always"/>
