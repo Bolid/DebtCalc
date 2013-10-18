@@ -20,11 +20,15 @@ public class Arithmetic {
 
 
     int termCredit = 0;
-    Double sumCredit = 0.0, percend = 0.0, dopPlatej;
+    Double sumCredit = 0.0, percent = 0.0, dopPlatej;
 
-    public Arithmetic(Double sumCredit, Double percend, Integer termCredit){
+    public Arithmetic(Double percent){
+        this.percent = percent;
+    }
+
+    public Arithmetic(Double sumCredit, Double percent, Integer termCredit){
         this.sumCredit = sumCredit;
-        this.percend = percend;
+        this.percent = percent;
         this.termCredit = termCredit;
 
         allResult = new ArrayList<String>();
@@ -34,7 +38,7 @@ public class Arithmetic {
         allResult.add(0, String.valueOf(dopPlatej)); //исходные данные Дополнительный платеж
         allResult.add(1, String.valueOf(sumCredit)); //исходные данные Сумма кредита
         allResult.add(2, String.valueOf(termCredit)); //исходные данные Срок кредита
-        allResult.add(3, String.valueOf(percend)); //исходные данные Процентная ставка
+        allResult.add(3, String.valueOf(percent)); //исходные данные Процентная ставка
         //данные для вывода
         allResult.add(4, String.valueOf(getPayment(sumCredit, termCredit)));
         allResult.add(5, "");
@@ -47,7 +51,9 @@ public class Arithmetic {
 
 
     public Double getPayment(Double sumCredit, int termCredit){
-        return Rounding(sumCredit * ((percend / 100. / 12) * Math.pow((1 + (percend / 100. / 12)), termCredit)) / (Math.pow((1 + (percend / 100. / 12)), termCredit) - 1));
+
+        return Rounding(sumCredit * ((percent / 100. / 12) + ((percent / 100. / 12) / (Math.pow((1 + (percent / 100. / 12)), termCredit) - 1))));
+        //Rounding(sumCredit * ((percent / 100. / 12) * Math.pow((1 + (percent / 100. / 12)), termCredit)) / (Math.pow((1 + (percent / 100. / 12)), termCredit) - 1));
     }
 
     public Double getDeltaDefault(Double payment, int termCredit){
@@ -56,13 +62,24 @@ public class Arithmetic {
         return delta;
     }
 
-    public Double getBalance (Double balance, int termCredit){
-        return balance - getPayment(balance, termCredit);
+    public Double getBalance (Double payment, Double balance, int termCredit){
+        Double a = (balance * (percent /100.) / 12);
+        Double b = payment - a;
+        Double c = balance - b;
+        return Rounding(balance - Rounding(payment - Rounding(balance * (percent /100.) / 12)));
     }
 
-   public void getOverpaymentAllMonth(Double addPayment, boolean overPayment){
+    public Double getPaymentInPercent(Double balance){
+        return (balance * (percent /100.) / 12);
+    }
+
+    public Double getPaymentInDebt(Double payment, Double balance){
+        return payment - (balance * (percent /100.) / 12);
+    }
+
+   public void getOverpaymentAllMonth(Double sumDebt, Double addPayment, boolean overPayment){
        hmPaymentMonth.clear();
-       Double sumCredit = Double.valueOf(allResult.get(1));
+       Double sumCredit = sumDebt;
        Double allPer = 0.0;
        int i = 0;
        String[] from = new String[]{"Number", "Payment", "Image", "Dolg", "Delta"};
@@ -82,25 +99,25 @@ public class Arithmetic {
             else
                 hm.put(from[0], String.valueOf(i));
 
-            allPer = allPer + (sumCredit * (percend/100.) / 12);
+            allPer = allPer + (sumCredit * (percent /100.) / 12);
             if (sumCredit < (addPayment)){
                 hm.put(from[1], setMask(Rounding(addPayment)));
-                hm.put(from[3], setMask(Rounding(addPayment - (sumCredit * (percend/100.) / 12))));
-                hm.put(from[4], setMask(Rounding((sumCredit * (percend/100.) / 12))));
-                addPayment = sumCredit + (sumCredit * (percend/100.) / 12);
+                hm.put(from[3], setMask(Rounding(addPayment - (sumCredit * (percent /100.) / 12))));
+                hm.put(from[4], setMask(Rounding((sumCredit * (percent /100.) / 12))));
+                addPayment = sumCredit + (sumCredit * (percent /100.) / 12);
                 sumCredit = sumCredit - addPayment;
             }
             else{
                 hm.put(from[1], setMask(Rounding(addPayment)));
-                hm.put(from[3], setMask(Rounding(addPayment - (sumCredit * (percend/100.) / 12))));
-                hm.put(from[4], setMask(Rounding((sumCredit * (percend/100.) / 12))));
-                sumCredit = Rounding(sumCredit - (addPayment - (sumCredit * (percend/100.) / 12)));
+                hm.put(from[3], setMask(Rounding(addPayment - (sumCredit * (percent /100.) / 12))));
+                hm.put(from[4], setMask(Rounding((sumCredit * (percent /100.) / 12))));
+                sumCredit = Rounding(sumCredit - (addPayment - (sumCredit * (percent /100.) / 12)));
             }
             listResult.add(hm);
             Log.d(TAG, "========");
             Log.d(TAG, "Сумма долга: " + sumCredit);
             Log.d(TAG, "Доп. платеж: " + addPayment);
-            Log.d(TAG, "Переплата: " + (sumCredit * (percend/100.) / 12));
+            Log.d(TAG, "Переплата: " + (sumCredit * (percent /100.) / 12));
             Log.d(TAG, "________");
         }
         Log.d(TAG, "Общая переплата: " + allPer);
@@ -119,7 +136,7 @@ public class Arithmetic {
 
     public void getOverpaymentSomeMonth(Double addPaymentSomeMonth, Double addPayment, int j){
         Double sumCredit = Double.valueOf(allResult.get(1));
-        int termCredit = Integer.valueOf(allResult.get(9));
+        int termCredit = Integer.valueOf(allResult.get(6));
         int i = 0;
         Double allPer = 0.0;
 
@@ -138,10 +155,10 @@ public class Arithmetic {
             listDefaultPayment.set(i, String.valueOf(getPayment(sumCredit, Integer.valueOf(allResult.get(2)) - i)));
             Log.v(TAG, "Пересчитанный платеж: " + getPayment(sumCredit, termCredit));
             Log.v(TAG, "Сумма: " + sumCredit + ". Срок: " + termCredit);
-            Log.v(TAG, "В счет долга: " + (addPayment - (sumCredit * (percend/100.) / 12)));
-            Log.v(TAG, "Остаток: " + String.valueOf(sumCredit - (addPayment - (sumCredit * (percend/100.) / 12))));
+            Log.v(TAG, "В счет долга: " + (addPayment - (sumCredit * (percent /100.) / 12)));
+            Log.v(TAG, "Остаток: " + String.valueOf(sumCredit - (addPayment - (sumCredit * (percent /100.) / 12))));
             i++;
-            allPer = allPer + (sumCredit * (percend/100.) / 12);
+            allPer = allPer + (sumCredit * (percent /100.) / 12);
             hm = new HashMap<String, String>();
             if (i < 10)
                 hm.put(from[0], String.valueOf(i)+"  ");
@@ -151,22 +168,22 @@ public class Arithmetic {
                 hm.put(from[0], String.valueOf(i));
             if (!hmPaymentMonth.containsKey(i)){
                 if (sumCredit < addPayment)
-                    addPayment = sumCredit + (sumCredit * (percend/100.) / 12);
+                    addPayment = sumCredit + (sumCredit * (percent /100.) / 12);
                 hm.put(from[1], setMask(Rounding(getPayment(sumCredit, termCredit))));
-                hm.put(from[3], setMask(Rounding(addPayment - (sumCredit * (percend / 100.) / 12))));
-                hm.put(from[4], setMask(Rounding((sumCredit * (percend / 100.) / 12))));
-                sumCredit = Rounding(sumCredit - (getPayment(sumCredit, termCredit) - (sumCredit * (percend/100.) / 12)));
+                hm.put(from[3], setMask(Rounding(addPayment - (sumCredit * (percent / 100.) / 12))));
+                hm.put(from[4], setMask(Rounding((sumCredit * (percent / 100.) / 12))));
+                sumCredit = Rounding(sumCredit - (getPayment(sumCredit, termCredit) - (sumCredit * (percent /100.) / 12)));
             }
             else{
                 if (sumCredit < hmPaymentMonth.get(i)){
                     hmPaymentMonth.remove(i);
-                    hmPaymentMonth.put(i, sumCredit + (sumCredit * (percend/100.) / 12));
+                    hmPaymentMonth.put(i, sumCredit + (sumCredit * (percent /100.) / 12));
                 }
                 hm.put(from[1], setMask(Rounding(hmPaymentMonth.get(i))));
                 hm.put(from[2], String.valueOf(1));
-                hm.put(from[3], setMask(Rounding(hmPaymentMonth.get(i) - (sumCredit * (percend / 100.) / 12))));
-                hm.put(from[4], setMask(Rounding((sumCredit * (percend / 100.) / 12))));
-                sumCredit = sumCredit - (Rounding(hmPaymentMonth.get(i) - (sumCredit * (percend/100.) / 12)));
+                hm.put(from[3], setMask(Rounding(hmPaymentMonth.get(i) - (sumCredit * (percent / 100.) / 12))));
+                hm.put(from[4], setMask(Rounding((sumCredit * (percent / 100.) / 12))));
+                sumCredit = sumCredit - (Rounding(hmPaymentMonth.get(i) - (sumCredit * (percent /100.) / 12)));
                 if (termCredit != 1)
                     addPayment = getPayment(sumCredit, termCredit - 1);
             }

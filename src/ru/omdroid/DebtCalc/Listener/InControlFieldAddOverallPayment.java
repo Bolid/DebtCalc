@@ -5,6 +5,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.ErrorMessage;
 import ru.omdroid.DebtCalc.Fragment.MainFragment;
 import ru.omdroid.DebtCalc.Fragment.ResultFragment;
@@ -53,9 +54,9 @@ public class InControlFieldAddOverallPayment implements TextWatcher {
             errorMessage.readErrorMessagePaymentCredit();
         }
         else{
-            ResultFragment.newPayment = defaultPayment;
+            ResultFragment.newPayment = Double.valueOf(s);
             errorMessage.clearErrorMessagePaymentCredit();
-            MainFragment.arithmetic.getOverpaymentAllMonth(Double.valueOf(s), true);
+            MainFragment.arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.param[0]), Double.valueOf(s), true);
             view.invalidate();
         }
 

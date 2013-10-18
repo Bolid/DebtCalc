@@ -7,42 +7,20 @@
                 android:background="@color/background">
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main_layout_label_title"
-            android:id="@+id/labelTitleMain" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:textColor="@color/colorValue" android:paddingLeft="10dp" android:textSize="18sp" android:textStyle="bold"/>
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:id="@+id/line_1Main" android:layout_alignParentLeft="true"
-            android:layout_below="@+id/labelTitleMain" android:background="#021460"
-            android:layout_marginLeft="5dp" android:layout_marginRight="5dp"/>
-    <TextView
             style="@style/styleLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Кредит"
-            android:textSize="30sp"
-            android:layout_below="@+id/labelTitleMain"
+            android:text="Цель кредита"
             android:id="@+id/labelCreditType"
             android:gravity="right"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="25dp" />
-    <ImageView
-            android:id="@+id/labelDebtTypeIco"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/ico_home"
-            android:layout_below="@+id/line_1Main"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignLeft="@+id/line_1Main" android:layout_below="@+id/line_1Main" android:paddingTop="5dp"
+            android:paddingLeft="5dp"/>
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/markerSumCredit" android:layout_alignLeft="@+id/labelTitleMain" android:layout_below="@id/labelDebtTypeIco"
-            android:src="@drawable/marker_green_one" android:layout_marginLeft="25dp" android:layout_marginTop="25dp"/>
+            android:id="@+id/markerSumCredit"
+            android:src="@drawable/marker_green_one"
+            android:layout_alignLeft="@+id/markerPercentCredit" android:layout_below="@+id/textView1"/>
     <TextView
             style="@style/styleLabel"
             android:layout_width="wrap_content"
@@ -65,7 +43,7 @@
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/markerPercentCredit" android:layout_alignLeft="@+id/textView" android:layout_below="@+id/etCreditSum"
+            android:id="@+id/markerPercentCredit" android:layout_alignLeft="@+id/labelDateCreditStart" android:layout_below="@+id/etCreditSum"
             android:src="@drawable/marker_green_two" android:layout_marginLeft="25dp" android:layout_marginTop="25dp"/>
     <TextView
             style="@style/styleLabel"
@@ -87,7 +65,7 @@
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/markerTermCredit" android:layout_alignLeft="@+id/textView"
+            android:id="@+id/markerTermCredit" android:layout_alignLeft="@+id/labelDateCreditStart"
             android:layout_below="@+id/etPercentCredit" android:layout_marginLeft="25dp"
             android:layout_marginTop="25dp" android:src="@drawable/marker_green_three"/>
     <TextView
@@ -120,4 +98,36 @@
             android:id="@+id/butStart"
             android:background="@drawable/but_style_start"/>
     </LinearLayout>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Дата"
+            android:id="@+id/labelDateCreditStart"
+            android:paddingTop="5dp" style="@style/styleLabel"
+            android:paddingLeft="5dp"
+            android:layout_alignLeft="@+id/labelCreditType" android:layout_below="@+id/etCreditType"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_layout_value_credit_type"
+            android:id="@+id/etCreditType"
+            style="@style/styleValue" android:layout_alignRight="@+id/labelCreditSum"
+            android:layout_alignTop="@+id/labelCreditType" android:layout_alignLeft="@+id/labelCreditSum"
+            android:lines="1" android:maxLines="1" android:gravity="center_vertical|right"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:id="@+id/textView1"
+            android:layout_alignLeft="@+id/labelCreditType"
+            android:layout_below="@+id/labelDateCreditStart"
+            android:onClick="onclick"
+            android:background="@color/colorValue" android:layout_marginRight="5dp" android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDateStartCredit" android:layout_alignRight="@+id/labelCreditSum"
+            android:layout_alignBottom="@+id/labelDateCreditStart" android:layout_alignLeft="@+id/labelCreditSum"
+            style="@style/styleValue" android:gravity="center_vertical|right"
+            android:paddingRight="10dp"/>
 </RelativeLayout>

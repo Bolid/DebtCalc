@@ -36,7 +36,7 @@ public class InControlFieldAddPayment implements TextWatcher {
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
         String s = "", oldText = etSumCredit.getText().toString();
-
+        button.setEnabled(true);
         for (int j = oldText.length(); j > 0; j--) {
             if ("1234567890".contains(String.valueOf(oldText.charAt(j-1))))
                 s = oldText.charAt(j-1) + s;
@@ -62,7 +62,10 @@ public class InControlFieldAddPayment implements TextWatcher {
             etSumCredit.removeTextChangedListener(this);
             etSumCredit.setText(s);
             etSumCredit.addTextChangedListener(this);
-            etSumCredit.setSelection(position + (s.length() - beforeText.length()));
+            if (position + (s.length() - beforeText.length()) < 0)
+                etSumCredit.setSelection(0);
+            else
+                etSumCredit.setSelection(position + (s.length() - beforeText.length()));
         }
     }
 

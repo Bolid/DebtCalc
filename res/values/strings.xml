@@ -15,21 +15,40 @@
     <string name="list_dialog_label_dopPaymentMouth">Если в этом месяце заплатить:</string>
     <string name="container_balance_credit">Долг</string>
     <string name="container_date_credit">Дата</string>
+    <string name="container_balance_term_credit">Срок</string>
     <string name="list_debt_label_total_payment">Итого в месяц</string>
+    <string name="info_payment_label">Платеж</string>
+    <string name="info_debt_label">Долг</string>
     <!--Value-->
     <string name="main_layout_value_credit_sum">900 000</string>
     <string name="main_layout_value_credit_percent">12</string>
     <string name="main_layout_value_credit_term">120</string>
+    <string name="main_layout_value_credit_type">Квартира</string>
     <string name="list_debt_value_total_payment">0.0</string>
     <!--Button-->
-    <string name="buttonNextMainLayout">Добавить в БД</string>
+    <string name="buttonNextMainLayout">Сохранить</string>
     <string name="buttonNextListDialog">Далее</string>
     <!--Array-->
-    <array name="array_keys_for_hashmap">
-        <item>Number</item>
-        <item>Payment</item>
-        <item>Image</item>
-        <item>Dolg</item>
-        <item>Delta</item>
+    <array name="array_types_credit">
+        <item>Квартира</item>
+        <item>Машина</item>
+        <item>Отдых</item>
+        <item>Свадьба</item>
+        <item>Учеба</item>
+        <item>Другое</item>
+    </array>
+    <array name="month">
+        <item>января</item>
+        <item>февраля</item>
+        <item>марта</item>
+        <item>апреля</item>
+        <item>мая</item>
+        <item>июня</item>
+        <item>июля</item>
+        <item>августа</item>
+        <item>сентября</item>
+        <item>октября</item>
+        <item>ноября</item>
+        <item>декабря</item>
     </array>
 </resources>

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import ru.omdroid.DebtCalc.Adapter.AdapterViewListResult;
+import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic;
 import ru.omdroid.DebtCalc.DialogPayment;
 import ru.omdroid.DebtCalc.R;
@@ -38,7 +39,7 @@ public class ListResultForm extends Activity {
             @Override
             protected ArrayList doInBackground(Void... voids) {
                 if (ResultForm.paymentUpdate){
-                    ResultForm.arithmetic.getOverpaymentAllMonth(ResultForm.newPayment, ResultForm.overPayment);
+                    ResultForm.arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.param[0]),ResultForm.newPayment, ResultForm.overPayment);
                     listResult = Arithmetic.listResult;
                     ResultForm.paymentUpdate = false;
                 }

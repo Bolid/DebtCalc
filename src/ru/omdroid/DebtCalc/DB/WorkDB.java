@@ -34,6 +34,10 @@ public class WorkDB {
         sql.execSQL(requestDelete);
     }
 
+    public void updateData(String requestUpdate){
+        sql.execSQL(requestUpdate);
+    }
+
     public void disconnectDataBase(){
         sql.close();
         debtCalcDB.close();

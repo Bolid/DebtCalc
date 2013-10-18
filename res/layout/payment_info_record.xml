@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/llPaymentInfoRecord"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvNumPaymentRecord" android:textSize="12sp"
+            style="@style/styleValue" android:gravity="center_horizontal" android:layout_weight="0.2"/>
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPaymentRecord"
+            android:layout_weight="1" style="@style/styleValue"
+            android:textSize="12sp" android:gravity="center_horizontal"/>
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvDebtRecord"
+            android:layout_weight="1" style="@style/styleValue"
+            android:textSize="12sp" android:gravity="center_horizontal"/>
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvPercentRecord"
+            android:layout_weight="1" style="@style/styleValue"
+            android:textSize="12sp" android:gravity="center_horizontal"/>
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvSumPaymentRecord"
+            android:layout_weight="1" style="@style/styleValue"
+            android:textSize="12sp" android:gravity="center_horizontal"/>
+
+</LinearLayout>

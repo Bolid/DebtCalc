@@ -9,8 +9,15 @@
     <color name="colorIconText">#ffffc97e</color>
     <color name="colorIconTextShadow">#ff3d3d3d</color>
     <color name="colorIconDebt">#ff1eae26</color>
-    <color name="butPress">#ff295220</color>
-    <color name="butDefaultStart">#ff7df557</color>
-    <color name="butDefaultEnd">#ff4c9839</color>
+    <color name="butPress">#90a4050b</color>
+    <color name="butDefaultStart">#90f50810</color>
+    <color name="butDefaultEnd">#90a8070c</color>
+    <color name="butEnableStart">#507df557</color>
+    <color name="butEnableEnd">#504c9839</color>
+    <color name="containerPress">#1516f90e</color>
     <color name="containerDeleteCredit">#15f92607</color>
+    <color name="infoPaymentBackground">#1556f948</color>
+    <color name="infoPaymentIcon">#ff42ba38</color>
+    <color name="infoDateBackground">#150a99f9</color>
+    <color name="infoOverBackground">#15ac076b</color>
 </resources>

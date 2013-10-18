@@ -28,12 +28,15 @@ public class ResultFragment extends Fragment {
             Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.layout_result, null);
         MainFragment.arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Double.valueOf(AppData.param[1]), Integer.valueOf(AppData.param[2]));
-        newPayment = Double.valueOf(Arithmetic.allResult.get(4));
+        newPayment = MainFragment.arithmetic.getPayment(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[2]));
 
         final String[] params = AppData.param;
         final NumberFormat numberFormat = new DecimalFormat("###,###,###,###,###,###,##0.##");
         final View view = (View)v.findViewById(R.id.graphView);
         final EditText editText = (EditText)v.findViewById(R.id.valuePayment);
+        editText.setText("");
+        editText.setText(numberFormat.format(newPayment));
+
         final InControlFieldAddOverallPayment inControlFieldAddOverallPayment = new InControlFieldAddOverallPayment(editText, newPayment, view);
 
         if (!ErrorMessage.nullSumCredit.equals("") || !ErrorMessage.nullPercentCredit.equals("") || !ErrorMessage.nullTermCredit.equals(""))
@@ -42,7 +45,6 @@ public class ResultFragment extends Fragment {
         overPayment = false;
 
         SeekBar seekBar = (SeekBar)v.findViewById(R.id.seekBar);
-        editText.setText(numberFormat.format(newPayment));
         seekBar.setMax(Integer.valueOf(params[2]));
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

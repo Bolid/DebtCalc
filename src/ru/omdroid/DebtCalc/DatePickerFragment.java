@@ -8,6 +8,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,8 +19,12 @@ import java.util.Calendar;
  */
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     TextView textView;
-    public DatePickerFragment(TextView textView){
+    Calendar calendarConst;
+    Calendar calendar;
+    public DatePickerFragment(TextView textView, Calendar calendarConst, Calendar calendar){
         this.textView = textView;
+        this.calendarConst = calendarConst;
+        this.calendar = calendar;
     }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -35,5 +40,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
         textView.setText(String.valueOf(day)+"."+String.valueOf(month + 1)+"."+String.valueOf(year));
+        calendar.set(year, month, day);
+        calendarConst.set(year, month, day);
     }
 }

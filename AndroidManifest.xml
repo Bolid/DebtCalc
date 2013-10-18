@@ -17,11 +17,13 @@
                 android:uiOptions="splitActionBarWhenNarrow">
         </activity>
         <activity
-                android:name="ru.omdroid.DebtCalc.Forms.ContextWindow"
+                android:name="ru.omdroid.DebtCalc.Forms.InfoDebt"
                 android:label="@string/labelName"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:parentActivityName=".Forms.ListDebs">
+                </activity>
         <activity
-                android:name="ru.omdroid.DebtCalc.Forms.AnaliticFormView"
+                android:name="ru.omdroid.DebtCalc.Forms.ListPayment"
                 android:screenOrientation="portrait"/>
         <activity
                 android:name="ru.omdroid.DebtCalc.Forms.AnaliticForm"
@@ -36,7 +38,7 @@
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".Forms.ListDebs"
+                android:name=".Forms.ListDebt"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

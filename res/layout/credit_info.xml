@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@color/background"
+              android:orientation="vertical">
+
+    <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:layout_weight="1"
+                    android:background="@color/infoPaymentBackground">
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ivInfoPayment" android:src="@drawable/info_payment"
+                        android:layout_gravity="center_horizontal" android:paddingTop="5dp"
+                        android:tint="@color/infoPaymentIcon"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/info_payment_label"
+                        android:id="@+id/textView" android:layout_gravity="center_horizontal"
+                        android:textColor="@color/infoPaymentIcon" android:textSize="12sp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/infoPayment" android:layout_gravity="center_horizontal" android:paddingTop="5dp"
+                        android:paddingBottom="5dp" style="@style/styleValue"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" android:background="@color/infoDateBackground">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvInfoDate" android:background="@drawable/info_date"
+                        android:layout_marginTop="5dp" android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical|center_horizontal" android:paddingTop="5dp"
+                        android:textSize="22sp" style="@style/styleValue"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:id="@+id/textView1"
+                          android:layout_gravity="center_horizontal" android:textColor="@color/infoPaymentIcon"
+                          android:textSize="12sp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/infoDate" android:layout_gravity="center_horizontal" android:paddingTop="5dp"
+                        android:paddingBottom="5dp" style="@style/styleValue"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" android:background="@color/infoOverBackground">
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView2" android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_launcher" android:paddingTop="5dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/infoDebt" android:layout_gravity="center" android:paddingTop="5dp"
+                        android:paddingBottom="5dp" style="@style/styleValue"/>
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+    <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ivControlWritePayment" android:layout_column="0"
+                    android:src="@drawable/marker_green_addpayment" android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp" android:layout_marginTop="10dp"/>
+            <EditText
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etPayment" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
+                    android:inputType="numberDecimal" style="@style/styleValue" android:focusableInTouchMode="true"
+                    android:maxLines="1"
+                    android:layout_column="1" android:layout_gravity="center_vertical"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OK"
+                    android:id="@+id/butWritePayment" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
+                    android:layout_column="2" android:layout_gravity="center_vertical" android:enabled="false"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Табл"
+                    android:id="@+id/butInfoPayments" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"/>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
