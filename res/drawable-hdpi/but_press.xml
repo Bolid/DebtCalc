@@ -4,17 +4,19 @@
     <item android:state_pressed="true">
         <shape>
             <solid android:color="@color/butPress"/>
-            <corners android:radius="3dp" />
+            <!--<corners android:radius="3dp" />-->
         </shape>
     </item>
     <item>
         <shape>
-            <corners android:radius="3dp" />
-            <gradient
+          <!--  <corners android:radius="3dp" />-->
+            <!--<gradient
                     android:angle="270"
                     android:type="linear"
                     android:startColor="@color/butDefaultStart"
                     android:endColor="@color/butDefaultEnd"/>
+-->
+            <solid android:color="@android:color/holo_red_dark"/>
             <padding
                     android:bottom="2dp"
                     android:left="2dp"

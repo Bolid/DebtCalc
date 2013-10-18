@@ -9,30 +9,30 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/tvNumPaymentRecord" android:textSize="12sp"
-            style="@style/styleValue" android:gravity="center_horizontal" android:layout_weight="0.2"/>
+            style="@style/styleValue" android:layout_weight="0.3" android:gravity="right" android:paddingLeft="5dp"/>
     <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/tvPaymentRecord"
             android:layout_weight="1" style="@style/styleValue"
-            android:textSize="12sp" android:gravity="center_horizontal"/>
+            android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"/>
     <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/tvDebtRecord"
             android:layout_weight="1" style="@style/styleValue"
-            android:textSize="12sp" android:gravity="center_horizontal"/>
+            android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"/>
     <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/tvPercentRecord"
             android:layout_weight="1" style="@style/styleValue"
-            android:textSize="12sp" android:gravity="center_horizontal"/>
+            android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"/>
     <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/tvSumPaymentRecord"
             android:layout_weight="1" style="@style/styleValue"
-            android:textSize="12sp" android:gravity="center_horizontal"/>
+            android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"/>
 
 </LinearLayout>

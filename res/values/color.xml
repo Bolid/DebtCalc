@@ -2,7 +2,7 @@
 <resources>
     <color name="buttonNextPress">#ffbecac2</color>
     <color name="buttonNextStroke">#ffbecac2</color>
-    <color name="background">#e7f4eb</color>
+    <color name="background">#FFF</color>
     <color name="substrate">#eafdf4</color>
     <color name="colorLabel">#fc9c14</color>
     <color name="colorValue">#021460</color>
@@ -14,7 +14,7 @@
     <color name="butDefaultEnd">#90a8070c</color>
     <color name="butEnableStart">#507df557</color>
     <color name="butEnableEnd">#504c9839</color>
-    <color name="containerPress">#1516f90e</color>
+    <color name="containerPress">#25aaccbb</color>
     <color name="containerDeleteCredit">#15f92607</color>
     <color name="infoPaymentBackground">#1556f948</color>
     <color name="infoPaymentIcon">#ff42ba38</color>
