@@ -9,15 +9,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/scrollView" android:layout_gravity="left|center_vertical"
-            android:layout_above="@+id/labelValueTotalPayment">
+            android:layout_above="@+id/labelValueTotalPayment" android:background="#F2F2F2">
         <LinearLayout
                 android:id="@+id/llContainer"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal" android:baselineAligned="false"
                 >
         </LinearLayout>
     </ScrollView>
+    <View android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/shadow"
+            android:layout_alignBottom="@+id/scrollView"/>
     <TextView
             style="@style/styleLabel"
             android:id="@+id/labelValueTotalPayment"

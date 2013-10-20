@@ -45,11 +45,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/scrollView" android:layout_gravity="left|center_vertical">
-        <LinearLayout
+        <!--<LinearLayout
                 android:id="@+id/llPaymentInfo"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
-        </LinearLayout>
+        </LinearLayout>-->
     </ScrollView>
 </LinearLayout>

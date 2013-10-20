@@ -76,7 +76,7 @@
     </TableLayout>
     <TableLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="wrap_content">
         <TableRow
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
@@ -107,4 +107,51 @@
                     android:layout_gravity="center_vertical"/>
         </TableRow>
     </TableLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:paddingTop="10dp">
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="№"
+                android:id="@+id/textView" android:layout_gravity="center_horizontal|bottom"
+                android:gravity="center_horizontal" android:paddingLeft="2dp" android:paddingRight="2dp"
+                style="@style/styleLabel" android:textSize="12sp" android:layout_weight="0.2"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Платеж"
+                android:id="@+id/textView1" android:layout_gravity="center" android:layout_weight="1"
+                android:gravity="center_horizontal" style="@style/styleLabel" android:textSize="12sp"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Долг"
+                android:id="@+id/textView2" android:layout_gravity="center_horizontal|bottom" android:layout_weight="1"
+                android:gravity="center_horizontal" style="@style/styleLabel" android:textSize="12sp"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Процент"
+                android:id="@+id/textView3" android:layout_gravity="center" android:layout_weight="1"
+                android:gravity="center_horizontal" style="@style/styleLabel" android:textSize="12sp"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Сумма"
+                android:id="@+id/textView4" android:layout_gravity="center_horizontal|bottom" android:layout_weight="1"
+                android:gravity="center_horizontal" style="@style/styleLabel" android:textSize="12sp"/>
+    </LinearLayout>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView">
+        <LinearLayout
+                android:id="@+id/llPaymentInfo"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
