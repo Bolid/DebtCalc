@@ -26,13 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/shadow.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/credit_info.xml" afterPath="$PROJECT_DIR$/res/layout/credit_info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/debt_conteiner.xml" afterPath="$PROJECT_DIR$/res/layout/debt_conteiner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/debt_list.xml" afterPath="$PROJECT_DIR$/res/layout/debt_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/payment_info.xml" afterPath="$PROJECT_DIR$/res/layout/payment_info.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DebtCalc.iws" />
@@ -40,7 +34,7 @@
     <file path="/main.xml" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1382081761436" ignored="false" />
     <file path="/strings.xml" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1382004789020" ignored="false" />
     <file path="/fragment.java" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1382221821402" ignored="false" />
-    <file path="/Dummy.txt" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1382302483719" ignored="false" />
+    <file path="/Dummy.txt" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1382302508273" ignored="false" />
     <file path="/new_main.xml" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1376474831215" ignored="false" />
     <file path="/but_next_style" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1375901184829" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="bf0ed9d0-0224-48ff-b1f4-dc07a0fef846" time="1382089246315" ignored="false" />
@@ -196,10 +190,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shadow.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="shadow.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/drawable/shadow.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="43" selection-start="225" selection-end="225" vertical-scroll-proportion="0.21560575">
+            <state line="7" column="43" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -226,10 +220,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListDebt.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ListDebt.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="164" column="24" selection-start="8458" selection-end="8458" vertical-scroll-proportion="0.0">
+            <state line="171" column="72" selection-start="8894" selection-end="8894" vertical-scroll-proportion="1.8251058">
               <folding />
             </state>
           </provider>
@@ -312,11 +306,11 @@
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/TableFragment.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" />
         <option value="$PROJECT_DIR$/res/layout/credit_info.xml" />
-        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" />
         <option value="$PROJECT_DIR$/res/drawable/container_press.xml" />
         <option value="$PROJECT_DIR$/res/drawable/shadow.xml" />
         <option value="$PROJECT_DIR$/res/layout/debt_list.xml" />
         <option value="$PROJECT_DIR$/res/layout/debt_conteiner.xml" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" />
       </list>
     </option>
   </component>
@@ -786,7 +780,11 @@
       <created>1382129881898</created>
       <updated>1382129881898</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Обновление представления карточек и добавление тени карточке общего платежа">
+      <created>1382302529836</created>
+      <updated>1382302529836</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -811,7 +809,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1440" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22596844" sideWeight="0.74965984" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24677187" sideWeight="0.74965984" order="2" side_tool="false" content_ui="tabs" />
@@ -824,7 +822,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.86206895" sideWeight="0.3793456" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24846625" sideWeight="0.5011494" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5482993" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30204082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30204082" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8585034" sideWeight="0.64314926" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32789117" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24846625" sideWeight="0.49885058" order="1" side_tool="false" content_ui="tabs" />
@@ -1008,13 +1006,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="24" selection-start="8458" selection-end="8458" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/container_press.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="12" selection-start="253" selection-end="400" vertical-scroll-proportion="0.0">
@@ -1051,7 +1042,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/shadow.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="43" selection-start="225" selection-end="225" vertical-scroll-proportion="0.21560575">
+        <state line="7" column="43" selection-start="225" selection-end="225" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="72" selection-start="8894" selection-end="8894" vertical-scroll-proportion="1.8251058">
           <folding />
         </state>
       </provider>
