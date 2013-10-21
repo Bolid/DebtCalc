@@ -3,17 +3,26 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="@color/containerPress"/>
-        </shape>
-    </item>
-    <item android:state_long_pressable="true">
-        <shape>
-            <solid android:color="@color/background"/>
+            <gradient android:type="linear"
+                      android:centerY="0.98"
+                      android:startColor="@color/containerPress"
+                      android:centerColor="@color/containerPress"
+                      android:endColor="#50000000"
+                      android:angle="270"
+                    android:gradientRadius="100"/><!--
+            <solid android:color="@color/containerPress"/>-->
         </shape>
     </item>
     <item>
         <shape>
-            <solid android:color="@color/background"/>
+            <gradient android:type="linear"
+                      android:centerY="0.98"
+                      android:startColor="@color/background"
+                      android:centerColor="@color/background"
+                      android:endColor="#20000000"
+                      android:angle="270"
+                      android:gradientRadius="100"/>
+            <!--<solid android:color="@color/background"/>-->
         </shape>
     </item>
 

@@ -20,7 +20,7 @@
         </LinearLayout>
     </ScrollView>
     <View android:layout_width="fill_parent"
-            android:layout_height="3dp"
+            android:layout_height="5dp"
             android:background="@drawable/shadow"
             android:layout_alignBottom="@+id/scrollView"/>
     <TextView
