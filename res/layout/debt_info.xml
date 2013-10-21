@@ -79,32 +79,25 @@
             android:layout_height="wrap_content">
         <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-            <ImageView
+                android:layout_height="fill_parent" android:gravity="center_vertical|center_horizontal">
+            <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ivControlWritePayment" android:layout_column="0"
-                    android:src="@drawable/marker_green_addpayment" android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp" android:layout_marginTop="10dp"/>
+                    android:text="-"
+                    android:id="@+id/bMinusPayment" android:layout_marginTop="10dp" android:enabled="false"/>
             <EditText
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/etPayment" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
+                    android:id="@+id/etPayment"
                     android:inputType="numberDecimal" style="@style/styleValue" android:focusableInTouchMode="true"
                     android:maxLines="1"
-                    android:layout_column="1" android:layout_gravity="center_vertical"/>
+                    android:layout_column="1" android:layout_marginTop="10dp" android:gravity="center_vertical|center_horizontal"/>
             <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OK"
-                    android:id="@+id/butWritePayment" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
-                    android:layout_column="2" android:layout_gravity="center_vertical" android:enabled="false"/>
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Табл"
-                    android:id="@+id/butInfoPayments" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical" android:visibility="invisible"/>
+                    android:text="+"
+                    android:id="@+id/bPlusPayment"
+                    android:layout_column="2" android:layout_marginTop="10dp"/>
         </TableRow>
     </TableLayout>
     <LinearLayout
@@ -146,7 +139,7 @@
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/scrollView">
+            android:id="@+id/scrollView" android:fillViewport="false">
         <LinearLayout
                 android:id="@+id/llPaymentInfo"
                 android:orientation="vertical"

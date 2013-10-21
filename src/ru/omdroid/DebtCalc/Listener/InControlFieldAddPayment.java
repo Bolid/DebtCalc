@@ -36,7 +36,8 @@ public class InControlFieldAddPayment implements TextWatcher {
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
         String s = "", oldText = etSumCredit.getText().toString();
-        button.setEnabled(true);
+        if (button != null)
+            button.setEnabled(true);
         for (int j = oldText.length(); j > 0; j--) {
             if ("1234567890".contains(String.valueOf(oldText.charAt(j-1))))
                 s = oldText.charAt(j-1) + s;
@@ -45,14 +46,17 @@ public class InControlFieldAddPayment implements TextWatcher {
             }
         }
         if (s.equals("")){
+            if (button != null & markerDefaultPayment != null){
+                button.setEnabled(false);
+                markerDefaultPayment.setImageResource(R.drawable.marker_red_addpayment);
+            }
+        }
+        else if (defaultPayment > Double.valueOf(s))
+            if (button != null & markerDefaultPayment != null){
             button.setEnabled(false);
             markerDefaultPayment.setImageResource(R.drawable.marker_red_addpayment);
         }
-        else if (defaultPayment > Double.valueOf(s)){
-            button.setEnabled(false);
-            markerDefaultPayment.setImageResource(R.drawable.marker_red_addpayment);
-        }
-        else{
+        else if (button != null & markerDefaultPayment != null){
             button.setEnabled(true);
             markerDefaultPayment.setImageResource(R.drawable.marker_green_addpayment);
         }
