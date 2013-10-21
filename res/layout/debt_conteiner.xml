@@ -78,5 +78,5 @@
             android:id="@+id/balanceTermCredit" android:layout_alignLeft="@+id/creditType"
             android:layout_below="@+id/textView2" style="@style/styleValue" android:paddingTop="3dp" android:textAllCaps="true"
             android:textColor="@android:color/darker_gray"/>
-</RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>

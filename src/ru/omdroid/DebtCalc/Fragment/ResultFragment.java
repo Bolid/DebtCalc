@@ -42,6 +42,18 @@ public class ResultFragment extends Fragment {
         if (!ErrorMessage.nullSumCredit.equals("") || !ErrorMessage.nullPercentCredit.equals("") || !ErrorMessage.nullTermCredit.equals(""))
             Toast.makeText(getActivity().getBaseContext(), ErrorMessage.errorTitle + ErrorMessage.nullSumCredit + ErrorMessage.nullPercentCredit + ErrorMessage.nullTermCredit, Toast.LENGTH_LONG).show();
 
+
+
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!listener){
+                    editText.addTextChangedListener(inControlFieldAddOverallPayment);
+                    listener = true;
+                }
+            }
+        });
+
         overPayment = false;
 
         SeekBar seekBar = (SeekBar)v.findViewById(R.id.seekBar);
@@ -68,16 +80,6 @@ public class ResultFragment extends Fragment {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 paymentUpdate = true;
-            }
-        });
-
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!listener){
-                    editText.addTextChangedListener(inControlFieldAddOverallPayment);
-                    listener = true;
-                }
             }
         });
 
