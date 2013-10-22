@@ -2,13 +2,11 @@ package ru.omdroid.DebtCalc.Forms;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
@@ -22,24 +20,28 @@ import java.util.Calendar;
 
 public class InfoDebt extends Activity {
     View view = null;
+    TextView tvPayment = null;
+    EditText etPayment = null;
+
+    double newPayment;
+
     public void onCreate(Bundle save){
         super.onCreate(save);
-        setContentView(R.layout.credit_info);
+        setContentView(R.layout.debt_info);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        final TextView tvPayment = (TextView)findViewById(R.id.infoPayment);
+        tvPayment = (TextView)findViewById(R.id.infoPayment);
         TextView tvDate = (TextView)findViewById(R.id.infoDate);
         TextView tvDebt = (TextView)findViewById(R.id.infoDebt);
         TextView tvDateDay = (TextView)findViewById(R.id.tvInfoDate);
-        final EditText etPayment = (EditText)findViewById(R.id.etPayment);
-        ImageView ivControlWritePayment = (ImageView)findViewById(R.id.ivControlWritePayment);
-        Button butWritePayment = (Button)findViewById(R.id.butWritePayment);
-        Button butInfoPayments = (Button)findViewById(R.id.butInfoPayments);
+        etPayment = (EditText)findViewById(R.id.etPayment);
+        Button bPlusPayment = (Button)findViewById(R.id.bPlusPayment);
+        final Button bMinusPayment = (Button)findViewById(R.id.bMinusPayment);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(AppData.DATE);
-        InControlFieldAddPayment inControlFieldAddPayment = new InControlFieldAddPayment(etPayment, ivControlWritePayment, butWritePayment, Double.valueOf(AppData.PAYMENT_DEFAULT));
+        final InControlFieldAddPayment inControlFieldAddPayment = new InControlFieldAddPayment(etPayment, null, null, Double.valueOf(AppData.PAYMENT_DEFAULT));
 
         tvPayment.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(AppData.PAYMENT)));
         tvDate.setText(getResources().getStringArray(R.array.month)[calendar.get(Calendar.MONTH)]);
@@ -48,33 +50,29 @@ public class InfoDebt extends Activity {
         etPayment.setText(new DecimalFormat("###,###,###,###.00").format(Double.valueOf(AppData.PAYMENT)));
 
         etPayment.selectAll();
+        newPayment = Double.parseDouble(AppData.PAYMENT);
 
         etPayment.addTextChangedListener(inControlFieldAddPayment);
 
-        butWritePayment.setOnClickListener(new View.OnClickListener() {
+        bPlusPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WorkDB workDB = new WorkDB(getBaseContext());
-                workDB.updateData("UPDATE " + DebtCalcDB.TABLE_NAME_PAYMENTS +
-                        " SET " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS + " = '" + formatValue(etPayment.getText().toString()) +
-                        "' WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
-                        "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
-                Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS +
-                        " FROM " + DebtCalcDB.TABLE_NAME_PAYMENTS +
-                        " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
-                        "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
-                cursor.moveToNext();
-                Log.v("Платеж", cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
-                Log.v("Платеж", formatValue(etPayment.getText().toString()));
-                tvPayment.setText(etPayment.getText().toString());
-                workDB.disconnectDataBase();
+                etPayment.removeTextChangedListener(inControlFieldAddPayment);
+                newPayment = newPayment + 1000;
+                etPayment.setText(new DecimalFormat("###,###,###.00").format(newPayment));
+                bMinusPayment.setEnabled(newPayment > Double.valueOf(AppData.PAYMENT_DEFAULT));
+                etPayment.addTextChangedListener(inControlFieldAddPayment);
             }
         });
 
-        butInfoPayments.setOnClickListener(new View.OnClickListener() {
+        bMinusPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getBaseContext(), ListPayment.class));
+                etPayment.removeTextChangedListener(inControlFieldAddPayment);
+                newPayment = newPayment - 1000;
+                etPayment.setText(new DecimalFormat("###,###,###.00").format(newPayment));
+                bMinusPayment.setEnabled(newPayment > Double.valueOf(AppData.PAYMENT_DEFAULT));
+                etPayment.addTextChangedListener(inControlFieldAddPayment);
             }
         });
 
@@ -148,5 +146,36 @@ public class InfoDebt extends Activity {
                 newPay = newPay + String.valueOf(addPayment.charAt(i));
         }
         return newPay;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater actionMenu = getMenuInflater();
+        actionMenu.inflate(R.menu.di_action_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.apply_payment:
+                WorkDB workDB = new WorkDB(getBaseContext());
+                workDB.updateData("UPDATE " + DebtCalcDB.TABLE_NAME_PAYMENTS +
+                        " SET " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS + " = '" + formatValue(etPayment.getText().toString()) +
+                        "' WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
+                        "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
+                Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS +
+                        " FROM " + DebtCalcDB.TABLE_NAME_PAYMENTS +
+                        " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
+                        "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
+                cursor.moveToNext();
+                Log.v("Платеж", cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
+                Log.v("Платеж", formatValue(etPayment.getText().toString()));
+                tvPayment.setText(etPayment.getText().toString());
+                workDB.disconnectDataBase();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

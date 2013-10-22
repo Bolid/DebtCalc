@@ -9,4 +9,8 @@
             android:id="@+id/action_menu_addCredit_item"
             android:icon="@drawable/ico_action_bar_add_credit"
             android:showAsAction="always"/>
+    <item
+            android:id="@+id/popup"
+            android:icon="@drawable/ic_popup_menu"
+            android:showAsAction="always"/>
 </menu>
