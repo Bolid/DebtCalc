@@ -86,6 +86,7 @@ public class MainFragment extends Fragment {
                             DebtCalcDB.FIELD_PERCENT_DEBT + ", " +
                             DebtCalcDB.FIELD_TERM_DEBT + ", " +
                             DebtCalcDB.FIELD_TYPE_DEBT + ", " +
+                            DebtCalcDB.FIELD_OVER_DEBT + ", " +
                             DebtCalcDB.FIELD_DATE_LONG_START_DEBT + ", " +
                             DebtCalcDB.FIELD_DATE_STR_START_DEBT + ", " +
                             DebtCalcDB.FIELD_BALANCE_DEBT + ", " +
@@ -96,7 +97,7 @@ public class MainFragment extends Fragment {
                             AppData.param[0] + "', '" +
                             AppData.param[1] + "', '" +
                             AppData.param[2] + "', '" +
-                            etType.getText().toString() + "', '" +
+                            etType.getText().toString() + "', '0.0', '" +
                             Calendar.getInstance().getTimeInMillis() + "', '" +
                             date + "', '" +
                             AppData.param[0] + "', '" +
@@ -114,7 +115,7 @@ public class MainFragment extends Fragment {
                             "0.0', '" +
                             dateFirstPayment +"', '" +
                             "0')");
-                    Toast.makeText(getActivity().getBaseContext(), "Кредит сохранен", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity().getBaseContext(), "Кредит сохранен", Toast.LENGTH_SHORT).show();
                 }
                 else
                     Toast.makeText(getActivity().getBaseContext(), "В БД нельзя сохранить более девяти кредитов", Toast.LENGTH_LONG).show();

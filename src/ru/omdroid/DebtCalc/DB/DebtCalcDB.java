@@ -16,6 +16,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String FIELD_PERCENT_DEBT = "percent_debt";
     public static final String FIELD_TERM_DEBT = "term_debt";
     public static final String FIELD_TYPE_DEBT = "type_debt";
+    public static final String FIELD_OVER_DEBT = "over_debt";
     public static final String FIELD_DATE_STR_START_DEBT = "date_str_start_debt";
     public static final String FIELD_DATE_LONG_START_DEBT = "date_long_start_debt";
     public static final String FIELD_BALANCE_DEBT = "balance_debt";
@@ -39,6 +40,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     FIELD_PERCENT_DEBT + " DOUBLE, " +
                                                                     FIELD_TERM_DEBT + " INTEGER, " +
                                                                     FIELD_TYPE_DEBT + " STRING, " +
+                                                                    FIELD_OVER_DEBT + " DOUBLE, " +
                                                                     FIELD_DATE_LONG_START_DEBT + " LONG, " +
                                                                     FIELD_DATE_STR_START_DEBT + " STRING, " +
                                                                     FIELD_BALANCE_DEBT + " STRING, " +

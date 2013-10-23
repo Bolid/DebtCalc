@@ -3,6 +3,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
             android:id="@+id/apply_payment"
-            android:icon="@drawable/ic_apply_payment"
+            android:icon="@drawable/apply_payment"
             android:showAsAction="always"/>
 </menu>

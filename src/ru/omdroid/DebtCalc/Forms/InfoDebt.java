@@ -22,8 +22,12 @@ public class InfoDebt extends Activity {
     View view = null;
     TextView tvPayment = null;
     EditText etPayment = null;
+    Button bMinusPayment = null;
 
+    InControlFieldAddPayment inControlFieldAddPayment;
     double newPayment;
+
+    Menu menu;
 
     public void onCreate(Bundle save){
         super.onCreate(save);
@@ -37,11 +41,10 @@ public class InfoDebt extends Activity {
         TextView tvDateDay = (TextView)findViewById(R.id.tvInfoDate);
         etPayment = (EditText)findViewById(R.id.etPayment);
         Button bPlusPayment = (Button)findViewById(R.id.bPlusPayment);
-        final Button bMinusPayment = (Button)findViewById(R.id.bMinusPayment);
+        bMinusPayment = (Button)findViewById(R.id.bMinusPayment);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(AppData.DATE);
-        final InControlFieldAddPayment inControlFieldAddPayment = new InControlFieldAddPayment(etPayment, null, null, Double.valueOf(AppData.PAYMENT_DEFAULT));
 
         tvPayment.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(AppData.PAYMENT)));
         tvDate.setText(getResources().getStringArray(R.array.month)[calendar.get(Calendar.MONTH)]);
@@ -52,27 +55,19 @@ public class InfoDebt extends Activity {
         etPayment.selectAll();
         newPayment = Double.parseDouble(AppData.PAYMENT);
 
-        etPayment.addTextChangedListener(inControlFieldAddPayment);
-
         bPlusPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                etPayment.removeTextChangedListener(inControlFieldAddPayment);
-                newPayment = newPayment + 1000;
-                etPayment.setText(new DecimalFormat("###,###,###.00").format(newPayment));
+                setNewPayment(1000);
                 bMinusPayment.setEnabled(newPayment > Double.valueOf(AppData.PAYMENT_DEFAULT));
-                etPayment.addTextChangedListener(inControlFieldAddPayment);
             }
         });
 
         bMinusPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                etPayment.removeTextChangedListener(inControlFieldAddPayment);
-                newPayment = newPayment - 1000;
-                etPayment.setText(new DecimalFormat("###,###,###.00").format(newPayment));
+                setNewPayment(-1000);
                 bMinusPayment.setEnabled(newPayment > Double.valueOf(AppData.PAYMENT_DEFAULT));
-                etPayment.addTextChangedListener(inControlFieldAddPayment);
             }
         });
 
@@ -144,14 +139,25 @@ public class InfoDebt extends Activity {
         for (int i = 0; i < addPayment.length(); i++){
             if ("1234567890".contains(String.valueOf(addPayment.charAt(i))))
                 newPay = newPay + String.valueOf(addPayment.charAt(i));
+            else if (i == addPayment.length() - 3 || i == addPayment.length() - 2)
+                newPay = newPay + ".";
         }
         return newPay;
+    }
+
+    private void setNewPayment(int inc){
+        newPayment = Double.parseDouble(formatValue(etPayment.getText().toString()));
+        newPayment = newPayment + inc;
+        etPayment.setText(new DecimalFormat("###,###,###").format(newPayment));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater actionMenu = getMenuInflater();
         actionMenu.inflate(R.menu.di_action_menu, menu);
+        this.menu = menu;
+        inControlFieldAddPayment = new InControlFieldAddPayment(etPayment, null, bMinusPayment, Double.valueOf(AppData.PAYMENT_DEFAULT), this.menu);
+        etPayment.addTextChangedListener(inControlFieldAddPayment);
         return super.onCreateOptionsMenu(menu);
     }
 

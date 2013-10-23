@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+               android:orientation="vertical"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" android:background="#F2F2F2">
+    <RelativeLayout
+            android:id="@+id/llDebtContainer"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/container_press"
+            android:paddingBottom="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_gravity="center" android:layout_margin="5dp">
+        <TextView
+                android:id="@+id/creditType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|top"
+                style="@style/styleLabel"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp" android:layout_marginLeft="5dp" android:textAllCaps="true"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:id="@+id/textView1"
+                android:layout_marginLeft="5dp" android:layout_marginRight="5dp"
+                android:background="@color/colorValue"
+                android:layout_below="@id/creditType"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/container_over_debt"
+                android:id="@+id/textView2"
+                android:textStyle="bold" style="@style/styleValue"
+                android:layout_alignLeft="@+id/creditType" android:layout_below="@+id/textView1"
+                android:capitalize="characters" android:paddingTop="5dp" android:textAllCaps="true"
+                android:textColor="@android:color/darker_gray"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/containerPaid"
+                style="@style/styleValue"
+                android:paddingTop="5dp"
+                android:textColor="@android:color/black" android:layout_alignRight="@+id/textView1"
+                android:layout_below="@+id/textView1"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/containerTerm" style="@style/styleValue" android:paddingTop="3dp" android:textAllCaps="true"
+                android:textColor="@android:color/darker_gray"
+                android:layout_toLeftOf="@+id/containerPercent" android:layout_below="@+id/textView2"
+                android:paddingRight="10dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="3dp"
+                android:id="@+id/containerDate"
+                style="@style/styleLabel"
+                android:layout_alignRight="@+id/textView1" android:layout_alignTop="@+id/creditType"
+                android:textColor="@android:color/darker_gray"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/containerPercent" style="@style/styleValue" android:paddingTop="3dp" android:textAllCaps="true"
+                android:textColor="@android:color/darker_gray"
+                android:layout_alignRight="@+id/textView1" android:layout_below="@+id/textView2"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/containerSum" style="@style/styleValue" android:paddingTop="3dp" android:textAllCaps="true"
+                android:textColor="@android:color/darker_gray"
+                android:layout_gravity="left|center_vertical" android:layout_toLeftOf="@+id/containerTerm"
+                android:layout_below="@+id/textView2" android:paddingRight="10dp"/>
+    </RelativeLayout>
+</LinearLayout>
