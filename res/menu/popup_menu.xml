@@ -2,10 +2,9 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/f1"
-          android:title="1"/>
+          android:title="@string/popup_archive"/>
     <item android:id="@+id/f2"
-          android:title="2"/>
-    <item android:id="@+id/f3"
-          android:title="3"/>
+          android:title="@string/popup_current"
+          android:visible="false"/>
 
 </menu>

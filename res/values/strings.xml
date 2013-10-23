@@ -19,6 +19,9 @@
     <string name="list_debt_label_total_payment">Итого в месяц</string>
     <string name="info_payment_label">Платеж</string>
     <string name="info_debt_label">Долг</string>
+    <string name="container_over_debt">Выплачено</string>
+    <string name="popup_archive">Архив</string>
+    <string name="popup_current">Текущие</string>
     <!--Value-->
     <string name="main_layout_value_credit_sum">900 000</string>
     <string name="main_layout_value_credit_percent">12</string>

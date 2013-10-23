@@ -3,6 +3,8 @@ package ru.omdroid.DebtCalc.Listener;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,14 +18,16 @@ public class InControlFieldAddPayment implements TextWatcher {
     ImageView markerDefaultPayment;
     EditText etSumCredit;
     Button button;
+    Menu menu;
     String beforeText;
     Double defaultPayment;
     int position;
-    public InControlFieldAddPayment(EditText etSumCredit, ImageView markerDefaultPayment, Button button, Double defaultPayment){
+    public InControlFieldAddPayment(EditText etSumCredit, ImageView markerDefaultPayment, Button button, Double defaultPayment, Menu menu){
         this.etSumCredit = etSumCredit;
         this.markerDefaultPayment = markerDefaultPayment;
         this.button = button;
         this.defaultPayment = defaultPayment;
+        this.menu = menu;
     }
 
     @Override
@@ -46,19 +50,28 @@ public class InControlFieldAddPayment implements TextWatcher {
             }
         }
         if (s.equals("")){
-            if (button != null & markerDefaultPayment != null){
+            if (button != null)
                 button.setEnabled(false);
+            if (markerDefaultPayment != null)
                 markerDefaultPayment.setImageResource(R.drawable.marker_red_addpayment);
-            }
+            if (menu != null)
+                menu.getItem(0).setEnabled(false);
         }
-        else if (defaultPayment > Double.valueOf(s))
-            if (button != null & markerDefaultPayment != null){
-            button.setEnabled(false);
-            markerDefaultPayment.setImageResource(R.drawable.marker_red_addpayment);
+        else if (defaultPayment > Double.valueOf(s)){
+            if (button != null)
+                button.setEnabled(false);
+            if (markerDefaultPayment != null)
+                markerDefaultPayment.setImageResource(R.drawable.marker_red_addpayment);
+            if (menu != null)
+                menu.getItem(0).setEnabled(false);
         }
-        else if (button != null & markerDefaultPayment != null){
-            button.setEnabled(true);
-            markerDefaultPayment.setImageResource(R.drawable.marker_green_addpayment);
+        else {
+            if (button != null)
+                button.setEnabled(true);
+            if (markerDefaultPayment != null)
+                markerDefaultPayment.setImageResource(R.drawable.marker_green_addpayment);
+            if (menu!= null)
+                menu.getItem(0).setEnabled(true);
         }
 
         if (!s.equals("")){
