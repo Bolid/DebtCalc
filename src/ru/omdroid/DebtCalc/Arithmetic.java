@@ -9,6 +9,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ru.omdroid.DebtCalc.CustomView.DataForGraph;
+
 public class Arithmetic {
     final String TAG = "ru.omdroid.DebtCalc.Arithmetic";
 
@@ -21,6 +23,8 @@ public class Arithmetic {
 
     int termCredit = 0;
     Double sumCredit = 0.0, percent = 0.0, dopPlatej;
+
+    DataForGraph dataForGraph = new DataForGraph();
 
     public Arithmetic(Double percent){
         this.percent = percent;
@@ -47,6 +51,10 @@ public class Arithmetic {
         allResult.add(7, "");
         allResult.add(8, "");
         allResult.add(9, "");
+
+        dataForGraph.setSum(sumCredit);
+        dataForGraph.setTerm(termCredit);
+        dataForGraph.setNewTerm(termCredit);
     }
 
 
@@ -59,13 +67,11 @@ public class Arithmetic {
     public Double getDeltaDefault(Double payment, int termCredit){
         Double delta = Rounding(payment * termCredit - sumCredit);
         allResult.set(5, String.valueOf(delta));
+        dataForGraph.setOver(delta);
         return delta;
     }
 
     public Double getBalance (Double payment, Double balance, int termCredit){
-        Double a = (balance * (percent /100.) / 12);
-        Double b = payment - a;
-        Double c = balance - b;
         return Rounding(balance - Rounding(payment - Rounding(balance * (percent /100.) / 12)));
     }
 
@@ -124,6 +130,7 @@ public class Arithmetic {
         allPer = Rounding(allPer);
         allResult.set(5, String.valueOf(allPer)); //Общая переплата
         allResult.set(6, String.valueOf(i)); //Срок погашения
+        dataForGraph.setNewTerm(i);
 
 
         hm = new HashMap<String, String>();

@@ -11,6 +11,7 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic;
+import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.ErrorMessage;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddOverallPayment;
 import ru.omdroid.DebtCalc.R;
@@ -61,6 +62,7 @@ public class ResultFragment extends Fragment {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                DataForGraph dataForGraph = new DataForGraph();
                 editText.removeTextChangedListener(inControlFieldAddOverallPayment);
                 listener = false;
                 overPayment = i != 0;
@@ -70,6 +72,7 @@ public class ResultFragment extends Fragment {
                 editText.setText(MainFragment.arithmetic.setMask(MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[2]) - i)));
                 MainFragment.arithmetic.getDeltaDefault(MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[2]) - i), Integer.valueOf(params[2]) - i);
                 Arithmetic.allResult.set(6, String.valueOf(Integer.valueOf(params[2]) - i));
+                dataForGraph.setNewTerm(Integer.valueOf(params[2]) - i);
                 view.invalidate();
             }
 

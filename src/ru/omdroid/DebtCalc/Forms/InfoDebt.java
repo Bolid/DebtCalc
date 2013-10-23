@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
+import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddPayment;
@@ -23,7 +24,6 @@ public class InfoDebt extends Activity {
     TextView tvPayment = null;
     EditText etPayment = null;
     Button bMinusPayment = null;
-
     InControlFieldAddPayment inControlFieldAddPayment;
     double newPayment;
 
@@ -35,6 +35,8 @@ public class InfoDebt extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        final View viewGraph = (View)findViewById(R.id.viewGraph);
+
         tvPayment = (TextView)findViewById(R.id.infoPayment);
         TextView tvDate = (TextView)findViewById(R.id.infoDate);
         TextView tvDebt = (TextView)findViewById(R.id.infoDebt);
@@ -43,6 +45,7 @@ public class InfoDebt extends Activity {
         Button bPlusPayment = (Button)findViewById(R.id.bPlusPayment);
         bMinusPayment = (Button)findViewById(R.id.bMinusPayment);
 
+        final DataForGraph dataForGraph = new DataForGraph();
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(AppData.DATE);
 
@@ -54,6 +57,12 @@ public class InfoDebt extends Activity {
 
         etPayment.selectAll();
         newPayment = Double.parseDouble(AppData.PAYMENT);
+
+        dataForGraph.setSum(500000.);
+        dataForGraph.setOver(600000.);
+        dataForGraph.setTerm(120);
+        dataForGraph.setNewTerm(100);
+        viewGraph.invalidate();
 
         bPlusPayment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,5 +192,9 @@ public class InfoDebt extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void createGraph(){
+
     }
 }
