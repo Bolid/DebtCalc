@@ -25,17 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7afaf87e-8aef-4493-89e6-80d9dfddcd4f" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/CustomView/DrawingBar.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/CustomView/DataForGraph.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Fragment/ResultFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/debt_info.xml" afterPath="$PROJECT_DIR$/res/layout/debt_info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DebtCalc.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="7afaf87e-8aef-4493-89e6-80d9dfddcd4f" time="1382541923850" ignored="false" />
+    <file path="/Dummy.txt" changelist="7afaf87e-8aef-4493-89e6-80d9dfddcd4f" time="1382558079557" ignored="false" />
     <file path="/fragment.java" changelist="7afaf87e-8aef-4493-89e6-80d9dfddcd4f" time="1382542105349" ignored="false" />
     <file path="/InfoDebt.java" changelist="7afaf87e-8aef-4493-89e6-80d9dfddcd4f" time="1382553974339" ignored="false" />
     <file path="/DrawingBar.java" changelist="7afaf87e-8aef-4493-89e6-80d9dfddcd4f" time="1382553536059" ignored="false" />
@@ -650,6 +644,11 @@
       <created>1382541925418</created>
       <updated>1382541925418</updated>
     </task>
+    <task id="LOCAL-00001" summary="график">
+      <created>1382558093322</created>
+      <updated>1382558093322</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -658,7 +657,7 @@
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6707483" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6707483" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292517" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -674,8 +673,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.6707483" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.6707483" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292517" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -724,7 +723,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="LAST_COMMIT_MESSAGE" value="график" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -738,6 +737,7 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+    <MESSAGE value="график" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
