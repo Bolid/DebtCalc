@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
@@ -25,6 +24,7 @@ public class InfoDebt extends Activity {
     EditText etPayment = null;
     Button bMinusPayment = null;
     InControlFieldAddPayment inControlFieldAddPayment;
+    WorkDB workDB;
     double newPayment;
 
     Menu menu;
@@ -35,7 +35,7 @@ public class InfoDebt extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        final View viewGraph = (View)findViewById(R.id.viewGraph);
+        //final View viewGraph = (View)findViewById(R.id.viewGraph);
 
         tvPayment = (TextView)findViewById(R.id.infoPayment);
         TextView tvDate = (TextView)findViewById(R.id.infoDate);
@@ -46,6 +46,7 @@ public class InfoDebt extends Activity {
         bMinusPayment = (Button)findViewById(R.id.bMinusPayment);
 
         final DataForGraph dataForGraph = new DataForGraph();
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(AppData.DATE);
 
@@ -58,11 +59,11 @@ public class InfoDebt extends Activity {
         etPayment.selectAll();
         newPayment = Double.parseDouble(AppData.PAYMENT);
 
-        dataForGraph.setSum(500000.);
+        /*dataForGraph.setSum(500000.);
         dataForGraph.setOver(600000.);
         dataForGraph.setTerm(120);
         dataForGraph.setNewTerm(100);
-        viewGraph.invalidate();
+        viewGraph.invalidate();*/
 
         bPlusPayment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,29 +85,40 @@ public class InfoDebt extends Activity {
             LinearLayout layout = (LinearLayout)findViewById(R.id.llPaymentInfo);
             @Override
             protected Void doInBackground(Void... voids) {
+                Calendar datePay = Calendar.getInstance();
                 LayoutInflater inflater = (LayoutInflater)getSystemService(getBaseContext().LAYOUT_INFLATER_SERVICE);
-                WorkDB workDB = new WorkDB(getBaseContext());
+                workDB = new WorkDB(getBaseContext());
                 Cursor cursorInPayment = workDB.readValueFromDataBase("SELECT " +
+                        DebtCalcDB.FIELD_ID_DEBT_PAYMENTS +", "+
                         DebtCalcDB.FIELD_PAYMENT_PAYMENTS +", "+
                         DebtCalcDB.FIELD_DEBT_PAYMENTS +", "+
                         DebtCalcDB.FIELD_PERCENT_PAYMENTS +", "+
-                        DebtCalcDB.FIELD_SUM_PAYMENTS +
-                        " FROM " + DebtCalcDB.TABLE_NAME_PAYMENTS +
+                        DebtCalcDB.FIELD_DATE_LONG_PAYMENTS +", "+
+                        DebtCalcDB.F_BALANCE_DEBT_PAY +", "+
+                        DebtCalcDB.FIELD_SUM_PAYMENTS +", "+
+                        DebtCalcDB.F_PAYMENT_UP_PAY +
+                        " FROM " + DebtCalcDB.TABLE_PAYMENTS +
                         " WHERE (" + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '1'" +
                         " AND " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +"')");
                 int numPayment = 0;
                 while (cursorInPayment.moveToNext()){
                     numPayment++;
+                    datePay.setTimeInMillis(cursorInPayment.getLong(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS)));
+                    String date = String.valueOf(datePay.get(Calendar.DATE)) + "." + String.valueOf(datePay.get(Calendar.MONTH) + 1) + "." + String.valueOf(datePay.get(Calendar.YEAR));
                     addRecord(inflater,
                             layout,
+                            cursorInPayment.getString(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_ID_DEBT_PAYMENTS)),
                             numPayment,
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)),
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_DEBT_PAYMENTS)),
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_PERCENT_PAYMENTS)),
-                            cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS)));
+                            date,
+                            cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY)),
+                            cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS)),
+                            cursorInPayment.getString(cursorInPayment.getColumnIndex(DebtCalcDB.F_PAYMENT_UP_PAY)));
                     publishProgress(view);
                 }
-                return null;  //To change body of implemented methods use File | Settings | File Templates.
+                return null;
             }
             @Override
             protected void onProgressUpdate(View... values) {
@@ -123,24 +135,33 @@ public class InfoDebt extends Activity {
 
     public View addRecord(LayoutInflater inflater,
                           LinearLayout layout,
+                          final String idDebt,
                           int numPayment,
                           Double payment,
-                          Double paymentDebt,
-                          Double paymentPercent,
-                          Double feePayment){
+                          final Double paymentDebt,
+                          final Double paymentPercent,
+                          String date,
+                          final Double balanceDebt,
+                          Double feePayment,
+                          String upPayment){
         view = inflater.inflate(R.layout.payment_info_record, layout, false);
 
         TextView tvNumPayment = (TextView)view.findViewById(R.id.tvNumPaymentRecord);
         TextView tvPayment = (TextView)view.findViewById(R.id.tvPaymentRecord);
-        TextView tvDebt = (TextView)view.findViewById(R.id.tvDebtRecord);
-        TextView tvPercent = (TextView)view.findViewById(R.id.tvPercentRecord);
+        TextView tvDatePay= (TextView)view.findViewById(R.id.tvInfoDateList);
         TextView tvFeePayment = (TextView)view.findViewById(R.id.tvSumPaymentRecord);
 
         tvNumPayment.setText(String.valueOf(numPayment));
         tvPayment.setText(new DecimalFormat("###,###,###,###,###.00").format(payment));
-        tvDebt.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentDebt));
-        tvPercent.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentPercent));
+        tvDatePay.setText(date);
         tvFeePayment.setText(new DecimalFormat("###,###,###,###,###.00").format(feePayment));
+
+        if (upPayment != null)
+            if (upPayment.equals("1")){
+                ImageView ivIpPayment = (ImageView)view.findViewById(R.id.ivUpPayRecord);
+                ivIpPayment.setImageResource(R.drawable.arrow);
+            }
+
         view.setOnClickListener(new View.OnClickListener() {
             boolean infoDetail = false;
             LinearLayout.LayoutParams param = null;
@@ -148,6 +169,13 @@ public class InfoDebt extends Activity {
             public void onClick(View view) {
                 LinearLayout layoutChild = (LinearLayout)view.findViewById(R.id.layoutInfoListPod);
                 if (!infoDetail){
+                    TextView tvBalanceDebt = (TextView)view.findViewById(R.id.debtBalanceListInfo);
+                    TextView tvDebt = (TextView)view.findViewById(R.id.tvDebtRecord);
+                    TextView tvPercent = (TextView)view.findViewById(R.id.tvPercentRecord);
+
+                    tvBalanceDebt.setText(new DecimalFormat("###,###,###,###").format(balanceDebt));
+                    tvDebt.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentDebt));
+                    tvPercent.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentPercent));
                     param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     infoDetail = !infoDetail;
                 }
@@ -193,17 +221,15 @@ public class InfoDebt extends Activity {
         switch (item.getItemId()){
             case R.id.apply_payment:
                 WorkDB workDB = new WorkDB(getBaseContext());
-                workDB.updateData("UPDATE " + DebtCalcDB.TABLE_NAME_PAYMENTS +
+                workDB.updateData("UPDATE " + DebtCalcDB.TABLE_PAYMENTS +
                         " SET " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS + " = '" + formatValue(etPayment.getText().toString()) +
                         "' WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
                         "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
-                Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS +
-                        " FROM " + DebtCalcDB.TABLE_NAME_PAYMENTS +
-                        " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
-                        "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
-                cursor.moveToNext();
-                Log.v("Платеж", cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
-                Log.v("Платеж", formatValue(etPayment.getText().toString()));
+               if (Double.valueOf(AppData.PAYMENT_DEFAULT) < Double.valueOf(formatValue(etPayment.getText().toString())))
+                   workDB.updateData("UPDATE " + DebtCalcDB.TABLE_PAYMENTS +
+                           " SET " + DebtCalcDB.F_PAYMENT_UP_PAY + " = '1'" +
+                           " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
+                           "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
                 tvPayment.setText(etPayment.getText().toString());
                 workDB.disconnectDataBase();
                 return true;
