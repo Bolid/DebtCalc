@@ -87,7 +87,8 @@ public class InfoDebt extends Activity {
                         " AND " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +"')");
                 int numPayment = 0;
                 while (cursorInPayment.moveToNext()){
-                    numPayment++;addRecord(inflater,
+                    numPayment++;
+                    addRecord(inflater,
                             layout,
                             numPayment,
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)),
@@ -131,6 +132,23 @@ public class InfoDebt extends Activity {
         tvDebt.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentDebt));
         tvPercent.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentPercent));
         tvFeePayment.setText(new DecimalFormat("###,###,###,###,###.00").format(feePayment));
+        view.setOnClickListener(new View.OnClickListener() {
+            boolean infoDetail = false;
+            LinearLayout.LayoutParams param = null;
+            @Override
+            public void onClick(View view) {
+                LinearLayout layoutChild = (LinearLayout)view.findViewById(R.id.layoutInfoListPod);
+                if (!infoDetail){
+                    param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    infoDetail = !infoDetail;
+                }
+                else{
+                    param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
+                    infoDetail = !infoDetail;
+                }
+                layoutChild.setLayoutParams(param);
+            }
+        });
         return view;
     }
 

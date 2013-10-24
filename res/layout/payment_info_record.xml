@@ -2,37 +2,76 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:id="@+id/llPaymentInfoRecord"
-              android:orientation="horizontal"
+              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-    <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvNumPaymentRecord" android:textSize="12sp"
-            style="@style/styleValue" android:layout_weight="0.3" android:gravity="right" android:paddingLeft="5dp"/>
-    <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvPaymentRecord"
-            android:layout_weight="1" style="@style/styleValue"
-            android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"/>
-    <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvDebtRecord"
-            android:layout_weight="1" style="@style/styleValue"
-            android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"/>
-    <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvPercentRecord"
-            android:layout_weight="1" style="@style/styleValue"
-            android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"/>
-    <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvSumPaymentRecord"
-            android:layout_weight="1" style="@style/styleValue"
-            android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"/>
+              android:layout_height="wrap_content" android:background="@color/background">
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:paddingTop="5dp" android:gravity="center_vertical"
+            android:paddingBottom="5dp">
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvNumPaymentRecord" android:textSize="12sp"
+                style="@style/styleValue" android:layout_weight="0.3" android:gravity="right" android:paddingLeft="5dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvPaymentRecord"
+                android:layout_weight="1" style="@style/styleValue"
+                android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvPercentRecord"
+                android:layout_weight="1" style="@style/styleValue"
+                android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvSumPaymentRecord"
+                android:layout_weight="1" style="@style/styleValue"
+                android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDebtRecord"
+                android:layout_weight="1" style="@style/styleValue"
+                android:textSize="12sp" android:gravity="right" android:paddingRight="10dp"
+                android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/layoutInfoListPod"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" android:orientation="vertical">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Остаток по долгу:"
+                    android:id="@+id/textView" android:layout_gravity="left" android:layout_weight="1"
+                    android:paddingLeft="15dp" style="@style/styleLabel_2" android:textSize="12sp"
+                    android:gravity="center_vertical"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/debtBalanceListInfo" android:layout_gravity="right" android:layout_weight="1"
+                    android:gravity="right" android:paddingRight="15dp" style="@style/styleLabel_2"
+                    android:textSize="12sp"/>
+        </LinearLayout>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView" android:src="@drawable/line"
+                android:layout_gravity="right" android:paddingRight="3dp"/>
+    </LinearLayout>
 
 </LinearLayout>
