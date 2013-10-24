@@ -5,7 +5,6 @@ import android.graphics.*;
 import android.util.AttributeSet;
 import android.view.View;
 import ru.omdroid.DebtCalc.Arithmetic;
-import ru.omdroid.DebtCalc.R;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -16,6 +15,7 @@ class DrawingBar extends View {
     Context context;
     Double sizeWightBar = 150.;
     int paddingBar = 18;
+
     public DrawingBar(Context context) {
         super(context);
         this.context = context;
@@ -39,18 +39,17 @@ class DrawingBar extends View {
         canvas.restore();
     }
 
-    private String setMaskText(String s, String type){
+    private String setMaskText(Double s, String type){
         NumberFormat patternMoney = new DecimalFormat("###,###,###,###,###,###,##0.00");
         NumberFormat patternMounth = new DecimalFormat("###,###");
         if (type.equals("money"))
-            return String.valueOf(patternMoney.format(Double.valueOf(s)));
+            return String.valueOf(patternMoney.format(s));
         else
-            return String.valueOf(patternMounth.format(Double.valueOf(s)));
+            return String.valueOf(patternMounth.format(s));
     }
 
     private void drawingCreditBar(Canvas canvas){
-        //sizeWightBar = canvas.getWidth()/((Float.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5)))/Float.valueOf(Arithmetic.allResult.get(1)));
-        sizeWightBar = (canvas.getWidth() - paddingBar) * (Double.valueOf(Arithmetic.allResult.get(1)))/(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5)));
+        sizeWightBar = (canvas.getWidth() - paddingBar) * (DataForGraph.SUM)/(DataForGraph.SUM + DataForGraph.OVER);
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
         RectF rectF = new RectF();
@@ -86,7 +85,6 @@ class DrawingBar extends View {
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setStrokeWidth(2);
-        //canvas.drawText(setMaskText(Arithmetic.allResult.get(5), "money"), (float) (sizeWightBar + (getWidth() - sizeWightBar) / 2), 73, paint);
 
         if ((getWidth() - sizeWightBar) / 2 < 100){
             paint.setColor(Color.RED);
@@ -99,10 +97,10 @@ class DrawingBar extends View {
             paint.setTextAlign(Paint.Align.CENTER);
             paint.setStyle(Paint.Style.FILL_AND_STROKE);
             paint.setStrokeWidth(2);
-            canvas.drawText(setMaskText(Arithmetic.allResult.get(5), "money"), (float) (getWidth() - 100), 73, paint);
+            canvas.drawText(setMaskText(DataForGraph.OVER, "money"), (float) (getWidth() - 100), 73, paint);
         }
         else
-            canvas.drawText(setMaskText(Arithmetic.allResult.get(5), "money"), (float) (sizeWightBar + (getWidth() - sizeWightBar) / 2), 73, paint);
+            canvas.drawText(setMaskText(DataForGraph.OVER, "money"), (float) (sizeWightBar + (getWidth() - sizeWightBar) / 2), 73, paint);
 
 
 
@@ -111,7 +109,7 @@ class DrawingBar extends View {
     private void drawingTermBar(Canvas canvas){
         int upperBound = 100;
         int lowerBound = 130;
-        sizeWightBar = (canvas.getWidth() - paddingBar) * Double.valueOf(Arithmetic.allResult.get(6))/Double.valueOf(Arithmetic.allResult.get(2));
+        sizeWightBar = (double) ((canvas.getWidth() - paddingBar) * DataForGraph.NEW_TERM / DataForGraph.TERM);
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
         RectF rectF = new RectF();
@@ -164,11 +162,35 @@ class DrawingBar extends View {
             paint.setTextAlign(Paint.Align.CENTER);
             paint.setStyle(Paint.Style.FILL_AND_STROKE);
             paint.setStrokeWidth(2);
-            canvas.drawText(setMaskText(Arithmetic.allResult.get(6), "mouth"), (float) (100), 123, paint);
+            canvas.drawText(setMaskText((double) DataForGraph.NEW_TERM, "mouth"), (float) (100), 123, paint);
         }
         else
-            canvas.drawText(setMaskText(Arithmetic.allResult.get(6), "mouth"), (float) (sizeWightBar / 2), 123, paint);
+            canvas.drawText(setMaskText((double) DataForGraph.NEW_TERM, "mouth"), (float) (sizeWightBar / 2), 123, paint);
+    }
+}
+
+
+public class DataForGraph{
+    public static Double SUM = 1.0;
+    public static Double OVER = 1.0;
+
+    public static int TERM = 1;
+    public static int NEW_TERM = 1;
+
+    public void setSum(Double sum){
+        SUM = sum;
     }
 
+    public void setOver(Double over){
+        OVER = over;
+    }
+
+    public void setTerm(int term){
+        TERM = term;
+    }
+
+    public void setNewTerm(int newTerm){
+        NEW_TERM = newTerm;
+    }
 
 }
