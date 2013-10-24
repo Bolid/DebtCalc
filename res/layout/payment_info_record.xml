@@ -4,7 +4,7 @@
               android:id="@+id/llPaymentInfoRecord"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content" android:background="@color/background">
+              android:layout_height="wrap_content" android:background="@drawable/container_press">
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
@@ -99,11 +99,6 @@
                     android:textSize="12dp" android:gravity="right" android:paddingRight="15dp"
                     />
         </LinearLayout>
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView" android:src="@drawable/line"
-                android:layout_gravity="right" android:paddingRight="3dp"/>
     </LinearLayout>
 
 </LinearLayout>
