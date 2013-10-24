@@ -1,16 +1,12 @@
 package ru.omdroid.DebtCalc.Fragment;
 
-import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import android.app.DatePickerDialog;
-import android.app.DatePickerDialog.OnDateSetListener;
 import ru.omdroid.DebtCalc.*;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
@@ -19,7 +15,6 @@ import ru.omdroid.DebtCalc.Listener.InControlFieldSumCredit;
 import ru.omdroid.DebtCalc.Listener.InControlFieldTermCredit;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
 
 
@@ -76,11 +71,11 @@ public class MainFragment extends Fragment {
 
                 WorkDB workDB = new WorkDB(getActivity().getBaseContext());
                 if (workDB.countDataInDataBase("SELECT " + DebtCalcDB.FIELD_ID +
-                                                " FROM " + DebtCalcDB.TABLE_NAME_CREDITS +
+                                                " FROM " + DebtCalcDB.TABLE_CREDITS +
                                                 " WHERE " + DebtCalcDB.FIELD_PAID_DEBT + " = '0'") < 9){
                     int numCredit = generateNumCredit();
                     arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Double.valueOf(AppData.param[1]), Integer.valueOf(AppData.param[2]));
-                    workDB.insertValueToTableDebt("INSERT INTO " + DebtCalcDB.TABLE_NAME_CREDITS + " (" +
+                    workDB.insertValueToTableDebt("INSERT INTO " + DebtCalcDB.TABLE_CREDITS + " (" +
                             DebtCalcDB.FIELD_ID_DEBT + ", " +
                             DebtCalcDB.FIELD_SUM_DEBT + ", " +
                             DebtCalcDB.FIELD_PERCENT_DEBT + ", " +
@@ -89,7 +84,6 @@ public class MainFragment extends Fragment {
                             DebtCalcDB.FIELD_OVER_DEBT + ", " +
                             DebtCalcDB.FIELD_DATE_LONG_START_DEBT + ", " +
                             DebtCalcDB.FIELD_DATE_STR_START_DEBT + ", " +
-                            DebtCalcDB.FIELD_BALANCE_DEBT + ", " +
                             DebtCalcDB.FIELD_BALANCE_TERM_DEBT + ", " +
                             DebtCalcDB.FIELD_PAID_DEBT + ") " +
                             "VALUES ('" +
@@ -100,18 +94,19 @@ public class MainFragment extends Fragment {
                             etType.getText().toString() + "', '0.0', '" +
                             Calendar.getInstance().getTimeInMillis() + "', '" +
                             date + "', '" +
-                            AppData.param[0] + "', '" +
                             AppData.param[2] + "', '0')");
 
-                    workDB.insertValueToTablePayment("INSERT INTO " + DebtCalcDB.TABLE_NAME_PAYMENTS + " (" +
+                    workDB.insertValueToTablePayment("INSERT INTO " + DebtCalcDB.TABLE_PAYMENTS + " (" +
                             DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + ", " +
                             DebtCalcDB.FIELD_PAYMENT_PAYMENTS + ", " +
+                            DebtCalcDB.F_BALANCE_DEBT_PAY + ", " +
                             DebtCalcDB.FIELD_SUM_PAYMENTS + ", " +
                             DebtCalcDB.FIELD_DATE_LONG_PAYMENTS + ", " +
                             DebtCalcDB.FIELD_PAID_PAYMENTS + ")" +
                             " VALUES ('" +
                             numCredit + "', '" +
                             arithmetic.getPayment(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[2])) +"', '" +
+                            AppData.param[0] + "', '" +
                             "0.0', '" +
                             dateFirstPayment +"', '" +
                             "0')");

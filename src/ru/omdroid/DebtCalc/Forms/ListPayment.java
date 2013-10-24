@@ -28,7 +28,7 @@ public class ListPayment extends Activity {
                          DebtCalcDB.FIELD_DEBT_PAYMENTS +", "+
                          DebtCalcDB.FIELD_PERCENT_PAYMENTS +", "+
                          DebtCalcDB.FIELD_SUM_PAYMENTS +
-                " FROM " + DebtCalcDB.TABLE_NAME_PAYMENTS +
+                " FROM " + DebtCalcDB.TABLE_PAYMENTS +
                 " WHERE (" + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '1'" +
                 " AND " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +"')");
         int numPayment = 0;
