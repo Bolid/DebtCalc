@@ -25,7 +25,7 @@ public class ResultForm extends Activity {
 
         final String[] params = null;//AppDate.param;
         final NumberFormat numberFormat = new DecimalFormat("###,###,###,###,###,###,##0.##");
-        final View view = (View)findViewById(R.id.graphView);
+        final View view = (View)findViewById(R.id.graphViewTermDebt);
 
         final TextView textView = (TextView)findViewById(R.id.valuePayment);
 

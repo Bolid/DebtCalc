@@ -2,7 +2,6 @@ package ru.omdroid.DebtCalc.Fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,17 +27,25 @@ public class ResultFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.layout_result, null);
+        final DataForGraph dataForGraph = new DataForGraph();
+        dataForGraph.setHeightOver(50);
+        dataForGraph.setHeightTerm(100);
+        dataForGraph.createOver(true);
+        dataForGraph.createTerm(true);
+
         MainFragment.arithmetic = new Arithmetic(Double.valueOf(AppData.param[0]), Double.valueOf(AppData.param[1]), Integer.valueOf(AppData.param[2]));
         newPayment = MainFragment.arithmetic.getPayment(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[2]));
 
         final String[] params = AppData.param;
         final NumberFormat numberFormat = new DecimalFormat("###,###,###,###,###,###,##0.##");
-        final View view = (View)v.findViewById(R.id.graphView);
+
+        final View graphTerm = (View)v.findViewById(R.id.graphViewTermDebt);
+
         final EditText editText = (EditText)v.findViewById(R.id.valuePayment);
         editText.setText("");
         editText.setText(numberFormat.format(newPayment));
 
-        final InControlFieldAddOverallPayment inControlFieldAddOverallPayment = new InControlFieldAddOverallPayment(editText, newPayment, view);
+        final InControlFieldAddOverallPayment inControlFieldAddOverallPayment = new InControlFieldAddOverallPayment(editText, newPayment, graphTerm);
 
         if (!ErrorMessage.nullSumCredit.equals("") || !ErrorMessage.nullPercentCredit.equals("") || !ErrorMessage.nullTermCredit.equals(""))
             Toast.makeText(getActivity().getBaseContext(), ErrorMessage.errorTitle + ErrorMessage.nullSumCredit + ErrorMessage.nullPercentCredit + ErrorMessage.nullTermCredit, Toast.LENGTH_LONG).show();
@@ -62,7 +69,6 @@ public class ResultFragment extends Fragment {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                DataForGraph dataForGraph = new DataForGraph();
                 editText.removeTextChangedListener(inControlFieldAddOverallPayment);
                 listener = false;
                 overPayment = i != 0;
@@ -72,8 +78,8 @@ public class ResultFragment extends Fragment {
                 editText.setText(MainFragment.arithmetic.setMask(MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[2]) - i)));
                 MainFragment.arithmetic.getDeltaDefault(MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[2]) - i), Integer.valueOf(params[2]) - i);
                 Arithmetic.allResult.set(6, String.valueOf(Integer.valueOf(params[2]) - i));
-                dataForGraph.setNewTerm(Integer.valueOf(params[2]) - i);
-                view.invalidate();
+                dataForGraph.setParamNew(Integer.valueOf(params[2]) - i);
+                graphTerm.invalidate();
             }
 
             @Override

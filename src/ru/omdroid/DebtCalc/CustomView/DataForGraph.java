@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.*;
 import android.util.AttributeSet;
 import android.view.View;
-import ru.omdroid.DebtCalc.Arithmetic;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -34,8 +33,10 @@ class DrawingBar extends View {
     @Override
     protected void onDraw(Canvas canvas){
         super.onDraw(canvas);
-        drawingCreditBar(canvas);
-        drawingTermBar(canvas);
+        if (DataForGraph.CREATE_GRAPH_OVER)
+            drawingCreditBar(canvas);
+        if (DataForGraph.CREATE_GRAPH_TERM)
+            drawingTermBar(canvas);
         canvas.restore();
     }
 
@@ -49,6 +50,9 @@ class DrawingBar extends View {
     }
 
     private void drawingCreditBar(Canvas canvas){
+        int height = DataForGraph.HEIGHT_OVER;
+
+
         sizeWightBar = (canvas.getWidth() - paddingBar) * (DataForGraph.SUM)/(DataForGraph.SUM + DataForGraph.OVER);
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
@@ -58,26 +62,26 @@ class DrawingBar extends View {
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.STROKE);
-        rectF.set((float) (paddingBar + sizeWightBar - 50), 50, canvas.getWidth()-paddingBar, 80);
+        rectF.set((float) (paddingBar), height, canvas.getWidth()-paddingBar, height + 30);
         canvas.drawRoundRect(rectF, 15, 15, paint);
         canvas.restore();
 
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.FILL);
-        rectF.set((float) (paddingBar + sizeWightBar - 50), 50, canvas.getWidth()-paddingBar, 80);
+        rectF.set((float) (paddingBar), height, canvas.getWidth()-paddingBar, height + 30);
         canvas.drawRoundRect(rectF, 15, 15, paint);
         canvas.restore();
 
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.STROKE);
-        rectF.set(paddingBar, 50, Float.valueOf(sizeWightBar.toString()), 80);
+        rectF.set(paddingBar, height, Float.valueOf(sizeWightBar.toString()), height + 30);
         canvas.drawRoundRect(rectF, 15, 15, paint);
         canvas.restore();
 
         paint.setColor(Color.GREEN);
         paint.setStyle(Paint.Style.FILL);
-        rectF.set(paddingBar, 50, Float.valueOf(sizeWightBar.toString()), 80);
+        rectF.set(paddingBar, height, Float.valueOf(sizeWightBar.toString()), height + 30);
         canvas.drawRoundRect(rectF, 15, 15, paint);
 
         paint.setColor(Color.WHITE);
@@ -90,26 +94,26 @@ class DrawingBar extends View {
             paint.setColor(Color.RED);
             paint.setStrokeWidth(10);
             paint.setShadowLayer(15, 0, 0, Color.rgb(95, 112, 95));
-            canvas.drawLine(getWidth() - 100, 65, (float) (getWidth() - (getWidth() - sizeWightBar) / 2 - 7), 65, paint);
+            canvas.drawLine(getWidth() - 100, height+15, (float) (getWidth() - (getWidth() - sizeWightBar) / 2 - 7), height+15, paint);
 
             paint.setColor(Color.WHITE);
             paint.setTextSize(25);
             paint.setTextAlign(Paint.Align.CENTER);
             paint.setStyle(Paint.Style.FILL_AND_STROKE);
             paint.setStrokeWidth(2);
-            canvas.drawText(setMaskText(DataForGraph.OVER, "money"), (float) (getWidth() - 100), 73, paint);
+            canvas.drawText(setMaskText(DataForGraph.OVER, "money"), (float) (getWidth() - 100), height+23, paint);
         }
         else
-            canvas.drawText(setMaskText(DataForGraph.OVER, "money"), (float) (sizeWightBar + (getWidth() - sizeWightBar) / 2), 73, paint);
+            canvas.drawText(setMaskText(DataForGraph.OVER, "money"), (float) (sizeWightBar + (getWidth() - sizeWightBar) / 2), height+23, paint);
 
 
 
     }
 
     private void drawingTermBar(Canvas canvas){
-        int upperBound = 100;
-        int lowerBound = 130;
-        sizeWightBar = (double) ((canvas.getWidth() - paddingBar) * DataForGraph.NEW_TERM / DataForGraph.TERM);
+        int upperBound = DataForGraph.HEIGHT_TERM;
+        int lowerBound = DataForGraph.HEIGHT_TERM + 30;
+        sizeWightBar = (double) ((canvas.getWidth() - paddingBar) * DataForGraph.PARAM_NEW / DataForGraph.PARAM_OLD);
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
         RectF rectF = new RectF();
@@ -118,18 +122,21 @@ class DrawingBar extends View {
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(5);
         paint.setStyle(Paint.Style.STROKE);
-        if (sizeWightBar > 50)
+        /*if (sizeWightBar > 50)
             rectF.set((float) (paddingBar + sizeWightBar - 50), upperBound, canvas.getWidth()-paddingBar, lowerBound);
-        else rectF.set((float) (paddingBar), upperBound, canvas.getWidth()-paddingBar, lowerBound);
+        else
+            rectF.set((float) (paddingBar), upperBound, canvas.getWidth()-paddingBar, lowerBound);*/
+        rectF.set((float) (paddingBar), upperBound, canvas.getWidth()-paddingBar, lowerBound);
         canvas.drawRoundRect(rectF, 15, 15, paint);
         canvas.restore();
 
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.FILL);
-        if (sizeWightBar > 50)
+       /* if (sizeWightBar > 50)
             rectF.set((float) (paddingBar + sizeWightBar - 50), upperBound, canvas.getWidth()-paddingBar, lowerBound);
         else
-            rectF.set((float) (paddingBar), upperBound, canvas.getWidth()-paddingBar, lowerBound);
+            rectF.set((float) (paddingBar), upperBound, canvas.getWidth()-paddingBar, lowerBound);*/
+        rectF.set((float) (paddingBar), upperBound, canvas.getWidth()-paddingBar, lowerBound);
         canvas.drawRoundRect(rectF, 15, 15, paint);
         canvas.restore();
 
@@ -155,17 +162,17 @@ class DrawingBar extends View {
             paint.setColor(Color.GREEN);
             paint.setStrokeWidth(10);
             paint.setShadowLayer(15, 0, 0, Color.rgb(95, 112, 95));
-            canvas.drawLine((float) paddingBar, 115, 100, 115, paint);
+            canvas.drawLine((float) paddingBar, upperBound + 15, 100, upperBound + 15, paint);
 
             paint.setColor(Color.WHITE);
             paint.setTextSize(25);
             paint.setTextAlign(Paint.Align.CENTER);
             paint.setStyle(Paint.Style.FILL_AND_STROKE);
             paint.setStrokeWidth(2);
-            canvas.drawText(setMaskText((double) DataForGraph.NEW_TERM, "mouth"), (float) (100), 123, paint);
+            canvas.drawText(setMaskText((double) DataForGraph.PARAM_NEW, "mouth"), (float) (100), upperBound + 23, paint);
         }
         else
-            canvas.drawText(setMaskText((double) DataForGraph.NEW_TERM, "mouth"), (float) (sizeWightBar / 2), 123, paint);
+            canvas.drawText(setMaskText((double) DataForGraph.PARAM_NEW, "mouth"), (float) (sizeWightBar / 2), upperBound + 23, paint);
     }
 }
 
@@ -174,8 +181,15 @@ public class DataForGraph{
     public static Double SUM = 1.0;
     public static Double OVER = 1.0;
 
-    public static int TERM = 1;
-    public static int NEW_TERM = 1;
+    public static int PARAM_OLD = 1;
+    public static int PARAM_NEW = 1;
+
+    public static int HEIGHT_OVER = 50;
+    public static int HEIGHT_TERM = 100;
+
+    public static boolean CREATE_GRAPH_OVER;
+    public static boolean CREATE_GRAPH_TERM;
+    public static boolean CREATE_GRAPH_OVER_INFO;
 
     public void setSum(Double sum){
         SUM = sum;
@@ -185,12 +199,28 @@ public class DataForGraph{
         OVER = over;
     }
 
-    public void setTerm(int term){
-        TERM = term;
+    public void setParamOlr(int term){
+        PARAM_OLD = term;
     }
 
-    public void setNewTerm(int newTerm){
-        NEW_TERM = newTerm;
+    public void setParamNew(int newTerm){
+        PARAM_NEW = newTerm;
+    }
+
+    public void setHeightTerm(int height){
+        HEIGHT_TERM = height;
+    }
+
+    public void setHeightOver(int height){
+        HEIGHT_OVER= height;
+    }
+
+    public void createOver(boolean bool){
+        CREATE_GRAPH_OVER = bool;
+    }
+
+    public void createTerm(boolean bool){
+        CREATE_GRAPH_TERM = bool;
     }
 
 }

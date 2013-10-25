@@ -30,6 +30,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String FIELD_PERCENT_PAYMENTS = "percent_payments";
     public static final String F_BALANCE_DEBT_PAY = "balance_debt";
     public static final String FIELD_SUM_PAYMENTS = "sum_payments";
+    public static final String F_OVER_PAY = "over_payments";
     public static final String FIELD_DATE_LONG_PAYMENTS = "date_long_payments";
     public static final String FIELD_PAID_PAYMENTS = "paid_payments";
     public static final String F_PAYMENT_UP_PAY = "up_payment";
@@ -41,7 +42,6 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     FIELD_PERCENT_DEBT + " DOUBLE, " +
                                                                     FIELD_TERM_DEBT + " INTEGER, " +
                                                                     FIELD_TYPE_DEBT + " STRING, " +
-                                                                    FIELD_OVER_DEBT + " DOUBLE, " +
                                                                     FIELD_DATE_LONG_START_DEBT + " LONG, " +
                                                                     FIELD_DATE_STR_START_DEBT + " STRING, " +
                                                                     FIELD_BALANCE_TERM_DEBT + " STRING, " +
@@ -56,6 +56,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     FIELD_PERCENT_PAYMENTS + " DOUBLE, " +
                                                                     F_BALANCE_DEBT_PAY + " STRING, " +
                                                                     FIELD_SUM_PAYMENTS + " DOUBLE, " +
+                                                                    F_OVER_PAY + " DOUBLE, " +
                                                                     FIELD_DATE_LONG_PAYMENTS + " INTEGER, " +
                                                                     FIELD_PAID_PAYMENTS + " INTEGER, " +
                                                                     F_PAYMENT_UP_PAY + " INTEGER);";

@@ -76,12 +76,11 @@
             android:id="@+id/viewGraphLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/infoDebtLayout"><!--
+            android:layout_below="@id/infoDebtLayout">
         <ru.omdroid.DebtCalc.CustomView.DrawingBar
                 android:id="@+id/viewGraph"
-                android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"/>-->
+                android:layout_height="25dp"/>
     </LinearLayout>
     <LinearLayout
             android:id="@+id/writePayment"
@@ -93,20 +92,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="-"
-                android:id="@+id/bMinusPayment" android:layout_marginTop="10dp" android:enabled="false"/>
+                android:id="@+id/bMinusPayment" android:enabled="false"/>
         <EditText
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/etPayment"
-                android:inputType="numberDecimal" style="@style/styleValue" android:focusableInTouchMode="true"
+                android:inputType="numberDecimal" style="@style/styleValue" android:focusableInTouchMode="false"
                 android:maxLines="1"
-                android:layout_column="1" android:layout_marginTop="10dp" android:gravity="center_vertical|center_horizontal"/>
+                android:layout_column="1" android:gravity="center_vertical|center_horizontal"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+"
                 android:id="@+id/bPlusPayment"
-                android:layout_column="2" android:layout_marginTop="10dp"/>
+                android:layout_column="2"/>
     </LinearLayout>
     <LinearLayout
             android:id="@+id/listInfoDebtLabel"
