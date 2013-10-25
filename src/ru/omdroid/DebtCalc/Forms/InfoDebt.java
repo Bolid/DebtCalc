@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
+import ru.omdroid.DebtCalc.Arithmetic;
 import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
@@ -34,6 +35,7 @@ public class InfoDebt extends Activity {
         setContentView(R.layout.debt_info);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        workDB = new WorkDB(getBaseContext());
 
         final View viewGraph = (View)findViewById(R.id.viewGraph);
 
@@ -46,6 +48,9 @@ public class InfoDebt extends Activity {
         bMinusPayment = (Button)findViewById(R.id.bMinusPayment);
 
         final DataForGraph dataForGraph = new DataForGraph();
+        dataForGraph.createOver(true);
+        dataForGraph.createTerm(false);
+        dataForGraph.setHeightOver(10);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(AppData.DATE);
@@ -59,10 +64,31 @@ public class InfoDebt extends Activity {
         etPayment.selectAll();
         newPayment = Double.parseDouble(AppData.PAYMENT);
 
+<<<<<<< HEAD
         dataForGraph.setSum(500000.);
         dataForGraph.setOver(600000.);
         dataForGraph.setTerm(500000.);
         dataForGraph.setNewTerm(400000.);
+=======
+        Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.F_OVER_PAY + " FROM " + DebtCalcDB.TABLE_PAYMENTS + " WHERE " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +"'");
+        cursor.moveToNext();
+        Double overOld = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.F_OVER_PAY));
+        cursor.close();
+
+        cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_BALANCE_TERM_DEBT + " FROM " + DebtCalcDB.TABLE_CREDITS + " WHERE " + DebtCalcDB.FIELD_ID_DEBT + " = '" + AppData.ID_DEBT +"'");
+        cursor.moveToNext();
+        int term = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.FIELD_BALANCE_TERM_DEBT));
+        cursor.close();
+
+        Arithmetic arithmetic = new Arithmetic(AppData.PERCENT);
+
+        Double overAll = overOld + AppData.OVER_PAYMENT + arithmetic.getDeltaNew(term - 1, arithmetic.getBalance(newPayment, Double.valueOf(AppData.DEBT), AppData.TERM), newPayment);
+
+        dataForGraph.setSum(Double.valueOf(AppData.DEBT));
+        dataForGraph.setOver(overAll);
+        dataForGraph.setParamOlr(120);
+        dataForGraph.setParamNew(100);
+>>>>>>> 1248bef9f23650e97e6cb4d330ca8756fb4ed92f
         viewGraph.invalidate();
 
         bPlusPayment.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +113,6 @@ public class InfoDebt extends Activity {
             protected Void doInBackground(Void... voids) {
                 Calendar datePay = Calendar.getInstance();
                 LayoutInflater inflater = (LayoutInflater)getSystemService(getBaseContext().LAYOUT_INFLATER_SERVICE);
-                workDB = new WorkDB(getBaseContext());
                 Cursor cursorInPayment = workDB.readValueFromDataBase("SELECT " +
                         DebtCalcDB.FIELD_ID_DEBT_PAYMENTS +", "+
                         DebtCalcDB.FIELD_PAYMENT_PAYMENTS +", "+

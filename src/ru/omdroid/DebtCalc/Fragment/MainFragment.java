@@ -81,7 +81,6 @@ public class MainFragment extends Fragment {
                             DebtCalcDB.FIELD_PERCENT_DEBT + ", " +
                             DebtCalcDB.FIELD_TERM_DEBT + ", " +
                             DebtCalcDB.FIELD_TYPE_DEBT + ", " +
-                            DebtCalcDB.FIELD_OVER_DEBT + ", " +
                             DebtCalcDB.FIELD_DATE_LONG_START_DEBT + ", " +
                             DebtCalcDB.FIELD_DATE_STR_START_DEBT + ", " +
                             DebtCalcDB.FIELD_BALANCE_TERM_DEBT + ", " +
@@ -91,7 +90,7 @@ public class MainFragment extends Fragment {
                             AppData.param[0] + "', '" +
                             AppData.param[1] + "', '" +
                             AppData.param[2] + "', '" +
-                            etType.getText().toString() + "', '0.0', '" +
+                            etType.getText().toString() + "', '" +
                             Calendar.getInstance().getTimeInMillis() + "', '" +
                             date + "', '" +
                             AppData.param[2] + "', '0')");
@@ -101,12 +100,14 @@ public class MainFragment extends Fragment {
                             DebtCalcDB.FIELD_PAYMENT_PAYMENTS + ", " +
                             DebtCalcDB.F_BALANCE_DEBT_PAY + ", " +
                             DebtCalcDB.FIELD_SUM_PAYMENTS + ", " +
+                            DebtCalcDB.F_OVER_PAY + ", " +
                             DebtCalcDB.FIELD_DATE_LONG_PAYMENTS + ", " +
                             DebtCalcDB.FIELD_PAID_PAYMENTS + ")" +
                             " VALUES ('" +
                             numCredit + "', '" +
                             arithmetic.getPayment(Double.valueOf(AppData.param[0]), Integer.valueOf(AppData.param[2])) +"', '" +
                             AppData.param[0] + "', '" +
+                            "0.0', '" +
                             "0.0', '" +
                             dateFirstPayment +"', '" +
                             "0')");
