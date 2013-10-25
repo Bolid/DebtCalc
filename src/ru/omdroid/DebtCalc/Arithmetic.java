@@ -53,8 +53,8 @@ public class Arithmetic {
         allResult.add(9, "");
 
         dataForGraph.setSum(sumCredit);
-        dataForGraph.setTerm(termCredit);
-        dataForGraph.setNewTerm(termCredit);
+        dataForGraph.setTerm(Double.valueOf(termCredit));
+        dataForGraph.setNewTerm(Double.valueOf(termCredit));
     }
 
 
@@ -130,7 +130,7 @@ public class Arithmetic {
         allPer = Rounding(allPer);
         allResult.set(5, String.valueOf(allPer)); //Общая переплата
         allResult.set(6, String.valueOf(i)); //Срок погашения
-        dataForGraph.setNewTerm(i);
+        dataForGraph.setNewTerm(Double.valueOf(i));
 
 
         hm = new HashMap<String, String>();

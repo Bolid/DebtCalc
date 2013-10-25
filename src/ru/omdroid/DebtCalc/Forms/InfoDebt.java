@@ -35,7 +35,7 @@ public class InfoDebt extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        //final View viewGraph = (View)findViewById(R.id.viewGraph);
+        final View viewGraph = (View)findViewById(R.id.viewGraph);
 
         tvPayment = (TextView)findViewById(R.id.infoPayment);
         TextView tvDate = (TextView)findViewById(R.id.infoDate);
@@ -59,11 +59,11 @@ public class InfoDebt extends Activity {
         etPayment.selectAll();
         newPayment = Double.parseDouble(AppData.PAYMENT);
 
-        /*dataForGraph.setSum(500000.);
+        dataForGraph.setSum(500000.);
         dataForGraph.setOver(600000.);
-        dataForGraph.setTerm(120);
-        dataForGraph.setNewTerm(100);
-        viewGraph.invalidate();*/
+        dataForGraph.setTerm(500000.);
+        dataForGraph.setNewTerm(400000.);
+        viewGraph.invalidate();
 
         bPlusPayment.setOnClickListener(new View.OnClickListener() {
             @Override

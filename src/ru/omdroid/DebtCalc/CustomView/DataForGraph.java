@@ -15,7 +15,7 @@ class DrawingBar extends View {
     Context context;
     Double sizeWightBar = 150.;
     int paddingBar = 18;
-
+    int w, h;
     public DrawingBar(Context context) {
         super(context);
         this.context = context;
@@ -31,10 +31,18 @@ class DrawingBar extends View {
         super(context, attr, defStyle);
         this.context = context;
     }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        this.w = w;
+        this.h = h;
+        super.onSizeChanged(w, h, oldw, oldh);
+    }
     @Override
     protected void onDraw(Canvas canvas){
         super.onDraw(canvas);
-        drawingCreditBar(canvas);
+        getRootView().setVisibility(INVISIBLE);
+       // drawingCreditBar(canvas);
         drawingTermBar(canvas);
         canvas.restore();
     }
@@ -107,8 +115,8 @@ class DrawingBar extends View {
     }
 
     private void drawingTermBar(Canvas canvas){
-        int upperBound = 100;
-        int lowerBound = 130;
+        int upperBound = 10;
+        int lowerBound = 40;
         sizeWightBar = (double) ((canvas.getWidth() - paddingBar) * DataForGraph.NEW_TERM / DataForGraph.TERM);
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
@@ -155,17 +163,17 @@ class DrawingBar extends View {
             paint.setColor(Color.GREEN);
             paint.setStrokeWidth(10);
             paint.setShadowLayer(15, 0, 0, Color.rgb(95, 112, 95));
-            canvas.drawLine((float) paddingBar, 115, 100, 115, paint);
+            canvas.drawLine((float) paddingBar, upperBound+15, upperBound, upperBound+15, paint);
 
             paint.setColor(Color.WHITE);
             paint.setTextSize(25);
             paint.setTextAlign(Paint.Align.CENTER);
             paint.setStyle(Paint.Style.FILL_AND_STROKE);
             paint.setStrokeWidth(2);
-            canvas.drawText(setMaskText((double) DataForGraph.NEW_TERM, "mouth"), (float) (100), 123, paint);
+            canvas.drawText(setMaskText((double) DataForGraph.NEW_TERM, "mouth"), (float) (upperBound), upperBound + 23, paint);
         }
         else
-            canvas.drawText(setMaskText((double) DataForGraph.NEW_TERM, "mouth"), (float) (sizeWightBar / 2), 123, paint);
+            canvas.drawText(setMaskText((double) DataForGraph.NEW_TERM, "mouth"), (float) (sizeWightBar / 2), upperBound + 23, paint);
     }
 }
 
@@ -174,8 +182,8 @@ public class DataForGraph{
     public static Double SUM = 1.0;
     public static Double OVER = 1.0;
 
-    public static int TERM = 1;
-    public static int NEW_TERM = 1;
+    public static Double TERM = 1.;
+    public static Double NEW_TERM = 1.;
 
     public void setSum(Double sum){
         SUM = sum;
@@ -185,11 +193,11 @@ public class DataForGraph{
         OVER = over;
     }
 
-    public void setTerm(int term){
+    public void setTerm(Double term){
         TERM = term;
     }
 
-    public void setNewTerm(int newTerm){
+    public void setNewTerm(Double newTerm){
         NEW_TERM = newTerm;
     }
 

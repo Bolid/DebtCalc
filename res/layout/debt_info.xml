@@ -76,12 +76,11 @@
             android:id="@+id/viewGraphLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/infoDebtLayout"><!--
+            android:layout_below="@id/infoDebtLayout">
         <ru.omdroid.DebtCalc.CustomView.DrawingBar
                 android:id="@+id/viewGraph"
-                android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"/>-->
+                android:layout_height="25dp"/>
     </LinearLayout>
     <LinearLayout
             android:id="@+id/writePayment"
