@@ -53,13 +53,8 @@ public class Arithmetic {
         allResult.add(9, "");
 
         dataForGraph.setSum(sumCredit);
-<<<<<<< HEAD
-        dataForGraph.setTerm(Double.valueOf(termCredit));
-        dataForGraph.setNewTerm(Double.valueOf(termCredit));
-=======
         dataForGraph.setParamOlr(termCredit);
         dataForGraph.setParamNew(termCredit);
->>>>>>> 1248bef9f23650e97e6cb4d330ca8756fb4ed92f
     }
 
 
@@ -81,7 +76,9 @@ public class Arithmetic {
     }
 
     public Double getBalance (Double payment, Double balance, int termCredit){
-        return Rounding(balance - Rounding(payment - Rounding(balance * (percent /100.) / 12)));
+        Double a1 = Rounding(balance - Rounding(payment - Rounding(balance * (percent /100.) / 12)));
+        return a1;
+        //return Rounding(balance - Rounding(payment - Rounding(balance * (percent /100.) / 12)));
     }
 
     public Double getPaymentInPercent(Double balance){
@@ -139,12 +136,8 @@ public class Arithmetic {
         allPer = Rounding(allPer);
         allResult.set(5, String.valueOf(allPer)); //Общая переплата
         allResult.set(6, String.valueOf(i)); //Срок погашения
-<<<<<<< HEAD
-        dataForGraph.setNewTerm(Double.valueOf(i));
-=======
         dataForGraph.setParamNew(i);
        dataForGraph.setOver(allPer);
->>>>>>> 1248bef9f23650e97e6cb4d330ca8756fb4ed92f
 
 
         hm = new HashMap<String, String>();

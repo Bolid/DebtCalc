@@ -78,13 +78,8 @@ public class ResultFragment extends Fragment {
                 editText.setText(MainFragment.arithmetic.setMask(MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[2]) - i)));
                 MainFragment.arithmetic.getDeltaDefault(MainFragment.arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[2]) - i), Integer.valueOf(params[2]) - i);
                 Arithmetic.allResult.set(6, String.valueOf(Integer.valueOf(params[2]) - i));
-<<<<<<< HEAD
-                dataForGraph.setNewTerm(Double.valueOf(Integer.valueOf(params[2]) - i));
-                view.invalidate();
-=======
                 dataForGraph.setParamNew(Integer.valueOf(params[2]) - i);
                 graphTerm.invalidate();
->>>>>>> 1248bef9f23650e97e6cb4d330ca8756fb4ed92f
             }
 
             @Override

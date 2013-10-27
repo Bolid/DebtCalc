@@ -64,31 +64,26 @@ public class InfoDebt extends Activity {
         etPayment.selectAll();
         newPayment = Double.parseDouble(AppData.PAYMENT);
 
-<<<<<<< HEAD
-        dataForGraph.setSum(500000.);
-        dataForGraph.setOver(600000.);
-        dataForGraph.setTerm(500000.);
-        dataForGraph.setNewTerm(400000.);
-=======
-        Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.F_OVER_PAY + " FROM " + DebtCalcDB.TABLE_PAYMENTS + " WHERE " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +"'");
+        Cursor cursor = workDB.readValueFromDataBase("SELECT MAX(" + DebtCalcDB.F_OVER_PAY + ") AS " + DebtCalcDB.F_OVER_PAY + " FROM " + DebtCalcDB.TABLE_PAYMENTS + " WHERE " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +"'");
         cursor.moveToNext();
-        Double overOld = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.F_OVER_PAY));
+        Double overNew = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.F_OVER_PAY));
         cursor.close();
 
-        cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_BALANCE_TERM_DEBT + " FROM " + DebtCalcDB.TABLE_CREDITS + " WHERE " + DebtCalcDB.FIELD_ID_DEBT + " = '" + AppData.ID_DEBT +"'");
+        cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_BALANCE_TERM_DEBT + ", " + DebtCalcDB.FIELD_SUM_DEBT + ", " + DebtCalcDB.FIELD_TERM_DEBT + " FROM " + DebtCalcDB.TABLE_CREDITS + " WHERE " + DebtCalcDB.FIELD_ID_DEBT + " = '" + AppData.ID_DEBT +"'");
         cursor.moveToNext();
-        int term = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.FIELD_BALANCE_TERM_DEBT));
+        int termBalance = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.FIELD_BALANCE_TERM_DEBT));
+        int term = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.FIELD_TERM_DEBT));
+        Double sum = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_SUM_DEBT));
         cursor.close();
 
         Arithmetic arithmetic = new Arithmetic(AppData.PERCENT);
+        overNew = overNew + arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT)) + arithmetic.getDeltaNew(termBalance - 1, arithmetic.getBalance(newPayment, Double.valueOf(AppData.DEBT), AppData.TERM), newPayment);
+        Double overOld = arithmetic.getDeltaNew(term, sum, newPayment);
 
-        Double overAll = overOld + AppData.OVER_PAYMENT + arithmetic.getDeltaNew(term - 1, arithmetic.getBalance(newPayment, Double.valueOf(AppData.DEBT), AppData.TERM), newPayment);
-
-        dataForGraph.setSum(Double.valueOf(AppData.DEBT));
-        dataForGraph.setOver(overAll);
+        dataForGraph.setSum(overOld);
+        dataForGraph.setOver(overNew);
         dataForGraph.setParamOlr(120);
         dataForGraph.setParamNew(100);
->>>>>>> 1248bef9f23650e97e6cb4d330ca8756fb4ed92f
         viewGraph.invalidate();
 
         bPlusPayment.setOnClickListener(new View.OnClickListener() {
