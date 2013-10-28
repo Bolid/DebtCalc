@@ -3,6 +3,7 @@
     <color name="buttonNextPress">#ffbecac2</color>
     <color name="buttonNextStroke">#ffbecac2</color>
     <color name="background">#FFF</color>
+    <color name="background_app">#e5e5e5</color>
     <color name="substrate">#eafdf4</color>
     <color name="colorLabel">#fc9c14</color>
     <color name="colorValue">#021460</color>
