@@ -14,7 +14,7 @@ class DrawingBar extends View {
     Context context;
     Double sizeWightBar = 150.;
     int paddingBar = 18;
-
+    int w, h;
     public DrawingBar(Context context) {
         super(context);
         this.context = context;
@@ -29,6 +29,13 @@ class DrawingBar extends View {
     public DrawingBar(Context context, AttributeSet attr, int defStyle) {
         super(context, attr, defStyle);
         this.context = context;
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        this.w = w;
+        this.h = h;
+        super.onSizeChanged(w, h, oldw, oldh);
     }
     @Override
     protected void onDraw(Canvas canvas){
@@ -53,7 +60,8 @@ class DrawingBar extends View {
         int height = DataForGraph.HEIGHT_OVER;
 
 
-        sizeWightBar = (canvas.getWidth() - paddingBar) * (DataForGraph.SUM)/(DataForGraph.SUM + DataForGraph.OVER);
+        //sizeWightBar = (canvas.getWidth() - paddingBar) * (DataForGraph.SUM)/(DataForGraph.SUM + DataForGraph.OVER);
+        sizeWightBar = (canvas.getWidth() - paddingBar) * (DataForGraph.SUM)/(DataForGraph.OVER);
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
         RectF rectF = new RectF();
@@ -114,6 +122,7 @@ class DrawingBar extends View {
         int upperBound = DataForGraph.HEIGHT_TERM;
         int lowerBound = DataForGraph.HEIGHT_TERM + 30;
         sizeWightBar = (double) ((canvas.getWidth() - paddingBar) * DataForGraph.PARAM_NEW / DataForGraph.PARAM_OLD);
+
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
         RectF rectF = new RectF();
@@ -173,6 +182,7 @@ class DrawingBar extends View {
         }
         else
             canvas.drawText(setMaskText((double) DataForGraph.PARAM_NEW, "mouth"), (float) (sizeWightBar / 2), upperBound + 23, paint);
+
     }
 }
 
@@ -180,6 +190,9 @@ class DrawingBar extends View {
 public class DataForGraph{
     public static Double SUM = 1.0;
     public static Double OVER = 1.0;
+
+    public static Double TERM = 1.;
+    public static Double NEW_TERM = 1.;
 
     public static int PARAM_OLD = 1;
     public static int PARAM_NEW = 1;

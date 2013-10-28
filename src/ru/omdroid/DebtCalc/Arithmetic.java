@@ -80,7 +80,9 @@ public class Arithmetic {
     }
 
     public Double getBalance (Double payment, Double balance, int termCredit){
-        return Rounding(balance - Rounding(payment - Rounding(balance * (percent /100.) / 12)));
+        Double a1 = Rounding(balance - Rounding(payment - Rounding(balance * (percent /100.) / 12)));
+        return a1;
+        //return Rounding(balance - Rounding(payment - Rounding(balance * (percent /100.) / 12)));
     }
 
     public Double getPaymentInPercent(Double balance){
