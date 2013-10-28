@@ -17,12 +17,13 @@ import java.text.DecimalFormat;
 public class DialogInputData extends DialogFragment implements OnClickListener {
 
     TextView tvLabel, tvSumPre, tvOverPre, tvTotal, tvOverPercent;
-    String label;
+    String label, value;
     EditText etData;
     View view;
     PreCalc preCalc;
+    int res;
 
-    public DialogInputData(TextView tvLabel, String label, PreCalc preCalc, TextView tvSumPre, TextView tvOverPre, TextView tvTotal, TextView tvOverPercent){
+    public DialogInputData(String value, TextView tvLabel, String label, PreCalc preCalc, TextView tvSumPre, TextView tvOverPre, TextView tvTotal, TextView tvOverPercent, int res){
         this.tvLabel = tvLabel;
         this.label = label;
         this.preCalc = preCalc;
@@ -30,11 +31,13 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
         this.tvOverPre = tvOverPre;
         this.tvTotal = tvTotal;
         this.tvOverPercent = tvOverPercent;
+        this.res = res;
+        this.value = value;
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        getDialog().setTitle(getResources().getString(R.string.list_dialog_label_title));
-        view = inflater.inflate(R.layout.dialog_input_data, null);
+        getDialog().setTitle(getResources().getString(R.string.app_name));
+        view = inflater.inflate(res, null);
         view.findViewById(R.id.butDialogApplyData).setOnClickListener(this);
 
         AppData appData = new AppData();
@@ -53,23 +56,39 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
         if (label.equals(getResources().getString(R.string.main_layout_label_credit_percent)))
             etData.addTextChangedListener(fPercentCredit);
 
-        tvLabel.setText(label);
-        etData.requestFocus();
+        etData.setText(value);
+        etData.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                etData.selectAll();
+            }
+        });
         return view;
     }
 
     @Override
     public void onClick(final View view) {
+        AppData appData = new AppData();
         switch (view.getId()){
             case R.id.butDialogApplyData:
                 TextView tvDialogLabel = (TextView)this.view.findViewById(R.id.tvDialogLabel);
                 tvDialogLabel.setText(label);
                 tvLabel.setText(etData.getText().toString());
                 Arithmetic arithmetic;
+                switch (res){
+                    case R.layout.dialog_input_sum: appData.setDebt(formatValue(etData.getText().toString()));
+                        break;
+                    case R.layout.dialog_input_term: appData.setTerm(formatValue(etData.getText().toString()));
+                        break;
+                    case R.layout.dialog_input_percent: appData.setPercent(formatValue(etData.getText().toString()));
+                        break;
+                    case R.layout.dialog_input_goal: appData.setGoal(etData.getText().toString());
+                        break;
+                }
                 if (preCalc.preCalc()){
                     arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT), AppData.PERCENT, AppData.TERM);
                     tvSumPre.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1))));
-                    tvOverPre.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5))));
+                    tvOverPre.setText("+ " + new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5))));
                     tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
                     tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
                 }
@@ -87,19 +106,19 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
         super.onCancel(dialog);
     }
 
-    private Double formatAddPayment(String addPayment){
-        String newAddPayment = "";
+    private String formatValue(String addPayment){
+        String value = "";
         for (int j = 0; j < addPayment.length(); j++) {
             if ("1234567890".contains(String.valueOf(addPayment.charAt(j)))){
-                newAddPayment = newAddPayment + addPayment.charAt(j);
+                value = value + addPayment.charAt(j);
             }
             else if (j == addPayment.length() - 3 || j == addPayment.length() - 2){
-                newAddPayment = newAddPayment + ".";
+                value = value + ".";
             }
         }
-        if (newAddPayment.equals(""))
-            return 0.00;
+        if (value.equals(""))
+            return "0.0";
         else
-            return Double.valueOf(newAddPayment);
+            return value;
     }
 }

@@ -32,41 +32,28 @@ public class InControlFieldSumCredit implements TextWatcher{
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
         beforeText = charSequence.toString();
+        position = etSumCredit.getSelectionStart();
     }
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
         String s = "";
-        position = etSumCredit.getSelectionStart();
         for (int j = etSumCredit.getText().length(); j > 0; j--) {
             if ("1234567890".contains(String.valueOf(etSumCredit.getText().toString().charAt(j-1))))
                 s = etSumCredit.getText().toString().charAt(j-1) + s;
         }
-
-        /*if (markerCreditSum != null)
-            if (charSequence.toString().length() == 0){
-                markerCreditSum.setImageResource(R.drawable.marker_red_one);
-                errorMessage.readErrorMessageSumCredit();
-                appData.addSumCredit(valueDefault);
-            }
-            else{
-                markerCreditSum.setImageResource(R.drawable.marker_green_one);
-                errorMessage.clearErrorMessageSumCredit();*/
-                appData.addSumCredit(s);
-        appData.setDebt(s);
-            //}
+                /*appData.addSumCredit(s);
+        appData.setDebt(s);*/
 
         if (!s.equals("")){
             s = String.valueOf(numberFormat.format(Double.valueOf(s)));
             etSumCredit.removeTextChangedListener(this);
             etSumCredit.setText(s);
             etSumCredit.addTextChangedListener(this);
-                if (((beforeText.length() - s.length()) > 1 & position != 0) || (position > s.length()))
-                    etSumCredit.setSelection(position - 1);
-                else if ((s.length() - beforeText.length()) > 1 & position != s.length())
-                    etSumCredit.setSelection(position + 1);
-                else
-                    etSumCredit.setSelection(position);
+            if (position + (s.length() - beforeText.length()) < 0)
+                etSumCredit.setSelection(0);
+            else
+                etSumCredit.setSelection(position + (s.length() - beforeText.length()));
         }
     }
 

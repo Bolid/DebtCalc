@@ -6,7 +6,6 @@ import android.text.TextWatcher;
 import android.widget.ImageView;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.ErrorMessage;
-import ru.omdroid.DebtCalc.R;
 
 public class InControlFieldTermCredit implements TextWatcher{
     ImageView markerCreditTerm;
@@ -25,16 +24,8 @@ public class InControlFieldTermCredit implements TextWatcher{
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        /*if (charSequence.toString().length() == 0){
-            markerCreditTerm.setImageResource(R.drawable.marker_red_three);
-            errorMessage.readErrorMessageTermCredit();
-            appData.addTermCredit(valueDefault);
-        }
-        else{
-            markerCreditTerm.setImageResource(R.drawable.marker_green_three);
-            errorMessage.clearErrorMessageTermCredit();*/
-            appData.addTermCredit(charSequence.toString());
-        //}
+        /*if (charSequence.toString().length() != 0)
+            appData.setTerm(charSequence.toString());*/
     }
 
     @Override

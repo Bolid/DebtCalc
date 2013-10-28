@@ -5,7 +5,6 @@ import android.text.TextWatcher;
 import android.widget.ImageView;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.ErrorMessage;
-import ru.omdroid.DebtCalc.R;
 
 
 public class InControlFieldPercentCredit implements TextWatcher {
@@ -25,21 +24,8 @@ public class InControlFieldPercentCredit implements TextWatcher {
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-       /* if (charSequence.toString().length() == 0){
-            markerCreditPercent.setImageResource(R.drawable.marker_red_two);
-            errorMessage.readErrorMessagePercendCredit();
-            appData.addPercentCredit(valueDefault);
-        }
-        else if (Double.valueOf(charSequence.toString().replace(",", ".")) > 100){
-            markerCreditPercent.setImageResource(R.drawable.marker_red_two);
-            errorMessage.downPercentCredit();
-            appData.addPercentCredit(valueDefault);
-        }
-            else{
-            markerCreditPercent.setImageResource(R.drawable.marker_green_two);
-            errorMessage.clearErrorMessagePercendCredit();*/
-            appData.addPercentCredit(charSequence.toString());
-        //}
+      /*  if (charSequence.toString().length() != 0)
+            appData.setPercent(charSequence.toString());*/
     }
 
     @Override

@@ -32,7 +32,6 @@ public class InControlFieldAddPayment implements TextWatcher {
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        Log.v("beforeTextChanged Позиция i i2 i3: ", charSequence.toString());
         beforeText = charSequence.toString();
         position = etSumCredit.getSelectionStart();
     }

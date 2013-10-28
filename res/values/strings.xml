@@ -10,6 +10,8 @@
     <string name="mll_details_sum">Сумма займа</string>
     <string name="mll_details_overpayment">Переплата</string>
     <string name="mll_details_total">Итого</string>
+    <string name="main_layout_label_credit_goal">Цель</string>
+    <string name="mll_credit_date">Дата получения</string>
     <string name="main_layout_label_credit_sum">Сумма</string>
     <string name="main_layout_label_credit_term">Срок</string>
     <string name="main_layout_label_credit_dopPayment">Досрочное погашение</string>

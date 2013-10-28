@@ -3,10 +3,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-<<<<<<< HEAD
-              android:layout_height="match_parent" android:background="@android:color/holo_orange_dark">
-
-=======
               android:layout_height="match_parent" android:background="@color/background_app">
 
     <TextView
@@ -25,17 +21,45 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-        <EditText
+            android:layout_height="100dp">
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/etCreditType" android:layout_gravity="left|center_vertical" android:hint="Цель кредита"
-                android:layout_weight="1" android:textColor="@android:color/black"/>
-        <TextView
+                android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="3dp"
+                android:background="@drawable/container_press" android:id="@+id/llCreditGoal">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_layout_label_credit_goal"
+                    android:id="@+id/textView3" style="@style/styleLabel_2" android:textColor="@android:color/darker_gray"
+                    android:layout_gravity="center_horizontal" android:layout_marginTop="10dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvLabGoal" android:layout_marginTop="10dp" style="@style/styleLabel_2"
+                    android:textColor="@android:color/black" android:textSize="18sp"
+                    android:layout_gravity="center_horizontal" android:gravity="center_vertical|center_horizontal"
+                    android:inputType="text"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:id="@+id/tvDateStartCredit" android:layout_weight="1" android:gravity="center_vertical|center_horizontal"
-                style="@style/styleLabel_2" android:textColor="@android:color/black"/>
+                android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="3dp"
+                android:background="@drawable/container_press" android:id="@+id/llDateStartCredit">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mll_credit_date"
+                    android:id="@+id/textView7" style="@style/styleLabel_2" android:textColor="@android:color/darker_gray"
+                    android:layout_gravity="center_horizontal" android:layout_marginTop="10dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvDateStartCredit" android:gravity="center_vertical|center_horizontal"
+                    style="@style/styleLabel_2" android:textColor="@android:color/black"
+                    android:layout_gravity="center_horizontal" android:layout_marginTop="10dp"
+                    android:textSize="18sp"/>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -150,6 +174,10 @@
                     android:paddingRight="10dp" android:singleLine="true" style="@style/styleLabel_2"
                     android:textColor="@android:color/black" android:textSize="16sp"/>
         </LinearLayout>
+        <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:id="@+id/imageView" android:layout_gravity="center" android:background="@android:color/black"/>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
@@ -183,5 +211,4 @@
                     android:id="@+id/tvOverPerc" android:textColor="@android:color/black" android:textSize="12sp"/>
         </LinearLayout>
     </LinearLayout>
->>>>>>> ead0d9e6d9530927a7be723cd4614398ec5a63fb
 </LinearLayout>

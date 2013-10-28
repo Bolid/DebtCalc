@@ -26,10 +26,15 @@ public class MainNew extends Activity {
         super.onCreate(save);
         setContentView(R.layout.main_new);
 
+        AppData appData = new AppData();
+        appData.allRemove();
+
         final TextView tvSum = (TextView)findViewById(R.id.tvLabSum);
         final TextView tvTerm = (TextView)findViewById(R.id.tvLabTerm);
         final TextView tvPercent = (TextView)findViewById(R.id.tvLabPercent);
         final TextView tvDate = (TextView)findViewById(R.id.tvDateStartCredit);
+        final TextView tvGoal = (TextView)findViewById(R.id.tvLabGoal);
+
         etType = (EditText)findViewById(R.id.etCreditType);
 
         final TextView tvSumPre = (TextView)findViewById(R.id.tvSum);
@@ -40,6 +45,8 @@ public class MainNew extends Activity {
         LinearLayout llSum = (LinearLayout)findViewById(R.id.llSum);
         LinearLayout llTerm = (LinearLayout)findViewById(R.id.llTerm);
         LinearLayout llPercent = (LinearLayout)findViewById(R.id.llPercent);
+        LinearLayout llDate = (LinearLayout)findViewById(R.id.llDateStartCredit);
+        LinearLayout llGoal= (LinearLayout)findViewById(R.id.llCreditGoal);
 
         final PreCalc preCalc = new PreCalc();
 
@@ -47,8 +54,9 @@ public class MainNew extends Activity {
         calendarConst = Calendar.getInstance();
         tvDate.setText(String.valueOf(calendar.get(Calendar.DATE))+"."+String.valueOf(calendar.get(Calendar.MONTH) + 1)+"."+String.valueOf(calendar.get(Calendar.YEAR)));
 
+
         final DialogFragment dialogFragment = new DatePickerFragment(tvDate, calendarConst, calendar);
-        tvDate.setOnClickListener(new View.OnClickListener() {
+        llDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialogFragment.show(getFragmentManager(), getResources().getString(R.string.app_name));
@@ -58,7 +66,9 @@ public class MainNew extends Activity {
         llSum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment dFragment = new DialogInputData(tvSum, getResources().getString(R.string.main_layout_label_credit_sum), preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc);
+                int res = R.layout.dialog_input_sum;
+                String value = AppData.DEBT;
+                DialogFragment dFragment = new DialogInputData(value, tvSum, getResources().getString(R.string.main_layout_label_credit_sum), preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, res);
                 dFragment.show(getFragmentManager(), "");
             }
         });
@@ -66,7 +76,9 @@ public class MainNew extends Activity {
         llTerm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment dFragment = new DialogInputData(tvTerm, getResources().getString(R.string.main_layout_label_credit_term), preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc);
+                int res = R.layout.dialog_input_term;
+                String value = String.valueOf(AppData.TERM);
+                DialogFragment dFragment = new DialogInputData(value, tvTerm, getResources().getString(R.string.main_layout_label_credit_term), preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, res);
                 dFragment.show(getFragmentManager(), "");
             }
         });
@@ -74,7 +86,19 @@ public class MainNew extends Activity {
         llPercent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment dFragment = new DialogInputData(tvPercent, getResources().getString(R.string.main_layout_label_credit_percent), preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc);
+                int res = R.layout.dialog_input_percent;
+                String value = String.valueOf(AppData.PERCENT);
+                DialogFragment dFragment = new DialogInputData(value, tvPercent, getResources().getString(R.string.main_layout_label_credit_percent), preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, res);
+                dFragment.show(getFragmentManager(), "");
+            }
+        });
+
+        llGoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int res = R.layout.dialog_input_goal;
+                String value = String.valueOf(AppData.GOAL);
+                DialogFragment dFragment = new DialogInputData(value, tvGoal, getResources().getString(R.string.main_layout_label_credit_goal), preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, res);
                 dFragment.show(getFragmentManager(), "");
             }
         });
@@ -119,7 +143,7 @@ public class MainNew extends Activity {
                             AppData.DEBT + "', '" +
                             AppData.PERCENT + "', '" +
                             AppData.TERM + "', '" +
-                            etType.getText().toString() + "', '" +
+                            AppData.GOAL + "', '" +
                             Calendar.getInstance().getTimeInMillis() + "', '" +
                             date + "', '" +
                             AppData.TERM + "', '0')");

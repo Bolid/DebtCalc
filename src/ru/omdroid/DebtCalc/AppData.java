@@ -2,7 +2,7 @@ package ru.omdroid.DebtCalc;
 
 public class AppData {
     public static String[] param = new String[4];
-    public static String PAYMENT, DEBT = "", PAYMENT_DEFAULT, ID_DEBT = "";
+    public static String PAYMENT, GOAL = "", DEBT = "", PAYMENT_DEFAULT, ID_DEBT = "";
     public static Long DATE;
     public static Double OVER_PAYMENT, PERCENT = 0.0;
     public static int TERM = 0;
@@ -11,12 +11,12 @@ public class AppData {
         param[0] = sumCredit;
     }
 
-    public void addPercentCredit(String percentCredit){
+    public void setPercent(String percentCredit){
         param[1] = percentCredit;
         PERCENT = Double.valueOf(percentCredit);
     }
 
-    public void addTermCredit(String termCredit){
+    public void setTerm(String termCredit){
         param[2] = termCredit;
         TERM = Integer.parseInt(termCredit);
     }
@@ -38,6 +38,10 @@ public class AppData {
         DEBT = s;
     }
 
+    public void setGoal(String s){
+        GOAL = s;
+    }
+
     public void setIdDebt(String s){
         ID_DEBT = s;
     }
@@ -56,5 +60,11 @@ public class AppData {
 
     public String getTermCredit(){
         return param[2];
+    }
+
+    public void allRemove(){
+        DEBT = "";
+        TERM = 0;
+        PERCENT = 0.0;
     }
 }
