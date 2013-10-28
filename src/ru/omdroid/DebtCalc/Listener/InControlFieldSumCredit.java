@@ -43,7 +43,7 @@ public class InControlFieldSumCredit implements TextWatcher{
                 s = etSumCredit.getText().toString().charAt(j-1) + s;
         }
 
-        if (markerCreditSum != null)
+        /*if (markerCreditSum != null)
             if (charSequence.toString().length() == 0){
                 markerCreditSum.setImageResource(R.drawable.marker_red_one);
                 errorMessage.readErrorMessageSumCredit();
@@ -51,9 +51,10 @@ public class InControlFieldSumCredit implements TextWatcher{
             }
             else{
                 markerCreditSum.setImageResource(R.drawable.marker_green_one);
-                errorMessage.clearErrorMessageSumCredit();
+                errorMessage.clearErrorMessageSumCredit();*/
                 appData.addSumCredit(s);
-            }
+        appData.setDebt(s);
+            //}
 
         if (!s.equals("")){
             s = String.valueOf(numberFormat.format(Double.valueOf(s)));

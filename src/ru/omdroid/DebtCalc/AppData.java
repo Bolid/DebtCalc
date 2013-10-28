@@ -2,10 +2,10 @@ package ru.omdroid.DebtCalc;
 
 public class AppData {
     public static String[] param = new String[4];
-    public static String PAYMENT, DEBT, PAYMENT_DEFAULT, ID_DEBT;
+    public static String PAYMENT, DEBT = "", PAYMENT_DEFAULT, ID_DEBT = "";
     public static Long DATE;
-    public static Double OVER_PAYMENT, PERCENT;
-    public static int TERM;
+    public static Double OVER_PAYMENT, PERCENT = 0.0;
+    public static int TERM = 0;
 
     public void addSumCredit(String sumCredit){
         param[0] = sumCredit;

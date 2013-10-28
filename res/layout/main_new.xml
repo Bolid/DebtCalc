@@ -3,6 +3,185 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
+<<<<<<< HEAD
               android:layout_height="match_parent" android:background="@android:color/holo_orange_dark">
 
+=======
+              android:layout_height="match_parent" android:background="@color/background_app">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_layout_label_title"
+            android:id="@+id/textView" android:layout_gravity="left|center_vertical"
+            android:textColor="@color/colorValue" style="@style/styleLabel_2" android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp" android:layout_marginBottom="3dp"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:text="New Text"
+            android:id="@+id/textView1" android:layout_gravity="left|center_vertical" style="@style/styleLabel_2"
+            android:background="@color/colorValue"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/etCreditType" android:layout_gravity="left|center_vertical" android:hint="Цель кредита"
+                android:layout_weight="1" android:textColor="@android:color/black"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/tvDateStartCredit" android:layout_weight="1" android:gravity="center_vertical|center_horizontal"
+                style="@style/styleLabel_2" android:textColor="@android:color/black"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent" android:layout_weight="1" android:layout_margin="3dp"
+                android:background="@drawable/container_press" android:id="@+id/llSum">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_layout_label_credit_sum"
+                    android:id="@+id/textView2" android:layout_gravity="center"
+                    android:textColor="@android:color/darker_gray" style="@style/styleLabel_2"
+                    android:layout_marginTop="10dp"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvLabSum" android:layout_marginTop="10dp"
+                    style="@style/styleLabel_2" android:textColor="@android:color/black" android:singleLine="true"
+                    android:gravity="center_vertical|center_horizontal" android:textSize="18sp"
+                    />
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent" android:layout_weight="1" android:layout_margin="3dp"
+                android:background="@drawable/container_press" android:id="@+id/llTerm">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_layout_label_credit_term"
+                    android:id="@+id/textView4" android:layout_gravity="center" style="@style/styleLabel_2"
+                    android:textColor="@android:color/darker_gray" android:layout_marginTop="10dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvLabTerm" android:layout_gravity="center" android:layout_marginTop="10dp"
+                    android:singleLine="true" android:textColor="@android:color/black" style="@style/styleLabel_2"
+                    android:textSize="18sp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent" android:layout_weight="1" android:layout_margin="3dp"
+                android:background="@drawable/container_press" android:id="@+id/llPercent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_layout_label_credit_percent"
+                    android:id="@+id/textView5" android:layout_gravity="center" style="@style/styleLabel_2"
+                    android:textColor="@android:color/darker_gray" android:layout_marginTop="10dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvLabPercent" android:layout_gravity="center" android:layout_marginTop="10dp"
+                    android:singleLine="true" android:textColor="@android:color/black" style="@style/styleLabel_2"
+                    android:textSize="18sp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mll_details"
+            android:id="@+id/textView8" android:layout_gravity="left|center_vertical" style="@style/styleLabel_2"
+            android:textColor="@color/colorValue" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
+            android:layout_marginBottom="3dp"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:id="@+id/textView9" android:layout_gravity="left|center_vertical"
+            android:background="@color/colorValue"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:background="@drawable/container_press"
+            android:layout_marginLeft="3dp" android:layout_marginTop="3dp" android:layout_marginRight="3dp"
+            android:layout_marginBottom="3dp">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="10dp">
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView10" android:layout_weight="1" android:text="@string/mll_details_sum"
+                    style="@style/styleLabel_2" android:textColor="@android:color/darker_gray" android:paddingLeft="10dp"
+                    android:textSize="16sp"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvSum" android:layout_weight="1" android:gravity="right"
+                    android:paddingRight="10dp" android:singleLine="true" style="@style/styleLabel_2"
+                    android:textColor="@android:color/black" android:textSize="16sp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="10dp">
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mll_details_overpayment"
+                    android:id="@+id/textView12" android:layout_weight="0.6" style="@style/styleLabel_2"
+                    android:textColor="@android:color/darker_gray" android:paddingLeft="10dp" android:textSize="16sp"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvOverPay" android:layout_weight="1" android:gravity="right"
+                    android:paddingRight="10dp" android:singleLine="true" style="@style/styleLabel_2"
+                    android:textColor="@android:color/black" android:textSize="16sp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="10dp">
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mll_details_total"
+                    android:id="@+id/textView14" android:layout_weight="0.6" style="@style/styleLabel_2"
+                    android:textColor="@android:color/darker_gray" android:paddingLeft="10dp" android:textSize="18sp"/>
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTotal" android:layout_weight="1" android:gravity="right"
+                    android:paddingRight="10dp" android:singleLine="true" style="@style/styleLabel_2"
+                    android:textColor="@android:color/black" android:textSize="18sp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="удорожание покупки на "
+                    android:id="@+id/textView16" android:layout_gravity="left|center_vertical"
+                    android:paddingLeft="10dp" android:textColor="@android:color/darker_gray" android:textSize="12sp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvOverPerc" android:textColor="@android:color/black" android:textSize="12sp"/>
+        </LinearLayout>
+    </LinearLayout>
+>>>>>>> ead0d9e6d9530927a7be723cd4614398ec5a63fb
 </LinearLayout>

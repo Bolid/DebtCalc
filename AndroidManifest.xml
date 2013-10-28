@@ -12,9 +12,8 @@
             android:icon="@drawable/ic_launcher"
             >
         <activity
-                android:name="ru.omdroid.DebtCalc.Forms.MainForm"
-                android:screenOrientation="portrait"
-                android:uiOptions="splitActionBarWhenNarrow">
+                android:name="ru.omdroid.DebtCalc.Forms.MainNew"
+                android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name="ru.omdroid.DebtCalc.Forms.InfoDebt"
