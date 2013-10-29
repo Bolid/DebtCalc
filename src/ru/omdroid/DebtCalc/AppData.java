@@ -63,8 +63,9 @@ public class AppData {
     }
 
     public void allRemove(){
-        DEBT = "";
+        DEBT = "0";
         TERM = 0;
         PERCENT = 0.0;
+        GOAL = "";
     }
 }

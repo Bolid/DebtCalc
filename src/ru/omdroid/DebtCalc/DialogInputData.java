@@ -1,11 +1,14 @@
 package ru.omdroid.DebtCalc;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import ru.omdroid.DebtCalc.Listener.InControlFieldSumCredit;
@@ -21,6 +24,8 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
     View view;
     PreCalc preCalc;
     int res;
+
+    InputMethodManager imm;
 
     Calendar calendar, calendarConst;
 
@@ -40,12 +45,15 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         getDialog().setTitle(getResources().getString(R.string.app_name));
         view = inflater.inflate(res, null);
+        etData = (EditText)view.findViewById(R.id.etDialogField);
+        etData.requestFocus();
+
+        imm = (InputMethodManager)getActivity().getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 1);
         view.findViewById(R.id.butDialogApplyData).setOnClickListener(this);
         view.findViewById(R.id.butNext).setOnClickListener(this);
 
         AppData appData = new AppData();
-
-        etData = (EditText)view.findViewById(R.id.etDialogField);
 
         if (res == R.layout.dialog_input_sum){
             InControlFieldSumCredit fSumCredit = new InControlFieldSumCredit(null, etData, null, appData, null);
@@ -94,6 +102,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                         nextDialog((TextView)getActivity().findViewById(R.id.tvLabPercent), String.valueOf(AppData.PERCENT), R.layout.dialog_input_percent);
                         break;
                     case R.layout.dialog_input_percent:
+                        imm.hideSoftInputFromWindow(etData.getWindowToken(), 0);
                         appData.setPercent(formatValue(etData.getText().toString()));
                         DialogFragment dialogFragment = new DatePickerFragment((TextView)getActivity().findViewById(R.id.tvDateStartCredit), calendarConst, calendar);
                         dialogFragment.show(getFragmentManager(), getResources().getString(R.string.app_name));
