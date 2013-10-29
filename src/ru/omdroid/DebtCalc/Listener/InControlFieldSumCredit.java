@@ -13,7 +13,7 @@ import java.text.NumberFormat;
 
 
 public class InControlFieldSumCredit implements TextWatcher{
-    NumberFormat numberFormat = new DecimalFormat("###,###,###,###.##");
+    NumberFormat numberFormat = new DecimalFormat("###,###,###,###");
     ImageView markerCreditSum;
     EditText etSumCredit;
     String beforeText;
