@@ -24,9 +24,24 @@
             android:gravity="center_vertical|center_horizontal" android:maxLength="3">
         <requestFocus/>
     </EditText>
-    <Button
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="OK"
-            android:id="@+id/butDialogApplyData"/>
+            android:layout_height="wrap_content">
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:id="@+id/butDialogApplyData" android:layout_weight="1"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Отмена"
+                android:id="@+id/butCancel" android:layout_weight="1"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Далее"
+                android:id="@+id/butNext" android:layout_weight="1"/>
+    </LinearLayout>
 </LinearLayout>

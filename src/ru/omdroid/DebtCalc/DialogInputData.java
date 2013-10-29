@@ -39,42 +39,29 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
         getDialog().setTitle(getResources().getString(R.string.app_name));
         view = inflater.inflate(res, null);
         view.findViewById(R.id.butDialogApplyData).setOnClickListener(this);
+        view.findViewById(R.id.butNext).setOnClickListener(this);
 
         AppData appData = new AppData();
 
         etData = (EditText)view.findViewById(R.id.etDialogField);
-        TextView tvLabel = (TextView)view.findViewById(R.id.tvDialogLabel);
 
         InControlFieldSumCredit fSumCredit = new InControlFieldSumCredit(null, etData, null, appData, null);
-        InControlFieldTermCredit fTermCredit = new InControlFieldTermCredit(null, null, appData, null);
-        InControlFieldPercentCredit fPercentCredit = new InControlFieldPercentCredit(null, null, appData, null);
-
-        if (label.equals(getResources().getString(R.string.main_layout_label_credit_sum)))
-            etData.addTextChangedListener(fSumCredit);
-        if (label.equals(getResources().getString(R.string.main_layout_label_credit_term)))
-            etData.addTextChangedListener(fTermCredit);
-        if (label.equals(getResources().getString(R.string.main_layout_label_credit_percent)))
-            etData.addTextChangedListener(fPercentCredit);
+        etData.addTextChangedListener(fSumCredit);
 
         etData.setText(value);
-        etData.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                etData.selectAll();
-            }
-        });
         return view;
     }
 
     @Override
     public void onClick(final View view) {
+        Arithmetic arithmetic;
+        TextView tvDialogLabel;
         AppData appData = new AppData();
         switch (view.getId()){
             case R.id.butDialogApplyData:
-                TextView tvDialogLabel = (TextView)this.view.findViewById(R.id.tvDialogLabel);
+                tvDialogLabel = (TextView)this.view.findViewById(R.id.tvDialogLabel);
                 tvDialogLabel.setText(label);
                 tvLabel.setText(etData.getText().toString());
-                Arithmetic arithmetic;
                 switch (res){
                     case R.layout.dialog_input_sum: appData.setDebt(formatValue(etData.getText().toString()));
                         break;
@@ -93,6 +80,40 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                     tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
                 }
                 dismiss();
+                break;
+            case R.id.butNext:
+                tvDialogLabel = (TextView)this.view.findViewById(R.id.tvDialogLabel);
+                tvDialogLabel.setText(label);
+                tvLabel.setText(etData.getText().toString());
+                TextView resOut = null;
+                switch (res){
+                    case R.layout.dialog_input_sum: appData.setDebt(formatValue(etData.getText().toString()));
+                        res = R.layout.dialog_input_term; resOut = (TextView)getActivity().findViewById(R.id.tvLabTerm);
+                        value = String.valueOf(AppData.TERM);
+                        break;
+                    case R.layout.dialog_input_term: appData.setTerm(formatValue(etData.getText().toString()));
+                        res = R.layout.dialog_input_percent; resOut = (TextView)getActivity().findViewById(R.id.tvLabPercent);
+                        value = String.valueOf(AppData.PERCENT);
+                        break;
+                    case R.layout.dialog_input_percent: appData.setPercent(formatValue(etData.getText().toString()));
+                        dismiss();
+                        break;
+                    case R.layout.dialog_input_goal: appData.setGoal(etData.getText().toString());
+                        res = R.layout.dialog_input_sum; resOut = (TextView)getActivity().findViewById(R.id.tvLabSum);
+                        value = String.valueOf(AppData.DEBT);
+                        break;
+                }
+                if (preCalc.preCalc()){
+                    arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT), AppData.PERCENT, AppData.TERM);
+                    tvSumPre.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1))));
+                    tvOverPre.setText("+ " + new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5))));
+                    tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
+                    tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
+                }
+
+                dismiss();
+                DialogFragment dFragment = new DialogInputData(value, resOut, getResources().getString(R.string.main_layout_label_credit_goal), preCalc, tvSumPre, tvOverPre, tvTotal, tvOverPercent, res);
+                dFragment.show(getFragmentManager(), "");
                 break;
         }
     }
