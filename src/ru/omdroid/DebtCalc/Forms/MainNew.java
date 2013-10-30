@@ -2,15 +2,13 @@ package ru.omdroid.DebtCalc.Forms;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import ru.omdroid.DebtCalc.*;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
@@ -23,11 +21,12 @@ public class MainNew extends Activity {
     Calendar calendar;
     Calendar calendarConst;
     EditText etType;
+    AppData appData;
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.main_new);
 
-        AppData appData = new AppData();
+        appData = new AppData();
         appData.allRemove();
 
         final TextView tvSum = (TextView)findViewById(R.id.tvLabSum);
@@ -122,14 +121,19 @@ public class MainNew extends Activity {
                     Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
                 return true;
+            case R.id.popup:
+                View v = findViewById(R.id.popup);
+                showPopupMenu(v);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
     private void saveDataInDataBase() throws NullInputDataException {
-            if (AppData.DEBT.equals("") || AppData.TERM == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
-                throw new NullInputDataException(" ");
+        if (AppData.DEBT.equals("") || AppData.TERM == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
+            throw new NullInputDataException(" ");
+
         calendar.set(calendar.get(Calendar.YEAR), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.DATE));
         Long dateFirstPayment = calendar.getTimeInMillis();
 
@@ -187,6 +191,33 @@ public class MainNew extends Activity {
 
     private int generateNumCredit(){
         Random random = new Random();
-        return 1000 + random.nextInt(9000 - 1000 +1);
+        return 1000 + random.nextInt(9000 - 1000 + 1);
+    }
+
+    private void showPopupMenu(View v){
+        final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
+        MenuInflater mInflater = pMenu.getMenuInflater();
+        mInflater.inflate(R.menu.pm_d_add, pMenu.getMenu());
+        pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                try {
+                    tablePaymentShow();
+                } catch (NullInputDataException e) {
+                    Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
+        });
+        pMenu.show();
+    }
+
+    private void tablePaymentShow() throws NullInputDataException{
+        if (AppData.DEBT.equals("") || AppData.TERM == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
+            throw new NullInputDataException("Таблица");
+        Intent intent = new Intent(getBaseContext(), ListPayment.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+
     }
 }

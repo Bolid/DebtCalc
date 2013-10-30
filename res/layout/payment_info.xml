@@ -6,50 +6,51 @@
               android:layout_height="match_parent" android:background="@color/background">
 
     <LinearLayout
+            android:id="@+id/listInfoDebtLabel"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:paddingTop="10dp"
+            android:layout_below="@id/writePayment">
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="№"
-                android:id="@+id/textView" android:layout_gravity="center_horizontal|bottom"
-                android:gravity="center_horizontal" android:paddingLeft="2dp" android:paddingRight="2dp"
-                style="@style/styleLabel" android:textSize="12sp" android:layout_weight="0.2"/>
+                android:id="@+id/textView"
+                android:gravity="center_vertical|right"
+                style="@style/styleLabel" android:textSize="12sp" android:layout_weight="0.3"
+                android:paddingRight="5dp"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Платеж"
-                android:id="@+id/textView1" android:layout_gravity="center" android:layout_weight="1"
-                android:gravity="center_horizontal" style="@style/styleLabel" android:textSize="12sp"/>
+                android:id="@+id/textView1" android:layout_weight="1"
+                android:gravity="center_vertical|right" style="@style/styleLabel" android:textSize="12sp"
+                android:paddingRight="15dp"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Долг"
-                android:id="@+id/textView2" android:layout_gravity="center_horizontal|bottom" android:layout_weight="1"
-                android:gravity="center_horizontal" style="@style/styleLabel" android:textSize="12sp"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Процент"
-                android:id="@+id/textView3" android:layout_gravity="center" android:layout_weight="1"
-                android:gravity="center_horizontal" style="@style/styleLabel" android:textSize="12sp"/>
+                android:text="Дата"
+                android:id="@+id/textView2" style="@style/styleLabel" android:textSize="12sp"
+                android:layout_weight="1" android:gravity="center_vertical|right"
+                android:paddingRight="15dp"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Сумма"
-                android:id="@+id/textView4" android:layout_gravity="center_horizontal|bottom" android:layout_weight="1"
-                android:gravity="center_horizontal" style="@style/styleLabel" android:textSize="12sp"/>
+                android:id="@+id/textView4" android:layout_weight="1"
+                android:gravity="center_vertical|right" style="@style/styleLabel" android:textSize="12sp"
+                android:paddingRight="15dp"/>
     </LinearLayout>
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/scrollView" android:layout_gravity="left|center_vertical">
-        <!--<LinearLayout
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_below="@id/listInfoDebtLabel">
+        <LinearLayout
                 android:id="@+id/llPaymentInfo"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
-        </LinearLayout>-->
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

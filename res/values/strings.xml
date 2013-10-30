@@ -26,8 +26,10 @@
     <string name="info_payment_label">Платеж</string>
     <string name="info_debt_label">Долг</string>
     <string name="container_over_debt">Выплачено</string>
+    <!--popup-->
     <string name="popup_archive">Архив</string>
     <string name="popup_current">Текущие</string>
+    <string name="popup_table">График платежей</string>
     <!--Value-->
     <string name="main_layout_value_credit_sum">900 000</string>
     <string name="main_layout_value_credit_percent">12</string>

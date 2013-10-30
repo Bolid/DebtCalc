@@ -55,6 +55,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
 
         view.findViewById(R.id.butDialogApplyData).setOnClickListener(this);
         view.findViewById(R.id.butNext).setOnClickListener(this);
+        view.findViewById(R.id.butCancel).setOnClickListener(this);
 
         AppData appData = new AppData();
 
@@ -124,6 +125,10 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                     tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
                     tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
                 }
+                dismiss();
+                break;
+            case R.id.butCancel:
+                imm.hideSoftInputFromWindow(etData.getWindowToken(), 0);
                 dismiss();
                 break;
         }

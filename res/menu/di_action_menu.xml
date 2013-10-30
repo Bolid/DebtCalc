@@ -5,4 +5,8 @@
             android:id="@+id/apply_payment"
             android:icon="@drawable/apply_payment"
             android:showAsAction="always"/>
+    <item
+            android:id="@+id/popup"
+            android:icon="@drawable/ic_popup_menu"
+            android:showAsAction="always"/>
 </menu>

@@ -10,13 +10,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created with IntelliJ IDEA.
- * User: dima
- * Date: 7/24/13
- * Time: 11:07 PM
- * To change this template use File | Settings | File Templates.
- */
+
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     TextView textView;
     Calendar calendarConst;
@@ -41,6 +35,8 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     public void onDateSet(DatePicker view, int year, int month, int day) {
         textView.setText(String.valueOf(day)+"."+String.valueOf(month + 1)+"."+String.valueOf(year));
         calendar.set(year, month, day);
+        AppData appData = new AppData();
+        appData.setDate(calendar.getTimeInMillis());
         calendarConst.set(year, month, day);
     }
 }
