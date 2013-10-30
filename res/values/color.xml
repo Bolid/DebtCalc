@@ -6,8 +6,9 @@
     <color name="background_app">#e5e5e5</color>
     <color name="substrate">#eafdf4</color>
     <color name="colorLabel">#fc9c14</color>
+    <color name="colorTintIco">#fc9c14</color>
     <color name="colorValue">#021460</color>
-    <color name="colorIconText">#ffffc97e</color>
+    <color name="colorIcon">#ff18abff</color>
     <color name="colorIconTextShadow">#ff3d3d3d</color>
     <color name="colorIconDebt">#ff1eae26</color>
     <color name="butPress">#90a4050b</color>

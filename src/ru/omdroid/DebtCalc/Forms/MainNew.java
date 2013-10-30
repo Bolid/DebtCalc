@@ -38,7 +38,7 @@ public class MainNew extends Activity {
 
         etType = (EditText)findViewById(R.id.etCreditType);
 
-        final TextView tvSumPre = (TextView)findViewById(R.id.tvSum);
+        final TextView tvSumPre = (TextView)findViewById(R.id.tvLabSum);
         final TextView tvOverPay = (TextView)findViewById(R.id.tvOverPay);
         final TextView tvTotal = (TextView)findViewById(R.id.tvTotal);
         final TextView tvOverPerc = (TextView)findViewById(R.id.tvOverPerc);
@@ -130,12 +130,11 @@ public class MainNew extends Activity {
     private void saveDataInDataBase() throws NullInputDataException {
             if (AppData.DEBT.equals("") || AppData.TERM == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
                 throw new NullInputDataException(" ");
-            calendar.setTimeInMillis(calendarConst.getTimeInMillis());
-            calendar.set(calendar.get(Calendar.YEAR), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.DATE));
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + (Integer.valueOf(AppData.param[2])), calendar.get(Calendar.DATE));
+        calendar.set(calendar.get(Calendar.YEAR), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.DATE));
+        Long dateFirstPayment = calendar.getTimeInMillis();
 
-            Long dateFirstPayment = calendar.getTimeInMillis();
-            String date = String.valueOf(calendar.get(Calendar.DATE))+"."+String.valueOf(calendar.get(Calendar.MONTH))+"."+String.valueOf(calendar.get(Calendar.YEAR));
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + (Integer.valueOf(AppData.param[2])), calendar.get(Calendar.DATE));
+        String date = String.valueOf(calendar.get(Calendar.DATE))+"."+String.valueOf(calendar.get(Calendar.MONTH))+"."+String.valueOf(calendar.get(Calendar.YEAR));
 
             WorkDB workDB = new WorkDB(getBaseContext());
             if (workDB.countDataInDataBase("SELECT " + DebtCalcDB.FIELD_ID +

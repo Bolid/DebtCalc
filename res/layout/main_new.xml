@@ -5,53 +5,71 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:background="@color/background_app">
 
-    <TextView
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main_layout_label_title"
-            android:id="@+id/textView" android:layout_gravity="left|center_vertical"
-            android:textColor="@color/colorValue" style="@style/styleLabel_2" android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp" android:layout_marginBottom="3dp"/>
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:text="New Text"
-            android:id="@+id/textView1" android:layout_gravity="left|center_vertical" style="@style/styleLabel_2"
-            android:background="@color/colorValue"/>
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp" android:layout_marginBottom="5dp">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView6" android:layout_gravity="center_vertical"
+                android:src="@drawable/ok" android:tint="@color/colorIcon"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_layout_label_title"
+                android:id="@+id/textView"
+                android:textColor="@color/colorIcon" style="@style/styleLabel_2"
+                android:layout_gravity="center_vertical" android:paddingLeft="5dp" android:textStyle="bold"/>
+    </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="100dp">
+            android:layout_height="wrap_content">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="3dp"
-                android:background="@drawable/container_press" android:id="@+id/llCreditGoal">
+                android:background="@android:color/background_light" android:id="@+id/llCreditGoal"
+                android:paddingBottom="10dp">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView1" android:src="@drawable/goal"
+                    android:layout_gravity="center_horizontal" android:layout_marginTop="5dp" android:tint="@android:color/darker_gray"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_layout_label_credit_goal"
                     android:id="@+id/textView3" style="@style/styleLabel_2" android:textColor="@android:color/darker_gray"
-                    android:layout_gravity="center_horizontal" android:layout_marginTop="10dp"/>
+                    android:layout_gravity="center_horizontal" android:layout_marginTop="5dp" android:textSize="12sp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvLabGoal" android:layout_marginTop="10dp" style="@style/styleLabel_2"
                     android:textColor="@android:color/black" android:textSize="18sp"
                     android:layout_gravity="center_horizontal" android:gravity="center_vertical|center_horizontal"
-                    android:inputType="text"/>
+                    android:inputType="text" android:singleLine="true"
+                    android:textAllCaps="true"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="3dp"
-                android:background="@drawable/container_press" android:id="@+id/llDateStartCredit">
+                android:background="@android:color/background_light" android:id="@+id/llDateStartCredit"
+                android:paddingBottom="10dp">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView2" android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp" android:src="@drawable/calendar" android:tint="@android:color/darker_gray"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/mll_credit_date"
                     android:id="@+id/textView7" style="@style/styleLabel_2" android:textColor="@android:color/darker_gray"
-                    android:layout_gravity="center_horizontal" android:layout_marginTop="10dp"/>
+                    android:layout_gravity="center_horizontal" android:layout_marginTop="5dp" android:textSize="12sp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -64,19 +82,24 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="100dp">
+            android:layout_height="wrap_content">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent" android:layout_weight="1" android:layout_margin="3dp"
-                android:background="@drawable/container_press" android:id="@+id/llSum">
+                android:background="@android:color/background_light" android:id="@+id/llSum" android:paddingBottom="10dp">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView3" android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal" android:src="@drawable/dollar" android:tint="@android:color/darker_gray"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_layout_label_credit_sum"
-                    android:id="@+id/textView2" android:layout_gravity="center"
+                    android:id="@+id/textView2" android:layout_gravity="center_horizontal"
                     android:textColor="@android:color/darker_gray" style="@style/styleLabel_2"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="5dp" android:textSize="12sp"/>
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -89,13 +112,19 @@
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent" android:layout_weight="1" android:layout_margin="3dp"
-                android:background="@drawable/container_press" android:id="@+id/llTerm">
+                android:background="@android:color/background_light" android:id="@+id/llTerm" android:paddingBottom="10dp">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView4" android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal" android:src="@drawable/clock" android:tint="@android:color/darker_gray"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_layout_label_credit_term"
-                    android:id="@+id/textView4" android:layout_gravity="center" style="@style/styleLabel_2"
-                    android:textColor="@android:color/darker_gray" android:layout_marginTop="10dp"/>
+                    android:id="@+id/textView4" android:layout_gravity="center_horizontal" style="@style/styleLabel_2"
+                    android:textColor="@android:color/darker_gray" android:layout_marginTop="5dp"
+                    android:textSize="12sp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -107,13 +136,19 @@
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent" android:layout_weight="1" android:layout_margin="3dp"
-                android:background="@drawable/container_press" android:id="@+id/llPercent">
+                android:background="@android:color/background_light" android:id="@+id/llPercent" android:paddingBottom="10dp">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView5" android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal" android:src="@drawable/graph" android:tint="@android:color/darker_gray"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/main_layout_label_credit_percent"
-                    android:id="@+id/textView5" android:layout_gravity="center" style="@style/styleLabel_2"
-                    android:textColor="@android:color/darker_gray" android:layout_marginTop="10dp"/>
+                    android:id="@+id/textView5" android:layout_gravity="center_horizontal" style="@style/styleLabel_2"
+                    android:textColor="@android:color/darker_gray" android:layout_marginTop="5dp"
+                    android:textSize="12sp"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -122,25 +157,31 @@
                     android:textSize="18sp"/>
         </LinearLayout>
     </LinearLayout>
-    <TextView
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mll_details"
-            android:id="@+id/textView8" android:layout_gravity="left|center_vertical" style="@style/styleLabel_2"
-            android:textColor="@color/colorValue" android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
-            android:layout_marginBottom="3dp"/>
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:id="@+id/textView9" android:layout_gravity="left|center_vertical"
-            android:background="@color/colorValue"/>
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp" android:layout_marginBottom="5dp">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView7" android:layout_gravity="center_vertical" android:src="@drawable/info"
+                android:tint="@color/colorIcon"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mll_details"
+                android:id="@+id/textView8" android:layout_gravity="center_vertical" style="@style/styleLabel_2"
+                android:textColor="@color/colorIcon"
+                android:paddingLeft="5dp"/>
+    </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" android:background="@drawable/container_press"
+            android:layout_height="fill_parent" android:background="@android:color/background_light"
             android:layout_marginLeft="3dp" android:layout_marginTop="3dp" android:layout_marginRight="3dp"
             android:layout_marginBottom="3dp">
-        <LinearLayout
+        <!--<LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" android:layout_marginTop="10dp">
@@ -156,11 +197,16 @@
                     android:id="@+id/tvSum" android:layout_weight="1" android:gravity="right"
                     android:paddingRight="10dp" android:singleLine="true" style="@style/styleLabel_2"
                     android:textColor="@android:color/black" android:textSize="16sp"/>
-        </LinearLayout>
+        </LinearLayout>-->
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" android:layout_marginTop="10dp">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView8" android:layout_gravity="center_vertical" android:src="@drawable/perc"
+                    android:tint="@android:color/darker_gray" android:paddingLeft="5dp"/>
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -174,26 +220,31 @@
                     android:paddingRight="10dp" android:singleLine="true" style="@style/styleLabel_2"
                     android:textColor="@android:color/black" android:textSize="16sp"/>
         </LinearLayout>
-        <ImageView
+        <!--<ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="2dp"
-                android:id="@+id/imageView" android:layout_gravity="center" android:background="@android:color/black"/>
+                android:id="@+id/imageView" android:layout_gravity="center" android:background="@android:color/black"/>-->
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" android:layout_marginTop="10dp">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView9" android:layout_gravity="center_vertical"
+                    android:src="@drawable/sum" android:tint="@android:color/darker_gray" android:paddingLeft="5dp"/>
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/mll_details_total"
                     android:id="@+id/textView14" android:layout_weight="0.6" style="@style/styleLabel_2"
-                    android:textColor="@android:color/darker_gray" android:paddingLeft="10dp" android:textSize="18sp"/>
+                    android:textColor="@android:color/darker_gray" android:paddingLeft="10dp" android:textSize="20sp"/>
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvTotal" android:layout_weight="1" android:gravity="right"
                     android:paddingRight="10dp" android:singleLine="true" style="@style/styleLabel_2"
-                    android:textColor="@android:color/black" android:textSize="18sp"/>
+                    android:textColor="@android:color/black" android:textSize="20sp"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
