@@ -50,6 +50,9 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
 
         imm = (InputMethodManager)getActivity().getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 1);
+
+        etData.selectAll();
+
         view.findViewById(R.id.butDialogApplyData).setOnClickListener(this);
         view.findViewById(R.id.butNext).setOnClickListener(this);
 
@@ -70,6 +73,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
         AppData appData = new AppData();
         switch (view.getId()){
             case R.id.butDialogApplyData:
+                imm.hideSoftInputFromWindow(etData.getWindowToken(), 0);
                 tvLabel.setText(etData.getText().toString());
                 switch (res){
                     case R.layout.dialog_input_sum: appData.setDebt(formatValue(etData.getText().toString()));
