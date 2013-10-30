@@ -31,13 +31,13 @@
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="3dp"
-                android:background="@drawable/container_press" android:id="@+id/llCreditGoal"
+                android:background="@android:color/background_light" android:id="@+id/llCreditGoal"
                 android:paddingBottom="10dp">
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView1" android:src="@drawable/goal"
-                    android:layout_gravity="center_horizontal" android:layout_marginTop="5dp" android:tint="@color/colorLabel"/>
+                    android:layout_gravity="center_horizontal" android:layout_marginTop="5dp" android:tint="@android:color/darker_gray"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -57,13 +57,13 @@
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="3dp"
-                android:background="@drawable/container_press" android:id="@+id/llDateStartCredit"
+                android:background="@android:color/background_light" android:id="@+id/llDateStartCredit"
                 android:paddingBottom="10dp">
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView2" android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp" android:src="@drawable/calendar" android:tint="@color/colorLabel"/>
+                    android:layout_marginTop="5dp" android:src="@drawable/calendar" android:tint="@android:color/darker_gray"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,12 +87,12 @@
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent" android:layout_weight="1" android:layout_margin="3dp"
-                android:background="@drawable/container_press" android:id="@+id/llSum" android:paddingBottom="10dp">
+                android:background="@android:color/background_light" android:id="@+id/llSum" android:paddingBottom="10dp">
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView3" android:layout_marginTop="5dp"
-                    android:layout_gravity="center_horizontal" android:src="@drawable/dollar" android:tint="@color/colorLabel"/>
+                    android:layout_gravity="center_horizontal" android:src="@drawable/dollar" android:tint="@android:color/darker_gray"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,12 +112,12 @@
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent" android:layout_weight="1" android:layout_margin="3dp"
-                android:background="@drawable/container_press" android:id="@+id/llTerm" android:paddingBottom="10dp">
+                android:background="@android:color/background_light" android:id="@+id/llTerm" android:paddingBottom="10dp">
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView4" android:layout_marginTop="5dp"
-                    android:layout_gravity="center_horizontal" android:src="@drawable/clock" android:tint="@color/colorLabel"/>
+                    android:layout_gravity="center_horizontal" android:src="@drawable/clock" android:tint="@android:color/darker_gray"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -136,12 +136,12 @@
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent" android:layout_weight="1" android:layout_margin="3dp"
-                android:background="@drawable/container_press" android:id="@+id/llPercent" android:paddingBottom="10dp">
+                android:background="@android:color/background_light" android:id="@+id/llPercent" android:paddingBottom="10dp">
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView5" android:layout_marginTop="5dp"
-                    android:layout_gravity="center_horizontal" android:src="@drawable/graph" android:tint="@color/colorLabel"/>
+                    android:layout_gravity="center_horizontal" android:src="@drawable/graph" android:tint="@android:color/darker_gray"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -178,7 +178,7 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" android:background="@drawable/container_press"
+            android:layout_height="fill_parent" android:background="@android:color/background_light"
             android:layout_marginLeft="3dp" android:layout_marginTop="3dp" android:layout_marginRight="3dp"
             android:layout_marginBottom="3dp">
         <!--<LinearLayout
@@ -206,7 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView8" android:layout_gravity="center_vertical" android:src="@drawable/perc"
-                    android:tint="@color/colorLabel" android:paddingLeft="5dp"/>
+                    android:tint="@android:color/darker_gray" android:paddingLeft="5dp"/>
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -232,7 +232,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/imageView9" android:layout_gravity="center_vertical"
-                    android:src="@drawable/sum" android:tint="@color/colorLabel" android:paddingLeft="5dp"/>
+                    android:src="@drawable/sum" android:tint="@android:color/darker_gray" android:paddingLeft="5dp"/>
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
