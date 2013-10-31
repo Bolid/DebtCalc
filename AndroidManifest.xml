@@ -26,6 +26,9 @@
                 android:name="ru.omdroid.DebtCalc.Forms.ListPayment"
                 android:screenOrientation="portrait"/>
         <activity
+                android:name="ru.omdroid.DebtCalc.Forms.ListPaymentDB"
+                android:screenOrientation="portrait"/>
+        <activity
                 android:name="ru.omdroid.DebtCalc.Forms.AnaliticForm"
                 android:screenOrientation="portrait"/>
         <activity android:name=".Forms.ResultForm"

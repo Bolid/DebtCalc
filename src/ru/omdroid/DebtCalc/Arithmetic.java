@@ -221,7 +221,7 @@ public class Arithmetic {
     public Double Rounding(Double value){
         BigDecimal roundValue = BigDecimal.valueOf(value);
         roundValue = roundValue.setScale(2, BigDecimal.ROUND_HALF_DOWN);
-        return Double.valueOf(roundValue.toString());
+        return value;//Double.valueOf(roundValue.toString());
     }
 
     public String setMask(Double value){

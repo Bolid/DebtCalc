@@ -154,7 +154,6 @@ public class MainNew extends Activity {
                         DebtCalcDB.FIELD_TYPE_DEBT + ", " +
                         DebtCalcDB.FIELD_DATE_LONG_START_DEBT + ", " +
                         DebtCalcDB.FIELD_DATE_STR_START_DEBT + ", " +
-                        DebtCalcDB.FIELD_BALANCE_TERM_DEBT + ", " +
                         DebtCalcDB.FIELD_PAID_DEBT + ") " +
                         "VALUES ('" +
                         numCredit + "', '" +
@@ -163,13 +162,13 @@ public class MainNew extends Activity {
                         AppData.TERM + "', '" +
                         AppData.GOAL + "', '" +
                         Calendar.getInstance().getTimeInMillis() + "', '" +
-                        date + "', '" +
-                        AppData.TERM + "', '0')");
+                        date + "', '0')");
 
                 workDB.insertValueToTablePayment("INSERT INTO " + DebtCalcDB.TABLE_PAYMENTS + " (" +
                         DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + ", " +
                         DebtCalcDB.FIELD_PAYMENT_PAYMENTS + ", " +
                         DebtCalcDB.F_BALANCE_DEBT_PAY + ", " +
+                        DebtCalcDB.F_BALANCE_TERM_PAY + ", " +
                         DebtCalcDB.FIELD_SUM_PAYMENTS + ", " +
                         DebtCalcDB.F_OVER_PAY + ", " +
                         DebtCalcDB.FIELD_DATE_LONG_PAYMENTS + ", " +
@@ -178,7 +177,8 @@ public class MainNew extends Activity {
                         numCredit + "', '" +
                         arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM) + "', '" +
                         AppData.DEBT + "', '" +
-                        "0.0', '" +
+                        AppData.TERM + "', '" +
+                        arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM) + "', '" +
                         "0.0', '" +
                         dateFirstPayment + "', '" +
                         "0')");
