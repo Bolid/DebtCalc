@@ -1,6 +1,7 @@
 package ru.omdroid.DebtCalc.Forms;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,12 +39,14 @@ public class ListPayment extends Activity {
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(AppData.DATE);
+                calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
+
                 int i = 1;
-                while (balance > 0){
+                for (int j = AppData.TERM; j > 0; j--){
                     feePayment = feePayment + payment;
                     paymentPercent = arithmetic.getPaymentInPercent(balance);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balance);
-                    date = (calendar.get(Calendar.DATE)) + "." + String.valueOf(calendar.get(Calendar.MONTH) + 2) + "." + calendar.get(Calendar.YEAR);
+                    date = (calendar.get(Calendar.DATE)) + "." + String.valueOf(calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.YEAR);
                     addRecord(inflater, layout, i, payment, date, balance, paymentDebt, paymentPercent, feePayment);
                     balance = arithmetic.getBalance(payment, balance, AppData.TERM);
                     calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
@@ -85,21 +88,21 @@ public class ListPayment extends Activity {
         view.setOnClickListener(new View.OnClickListener() {
             boolean infoDetail = false;
             LinearLayout.LayoutParams param = null;
+
             @Override
             public void onClick(View view) {
-                LinearLayout layoutChild = (LinearLayout)view.findViewById(R.id.layoutInfoListPod);
-                if (!infoDetail){
-                    TextView tvBalanceDebt = (TextView)view.findViewById(R.id.debtBalanceListInfo);
-                    TextView tvDebt = (TextView)view.findViewById(R.id.tvDebtRecord);
-                    TextView tvPercent = (TextView)view.findViewById(R.id.tvPercentRecord);
+                LinearLayout layoutChild = (LinearLayout) view.findViewById(R.id.layoutInfoListPod);
+                if (!infoDetail) {
+                    TextView tvBalanceDebt = (TextView) view.findViewById(R.id.debtBalanceListInfo);
+                    TextView tvDebt = (TextView) view.findViewById(R.id.tvDebtRecord);
+                    TextView tvPercent = (TextView) view.findViewById(R.id.tvPercentRecord);
 
                     tvBalanceDebt.setText(new DecimalFormat("###,###,###,###").format(balance));
                     tvDebt.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentDebt));
                     tvPercent.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentPercent));
                     param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     infoDetail = !infoDetail;
-                }
-                else{
+                } else {
                     param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
                     infoDetail = !infoDetail;
                 }

@@ -83,7 +83,7 @@ public class MainFragment extends Fragment {
                             DebtCalcDB.FIELD_TYPE_DEBT + ", " +
                             DebtCalcDB.FIELD_DATE_LONG_START_DEBT + ", " +
                             DebtCalcDB.FIELD_DATE_STR_START_DEBT + ", " +
-                            DebtCalcDB.FIELD_BALANCE_TERM_DEBT + ", " +
+                            DebtCalcDB.F_BALANCE_TERM_PAY + ", " +
                             DebtCalcDB.FIELD_PAID_DEBT + ") " +
                             "VALUES ('" +
                             numCredit + "', '" +

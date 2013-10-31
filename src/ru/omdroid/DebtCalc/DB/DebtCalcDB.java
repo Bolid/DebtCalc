@@ -19,7 +19,6 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String FIELD_OVER_DEBT = "over_debt";
     public static final String FIELD_DATE_STR_START_DEBT = "date_str_start_debt";
     public static final String FIELD_DATE_LONG_START_DEBT = "date_long_start_debt";
-    public static final String FIELD_BALANCE_TERM_DEBT = "balance_term_debt";
     public static final String FIELD_PAID_DEBT = "paid_debt";
     /*TABLE PAYMENTS*/
     public static final String TABLE_PAYMENTS = "payments_table";
@@ -29,13 +28,14 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String FIELD_DEBT_PAYMENTS = "debt_payments";
     public static final String FIELD_PERCENT_PAYMENTS = "percent_payments";
     public static final String F_BALANCE_DEBT_PAY = "balance_debt";
+    public static final String F_BALANCE_TERM_PAY = "balance_term_debt";
     public static final String FIELD_SUM_PAYMENTS = "sum_payments";
     public static final String F_OVER_PAY = "over_payments";
     public static final String FIELD_DATE_LONG_PAYMENTS = "date_long_payments";
     public static final String FIELD_PAID_PAYMENTS = "paid_payments";
     public static final String F_PAYMENT_UP_PAY = "up_payment";
     public static final String REQUEST_CREATE_TABLE_DEBTS = "CREATE TABLE " +
-            TABLE_CREDITS + " (" +
+                                                                    TABLE_CREDITS + " (" +
                                                                     FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                                                     FIELD_ID_DEBT + " INTEGER, " +
                                                                     FIELD_SUM_DEBT + " INTEGER, " +
@@ -44,17 +44,17 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     FIELD_TYPE_DEBT + " STRING, " +
                                                                     FIELD_DATE_LONG_START_DEBT + " LONG, " +
                                                                     FIELD_DATE_STR_START_DEBT + " STRING, " +
-                                                                    FIELD_BALANCE_TERM_DEBT + " STRING, " +
                                                                     FIELD_PAID_DEBT + " STRING);";
 
     public static final String REQUEST_CREATE_TABLE_PAYMENTS = "CREATE TABLE " +
-            TABLE_PAYMENTS + " (" +
+                                                                    TABLE_PAYMENTS + " (" +
                                                                     FIELD_ID_NUM + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                                                     FIELD_ID_DEBT_PAYMENTS + " INTEGER, " +
                                                                     FIELD_PAYMENT_PAYMENTS + " DOUBLE, " +
                                                                     FIELD_DEBT_PAYMENTS + " DOUBLE, " +
                                                                     FIELD_PERCENT_PAYMENTS + " DOUBLE, " +
                                                                     F_BALANCE_DEBT_PAY + " STRING, " +
+                                                                    F_BALANCE_TERM_PAY + " STRING, " +
                                                                     FIELD_SUM_PAYMENTS + " DOUBLE, " +
                                                                     F_OVER_PAY + " DOUBLE, " +
                                                                     FIELD_DATE_LONG_PAYMENTS + " INTEGER, " +

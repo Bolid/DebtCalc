@@ -72,7 +72,7 @@
                     android:paddingBottom="5dp" style="@style/styleValue"/>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
+    <!--<LinearLayout
             android:id="@+id/viewGraphLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,13 +81,13 @@
                 android:id="@+id/viewGraph"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"/>
-    </LinearLayout>
+    </LinearLayout>-->
     <LinearLayout
             android:id="@+id/writePayment"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_centerHorizontal="true"
-            android:layout_below="@id/viewGraphLayout">
+            android:layout_below="@id/infoDebtLayout">
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,52 +107,4 @@
                 android:id="@+id/bPlusPayment"
                 android:layout_column="2"/>
     </LinearLayout>
-    <LinearLayout
-            android:id="@+id/listInfoDebtLabel"
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" android:paddingTop="10dp"
-            android:layout_below="@id/writePayment">
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="№"
-                android:id="@+id/textView"
-                android:gravity="center_vertical|right"
-                style="@style/styleLabel" android:textSize="12sp" android:layout_weight="0.3"
-                android:paddingRight="5dp"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Платеж"
-                android:id="@+id/textView1" android:layout_weight="1"
-                android:gravity="center_vertical|right" style="@style/styleLabel" android:textSize="12sp"
-                android:paddingRight="15dp"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Дата"
-                android:id="@+id/textView2" style="@style/styleLabel" android:textSize="12sp"
-                android:layout_weight="1" android:gravity="center_vertical|right"
-                android:paddingRight="15dp"/>
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Сумма"
-                android:id="@+id/textView4" android:layout_weight="1"
-                android:gravity="center_vertical|right" style="@style/styleLabel" android:textSize="12sp"
-                android:paddingRight="15dp"/>
-    </LinearLayout>
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/scrollView"
-            android:layout_below="@id/listInfoDebtLabel">
-        <LinearLayout
-                android:id="@+id/llPaymentInfo"
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-        </LinearLayout>
-    </ScrollView>
 </RelativeLayout>
