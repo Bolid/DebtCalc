@@ -69,8 +69,8 @@
             android:paddingRight="3dp"
             android:id="@+id/containerDate"
             style="@style/styleLabel"
-            android:layout_alignRight="@+id/textView1" android:layout_alignTop="@+id/creditType"
-            android:textColor="@android:color/darker_gray"/>
+            android:textColor="@android:color/darker_gray" android:textSize="14sp"
+            android:layout_alignRight="@+id/textView1" android:layout_alignBottom="@+id/creditType"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,5 +78,10 @@
             android:id="@+id/balanceTermCredit" android:layout_alignLeft="@+id/creditType"
             android:layout_below="@+id/textView2" style="@style/styleValue" android:paddingTop="3dp" android:textAllCaps="true"
             android:textColor="@android:color/darker_gray"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivpmContainer" android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true" android:background="@drawable/pm_container"/>
     </RelativeLayout>
 </LinearLayout>

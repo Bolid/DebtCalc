@@ -136,6 +136,7 @@ public class MainNew extends Activity {
 
         calendar.set(calendar.get(Calendar.YEAR), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.DATE));
         Long dateFirstPayment = calendar.getTimeInMillis();
+        String date1 = String.valueOf(calendar.get(Calendar.DATE))+"."+String.valueOf(calendar.get(Calendar.MONTH))+"."+String.valueOf(calendar.get(Calendar.YEAR));
 
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + (Integer.valueOf(AppData.param[2])), calendar.get(Calendar.DATE));
         String date = String.valueOf(calendar.get(Calendar.DATE))+"."+String.valueOf(calendar.get(Calendar.MONTH))+"."+String.valueOf(calendar.get(Calendar.YEAR));
@@ -170,6 +171,8 @@ public class MainNew extends Activity {
                         DebtCalcDB.F_BALANCE_DEBT_PAY + ", " +
                         DebtCalcDB.F_BALANCE_TERM_PAY + ", " +
                         DebtCalcDB.FIELD_SUM_PAYMENTS + ", " +
+                        DebtCalcDB.FIELD_DEBT_PAYMENTS + ", " +
+                        DebtCalcDB.FIELD_PERCENT_PAYMENTS + ", " +
                         DebtCalcDB.F_OVER_PAY + ", " +
                         DebtCalcDB.FIELD_DATE_LONG_PAYMENTS + ", " +
                         DebtCalcDB.FIELD_PAID_PAYMENTS + ")" +
@@ -179,6 +182,8 @@ public class MainNew extends Activity {
                         AppData.DEBT + "', '" +
                         AppData.TERM + "', '" +
                         arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM) + "', '" +
+                        arithmetic.getPaymentInDebt(arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM), Double.valueOf(AppData.DEBT)) + "', '" +
+                        arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT)) + "', '" +
                         "0.0', '" +
                         dateFirstPayment + "', '" +
                         "0')");

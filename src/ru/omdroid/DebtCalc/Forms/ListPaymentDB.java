@@ -3,6 +3,7 @@ package ru.omdroid.DebtCalc.Forms;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -43,7 +44,8 @@ public class ListPaymentDB extends Activity {
                         DebtCalcDB.F_BALANCE_DEBT_PAY +", "+
                         DebtCalcDB.F_BALANCE_TERM_PAY +", "+
                         DebtCalcDB.FIELD_SUM_PAYMENTS +", "+
-                        DebtCalcDB.F_PAYMENT_UP_PAY +
+                        DebtCalcDB.F_PAYMENT_UP_PAY +", "+
+                        DebtCalcDB.FIELD_PAID_PAYMENTS +
                         " FROM " + DebtCalcDB.TABLE_PAYMENTS +
                         " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +"')");
                 int numPayment = 0;
@@ -51,6 +53,11 @@ public class ListPaymentDB extends Activity {
                     numPayment++;
                     datePay.setTimeInMillis(cursorInPayment.getLong(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS)));
                     String date = String.valueOf(datePay.get(Calendar.DATE)) + "." + String.valueOf(datePay.get(Calendar.MONTH) + 1) + "." + String.valueOf(datePay.get(Calendar.YEAR));
+                    Drawable background;
+                    if (cursorInPayment.getInt(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_PAID_PAYMENTS)) == 1)
+                        background = getResources().getDrawable(R.drawable.pay_paid);
+                    else
+                        background =  getResources().getDrawable(R.drawable.pay_next_piad);
                     addRecord(inflater,
                             layout,
                             numPayment,
@@ -61,7 +68,7 @@ public class ListPaymentDB extends Activity {
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY)),
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS)),
                             cursorInPayment.getString(cursorInPayment.getColumnIndex(DebtCalcDB.F_PAYMENT_UP_PAY)),
-                            getResources().getColor(R.color.infoPaymentBackground));
+                            background);
                     publishProgress(view);
                 }
 
@@ -85,11 +92,11 @@ public class ListPaymentDB extends Activity {
                 for (int j = balanceTerm - 1; j > 0; j--){
                     numPayment++;
                     feePayment = feePayment + payment;
+                    balanceDebt = arithmetic.getBalance(payment, balanceDebt, AppData.TERM);
                     paymentPercent = arithmetic.getPaymentInPercent(balanceDebt);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balanceDebt);
-                    balanceDebt = arithmetic.getBalance(payment, balanceDebt, AppData.TERM);
                     date = (calendar.get(Calendar.DATE)) + "." + String.valueOf(calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.YEAR);
-                    addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, date, balanceDebt, feePayment, null, getResources().getColor(R.color.background));
+                    addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, date, balanceDebt, feePayment, null, getResources().getDrawable(R.color.pay_no_paid));
                     calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
                     publishProgress(view);
                 }
@@ -118,10 +125,10 @@ public class ListPaymentDB extends Activity {
                           final Double balanceDebt,
                           Double feePayment,
                           String upPayment,
-                          int color){
+                          Drawable color){
         view = inflater.inflate(R.layout.payment_info_record, layout, false);
 
-        view.setBackgroundColor(color);
+        view.setBackground(color);
 
         TextView tvNumPayment = (TextView)view.findViewById(R.id.tvNumPaymentRecord);
         TextView tvPayment = (TextView)view.findViewById(R.id.tvPaymentRecord);

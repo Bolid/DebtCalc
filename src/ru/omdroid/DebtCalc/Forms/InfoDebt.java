@@ -115,11 +115,11 @@ public class InfoDebt extends Activity {
                 WorkDB workDB = new WorkDB(getBaseContext());
 
                 Cursor sumPaymentCursor = workDB.readValueFromDataBase("SELECT MAX(" + DebtCalcDB.FIELD_SUM_PAYMENTS + ") " +
-                    "AS " + DebtCalcDB.FIELD_SUM_PAYMENTS +
+                    "AS " + DebtCalcDB.FIELD_SUM_PAYMENTS + ", " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS +
                     " FROM " + DebtCalcDB.TABLE_PAYMENTS +
                     " WHERE " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = " + AppData.ID_DEBT);
                 sumPaymentCursor.moveToNext();
-                Double feePayment = newPayment + sumPaymentCursor.getDouble(sumPaymentCursor.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS));
+                Double feePayment = formatValue(etPayment.getText().toString()) + (sumPaymentCursor.getDouble(sumPaymentCursor.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS)) - sumPaymentCursor.getDouble(sumPaymentCursor.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
                 sumPaymentCursor.close();
 
                 workDB.updateData("UPDATE " + DebtCalcDB.TABLE_PAYMENTS +
