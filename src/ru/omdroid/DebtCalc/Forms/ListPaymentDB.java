@@ -19,6 +19,7 @@ import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.R;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ListPaymentDB extends Activity {
@@ -64,7 +65,7 @@ public class ListPaymentDB extends Activity {
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)),
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_DEBT_PAYMENTS)),
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_PERCENT_PAYMENTS)),
-                            date,
+                            getDate(datePay),
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY)),
                             cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS)),
                             cursorInPayment.getString(cursorInPayment.getColumnIndex(DebtCalcDB.F_PAYMENT_UP_PAY)),
@@ -73,31 +74,30 @@ public class ListPaymentDB extends Activity {
                 }
 
                 Double paymentPercent, paymentDebt, balanceDebt, payment, feePayment = 0.0;
-                String date;
 
                 cursorInPayment.moveToLast();
+                Long datePayment = cursorInPayment.getLong(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS));
                 int balanceTerm = cursorInPayment.getInt(cursorInPayment.getColumnIndex(DebtCalcDB.F_BALANCE_TERM_PAY));
                 balanceDebt = cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY));
                 feePayment = cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS));
                 cursorInPayment.close();
 
-                Arithmetic arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT), AppData.PERCENT, AppData.TERM);
+                Arithmetic arithmetic = new Arithmetic(AppData.PERCENT);
 
                 payment = arithmetic.getPayment(balanceDebt, balanceTerm);
-                balanceDebt = Double.valueOf(AppData.DEBT);
+                //balanceDebt = Double.valueOf(AppData.DEBT);
 
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTimeInMillis(AppData.DATE);
-                calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
+
+                datePay.setTimeInMillis(datePayment);
+                datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE));
                 for (int j = balanceTerm - 1; j > 0; j--){
                     numPayment++;
                     feePayment = feePayment + payment;
                     balanceDebt = arithmetic.getBalance(payment, balanceDebt, AppData.TERM);
                     paymentPercent = arithmetic.getPaymentInPercent(balanceDebt);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balanceDebt);
-                    date = (calendar.get(Calendar.DATE)) + "." + String.valueOf(calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.YEAR);
-                    addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, date, balanceDebt, feePayment, null, getResources().getDrawable(R.color.pay_no_paid));
-                    calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
+                    addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, getDate(datePay), balanceDebt, feePayment, null, getResources().getDrawable(R.drawable.pay_no_paid));
+                    datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE));
                     publishProgress(view);
                 }
                 return null;
@@ -106,11 +106,6 @@ public class ListPaymentDB extends Activity {
             protected void onProgressUpdate(View... values) {
                 super.onProgressUpdate(values);
                 layout.addView(values[0]);
-            }
-
-            protected void onPostExecute(View view){
-                if (view != null)
-                    layout.addView(view);
             }
         }.execute();
     }
@@ -171,5 +166,15 @@ public class ListPaymentDB extends Activity {
             }
         });
         return view;
+    }
+
+    private String getDate(Calendar calendar) {
+        String date;
+        SimpleDateFormat format = new SimpleDateFormat();
+        format.applyPattern("dd");
+        date = format.format(calendar.getTime());
+        format.applyPattern("MM");
+        date = date + "." + format.format(calendar.getTime()) + "." + String.valueOf(calendar.get(Calendar.YEAR));
+        return date;
     }
 }

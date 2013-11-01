@@ -4,7 +4,7 @@
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
                android:orientation="vertical"
                android:layout_width="wrap_content"
-               android:layout_height="wrap_content" android:background="#F2F2F2">
+               android:layout_height="wrap_content" android:background="@color/background_app">
     <RelativeLayout
             android:id="@+id/llDebtContainer"
             android:orientation="vertical"
@@ -60,8 +60,8 @@
                 android:paddingRight="3dp"
                 android:id="@+id/containerDate"
                 style="@style/styleLabel"
-                android:layout_alignRight="@+id/textView1" android:layout_alignTop="@+id/creditType"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray" android:textSize="14sp"
+                android:layout_alignRight="@+id/textView1" android:layout_alignBottom="@+id/creditType"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,5 +75,11 @@
                 android:textColor="@android:color/darker_gray"
                 android:layout_gravity="left|center_vertical" android:layout_toLeftOf="@+id/containerTerm"
                 android:layout_below="@+id/textView2" android:paddingRight="10dp"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivpmContainer"
+                android:background="@drawable/pm_container"
+                android:layout_alignRight="@+id/containerPaid" android:layout_alignParentTop="true"/>
     </RelativeLayout>
 </LinearLayout>

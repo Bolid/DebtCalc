@@ -5,24 +5,29 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content" android:background="@color/background_app">
 
-    <TextView
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvDialogLabel" style="@style/styleLabel_2" android:textColor="@color/colorValue"
-            android:paddingTop="10dp" android:paddingLeft="10dp"
-            android:text="@string/main_layout_label_credit_percent" android:paddingBottom="10dp"/>
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:id="@+id/textView1" android:layout_gravity="right|center_vertical"
-            android:background="@color/colorValue"/>
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical|center_horizontal" android:paddingTop="5dp" android:paddingBottom="5dp">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView" android:src="@drawable/graph_24" android:tint="@android:color/darker_gray"
+                android:layout_gravity="center_vertical"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvDialogLabel" style="@style/styleLabel_2" android:textColor="@android:color/darker_gray"
+                android:text="@string/main_layout_label_credit_percent" android:singleLine="false"
+                android:paddingLeft="5dp"/>
+    </LinearLayout>
     <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/etDialogField" android:singleLine="true" style="@style/styleLabel_2"
             android:textColor="@android:color/black"
             android:gravity="center_vertical|center_horizontal" android:inputType="number|numberDecimal" android:maxLength="5">
-        <requestFocus/>
     </EditText>
     <LinearLayout
             android:orientation="horizontal"
