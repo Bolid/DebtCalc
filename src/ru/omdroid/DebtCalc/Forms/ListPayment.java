@@ -18,6 +18,7 @@ import java.util.Calendar;
 
 public class ListPayment extends Activity {
     View view = null;
+    boolean addRecord = true;
 
     public void onCreate(Bundle save){
         super.onCreate(save);
@@ -43,6 +44,8 @@ public class ListPayment extends Activity {
 
                 int i = 1;
                 for (int j = AppData.TERM; j > 0; j--){
+                    if (!addRecord)
+                        return null;
                     feePayment = feePayment + payment;
                     paymentPercent = arithmetic.getPaymentInPercent(balance);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balance);
@@ -110,5 +113,11 @@ public class ListPayment extends Activity {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        addRecord = false;
     }
 }

@@ -4,7 +4,7 @@ public class AppData {
     public static String[] param = new String[4];
     public static String PAYMENT, GOAL = "", DEBT = "", PAYMENT_DEFAULT, ID_DEBT = "";
     public static Long DATE;
-    public static Double OVER_PAYMENT, PERCENT = 0.0;
+    public static Double OVER_PAYMENT, PERCENT = 0.0, DELTA;
     public static int TERM = 0;
 
     public void addSumCredit(String sumCredit){
@@ -48,6 +48,10 @@ public class AppData {
 
     public void setOverPayment(Double overPayment){
         OVER_PAYMENT = overPayment;
+    }
+
+    public void setDelta(Double delta){
+        DELTA = delta;
     }
 
     public String getSumCredit(){
