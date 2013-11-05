@@ -41,6 +41,7 @@ public class MainNew extends Activity {
         final TextView tvOverPay = (TextView)findViewById(R.id.tvOverPay);
         final TextView tvTotal = (TextView)findViewById(R.id.tvTotal);
         final TextView tvOverPerc = (TextView)findViewById(R.id.tvOverPerc);
+        final TextView tvPayment = (TextView)findViewById(R.id.tvPayment);
 
         LinearLayout llSum = (LinearLayout)findViewById(R.id.llSum);
         LinearLayout llTerm = (LinearLayout)findViewById(R.id.llTerm);
@@ -68,7 +69,7 @@ public class MainNew extends Activity {
             public void onClick(View view) {
                 int res = R.layout.dialog_input_sum;
                 String value = AppData.DEBT;
-                DialogFragment dFragment = new DialogInputData(value, tvSum, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, res, calendar, calendarConst);
+                DialogFragment dFragment = new DialogInputData(value, tvSum, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, tvPayment, res, calendar, calendarConst);
                 dFragment.show(getFragmentManager(), "");
             }
         });
@@ -78,7 +79,7 @@ public class MainNew extends Activity {
             public void onClick(View view) {
                 int res = R.layout.dialog_input_term;
                 String value = String.valueOf(AppData.TERM);
-                DialogFragment dFragment = new DialogInputData(value, tvTerm, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, res, calendar, calendarConst);
+                DialogFragment dFragment = new DialogInputData(value, tvTerm, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, tvPayment, res, calendar, calendarConst);
                 dFragment.show(getFragmentManager(), "");
             }
         });
@@ -88,7 +89,7 @@ public class MainNew extends Activity {
             public void onClick(View view) {
                 int res = R.layout.dialog_input_percent;
                 String value = String.valueOf(AppData.PERCENT);
-                DialogFragment dFragment = new DialogInputData(value, tvPercent, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, res, calendar, calendarConst);
+                DialogFragment dFragment = new DialogInputData(value, tvPercent, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, tvPayment, res, calendar, calendarConst);
                 dFragment.show(getFragmentManager(), "");
             }
         });
@@ -98,7 +99,7 @@ public class MainNew extends Activity {
             public void onClick(View view) {
                 int res = R.layout.dialog_input_goal;
                 String value = String.valueOf(AppData.GOAL);
-                DialogFragment dFragment = new DialogInputData(value, tvGoal, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, res, calendar, calendarConst);
+                DialogFragment dFragment = new DialogInputData(value, tvGoal, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, tvPayment, res, calendar, calendarConst);
                 dFragment.show(getFragmentManager(), "");
             }
         });

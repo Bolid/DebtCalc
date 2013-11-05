@@ -18,7 +18,7 @@ import java.util.Calendar;
 
 public class DialogInputData extends DialogFragment implements OnClickListener {
 
-    TextView tvLabel, tvSumPre, tvOverPre, tvTotal, tvOverPercent;
+    TextView tvLabel, tvSumPre, tvOverPre, tvTotal, tvOverPercent, tvPayment;
     String value;
     EditText etData;
     View view;
@@ -29,13 +29,14 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
 
     Calendar calendar, calendarConst;
 
-    public DialogInputData(String value, TextView tvLabel, PreCalc preCalc, TextView tvSumPre, TextView tvOverPre, TextView tvTotal, TextView tvOverPercent, int res, Calendar calendar,  Calendar calendarConst){
+    public DialogInputData(String value, TextView tvLabel, PreCalc preCalc, TextView tvSumPre, TextView tvOverPre, TextView tvTotal, TextView tvOverPercent, TextView tvPayment, int res, Calendar calendar,  Calendar calendarConst){
         this.tvLabel = tvLabel;
         this.preCalc = preCalc;
         this.tvSumPre = tvSumPre;
         this.tvOverPre = tvOverPre;
         this.tvTotal = tvTotal;
         this.tvOverPercent = tvOverPercent;
+        this.tvPayment = tvPayment;
         this.res = res;
         this.value = value;
         this.calendar = calendar;
@@ -92,6 +93,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                     tvOverPre.setText("+ " + new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5))));
                     tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
                     tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
+                    tvPayment.setText(new DecimalFormat("###,###,###,###").format(arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM)));
                 }
                 dismiss();
                 break;
@@ -124,6 +126,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                     tvOverPre.setText("+ " + new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5))));
                     tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
                     tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
+                    tvPayment.setText(new DecimalFormat("###,###,###,###").format(arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM)));
                 }
                 dismiss();
                 break;
@@ -144,7 +147,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
     }
 
     private void nextDialog(TextView resOut, String value, int res){
-        DialogFragment dFragment = new DialogInputData(value, resOut, preCalc, tvSumPre, tvOverPre, tvTotal, tvOverPercent, res, calendar, calendarConst);
+        DialogFragment dFragment = new DialogInputData(value, resOut, preCalc, tvSumPre, tvOverPre, tvTotal, tvOverPercent, tvPayment, res, calendar, calendarConst);
         dFragment.show(getFragmentManager(), "");
     }
 
