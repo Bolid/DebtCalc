@@ -88,7 +88,7 @@ public class ListPaymentDB extends Activity {
                 Arithmetic arithmetic = new Arithmetic(AppData.PERCENT);
 
                 payment = arithmetic.getPayment(balanceDebt, balanceTerm);
-                //balanceDebt = Double.valueOf(AppData.DEBT);
+                //balanceDebt = Double.valueOf(AppData.DEBT_BALANCE);
 
 
                 datePay.setTimeInMillis(datePayment);
@@ -98,7 +98,7 @@ public class ListPaymentDB extends Activity {
                         return null;
                     numPayment++;
                     feePayment = feePayment + payment;
-                    balanceDebt = arithmetic.getBalance(payment, balanceDebt, AppData.TERM);
+                    balanceDebt = arithmetic.getBalance(payment, balanceDebt, AppData.TERM_BALANCE);
                     paymentPercent = arithmetic.getPaymentInPercent(balanceDebt);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balanceDebt);
                     addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, getDate(datePay), balanceDebt, feePayment, null, getResources().getDrawable(R.drawable.pay_no_paid));

@@ -43,7 +43,7 @@ public class InControlFieldSumCredit implements TextWatcher{
                 s = etSumCredit.getText().toString().charAt(j-1) + s;
         }
                 /*appData.addSumCredit(s);
-        appData.setDebt(s);*/
+        appData.setDebtBalance(s);*/
 
         if (!s.equals("")){
             s = String.valueOf(numberFormat.format(Double.valueOf(s)));

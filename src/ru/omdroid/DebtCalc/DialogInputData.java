@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -78,9 +77,9 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                 imm.hideSoftInputFromWindow(etData.getWindowToken(), 0);
                 tvLabel.setText(etData.getText().toString());
                 switch (res){
-                    case R.layout.dialog_input_sum: appData.setDebt(formatValue(etData.getText().toString()));
+                    case R.layout.dialog_input_sum: appData.setDebtBalance(formatValue(etData.getText().toString()));
                         break;
-                    case R.layout.dialog_input_term: appData.setTerm(formatValue(etData.getText().toString()));
+                    case R.layout.dialog_input_term: appData.setTermBalance(formatValue(etData.getText().toString()));
                         break;
                     case R.layout.dialog_input_percent: appData.setPercent(formatValue(etData.getText().toString()));
                         break;
@@ -88,12 +87,12 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                         break;
                 }
                 if (preCalc.preCalc()){
-                    arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT), AppData.PERCENT, AppData.TERM);
+                    arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
                     tvSumPre.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1))));
                     tvOverPre.setText("+ " + new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5))));
                     tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
                     tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
-                    tvPayment.setText(new DecimalFormat("###,###,###,###").format(arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM)));
+                    tvPayment.setText(new DecimalFormat("###,###,###,###").format(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)));
                 }
                 dismiss();
                 break;
@@ -101,11 +100,11 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                 tvLabel.setText(etData.getText().toString());
                 switch (res){
                     case R.layout.dialog_input_sum:
-                        appData.setDebt(formatValue(etData.getText().toString()));
-                        nextDialog((TextView)getActivity().findViewById(R.id.tvLabTerm), String.valueOf(AppData.TERM), R.layout.dialog_input_term);
+                        appData.setDebtBalance(formatValue(etData.getText().toString()));
+                        nextDialog((TextView)getActivity().findViewById(R.id.tvLabTerm), String.valueOf(AppData.TERM_BALANCE), R.layout.dialog_input_term);
                         break;
                     case R.layout.dialog_input_term:
-                        appData.setTerm(formatValue(etData.getText().toString()));
+                        appData.setTermBalance(formatValue(etData.getText().toString()));
                         nextDialog((TextView)getActivity().findViewById(R.id.tvLabPercent), String.valueOf(AppData.PERCENT), R.layout.dialog_input_percent);
                         break;
                     case R.layout.dialog_input_percent:
@@ -117,16 +116,16 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                         break;
                     case R.layout.dialog_input_goal:
                         appData.setGoal(etData.getText().toString());
-                        nextDialog((TextView)getActivity().findViewById(R.id.tvLabSum), String.valueOf(AppData.DEBT), R.layout.dialog_input_sum);
+                        nextDialog((TextView)getActivity().findViewById(R.id.tvLabSum), String.valueOf(AppData.DEBT_BALANCE), R.layout.dialog_input_sum);
                         break;
                 }
                 if (preCalc.preCalc()){
-                    arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT), AppData.PERCENT, AppData.TERM);
+                    arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
                     tvSumPre.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1))));
                     tvOverPre.setText("+ " + new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5))));
                     tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
                     tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
-                    tvPayment.setText(new DecimalFormat("###,###,###,###").format(arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM)));
+                    tvPayment.setText(new DecimalFormat("###,###,###,###").format(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)));
                 }
                 dismiss();
                 break;

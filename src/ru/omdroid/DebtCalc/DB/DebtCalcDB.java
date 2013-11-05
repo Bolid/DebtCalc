@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DebtCalcDB extends SQLiteOpenHelper{
 
     private static final String DATABASE_NAME = "debt_calc_database.db";
-    /*TABLE DEBT*/
+    /*TABLE DEBT_BALANCE*/
     public static final String TABLE_CREDITS = "debts_table";
     public static final String FIELD_ID = "_id";
     public static final String FIELD_ID_DEBT = "id_debt";

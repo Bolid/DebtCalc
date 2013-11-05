@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
@@ -22,7 +21,11 @@ import java.util.Calendar;
 
 public class InfoDebt extends Activity {
     View view = null;
-    TextView tvPayment = null, tvDeltaAllPay = null, tvDigitAllPay = null, tvDeltaOnePay = null;
+    TextView tvDeltaAllPay = null,
+            tvDigitAllPay = null,
+            tvDeltaOnePay = null,
+            tvTotalAllPay = null,
+            tvTotalOnePay = null;
     EditText etPayment = null;
     Button bMinusPayment = null;
     InControlFieldAddPayment inControlFieldAddPayment;
@@ -41,14 +44,22 @@ public class InfoDebt extends Activity {
         workDB = new WorkDB(getBaseContext());
 
        // final View viewGraph = (View)findViewById(R.id.viewGraph);
-       arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT), AppData.PERCENT, AppData.TERM);
+       arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
 
-        tvPayment = (TextView)findViewById(R.id.infoPayment);
         TextView tvDebt = (TextView)findViewById(R.id.infoDebt);
+        TextView tvTerm = (TextView)findViewById(R.id.infoTerm);
+        TextView tvPercent = (TextView)findViewById(R.id.infoPercent);
+
+        tvDebt.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(AppData.DEBT)));
+        tvTerm.setText(String.valueOf(AppData.TERM));
+        tvPercent.setText(String.valueOf(AppData.PERCENT));
 
         tvDeltaAllPay = (TextView)findViewById(R.id.infoDeltaAllPayment);
         tvDigitAllPay = (TextView)findViewById(R.id.digitAllPay);
+        tvTotalAllPay = (TextView)findViewById(R.id.tvTotaAllPay);
+
         tvDeltaOnePay = (TextView)findViewById(R.id.infoDeltaOnePayment);
+        tvTotalOnePay = (TextView)findViewById(R.id.tvTotalOnePay);
 
         final TextView tvDateDay = (TextView)findViewById(R.id.tvInfoDate);
         final TextView tvDate = (TextView)findViewById(R.id.infoDate);
@@ -67,9 +78,7 @@ public class InfoDebt extends Activity {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(AppData.DATE);
 
-        tvPayment.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(AppData.PAYMENT)));
         tvDate.setText(getResources().getStringArray(R.array.month)[calendar.get(Calendar.MONTH)]);
-        tvDebt.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(AppData.DEBT)));
         tvDateDay.setText(String.valueOf(calendar.get(Calendar.DATE)));
         etPayment.setText(new DecimalFormat("###,###,###,###.00").format(Double.valueOf(AppData.PAYMENT)));
 
@@ -78,13 +87,13 @@ public class InfoDebt extends Activity {
         setOverAllPayment(0);
         setOverOnePayment();
 
-        seekBar.setMax(AppData.TERM);
+        seekBar.setMax(AppData.TERM_BALANCE);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 if (i == seekBar.getMax())
                     i--;
-                newPayment = arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM - i);
+                newPayment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE - i);
                 etPayment.setText(new DecimalFormat("###,###,###,###").format(newPayment));
                 setOverAllPayment(i);
                 setOverOnePayment();
@@ -153,7 +162,6 @@ public class InfoDebt extends Activity {
                            " SET " + DebtCalcDB.F_PAYMENT_UP_PAY + " = '1'" +
                            " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
                            "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
-                tvPayment.setText(etPayment.getText().toString());
                 workDB.disconnectDataBase();
                 return true;
             case R.id.popup:
@@ -193,13 +201,16 @@ public class InfoDebt extends Activity {
     }
 
     private void setOverAllPayment(int i){
-        tvDigitAllPay.setText("платежей " + String.valueOf(AppData.TERM - i) + "x");
-        tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(getOverPayment() + arithmetic.getDeltaNew(AppData.TERM - i, Double.valueOf(AppData.DEBT), newPayment)));
+        tvDigitAllPay.setText(String.valueOf(AppData.TERM_BALANCE - i) + "x");
+        Double overPay = getOverPayment() + arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
+        tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay));
+        tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay + Double.valueOf(AppData.DEBT)));
     }
 
     private void setOverOnePayment(){
-        Double newDebt = arithmetic.getBalance(newPayment, Double.valueOf(AppData.DEBT), AppData.TERM);
-        Double overPaymentNew = getOverPayment() + arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT)) + arithmetic.getDeltaNew(AppData.TERM - 1, newDebt, arithmetic.getPayment(newDebt, AppData.TERM - 1));
+        Double newDebt = arithmetic.getBalance(newPayment, Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
+        Double overPaymentNew = getOverPayment() + arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE)) + arithmetic.getDeltaNew(AppData.TERM_BALANCE - 1, newDebt, arithmetic.getPayment(newDebt, AppData.TERM_BALANCE - 1));
         tvDeltaOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew));
+        tvTotalOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew + Double.valueOf(AppData.DEBT)));
     }
 }

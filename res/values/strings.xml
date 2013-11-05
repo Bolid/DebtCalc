@@ -6,6 +6,7 @@
     <string name="action_menu_analitic">Аналитика</string>
     <!--Label-->
     <string name="main_layout_label_title">Параметры кредита</string>
+    <string name="param_payment">Параметры платежа</string>
     <string name="mll_details">Детали кредита</string>
     <string name="ill_details">Детали платежа</string>
     <string name="mll_details_sum">Сумма займа</string>

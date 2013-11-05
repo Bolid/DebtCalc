@@ -25,7 +25,7 @@ public class InControlFieldTermCredit implements TextWatcher{
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
         /*if (charSequence.toString().length() != 0)
-            appData.setTerm(charSequence.toString());*/
+            appData.setTermBalance(charSequence.toString());*/
     }
 
     @Override

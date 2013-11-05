@@ -68,7 +68,7 @@ public class MainNew extends Activity {
             @Override
             public void onClick(View view) {
                 int res = R.layout.dialog_input_sum;
-                String value = AppData.DEBT;
+                String value = AppData.DEBT_BALANCE;
                 DialogFragment dFragment = new DialogInputData(value, tvSum, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, tvPayment, res, calendar, calendarConst);
                 dFragment.show(getFragmentManager(), "");
             }
@@ -78,7 +78,7 @@ public class MainNew extends Activity {
             @Override
             public void onClick(View view) {
                 int res = R.layout.dialog_input_term;
-                String value = String.valueOf(AppData.TERM);
+                String value = String.valueOf(AppData.TERM_BALANCE);
                 DialogFragment dFragment = new DialogInputData(value, tvTerm, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, tvPayment, res, calendar, calendarConst);
                 dFragment.show(getFragmentManager(), "");
             }
@@ -132,7 +132,7 @@ public class MainNew extends Activity {
     }
 
     private void saveDataInDataBase() throws NullInputDataException {
-        if (AppData.DEBT.equals("") || AppData.TERM == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
+        if (AppData.DEBT_BALANCE.equals("") || AppData.TERM_BALANCE == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
             throw new NullInputDataException(" ");
 
         calendar.set(calendar.get(Calendar.YEAR), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.DATE));
@@ -147,7 +147,7 @@ public class MainNew extends Activity {
                     " FROM " + DebtCalcDB.TABLE_CREDITS +
                     " WHERE " + DebtCalcDB.FIELD_PAID_DEBT + " = '0'") < 9){
                 int numCredit = generateNumCredit();
-                Arithmetic arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT), AppData.PERCENT, AppData.TERM);
+                Arithmetic arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
                 workDB.insertValueToTableDebt("INSERT INTO " + DebtCalcDB.TABLE_CREDITS + " (" +
                         DebtCalcDB.FIELD_ID_DEBT + ", " +
                         DebtCalcDB.FIELD_SUM_DEBT + ", " +
@@ -159,9 +159,9 @@ public class MainNew extends Activity {
                         DebtCalcDB.FIELD_PAID_DEBT + ") " +
                         "VALUES ('" +
                         numCredit + "', '" +
-                        AppData.DEBT + "', '" +
+                        AppData.DEBT_BALANCE + "', '" +
                         AppData.PERCENT + "', '" +
-                        AppData.TERM + "', '" +
+                        AppData.TERM_BALANCE + "', '" +
                         AppData.GOAL + "', '" +
                         Calendar.getInstance().getTimeInMillis() + "', '" +
                         date + "', '0')");
@@ -179,12 +179,12 @@ public class MainNew extends Activity {
                         DebtCalcDB.FIELD_PAID_PAYMENTS + ")" +
                         " VALUES ('" +
                         numCredit + "', '" +
-                        arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM) + "', '" +
-                        AppData.DEBT + "', '" +
-                        AppData.TERM + "', '" +
-                        arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM) + "', '" +
-                        arithmetic.getPaymentInDebt(arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM), Double.valueOf(AppData.DEBT)) + "', '" +
-                        arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT)) + "', '" +
+                        arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE) + "', '" +
+                        AppData.DEBT_BALANCE + "', '" +
+                        AppData.TERM_BALANCE + "', '" +
+                        arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE) + "', '" +
+                        arithmetic.getPaymentInDebt(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE), Double.valueOf(AppData.DEBT_BALANCE)) + "', '" +
+                        arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE)) + "', '" +
                         "0.0', '" +
                         dateFirstPayment + "', '" +
                         "0')");
@@ -219,7 +219,7 @@ public class MainNew extends Activity {
     }
 
     private void tablePaymentShow() throws NullInputDataException{
-        if (AppData.DEBT.equals("") || AppData.TERM == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
+        if (AppData.DEBT_BALANCE.equals("") || AppData.TERM_BALANCE == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
             throw new NullInputDataException("Таблица");
         Intent intent = new Intent(getBaseContext(), ListPayment.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

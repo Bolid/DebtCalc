@@ -1,7 +1,6 @@
 package ru.omdroid.DebtCalc.Forms;
 
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,18 +31,18 @@ public class ListPayment extends Activity {
             protected Void doInBackground(Void... voids) {
                 LayoutInflater inflater = (LayoutInflater)getSystemService(getBaseContext().LAYOUT_INFLATER_SERVICE);
                 Double paymentPercent, paymentDebt, balance, payment, feePayment = 0.0;
-                Arithmetic arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT), AppData.PERCENT, AppData.TERM);
+                Arithmetic arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
                 String date;
 
-                payment = arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM);
-                balance = Double.valueOf(AppData.DEBT);
+                payment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
+                balance = Double.valueOf(AppData.DEBT_BALANCE);
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(AppData.DATE);
                 calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
 
                 int i = 1;
-                for (int j = AppData.TERM; j > 0; j--){
+                for (int j = AppData.TERM_BALANCE; j > 0; j--){
                     if (!addRecord)
                         return null;
                     feePayment = feePayment + payment;
@@ -51,7 +50,7 @@ public class ListPayment extends Activity {
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balance);
                     date = (calendar.get(Calendar.DATE)) + "." + String.valueOf(calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.YEAR);
                     addRecord(inflater, layout, i, payment, date, balance, paymentDebt, paymentPercent, feePayment);
-                    balance = arithmetic.getBalance(payment, balance, AppData.TERM);
+                    balance = arithmetic.getBalance(payment, balance, AppData.TERM_BALANCE);
                     calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
                     i++;
                     publishProgress(view);
