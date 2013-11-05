@@ -24,6 +24,7 @@ import java.util.Calendar;
 
 public class ListPaymentDB extends Activity {
     View view = null;
+    boolean addRecord = true;
 
     public void onCreate(Bundle save){
         super.onCreate(save);
@@ -51,6 +52,8 @@ public class ListPaymentDB extends Activity {
                         " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +"')");
                 int numPayment = 0;
                 while (cursorInPayment.moveToNext()){
+                    if (!addRecord)
+                        return null;
                     numPayment++;
                     datePay.setTimeInMillis(cursorInPayment.getLong(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS)));
                     String date = String.valueOf(datePay.get(Calendar.DATE)) + "." + String.valueOf(datePay.get(Calendar.MONTH) + 1) + "." + String.valueOf(datePay.get(Calendar.YEAR));
@@ -91,6 +94,8 @@ public class ListPaymentDB extends Activity {
                 datePay.setTimeInMillis(datePayment);
                 datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE));
                 for (int j = balanceTerm - 1; j > 0; j--){
+                    if (!addRecord)
+                        return null;
                     numPayment++;
                     feePayment = feePayment + payment;
                     balanceDebt = arithmetic.getBalance(payment, balanceDebt, AppData.TERM);
@@ -176,5 +181,11 @@ public class ListPaymentDB extends Activity {
         format.applyPattern("MM");
         date = date + "." + format.format(calendar.getTime()) + "." + String.valueOf(calendar.get(Calendar.YEAR));
         return date;
+    }
+
+    @Override
+           public void onStop(){
+        super.onStop();
+        addRecord = false;
     }
 }

@@ -7,6 +7,7 @@
     <!--Label-->
     <string name="main_layout_label_title">Параметры кредита</string>
     <string name="mll_details">Детали кредита</string>
+    <string name="ill_details">Детали платежа</string>
     <string name="mll_details_sum">Сумма займа</string>
     <string name="mll_details_overpayment">Переплата</string>
     <string name="mll_details_total">Итого</string>

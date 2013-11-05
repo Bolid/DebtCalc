@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
@@ -21,7 +22,7 @@ import java.util.Calendar;
 
 public class InfoDebt extends Activity {
     View view = null;
-    TextView tvPayment = null;
+    TextView tvPayment = null, tvDeltaAllPay = null, tvDigitAllPay = null, tvDeltaOnePay = null;
     EditText etPayment = null;
     Button bMinusPayment = null;
     InControlFieldAddPayment inControlFieldAddPayment;
@@ -29,6 +30,8 @@ public class InfoDebt extends Activity {
     double newPayment;
 
     Menu menu;
+
+    Arithmetic arithmetic;
 
     public void onCreate(Bundle save){
         super.onCreate(save);
@@ -38,12 +41,21 @@ public class InfoDebt extends Activity {
         workDB = new WorkDB(getBaseContext());
 
        // final View viewGraph = (View)findViewById(R.id.viewGraph);
+       arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT), AppData.PERCENT, AppData.TERM);
 
         tvPayment = (TextView)findViewById(R.id.infoPayment);
-        TextView tvDate = (TextView)findViewById(R.id.infoDate);
         TextView tvDebt = (TextView)findViewById(R.id.infoDebt);
-        TextView tvDateDay = (TextView)findViewById(R.id.tvInfoDate);
+
+        tvDeltaAllPay = (TextView)findViewById(R.id.infoDeltaAllPayment);
+        tvDigitAllPay = (TextView)findViewById(R.id.digitAllPay);
+        tvDeltaOnePay = (TextView)findViewById(R.id.infoDeltaOnePayment);
+
+        final TextView tvDateDay = (TextView)findViewById(R.id.tvInfoDate);
+        final TextView tvDate = (TextView)findViewById(R.id.infoDate);
+
         etPayment = (EditText)findViewById(R.id.etPayment);
+        SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
+
         Button bPlusPayment = (Button)findViewById(R.id.bPlusPayment);
         bMinusPayment = (Button)findViewById(R.id.bMinusPayment);
 
@@ -61,24 +73,32 @@ public class InfoDebt extends Activity {
         tvDateDay.setText(String.valueOf(calendar.get(Calendar.DATE)));
         etPayment.setText(new DecimalFormat("###,###,###,###.00").format(Double.valueOf(AppData.PAYMENT)));
 
-        etPayment.selectAll();
         newPayment = Double.parseDouble(AppData.PAYMENT);
 
-        bPlusPayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setNewPayment(1000);
-                bMinusPayment.setEnabled(newPayment > Double.valueOf(AppData.PAYMENT_DEFAULT));
-            }
-        });
+        setOverAllPayment(0);
+        setOverOnePayment();
 
-        bMinusPayment.setOnClickListener(new View.OnClickListener() {
+        seekBar.setMax(AppData.TERM);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onClick(View view) {
-                setNewPayment(-1000);
-                bMinusPayment.setEnabled(newPayment > Double.valueOf(AppData.PAYMENT_DEFAULT));
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                if (i == seekBar.getMax())
+                    i--;
+                newPayment = arithmetic.getPayment(Double.valueOf(AppData.DEBT), AppData.TERM - i);
+                etPayment.setText(new DecimalFormat("###,###,###,###").format(newPayment));
+                setOverAllPayment(i);
+                setOverOnePayment();
             }
-        });
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+
+            });
     }
 
     private Double formatValue(String addPayment){
@@ -145,6 +165,17 @@ public class InfoDebt extends Activity {
         }
     }
 
+    private Double getOverPayment(){
+       Cursor cursorOver = workDB.readValueFromDataBase("SELECT MAX(" + DebtCalcDB.F_OVER_PAY + ") " +
+           "AS " + DebtCalcDB.F_OVER_PAY +
+           " FROM " + DebtCalcDB.TABLE_PAYMENTS +
+           " WHERE " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = " + AppData.ID_DEBT);
+       cursorOver.moveToNext();
+       Double overDebt = cursorOver.getDouble(cursorOver.getColumnIndex(DebtCalcDB.F_OVER_PAY));
+       cursorOver.close();
+       return  overDebt;
+   }
+
     private void showPopupMenu(View v){
         final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
         MenuInflater mInflater = pMenu.getMenuInflater();
@@ -159,5 +190,16 @@ public class InfoDebt extends Activity {
             }
         });
         pMenu.show();
+    }
+
+    private void setOverAllPayment(int i){
+        tvDigitAllPay.setText("платежей " + String.valueOf(AppData.TERM - i) + "x");
+        tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(getOverPayment() + arithmetic.getDeltaNew(AppData.TERM - i, Double.valueOf(AppData.DEBT), newPayment)));
+    }
+
+    private void setOverOnePayment(){
+        Double newDebt = arithmetic.getBalance(newPayment, Double.valueOf(AppData.DEBT), AppData.TERM);
+        Double overPaymentNew = getOverPayment() + arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT)) + arithmetic.getDeltaNew(AppData.TERM - 1, newDebt, arithmetic.getPayment(newDebt, AppData.TERM - 1));
+        tvDeltaOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew));
     }
 }
