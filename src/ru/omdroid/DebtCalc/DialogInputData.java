@@ -93,6 +93,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                     tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
                     tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
                     tvPayment.setText(new DecimalFormat("###,###,###,###").format(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)));
+                    appData.setPayment("", String.valueOf(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)));
                 }
                 dismiss();
                 break;
@@ -126,6 +127,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                     tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
                     tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
                     tvPayment.setText(new DecimalFormat("###,###,###,###").format(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)));
+                    appData.setPayment("", String.valueOf(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)));
                 }
                 dismiss();
                 break;

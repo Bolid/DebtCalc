@@ -45,7 +45,7 @@ public class ResultFragment extends Fragment {
         editText.setText("");
         editText.setText(numberFormat.format(newPayment));
 
-        final InControlFieldAddOverallPayment inControlFieldAddOverallPayment = new InControlFieldAddOverallPayment(editText, newPayment, graphTerm);
+        final InControlFieldAddOverallPayment inControlFieldAddOverallPayment = new InControlFieldAddOverallPayment(editText, newPayment, graphTerm, null);
 
         if (!ErrorMessage.nullSumCredit.equals("") || !ErrorMessage.nullPercentCredit.equals("") || !ErrorMessage.nullTermCredit.equals(""))
             Toast.makeText(getActivity().getBaseContext(), ErrorMessage.errorTitle + ErrorMessage.nullSumCredit + ErrorMessage.nullPercentCredit + ErrorMessage.nullTermCredit, Toast.LENGTH_LONG).show();

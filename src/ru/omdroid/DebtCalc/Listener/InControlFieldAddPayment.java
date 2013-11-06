@@ -5,6 +5,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,13 +17,14 @@ import java.text.NumberFormat;
 
 public class InControlFieldAddPayment implements TextWatcher {
     NumberFormat numberFormat = new DecimalFormat("###,###,###,###.##");
-    ImageView markerDefaultPayment;
     EditText etSumCredit;
     Button button;
     Menu menu;
     String beforeText;
     Double defaultPayment;
+
     InfoDebt.WriteDataInField writeDataInField;
+    View view;
 
     int position;
     public InControlFieldAddPayment(EditText etSumCredit, Double defaultPayment, Menu menu, InfoDebt.WriteDataInField writeDataInField){
@@ -61,8 +63,13 @@ public class InControlFieldAddPayment implements TextWatcher {
         else {
             if (menu!= null)
                 menu.getItem(0).setEnabled(true);
-            writeDataInField.setOverAllPaymentCustom(Double.valueOf(s));
-            writeDataInField.setOverOnePayment(Double.valueOf(s));
+            if (writeDataInField != null){
+                writeDataInField.setOverAllPaymentCustom(Double.valueOf(s));
+                writeDataInField.setOverOnePayment(Double.valueOf(s));
+            }
+
+            if (view != null)
+                view.invalidate();
         }
 
         if (!s.equals("") & !s.equals(".")){

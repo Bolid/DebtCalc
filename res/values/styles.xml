@@ -16,10 +16,13 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/darker_gray</item>
     </style>
-    <style name="popupMenu" parent="android:Widget.PopupMenu">
+    <style name="popupMenu" parent="@android:style/Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">@color/background</item>
+    </style>
+    <style name="actionBar" parent="android:Widget.Holo.Light.ActionBar">
         <item name="android:colorBackground">@color/background</item>
     </style>
     <style name="ThemeActionBar" parent="android:style/Widget.Holo.Light">
-        <item name="android:popupMenuStyle">@style/popupMenu</item>
+        <item name="android:actionBarStyle">@style/actionBar</item>
     </style>
 </resources>

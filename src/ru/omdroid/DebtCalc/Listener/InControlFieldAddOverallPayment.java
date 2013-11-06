@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import ru.omdroid.DebtCalc.AppData;
+import ru.omdroid.DebtCalc.Arithmetic;
 import ru.omdroid.DebtCalc.ErrorMessage;
 import ru.omdroid.DebtCalc.Fragment.MainFragment;
 import ru.omdroid.DebtCalc.Fragment.ResultFragment;
@@ -15,28 +16,29 @@ import java.text.NumberFormat;
 
 public class InControlFieldAddOverallPayment implements TextWatcher {
     NumberFormat numberFormat = new DecimalFormat("###,###,###,###.##");
-    EditText etSumCredit;
+    EditText etPayment;
     String beforeText;
     Double defaultPayment;
-    ErrorMessage errorMessage = new ErrorMessage();
     View view;
     int position;
-    public InControlFieldAddOverallPayment(EditText etSumCredit, Double defaultPayment, View view){
-        this.etSumCredit = etSumCredit;
+
+    Arithmetic arithmetic;
+    public InControlFieldAddOverallPayment(EditText etPayment, Double defaultPayment, View view, Arithmetic arithmetic){
+        this.etPayment = etPayment;
         this.defaultPayment = defaultPayment;
         this.view = view;
+        this.arithmetic = arithmetic;
     }
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        Log.v("beforeTextChanged Позиция i i2 i3: ", charSequence.toString());
         beforeText = charSequence.toString();
-        position = etSumCredit.getSelectionStart();
+        position = etPayment.getSelectionStart();
     }
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        String s = "", oldText = etSumCredit.getText().toString();
+        String s = "", oldText = etPayment.getText().toString();
 
         for (int j = oldText.length(); j > 0; j--) {
             if ("1234567890".contains(String.valueOf(oldText.charAt(j-1))))
@@ -45,27 +47,21 @@ public class InControlFieldAddOverallPayment implements TextWatcher {
                 s = "." + s;
             }
         }
-        if (s.equals("")){
-            ResultFragment.newPayment = defaultPayment;
-            errorMessage.readErrorMessagePaymentCredit();
-        }
-        else if (defaultPayment > Double.valueOf(s)){
-            ResultFragment.newPayment = defaultPayment;
-            errorMessage.readErrorMessagePaymentCredit();
-        }
-        else{
-            ResultFragment.newPayment = Double.valueOf(s);
-            errorMessage.clearErrorMessagePaymentCredit();
-            MainFragment.arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.param[0]), Double.valueOf(s), true);
-            view.invalidate();
-        }
+        if (!s.equals(""))
+            if (defaultPayment < Double.valueOf(s)){
+                arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), Double.valueOf(s), true);
+                view.invalidate();
+            }
 
         if (!s.equals("")){
             s = String.valueOf(numberFormat.format(Double.valueOf(s)));
-            etSumCredit.removeTextChangedListener(this);
-            etSumCredit.setText(s);
-            etSumCredit.addTextChangedListener(this);
-            etSumCredit.setSelection(position + (s.length() - beforeText.length()));
+            etPayment.removeTextChangedListener(this);
+            etPayment.setText(s);
+            etPayment.addTextChangedListener(this);
+            if (position + (s.length() - beforeText.length()) < 0)
+                etPayment.setSelection(0);
+            else
+                etPayment.setSelection(position + (s.length() - beforeText.length()));
         }
     }
 
