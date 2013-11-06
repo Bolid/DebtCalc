@@ -3,23 +3,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#e7f4eb">
-    <ImageView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:src="@drawable/substrate_layout_result"
-            android:layout_alignParentBottom="true" android:background="@color/substrate"/>
+                android:background="@android:color/background_light">
     <ru.omdroid.DebtCalc.CustomView.DrawingBar
             android:id="@+id/graphViewTermDebt"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"/>
-    <ImageView
-            android:id="@+id/iwLine"
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:src="@drawable/line"
-            android:layout_marginLeft="15dp"
-            android:layout_below="@id/graphViewTermDebt"/>
 
     <TextView
             android:id="@+id/labelPayment"
@@ -27,11 +15,10 @@
             android:layout_width="wrap_content"
             android:text="@string/result_layout_label_payment"
             android:textSize="35px"
-            android:textColor="#fc9c14"
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="55dp"
-            android:layout_alignBottom="@+id/valuePayment"/>
+            android:layout_alignBottom="@+id/valuePayment" style="@style/styleLabel_2"/>
 
     <EditText
             android:id="@+id/valuePayment"
@@ -40,7 +27,7 @@
             android:textSize="45sp"
             android:text="123456"
             android:textStyle="bold"
-            android:textColor="#021460"
+            android:textColor="@android:color/black"
             android:typeface="sans"
             android:lines="1"
             android:inputType="numberDecimal"

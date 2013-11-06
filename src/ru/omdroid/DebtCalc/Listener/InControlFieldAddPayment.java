@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import ru.omdroid.DebtCalc.Forms.InfoDebt;
 import ru.omdroid.DebtCalc.R;
 
 import java.text.DecimalFormat;
@@ -21,11 +22,12 @@ public class InControlFieldAddPayment implements TextWatcher {
     Menu menu;
     String beforeText;
     Double defaultPayment;
+    InfoDebt.WriteDataInField writeDataInField;
+
     int position;
-    public InControlFieldAddPayment(EditText etSumCredit, ImageView markerDefaultPayment, Button button, Double defaultPayment, Menu menu){
+    public InControlFieldAddPayment(EditText etSumCredit, Double defaultPayment, Menu menu, InfoDebt.WriteDataInField writeDataInField){
         this.etSumCredit = etSumCredit;
-        this.markerDefaultPayment = markerDefaultPayment;
-        this.button = button;
+        this.writeDataInField = writeDataInField;
         this.defaultPayment = defaultPayment;
         this.menu = menu;
     }
@@ -48,32 +50,22 @@ public class InControlFieldAddPayment implements TextWatcher {
                 s = "." + s;
             }
         }
-        if (s.equals("")){
-            if (button != null)
-                button.setEnabled(false);
-            if (markerDefaultPayment != null)
-                markerDefaultPayment.setImageResource(R.drawable.marker_red_addpayment);
+        if (s.equals("") || s.equals(".")){
             if (menu != null)
                 menu.getItem(0).setEnabled(false);
         }
         else if (defaultPayment > Double.valueOf(s)){
-            if (button != null)
-                button.setEnabled(false);
-            if (markerDefaultPayment != null)
-                markerDefaultPayment.setImageResource(R.drawable.marker_red_addpayment);
             if (menu != null)
                 menu.getItem(0).setEnabled(false);
         }
         else {
-            if (button != null)
-                button.setEnabled(true);
-            if (markerDefaultPayment != null)
-                markerDefaultPayment.setImageResource(R.drawable.marker_green_addpayment);
             if (menu!= null)
                 menu.getItem(0).setEnabled(true);
+            writeDataInField.setOverAllPaymentCustom(Double.valueOf(s));
+            writeDataInField.setOverOnePayment(Double.valueOf(s));
         }
 
-        if (!s.equals("")){
+        if (!s.equals("") & !s.equals(".")){
             s = String.valueOf(numberFormat.format(Double.valueOf(s)));
             etSumCredit.removeTextChangedListener(this);
             etSumCredit.setText(s);

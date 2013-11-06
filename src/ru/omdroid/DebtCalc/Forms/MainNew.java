@@ -54,7 +54,7 @@ public class MainNew extends Activity {
         calendar = Calendar.getInstance();
         calendarConst = Calendar.getInstance();
         tvDate.setText(String.valueOf(calendar.get(Calendar.DATE))+"."+String.valueOf(calendar.get(Calendar.MONTH) + 1)+"."+String.valueOf(calendar.get(Calendar.YEAR)));
-
+        appData.setDate(calendar.getTimeInMillis());
 
         final DialogFragment dialogFragment = new DatePickerFragment(tvDate, calendarConst, calendar);
         llDate.setOnClickListener(new View.OnClickListener() {
@@ -207,10 +207,21 @@ public class MainNew extends Activity {
         pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                try {
-                    tablePaymentShow();
-                } catch (NullInputDataException e) {
-                    Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
+                switch (menuItem.getItemId()){
+                    case R.id.tableShow:
+                        try {
+                            tablePaymentShow();
+                        } catch (NullInputDataException e) {
+                            Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
+                        }
+                        break;
+                    case R.id.testPayment:
+                        try {
+                            testPaymentShow();
+                        } catch (NullInputDataException e) {
+                            Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
+                        }
+                        break;
                 }
                 return false;
             }
@@ -224,6 +235,13 @@ public class MainNew extends Activity {
         Intent intent = new Intent(getBaseContext(), ListPayment.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
 
+    private void testPaymentShow() throws NullInputDataException{
+        if (AppData.DEBT_BALANCE.equals("") || AppData.TERM_BALANCE == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
+            throw new NullInputDataException("Таблица");
+        Intent intent = new Intent(getBaseContext(), ResultForm.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

@@ -52,7 +52,7 @@ public class DialogPayment extends DialogFragment implements OnClickListener {
         imageView = (ImageView)view.findViewById(R.id.ivMarkerDefaulPayment);
 
         final NumberFormat numberFormat = new DecimalFormat("###,###,###,###.##");
-        final InControlFieldAddPayment inControlFieldAddPayment = new InControlFieldAddPayment(textView, imageView, button, formatAddPayment(defaultPayment), null);
+        final InControlFieldAddPayment inControlFieldAddPayment = new InControlFieldAddPayment(textView, formatAddPayment(defaultPayment), null, null);
 
         textView.setText(numberFormat.format(Double.valueOf(Arithmetic.listDefaultPayment.get(position))));
         updateValuePayment = Arithmetic.listDefaultPayment.get(position);

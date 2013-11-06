@@ -154,7 +154,8 @@
                     android:layout_height="wrap_content"
                     android:text="Досрочное погашение 1x"
                     android:id="@+id/textView3" style="@style/styleLabel_2" android:textColor="@android:color/black"
-                    android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_gravity="center_horizontal"/>
+                    android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"/>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
@@ -186,24 +187,6 @@
                           android:id="@+id/tvTotalOnePay" android:textColor="@android:color/black" android:layout_weight="1"
                           android:gravity="right" android:textSize="18sp"/>
             </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" android:background="@color/infoDateBackground" android:visibility="invisible">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvInfoDate"
-                    android:layout_marginTop="5dp" android:layout_gravity="center_horizontal"
-                    android:gravity="center_vertical|center_horizontal" android:paddingTop="5dp"
-                    android:textSize="22sp" style="@style/styleValue"/>
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/infoDate" android:layout_gravity="center_horizontal" android:paddingTop="5dp"
-                    android:paddingBottom="5dp" style="@style/styleValue"/>
         </LinearLayout>
     </LinearLayout>
     <!--<LinearLayout
@@ -237,11 +220,11 @@
                 android:inputType="numberDecimal" style="@style/styleValue"
                 android:maxLines="1"
                 android:layout_column="1" android:gravity="center_vertical|center_horizontal"
-                android:layout_gravity="center_horizontal" android:textSize="28sp"/>
+                android:layout_gravity="center_horizontal" android:textSize="34sp"/>
         <SeekBar
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/seekBar"/>
+                android:id="@+id/seekBar" android:layout_marginTop="15dp"/>
     </LinearLayout>
     <LinearLayout
             android:id="@+id/writePayment"

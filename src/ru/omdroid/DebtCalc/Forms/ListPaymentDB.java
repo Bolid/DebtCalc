@@ -56,7 +56,6 @@ public class ListPaymentDB extends Activity {
                         return null;
                     numPayment++;
                     datePay.setTimeInMillis(cursorInPayment.getLong(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS)));
-                    String date = String.valueOf(datePay.get(Calendar.DATE)) + "." + String.valueOf(datePay.get(Calendar.MONTH) + 1) + "." + String.valueOf(datePay.get(Calendar.YEAR));
                     Drawable background;
                     if (cursorInPayment.getInt(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_PAID_PAYMENTS)) == 1)
                         background = getResources().getDrawable(R.drawable.pay_paid);

@@ -4,4 +4,7 @@
 
     <item android:id="@+id/tableShow"
           android:title="@string/popup_table"/>
+    <item android:id="@+id/testPayment"
+          android:title="@string/popup_test_payment"/>
+
 </menu>

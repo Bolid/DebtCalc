@@ -141,7 +141,7 @@ public class Arithmetic {
         allResult.set(5, String.valueOf(allPer)); //Общая переплата
         allResult.set(6, String.valueOf(i)); //Срок погашения
         dataForGraph.setParamNew(i);
-       dataForGraph.setOver(allPer);
+        dataForGraph.setOver(allPer);
 
 
         hm = new HashMap<String, String>();

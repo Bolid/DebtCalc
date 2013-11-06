@@ -60,8 +60,8 @@ class DrawingBar extends View {
         int height = DataForGraph.HEIGHT_OVER;
 
 
-        //sizeWightBar = (canvas.getWidth() - paddingBar) * (DataForGraph.SUM)/(DataForGraph.SUM + DataForGraph.OVER);
-        sizeWightBar = (canvas.getWidth() - paddingBar) * (DataForGraph.SUM)/(DataForGraph.OVER);
+        sizeWightBar = (canvas.getWidth() - paddingBar) * (DataForGraph.SUM)/(DataForGraph.SUM + DataForGraph.OVER);
+        //sizeWightBar = (canvas.getWidth() - paddingBar) * (DataForGraph.SUM)/(DataForGraph.OVER);
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
         RectF rectF = new RectF();

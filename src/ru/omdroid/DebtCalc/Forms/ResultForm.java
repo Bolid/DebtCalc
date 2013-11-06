@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.*;
+import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic;
+import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.R;
 
 import java.text.DecimalFormat;
@@ -20,8 +22,10 @@ public class ResultForm extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.layout_result);
+        final DataForGraph dataForGraph = new DataForGraph();
+        dataForGraph.createOver(true);
+        dataForGraph.createTerm(true);
 
         final String[] params = null;//AppDate.param;
         final NumberFormat numberFormat = new DecimalFormat("###,###,###,###,###,###,##0.##");
@@ -32,21 +36,22 @@ public class ResultForm extends Activity {
         paymentUpdate = true;
         overPayment = false;
 
-        arithmetic = new Arithmetic(Double.valueOf(params[0]), Double.valueOf(params[2]), Integer.valueOf(params[1]));
+        arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
         newPayment = Double.valueOf(Arithmetic.allResult.get(4));
         SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
         textView.setText(numberFormat.format(newPayment));
-        seekBar.setMax(Integer.valueOf(params[1]));
+        seekBar.setMax(AppData.TERM_BALANCE);
                 seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                         overPayment = i != 0;
                         if (i == seekBar.getMax())
                             i--;
-                        newPayment = arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i);
-                        textView.setText(arithmetic.setMask(arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i)));
-                        arithmetic.getDeltaDefault(arithmetic.getPayment(Double.valueOf(params[0]), Integer.valueOf(params[1]) - i), Integer.valueOf(params[1]) - i);
-                        Arithmetic.allResult.set(6, String.valueOf(Integer.valueOf(params[1]) - i));
+                        newPayment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE - i);
+                        textView.setText(arithmetic.setMask(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE - i)));
+                        arithmetic.getDeltaDefault(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE - i), AppData.TERM_BALANCE - i);
+                        Arithmetic.allResult.set(6, String.valueOf(AppData.TERM_BALANCE - i));
+                        dataForGraph.setParamNew(AppData.TERM_BALANCE - i);
                         view.invalidate();
                         paymentUpdate = true;
                     }
