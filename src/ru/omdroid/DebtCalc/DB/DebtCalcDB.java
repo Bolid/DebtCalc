@@ -34,6 +34,12 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String FIELD_DATE_LONG_PAYMENTS = "date_long_payments";
     public static final String FIELD_PAID_PAYMENTS = "paid_payments";
     public static final String F_PAYMENT_UP_PAY = "up_payment";
+    /*TABLE SETTING*/
+    public static final String TABLE_SETTING = "setting_table";
+    public static final String F_ID_SET = "_id";
+    public static final String F_RATING_SHOW_SET = "RATING_SHOW";
+    public static final String F_NUMBER_START_APP_SET = "NUM_START_APP";
+
     public static final String REQUEST_CREATE_TABLE_DEBTS = "CREATE TABLE " +
                                                                     TABLE_CREDITS + " (" +
                                                                     FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -61,6 +67,12 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     FIELD_PAID_PAYMENTS + " INTEGER, " +
                                                                     F_PAYMENT_UP_PAY + " INTEGER);";
 
+    public static final String REQUEST_CREATE_TABLE_SETTING = "CREATE TABLE " +
+            TABLE_SETTING + " (" +
+            F_ID_SET + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            F_RATING_SHOW_SET + " INTEGER, " +
+            F_NUMBER_START_APP_SET + " INTEGER);";
+
     public DebtCalcDB(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -69,9 +81,15 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(REQUEST_CREATE_TABLE_DEBTS);
         db.execSQL(REQUEST_CREATE_TABLE_PAYMENTS);
+        db.execSQL(REQUEST_CREATE_TABLE_SETTING);
+        db.execSQL("INSERT INTO " + DebtCalcDB.TABLE_SETTING + "(" +
+                                    DebtCalcDB.F_RATING_SHOW_SET + ", " +
+                                    DebtCalcDB.F_NUMBER_START_APP_SET + ") VALUES ('0', '0')");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
     }
+
+
 }

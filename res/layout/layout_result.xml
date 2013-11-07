@@ -1,47 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/background_light">
-    <ru.omdroid.DebtCalc.CustomView.DrawingBar
-            android:id="@+id/graphViewTermDebt"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-
-    <TextView
-            android:id="@+id/labelPayment"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/result_layout_label_payment"
-            android:textSize="35px"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="55dp"
-            android:layout_alignBottom="@+id/valuePayment" style="@style/styleLabel_2"/>
-
-    <EditText
-            android:id="@+id/valuePayment"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:textSize="45sp"
-            android:text="123456"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:typeface="sans"
-            android:lines="1"
-            android:inputType="numberDecimal"
-            android:drawableRight="@drawable/pen_read"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="65dp"
-            android:layout_alignBottom="@+id/seekBar" android:background="@android:color/transparent"
-            android:gravity="center_horizontal" android:paddingRight="10dp" android:paddingLeft="10dp"/>
-    <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_height="wrap_content"
+                android:background="@android:color/background_light" android:orientation="vertical">
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="55dp"/>
-</RelativeLayout>
+            android:layout_height="wrap_content">
+        <ru.omdroid.DebtCalc.CustomView.DrawingBar
+                android:id="@+id/graphViewTermDebt"
+                android:layout_height="150dp"
+                android:layout_width="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <TextView
+                android:id="@+id/labelPayment"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/result_layout_label_payment"
+                android:textSize="35px"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="15dp"
+                android:layout_alignBottom="@+id/valuePayment" style="@style/styleLabel_2"
+                android:layout_gravity="center_horizontal" android:layout_marginTop="15dp"/>
+        <EditText
+                android:id="@+id/valuePayment"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textSize="45sp"
+                android:text="123456"
+                android:textColor="@android:color/black"
+                android:inputType="numberDecimal"
+                android:drawableRight="@drawable/pen_read"
+                android:layout_centerHorizontal="true"
+                android:layout_alignBottom="@+id/seekBar" android:background="@android:color/transparent"
+                android:gravity="center_horizontal" android:paddingRight="10dp" android:paddingLeft="10dp"
+                android:textStyle="bold" android:singleLine="true"/>
+        <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                />
+    </LinearLayout>
+
+</LinearLayout>

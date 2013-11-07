@@ -162,7 +162,7 @@ public class MainNew extends Activity {
                         AppData.PERCENT + "', '" +
                         AppData.TERM_BALANCE + "', '" +
                         AppData.GOAL + "', '" +
-                        Calendar.getInstance().getTimeInMillis() + "', '" +
+                        calendarConst.getTimeInMillis() + "', '" +
                         date + "', '0')");
 
                 workDB.insertValueToTablePayment("INSERT INTO " + DebtCalcDB.TABLE_PAYMENTS + " (" +
