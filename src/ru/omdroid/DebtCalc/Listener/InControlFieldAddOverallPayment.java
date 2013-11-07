@@ -2,14 +2,10 @@ package ru.omdroid.DebtCalc.Listener;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic;
-import ru.omdroid.DebtCalc.ErrorMessage;
-import ru.omdroid.DebtCalc.Fragment.MainFragment;
-import ru.omdroid.DebtCalc.Fragment.ResultFragment;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

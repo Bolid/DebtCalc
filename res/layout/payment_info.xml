@@ -9,28 +9,27 @@
             android:id="@+id/listInfoDebtLabel"
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" android:paddingTop="10dp"
-            android:layout_below="@id/writePayment">
+            android:layout_height="wrap_content" android:paddingTop="10dp">
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="№"
                 android:id="@+id/textView"
                 android:gravity="center_vertical|right"
-                style="@style/styleLabel" android:textSize="12sp" android:layout_weight="0.3"
+                style="@style/styleLabel_2" android:textSize="12sp" android:layout_weight="0.3"
                 android:paddingRight="5dp"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Платеж"
                 android:id="@+id/textView1" android:layout_weight="1"
-                android:gravity="center_vertical|right" style="@style/styleLabel" android:textSize="12sp"
+                android:gravity="center_vertical|right" style="@style/styleLabel_2" android:textSize="12sp"
                 android:paddingRight="15dp"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Дата"
-                android:id="@+id/textView2" style="@style/styleLabel" android:textSize="12sp"
+                android:id="@+id/textView2" style="@style/styleLabel_2" android:textSize="12sp"
                 android:layout_weight="1" android:gravity="center_vertical|right"
                 android:paddingRight="15dp"/>
         <TextView
@@ -38,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="Сумма"
                 android:id="@+id/textView4" android:layout_weight="1"
-                android:gravity="center_vertical|right" style="@style/styleLabel" android:textSize="12sp"
+                android:gravity="center_vertical|right" style="@style/styleLabel_2" android:textSize="12sp"
                 android:paddingRight="15dp"/>
     </LinearLayout>
     <ScrollView

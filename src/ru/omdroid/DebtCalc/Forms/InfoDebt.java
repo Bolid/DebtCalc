@@ -13,7 +13,6 @@ import ru.omdroid.DebtCalc.Arithmetic;
 import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
-import ru.omdroid.DebtCalc.Fragment.MainFragment;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddPayment;
 import ru.omdroid.DebtCalc.R;
 
@@ -65,11 +64,22 @@ public class InfoDebt extends Activity {
         tvDeltaOnePay = (TextView)findViewById(R.id.infoDeltaOnePayment);
         tvTotalOnePay = (TextView)findViewById(R.id.tvTotalOnePay);
 
+        ImageView ivPaymentDefault = (ImageView)findViewById(R.id.ivPaymentDefault);
+        ivPaymentDefault.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                etPayment.removeTextChangedListener(inControlFieldAddPayment);
+                setChangeListener = !setChangeListener;
+                etPayment.setText(new DecimalFormat("###,###,###,###.##").format(Double.valueOf(AppData.PAYMENT_DEFAULT)));
+                writeDataInField.setOverAllPayment(0);
+                writeDataInField.setOverOnePayment(Double.valueOf(AppData.PAYMENT_DEFAULT));
+            }
+        });
+
 
         etPayment = (EditText)findViewById(R.id.etPayment);
         SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
 
-        bMinusPayment = (Button)findViewById(R.id.bMinusPayment);
 
         final DataForGraph dataForGraph = new DataForGraph();
         dataForGraph.createOver(true);
@@ -169,12 +179,19 @@ public class InfoDebt extends Activity {
                                             DebtCalcDB.FIELD_DEBT_PAYMENTS + " = '" + arithmetic.getPaymentInDebt(formatValue(etPayment.getText().toString()), Double.valueOf(AppData.DEBT_BALANCE)) +
                         "' WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
                                   "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
+                Log.v("Разность", String.valueOf(Double.valueOf(AppData.PAYMENT_DEFAULT) - formatValue(etPayment.getText().toString())));
 
-               if (Double.valueOf(AppData.PAYMENT_DEFAULT) < formatValue(etPayment.getText().toString()))
+               if (Double.valueOf(AppData.PAYMENT_DEFAULT) - formatValue(etPayment.getText().toString()) < 0)
                    workDB.updateData("UPDATE " + DebtCalcDB.TABLE_PAYMENTS +
                            " SET " + DebtCalcDB.F_PAYMENT_UP_PAY + " = '1'" +
                            " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
                            "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
+                else
+                   workDB.updateData("UPDATE " + DebtCalcDB.TABLE_PAYMENTS +
+                           " SET " + DebtCalcDB.F_PAYMENT_UP_PAY + " = '0'" +
+                           " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +
+                           "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
+
                 workDB.disconnectDataBase();
                 return true;
             case R.id.popup:
@@ -216,7 +233,7 @@ public class InfoDebt extends Activity {
     public class WriteDataInField{
 
         public void setOverAllPayment(int i){
-        tvDigitAllPay.setText(String.valueOf(AppData.TERM_BALANCE - i) + "x");
+        tvDigitAllPay.setText(String.valueOf(AppData.TERM_BALANCE - i));
         Double overPay = getOverPayment() + arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
         tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay));
         tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay + Double.valueOf(AppData.DEBT)));
@@ -237,7 +254,7 @@ public class InfoDebt extends Activity {
 
         public void setOverAllPaymentCustom(Double newPayment){
             arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, true);
-            tvDigitAllPay.setText(String.valueOf(Arithmetic.allResult.get(6)) + "x");
+            tvDigitAllPay.setText(String.valueOf(Arithmetic.allResult.get(6)));
             tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment()));
             tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment() + Double.valueOf(AppData.DEBT)));
         }

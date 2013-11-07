@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ListPayment extends Activity {
@@ -49,7 +50,7 @@ public class ListPayment extends Activity {
                     paymentPercent = arithmetic.getPaymentInPercent(balance);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balance);
                     date = (calendar.get(Calendar.DATE)) + "." + String.valueOf(calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.YEAR);
-                    addRecord(inflater, layout, i, payment, date, balance, paymentDebt, paymentPercent, feePayment);
+                    addRecord(inflater, layout, i, payment, getDate(calendar), balance, paymentDebt, paymentPercent, feePayment);
                     balance = arithmetic.getBalance(payment, balance, AppData.TERM_BALANCE);
                     calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
                     i++;
@@ -112,6 +113,16 @@ public class ListPayment extends Activity {
             }
         });
         return view;
+    }
+
+    private String getDate(Calendar calendar) {
+        String date;
+        SimpleDateFormat format = new SimpleDateFormat();
+        format.applyPattern("dd");
+        date = format.format(calendar.getTime());
+        format.applyPattern("MM");
+        date = date + "." + format.format(calendar.getTime()) + "." + String.valueOf(calendar.get(Calendar.YEAR));
+        return date;
     }
 
     @Override

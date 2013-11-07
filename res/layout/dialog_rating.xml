@@ -25,17 +25,17 @@
         <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_yes"
+                android:text="@string/rating_yes"
                 android:id="@+id/butRatYes" android:layout_weight="1"/>
         <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_no"
+                android:text="@string/rating_no"
                 android:id="@+id/butRatNo" android:layout_weight="1"/>
         <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/dialog_yes_fix"
+                android:text="@string/rating_yes_fix"
                 android:id="@+id/butRatYesFix" android:layout_weight="1"/>
     </LinearLayout>
 </LinearLayout>

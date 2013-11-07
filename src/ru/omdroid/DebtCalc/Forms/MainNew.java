@@ -12,6 +12,8 @@ import android.widget.*;
 import ru.omdroid.DebtCalc.*;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
+import ru.omdroid.DebtCalc.Dialog.DatePickerFragment;
+import ru.omdroid.DebtCalc.Dialog.DialogInputData;
 import ru.omdroid.DebtCalc.Exceptions.NullInputDataException;
 
 import java.util.Calendar;
@@ -34,8 +36,6 @@ public class MainNew extends Activity {
         final TextView tvPercent = (TextView)findViewById(R.id.tvLabPercent);
         final TextView tvDate = (TextView)findViewById(R.id.tvDateStartCredit);
         final TextView tvGoal = (TextView)findViewById(R.id.tvLabGoal);
-
-        etType = (EditText)findViewById(R.id.etCreditType);
 
         final TextView tvSumPre = (TextView)findViewById(R.id.tvLabSum);
         final TextView tvOverPay = (TextView)findViewById(R.id.tvOverPay);
