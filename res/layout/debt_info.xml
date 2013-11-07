@@ -152,10 +152,10 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Досрочное погашение 1x"
+                    android:text="@string/overpayment_one"
                     android:id="@+id/textView3" style="@style/styleLabel_2" android:textColor="@android:color/black"
                     android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="15dp" android:textSize="14sp"/>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
@@ -211,16 +211,14 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" android:layout_weight="1"
+            android:layout_height="match_parent"
             android:background="@android:color/background_light" android:padding="5dp" android:layout_margin="5dp">
         <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/etPayment"
                 android:inputType="numberDecimal" style="@style/styleValue"
-                android:maxLines="1"
-                android:layout_column="1" android:gravity="center_vertical|center_horizontal"
-                android:layout_gravity="center_horizontal" android:textSize="34sp"/>
+                android:layout_gravity="center_horizontal" android:textSize="34sp" android:singleLine="true"/>
         <SeekBar
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
