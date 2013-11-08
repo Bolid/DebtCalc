@@ -80,5 +80,6 @@ public class AppData {
         PERCENT = 0.0;
         GOAL = "";
         DATE = (long) 0;
+        PAYMENT = "";
     }
 }

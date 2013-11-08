@@ -1,7 +1,11 @@
 package ru.omdroid.DebtCalc.Forms;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
@@ -20,8 +24,9 @@ public class ResultForm extends Activity {
     public static Arithmetic arithmetic;
     static boolean paymentUpdate;
     static boolean overPayment;
-
     boolean changeListener = false;
+
+    AppData appData = new AppData();
     @Override
     public void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
@@ -66,6 +71,9 @@ public class ResultForm extends Activity {
                         etPayment.setText(arithmetic.setMask(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE - i)));
                         arithmetic.getDeltaDefault(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE - i), AppData.TERM_BALANCE - i);
                         Arithmetic.allResult.set(6, String.valueOf(AppData.TERM_BALANCE - i));
+
+                        appData.setPayment(String.valueOf(newPayment), AppData.PAYMENT_DEFAULT);
+
                         dataForGraph.setParamNew(AppData.TERM_BALANCE - i);
                         view.invalidate();
                         paymentUpdate = true;
@@ -79,6 +87,43 @@ public class ResultForm extends Activity {
                     public void onStopTrackingTouch(SeekBar seekBar) {
                     }
                 });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater actionMenu = getMenuInflater();
+        actionMenu.inflate(R.menu.di_action_menu, menu);
+        menu.getItem(0).setVisible(false);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.popup:
+                View v = findViewById(R.id.popup);
+                showPopupMenu(v);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void showPopupMenu(View v){
+        final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
+        MenuInflater mInflater = pMenu.getMenuInflater();
+        mInflater.inflate(R.menu.pm_d_add, pMenu.getMenu());
+        pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+
+                Intent intent = new Intent(getBaseContext(), ListPayment.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return false;
+            }
+        });
+        pMenu.show();
     }
 
 }

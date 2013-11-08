@@ -21,14 +21,12 @@ import java.util.Calendar;
 
 
 public class InfoDebt extends Activity {
-    View view = null;
     TextView tvDeltaAllPay = null,
             tvDigitAllPay = null,
             tvDeltaOnePay = null,
             tvTotalAllPay = null,
             tvTotalOnePay = null;
     EditText etPayment = null;
-    Button bMinusPayment = null;
     InControlFieldAddPayment inControlFieldAddPayment;
     WorkDB workDB;
     double newPayment;
@@ -43,7 +41,6 @@ public class InfoDebt extends Activity {
         super.onCreate(save);
         setContentView(R.layout.debt_info);
         ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
         workDB = new WorkDB(getBaseContext());
 
         writeDataInField = new WriteDataInField();
@@ -71,6 +68,7 @@ public class InfoDebt extends Activity {
                 etPayment.removeTextChangedListener(inControlFieldAddPayment);
                 setChangeListener = !setChangeListener;
                 etPayment.setText(new DecimalFormat("###,###,###,###.##").format(Double.valueOf(AppData.PAYMENT_DEFAULT)));
+                newPayment = Double.valueOf(AppData.PAYMENT_DEFAULT);
                 writeDataInField.setOverAllPayment(0);
                 writeDataInField.setOverOnePayment(Double.valueOf(AppData.PAYMENT_DEFAULT));
             }
@@ -233,10 +231,10 @@ public class InfoDebt extends Activity {
     public class WriteDataInField{
 
         public void setOverAllPayment(int i){
-        tvDigitAllPay.setText(String.valueOf(AppData.TERM_BALANCE - i));
-        Double overPay = getOverPayment() + arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
-        tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay));
-        tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay + Double.valueOf(AppData.DEBT)));
+            tvDigitAllPay.setText(String.valueOf(AppData.TERM_BALANCE - i));
+            Double overPay = getOverPayment() + arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
+            tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay));
+            tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay + Double.valueOf(AppData.DEBT)));
         }
 
         public void setOverOnePayment(Double newPayment){

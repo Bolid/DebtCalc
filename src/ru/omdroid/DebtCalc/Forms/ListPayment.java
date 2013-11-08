@@ -35,7 +35,10 @@ public class ListPayment extends Activity {
                 Arithmetic arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
                 String date;
 
-                payment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
+                if (!AppData.PAYMENT.equals(""))
+                    payment = Double.valueOf(AppData.PAYMENT);
+                else
+                    payment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
                 balance = Double.valueOf(AppData.DEBT_BALANCE);
 
                 Calendar calendar = Calendar.getInstance();
@@ -43,16 +46,17 @@ public class ListPayment extends Activity {
                 calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
 
                 int i = 1;
-                for (int j = AppData.TERM_BALANCE; j > 0; j--){
+                //for (int j = AppData.TERM_BALANCE; j > 0; j--)
+                while (balance > 0.01){
                     if (!addRecord)
                         return null;
                     feePayment = feePayment + payment;
                     paymentPercent = arithmetic.getPaymentInPercent(balance);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balance);
-                    date = (calendar.get(Calendar.DATE)) + "." + String.valueOf(calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.YEAR);
                     addRecord(inflater, layout, i, payment, getDate(calendar), balance, paymentDebt, paymentPercent, feePayment);
                     balance = arithmetic.getBalance(payment, balance, AppData.TERM_BALANCE);
-                    calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
+                    calendar.setTimeInMillis(createNextDatePayment(calendar, calendar.getTimeInMillis(), AppData.DATE));
+                    //calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
                     i++;
                     publishProgress(view);
                 }
@@ -123,6 +127,20 @@ public class ListPayment extends Activity {
         format.applyPattern("MM");
         date = date + "." + format.format(calendar.getTime()) + "." + String.valueOf(calendar.get(Calendar.YEAR));
         return date;
+    }
+
+    private Long createNextDatePayment(Calendar calendar, Long dateLong, Long dateStart){
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(dateStart);
+        calendar.setTimeInMillis(dateLong);
+        int preMonth = calendar.get(Calendar.MONTH);
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, cal.get(Calendar.DATE));
+        int postMonth = calendar.get(Calendar.MONTH);
+        while (postMonth - preMonth > 1){
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)-1);
+            postMonth = calendar.get(Calendar.MONTH);
+        }
+        return calendar.getTimeInMillis();
     }
 
     @Override

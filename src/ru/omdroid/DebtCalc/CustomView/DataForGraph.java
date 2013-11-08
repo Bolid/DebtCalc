@@ -57,7 +57,7 @@ class DrawingBar extends View {
     }
 
     private void drawingCreditBar(Canvas canvas){
-        int height = DataForGraph.HEIGHT_OVER;
+        int height = 50/*DataForGraph.HEIGHT_OVER*/;
 
 
         sizeWightBar = (canvas.getWidth() - paddingBar) * (DataForGraph.SUM)/(DataForGraph.SUM + DataForGraph.OVER);

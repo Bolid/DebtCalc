@@ -18,6 +18,8 @@ public class InControlFieldAddOverallPayment implements TextWatcher {
     View view;
     int position;
 
+    AppData appData = new AppData();
+
     Arithmetic arithmetic;
     public InControlFieldAddOverallPayment(EditText etPayment, Double defaultPayment, View view, Arithmetic arithmetic){
         this.etPayment = etPayment;
@@ -45,9 +47,12 @@ public class InControlFieldAddOverallPayment implements TextWatcher {
         }
         if (!s.equals(""))
             if (defaultPayment < Double.valueOf(s)){
+                appData.setPayment(s, String.valueOf(defaultPayment));
                 arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), Double.valueOf(s), true);
                 view.invalidate();
             }
+            else
+                appData.setPayment("", String.valueOf(defaultPayment));
 
         if (!s.equals("")){
             s = String.valueOf(numberFormat.format(Double.valueOf(s)));

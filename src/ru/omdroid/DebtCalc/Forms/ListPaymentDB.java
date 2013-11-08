@@ -37,7 +37,7 @@ public class ListPaymentDB extends Activity {
             protected Void doInBackground(Void... voids) {
                 Calendar datePay = Calendar.getInstance();
                 LayoutInflater inflater = (LayoutInflater)getSystemService(getBaseContext().LAYOUT_INFLATER_SERVICE);
-                Cursor cursorInPayment = workDB.readValueFromDataBase("SELECT " +
+                Cursor cursor = workDB.readValueFromDataBase("SELECT " +
                         DebtCalcDB.FIELD_ID_DEBT_PAYMENTS +", "+
                         DebtCalcDB.FIELD_PAYMENT_PAYMENTS +", "+
                         DebtCalcDB.FIELD_DEBT_PAYMENTS +", "+
@@ -51,38 +51,44 @@ public class ListPaymentDB extends Activity {
                         " FROM " + DebtCalcDB.TABLE_PAYMENTS +
                         " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT +"')");
                 int numPayment = 0;
-                while (cursorInPayment.moveToNext()){
+                while (cursor.moveToNext()){
                     if (!addRecord)
                         return null;
                     numPayment++;
-                    datePay.setTimeInMillis(cursorInPayment.getLong(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS)));
+                    datePay.setTimeInMillis(cursor.getLong(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS)));
                     Drawable background;
-                    if (cursorInPayment.getInt(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_PAID_PAYMENTS)) == 1)
+                    if (cursor.getInt(cursor.getColumnIndex(DebtCalcDB.FIELD_PAID_PAYMENTS)) == 1)
                         background = getResources().getDrawable(R.drawable.pay_paid);
                     else
                         background =  getResources().getDrawable(R.drawable.pay_next_piad);
                     addRecord(inflater,
                             layout,
                             numPayment,
-                            cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)),
-                            cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_DEBT_PAYMENTS)),
-                            cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_PERCENT_PAYMENTS)),
+                            cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)),
+                            cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_DEBT_PAYMENTS)),
+                            cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_PERCENT_PAYMENTS)),
                             getDate(datePay),
-                            cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY)),
-                            cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS)),
-                            cursorInPayment.getString(cursorInPayment.getColumnIndex(DebtCalcDB.F_PAYMENT_UP_PAY)),
+                            cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY)),
+                            cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS)),
+                            cursor.getString(cursor.getColumnIndex(DebtCalcDB.F_PAYMENT_UP_PAY)),
                             background);
                     publishProgress(view);
                 }
 
                 Double paymentPercent, paymentDebt, balanceDebt, payment, feePayment = 0.0;
 
-                cursorInPayment.moveToLast();
-                Long datePayment = cursorInPayment.getLong(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS));
-                int balanceTerm = cursorInPayment.getInt(cursorInPayment.getColumnIndex(DebtCalcDB.F_BALANCE_TERM_PAY));
-                balanceDebt = cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY));
-                feePayment = cursorInPayment.getDouble(cursorInPayment.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS));
-                cursorInPayment.close();
+                cursor.moveToLast();
+                Long datePayment = cursor.getLong(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS));
+                int balanceTerm = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.F_BALANCE_TERM_PAY));
+                balanceDebt = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY));
+                feePayment = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS));
+                cursor.close();
+
+                cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_DATE_LONG_START_DEBT + " FROM " + DebtCalcDB.TABLE_CREDITS + " WHERE (" + DebtCalcDB.FIELD_ID_DEBT + " = '" + AppData.ID_DEBT +"')");
+                cursor.moveToNext();
+                Long dateStart = cursor.getLong(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_START_DEBT));
+                cursor.close();
+                workDB.disconnectDataBase();
 
                 Arithmetic arithmetic = new Arithmetic(AppData.PERCENT);
 
@@ -101,7 +107,8 @@ public class ListPaymentDB extends Activity {
                     paymentPercent = arithmetic.getPaymentInPercent(balanceDebt);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balanceDebt);
                     addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, getDate(datePay), balanceDebt, feePayment, null, getResources().getDrawable(R.drawable.pay_no_paid));
-                    datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE));
+                    datePay.setTimeInMillis(createNextDatePayment(datePay, datePay.getTimeInMillis(), dateStart));
+                    //datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE));
                     publishProgress(view);
                 }
                 return null;
@@ -180,6 +187,20 @@ public class ListPaymentDB extends Activity {
         format.applyPattern("MM");
         date = date + "." + format.format(calendar.getTime()) + "." + String.valueOf(calendar.get(Calendar.YEAR));
         return date;
+    }
+
+    private Long createNextDatePayment(Calendar calendar, Long dateLong, Long dateStart){
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(dateStart);
+        calendar.setTimeInMillis(dateLong);
+        int preMonth = calendar.get(Calendar.MONTH);
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, cal.get(Calendar.DATE));
+        int postMonth = calendar.get(Calendar.MONTH);
+        while (postMonth - preMonth > 1){
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)-1);
+            postMonth = calendar.get(Calendar.MONTH);
+        }
+        return calendar.getTimeInMillis();
     }
 
     @Override
