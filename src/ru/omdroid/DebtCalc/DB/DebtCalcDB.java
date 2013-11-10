@@ -34,6 +34,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String FIELD_DATE_LONG_PAYMENTS = "date_long_payments";
     public static final String FIELD_PAID_PAYMENTS = "paid_payments";
     public static final String F_PAYMENT_UP_PAY = "up_payment";
+    public static final String F_COUNT_DAY_PAY = "count_day_payment";
     /*TABLE SETTING*/
     public static final String TABLE_SETTING = "setting_table";
     public static final String F_ID_SET = "_id";
@@ -65,7 +66,8 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     F_OVER_PAY + " DOUBLE, " +
                                                                     FIELD_DATE_LONG_PAYMENTS + " INTEGER, " +
                                                                     FIELD_PAID_PAYMENTS + " INTEGER, " +
-                                                                    F_PAYMENT_UP_PAY + " INTEGER);";
+                                                                    F_PAYMENT_UP_PAY + " INTEGER, " +
+                                                                    F_COUNT_DAY_PAY + " INTEGER);";
 
     public static final String REQUEST_CREATE_TABLE_SETTING = "CREATE TABLE " +
             TABLE_SETTING + " (" +

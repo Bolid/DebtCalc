@@ -11,6 +11,7 @@ import ru.omdroid.DebtCalc.Arithmetic;
 import ru.omdroid.DebtCalc.R;
 import android.app.Activity;
 import android.os.Bundle;
+import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -19,7 +20,8 @@ import java.util.Calendar;
 public class ListPayment extends Activity {
     View view = null;
     boolean addRecord = true;
-
+    int countDay = 0;
+    AppData appData = new AppData();
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.payment_info);
@@ -41,9 +43,10 @@ public class ListPayment extends Activity {
                     payment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
                 balance = Double.valueOf(AppData.DEBT_BALANCE);
 
+                WorkDateDebt workDateDebt = new WorkDateDebt();
                 Calendar calendar = Calendar.getInstance();
-                calendar.setTimeInMillis(AppData.DATE);
-                calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
+                calendar.setTimeInMillis(AppData.DATE_PAY);
+                calendar.setTimeInMillis(workDateDebt.createNextDatePayment(calendar.getTimeInMillis(), AppData.DATE_PAY));
 
                 int i = 1;
                 //for (int j = AppData.TERM_BALANCE; j > 0; j--)
@@ -51,12 +54,12 @@ public class ListPayment extends Activity {
                     if (!addRecord)
                         return null;
                     feePayment = feePayment + payment;
-                    paymentPercent = arithmetic.getPaymentInPercent(balance);
+                    paymentPercent = arithmetic.getPaymentInPercent(balance, AppData.COUNT_DAY_OF_MONTH);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balance);
-                    addRecord(inflater, layout, i, payment, getDate(calendar), balance, paymentDebt, paymentPercent, feePayment);
+                    addRecord(inflater, layout, i, payment, workDateDebt.getDate(calendar), balance, paymentDebt, paymentPercent, feePayment);
                     balance = arithmetic.getBalance(payment, balance, AppData.TERM_BALANCE);
-                    calendar.setTimeInMillis(createNextDatePayment(calendar, calendar.getTimeInMillis(), AppData.DATE));
-                    //calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
+                    calendar.setTimeInMillis(workDateDebt.createNextDatePayment(calendar.getTimeInMillis(), AppData.DATE_PAY));
+                    //calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE_PAY));
                     i++;
                     publishProgress(view);
                 }
@@ -117,30 +120,6 @@ public class ListPayment extends Activity {
             }
         });
         return view;
-    }
-
-    private String getDate(Calendar calendar) {
-        String date;
-        SimpleDateFormat format = new SimpleDateFormat();
-        format.applyPattern("dd");
-        date = format.format(calendar.getTime());
-        format.applyPattern("MM");
-        date = date + "." + format.format(calendar.getTime()) + "." + String.valueOf(calendar.get(Calendar.YEAR));
-        return date;
-    }
-
-    private Long createNextDatePayment(Calendar calendar, Long dateLong, Long dateStart){
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(dateStart);
-        calendar.setTimeInMillis(dateLong);
-        int preMonth = calendar.get(Calendar.MONTH);
-        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, cal.get(Calendar.DATE));
-        int postMonth = calendar.get(Calendar.MONTH);
-        while (postMonth - preMonth > 1){
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)-1);
-            postMonth = calendar.get(Calendar.MONTH);
-        }
-        return calendar.getTimeInMillis();
     }
 
     @Override

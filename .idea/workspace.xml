@@ -24,36 +24,39 @@
   <component name="ChangeListManager">
     <list default="true" id="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/CustomView/DataForGraph.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/CustomView/DataForGraph.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldAddOverallPayment.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldAddOverallPayment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Dialog/DatePickerFragment.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Dialog/DatePickerFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DB/DebtCalcDB.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DB/DebtCalcDB.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPaymentDB.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPaymentDB.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainNew.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainNew.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ResultForm.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ResultForm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DebtCalc.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383888563875" ignored="false" />
+    <file path="/Dummy.txt" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383930532922" ignored="false" />
     <file path="/fragment.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383838969798" ignored="false" />
     <file path="/strings.xml" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383852767258" ignored="false" />
     <file path="/styles.xml" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383847289852" ignored="false" />
-    <file path="/InfoDebt.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383891631599" ignored="false" />
+    <file path="/InfoDebt.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1384112588630" ignored="false" />
     <file path="/debt_info.xml" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383848842975" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383848650711" ignored="false" />
     <file path="/test.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383848615026" ignored="false" />
-    <file path="/ListDebt.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383900786866" ignored="false" />
-    <file path="/ListPayment.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383894243803" ignored="false" />
+    <file path="/ListDebt.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1384112275761" ignored="false" />
+    <file path="/ListPayment.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1384111981848" ignored="false" />
     <file path="/DialogDeleteDebt.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383854509160" ignored="false" />
-    <file path="/ListPaymentDB.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383890019536" ignored="false" />
-    <file path="/a.dummy" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383898820135" ignored="false" />
+    <file path="/ListPaymentDB.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1384112158821" ignored="false" />
+    <file path="/a.dummy" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1384112414625" ignored="false" />
     <file path="/ResultForm.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383895308859" ignored="false" />
     <file path="/InControlFieldAddOverallPayment.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383893896804" ignored="false" />
-    <file path="/AppData.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383893804379" ignored="false" />
-    <file path="/MainNew.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383898003513" ignored="false" />
+    <file path="/AppData.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1384110770585" ignored="false" />
+    <file path="/MainNew.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1384111875857" ignored="false" />
+    <file path="/Arithmetic.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1384113182336" ignored="false" />
+    <file path="/DebtCalcDB.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383933386395" ignored="false" />
+    <file path="/WorkDateDebt.java" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1384113871266" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +71,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -106,36 +108,6 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" line="179" class="ru.omdroid.DebtCalc.Forms.InfoDebt" package="ru.omdroid.DebtCalc.Forms">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" line="181" class="ru.omdroid.DebtCalc.Forms.InfoDebt" package="ru.omdroid.DebtCalc.Forms">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" line="0" class="ListDebt.java" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
@@ -151,7 +123,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainNew.java" line="143" class="ru.omdroid.DebtCalc.Forms.MainNew" package="ru.omdroid.DebtCalc.Forms">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" line="376" class="ru.omdroid.DebtCalc.Forms.ListDebt" package="ru.omdroid.DebtCalc.Forms">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -166,7 +138,67 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" line="366" class="ru.omdroid.DebtCalc.Forms.ListDebt" package="ru.omdroid.DebtCalc.Forms">
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java" line="86" class="ru.omdroid.DebtCalc.Arithmetic" package="ru.omdroid.DebtCalc">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java" line="56" class="ru.omdroid.DebtCalc.Forms.ListPayment$1" package="ru.omdroid.DebtCalc.Forms">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java" line="57" class="ru.omdroid.DebtCalc.Forms.ListPayment$1" package="ru.omdroid.DebtCalc.Forms">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java" line="115" class="ru.omdroid.DebtCalc.Arithmetic" package="ru.omdroid.DebtCalc">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/WorkDateDebt.java" line="31" class="ru.omdroid.DebtCalc.WorkDateDebt" package="ru.omdroid.DebtCalc">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -182,6 +214,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </line_breakpoints>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -191,37 +224,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dialog_delete.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/dialog_delete.xml">
-          <provider editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListDebt.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ListDebt.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="83" selection-start="7364" selection-end="7364" vertical-scroll-proportion="0.0">
+            <state line="182" column="40" selection-start="9632" selection-end="9632" vertical-scroll-proportion="0.42222223">
               <folding>
-                <element signature="e#3020#3246#0" expanded="true" />
-                <element signature="e#3235#3236#0" expanded="true" />
-                <element signature="e#4148#9013#0" expanded="true" />
-                <element signature="e#9002#9003#0" expanded="true" />
-                <element signature="e#9058#10169#0" expanded="true" />
-                <element signature="e#10158#10159#0" expanded="true" />
-                <element signature="e#10218#11179#0" expanded="true" />
-                <element signature="e#11168#11169#0" expanded="true" />
-                <element signature="e#20558#20784#0" expanded="true" />
-                <element signature="e#20773#20774#0" expanded="true" />
-                <element signature="e#21603#22218#0" expanded="true" />
-                <element signature="e#22207#22208#0" expanded="true" />
-                <element signature="e#22565#23219#0" expanded="true" />
-                <element signature="e#23208#23209#0" expanded="true" />
+                <element signature="method#onCreateOptionsMenu#0;class#ListDebt#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#ListDebt#0" expanded="false" />
+                <element signature="method#createListDebt#0;class#ListDebt#0" expanded="false" />
+                <element signature="method#createListDebtArchive#0;class#ListDebt#0" expanded="false" />
+                <element signature="method#addPlateArchive#0;class#ListDebt#0" expanded="false" />
+                <element signature="method#showPopupMenu#0;class#ListDebt#0" expanded="false" />
+                <element signature="method#showPopupMenuForTable#0;class#ListDebt#0" expanded="false" />
+                <element signature="e#23147#23801#0" expanded="true" />
+                <element signature="e#23790#23791#0" expanded="true" />
+                <element signature="method#typeYear#0;class#ListDebt#0" expanded="false" />
+                <element signature="method#Rounding#0;class#ListDebt#0" expanded="false" />
+                <element signature="method#ratingShow#0;class#ListDebt#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -230,39 +249,52 @@
       <file leaf-file-name="ListPayment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="5" selection-start="5979" selection-end="6682" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainNew.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainNew.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="40" selection-start="9202" selection-end="9202" vertical-scroll-proportion="0.8060345">
+            <state line="60" column="80" selection-start="2756" selection-end="2756" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="method#generateNumCredit#0;class#MainNew#0" expanded="false" />
-                <element signature="method#showPopupMenu#0;class#MainNew#0" expanded="false" />
-                <element signature="method#tablePaymentShow#0;class#MainNew#0" expanded="false" />
-                <element signature="method#testPaymentShow#0;class#MainNew#0" expanded="false" />
+                <element signature="method#onClick#0;class#4425:5775" expanded="false" />
+                <element signature="method#onStop#0;class#ListPayment#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatePickerFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Dialog/DatePickerFragment.java">
+      <file leaf-file-name="ListPaymentDB.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPaymentDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="21" selection-start="642" selection-end="642" vertical-scroll-proportion="0.0">
+            <state line="115" column="24" selection-start="5663" selection-end="5663" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppData.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java">
+      <file leaf-file-name="MainNew.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainNew.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="21" selection-start="1866" selection-end="1866" vertical-scroll-proportion="0.0">
+            <state line="141" column="67" selection-start="6261" selection-end="6261" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#2584#2807#0" expanded="true" />
+                <element signature="e#2796#2797#0" expanded="true" />
+                <element signature="e#2844#3297#0" expanded="true" />
+                <element signature="e#3286#3287#0" expanded="true" />
+                <element signature="e#3335#3806#0" expanded="true" />
+                <element signature="e#3795#3796#0" expanded="true" />
+                <element signature="e#3847#4319#0" expanded="true" />
+                <element signature="e#4308#4309#0" expanded="true" />
+                <element signature="e#4357#4820#0" expanded="true" />
+                <element signature="e#4809#4810#0" expanded="true" />
+                <element signature="method#showPopupMenu#0;class#MainNew#0" expanded="false" />
+                <element signature="e#10525#11451#0" expanded="true" />
+                <element signature="e#11440#11441#0" expanded="true" />
+                <element signature="method#tablePaymentShow#0;class#MainNew#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Arithmetic.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="115" column="0" selection-start="4522" selection-end="4522" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -271,7 +303,35 @@
       <file leaf-file-name="ResultForm.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ResultForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="42" selection-start="4153" selection-end="4153" vertical-scroll-proportion="0.0">
+            <state line="61" column="89" selection-start="2446" selection-end="2446" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="class#2412:3926" expanded="false" />
+                <element signature="method#onProgressChanged#0;class#2412:3926" expanded="false" />
+                <element signature="method#onStartTrackingTouch#0;class#2412:3926" expanded="false" />
+                <element signature="method#onStopTrackingTouch#0;class#2412:3926" expanded="false" />
+                <element signature="method#onCreateOptionsMenu#0;class#ResultForm#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#ResultForm#0" expanded="false" />
+                <element signature="method#showPopupMenu#0;class#ResultForm#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WorkDateDebt.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/WorkDateDebt.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="0" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppData.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="36" selection-start="1156" selection-end="1156" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -280,7 +340,7 @@
       <file leaf-file-name="InControlFieldAddOverallPayment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldAddOverallPayment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="36" selection-start="1931" selection-end="1931" vertical-scroll-proportion="0.0">
+            <state line="23" column="36" selection-start="652" selection-end="652" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -289,20 +349,8 @@
       <file leaf-file-name="InfoDebt.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="181" column="0" selection-start="7860" selection-end="7860" vertical-scroll-proportion="0.0">
+            <state line="252" column="67" selection-start="11725" selection-end="11725" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListPaymentDB.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPaymentDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="111" selection-start="5936" selection-end="5936" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="method#onProgressUpdate#0;class#959:6366" expanded="false" />
-                <element signature="method#addRecord#0;class#ListPaymentDB#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -315,7 +363,7 @@
     </FindUsagesManager>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/../../../keysign/keysign" />
+    <option name="KEY_STORE_PATH" value="$USER_HOME$/keysign/keysign" />
     <option name="KEY_ALIAS" value="signkey" />
   </component>
   <component name="Git.Settings">
@@ -329,30 +377,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/layout/test.xml" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/res/layout/debt_info.xml" />
-        <option value="$PROJECT_DIR$/res/layout/payment_info.xml" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/layout/dialog_delete.xml" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Dialog/DialogDeleteDebt.java" />
-        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPaymentDB.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/CustomView/DataForGraph.java" />
-        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldAddOverallPayment.java" />
-        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ResultForm.java" />
-        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" />
-        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DB/DebtCalcDB.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Dialog/DatePickerFragment.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPaymentDB.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainNew.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/WorkDateDebt.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-1" />
     <option name="y" value="24" />
-    <option name="width" value="1026" />
-    <option name="height" value="577" />
+    <option name="width" value="1442" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -403,7 +451,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -463,56 +510,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DebtCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DebtCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DebtCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CustomView" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DebtCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DebtCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DebtCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CustomView" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataForGraph.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -525,7 +525,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="preferences.keymap" />
     <property name="ExportedModule" value="DebtCalc" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../keysign/keysign" />
+    <property name="last_opened_file_path" value="$USER_HOME$/keysign/keysign" />
     <property name="AndroidLayoutSelectedEditor" value="android-designer" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -534,8 +534,8 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -575,19 +575,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -613,6 +600,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -718,31 +718,31 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="24" width="1026" height="577" extended-state="6" />
+    <frame x="-1" y="24" width="1442" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4979592" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.55402297" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5537415" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292517" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264368" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8436782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32517007" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8435374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30879346" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30846485" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24948876" sideWeight="0.6707483" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32873562" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24892396" sideWeight="0.44625852" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32789117" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6707483" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32783356" sideWeight="0.6707483" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.6707483" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292517" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -812,65 +812,27 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="64" selection-start="778" selection-end="786" vertical-scroll-proportion="0.3596615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Dialog/DialogRating.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="10" selection-start="383" selection-end="1705" vertical-scroll-proportion="0.719323" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/debt_info.xml">
-      <provider editor-type-id="text-editor">
-        <state line="260" column="54" selection-start="15554" selection-end="15554" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+      <provider editor-type-id="text-editor">
+        <state line="260" column="54" selection-start="15554" selection-end="15554" vertical-scroll-proportion="0.0" />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/dialog_delete.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Dialog/DialogDeleteDebt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="61" selection-start="607" selection-end="607" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPaymentDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="111" selection-start="5936" selection-end="5936" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#onProgressUpdate#0;class#959:6366" expanded="false" />
-            <element signature="method#addRecord#0;class#ListPaymentDB#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldAddOverallPayment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="36" selection-start="1931" selection-end="1931" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="21" selection-start="1866" selection-end="1866" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -882,71 +844,127 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ResultForm.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DB/DebtCalcDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="42" selection-start="4153" selection-end="4153" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="5" selection-start="5979" selection-end="6682" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Developing/Android/sdk/platforms/android-17/android.jar!/android/app/DialogFragment.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="154" selection-end="154" vertical-scroll-proportion="0.2">
+        <state line="69" column="97" selection-start="4947" selection-end="4947" vertical-scroll-proportion="1.3706396">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Dialog/DatePickerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="21" selection-start="642" selection-end="642" vertical-scroll-proportion="0.0">
+        <state line="38" column="0" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Listener/InControlFieldAddOverallPayment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="0" selection-start="7860" selection-end="7860" vertical-scroll-proportion="0.0">
+        <state line="23" column="36" selection-start="652" selection-end="652" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ResultForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="83" selection-start="7364" selection-end="7364" vertical-scroll-proportion="0.0">
+        <state line="61" column="89" selection-start="2446" selection-end="2446" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#3020#3246#0" expanded="true" />
-            <element signature="e#3235#3236#0" expanded="true" />
-            <element signature="e#4148#9013#0" expanded="true" />
-            <element signature="e#9002#9003#0" expanded="true" />
-            <element signature="e#9058#10169#0" expanded="true" />
-            <element signature="e#10158#10159#0" expanded="true" />
-            <element signature="e#10218#11179#0" expanded="true" />
-            <element signature="e#11168#11169#0" expanded="true" />
-            <element signature="e#20558#20784#0" expanded="true" />
-            <element signature="e#20773#20774#0" expanded="true" />
-            <element signature="e#21603#22218#0" expanded="true" />
-            <element signature="e#22207#22208#0" expanded="true" />
-            <element signature="e#22565#23219#0" expanded="true" />
-            <element signature="e#23208#23209#0" expanded="true" />
+            <element signature="class#2412:3926" expanded="false" />
+            <element signature="method#onProgressChanged#0;class#2412:3926" expanded="false" />
+            <element signature="method#onStartTrackingTouch#0;class#2412:3926" expanded="false" />
+            <element signature="method#onStopTrackingTouch#0;class#2412:3926" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#ResultForm#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#ResultForm#0" expanded="false" />
+            <element signature="method#showPopupMenu#0;class#ResultForm#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="80" selection-start="2756" selection-end="2756" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="method#onClick#0;class#4425:5775" expanded="false" />
+            <element signature="method#onStop#0;class#ListPayment#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainNew.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="40" selection-start="9202" selection-end="9202" vertical-scroll-proportion="0.8060345">
+        <state line="141" column="67" selection-start="6261" selection-end="6261" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="method#generateNumCredit#0;class#MainNew#0" expanded="false" />
+            <element signature="e#2584#2807#0" expanded="true" />
+            <element signature="e#2796#2797#0" expanded="true" />
+            <element signature="e#2844#3297#0" expanded="true" />
+            <element signature="e#3286#3287#0" expanded="true" />
+            <element signature="e#3335#3806#0" expanded="true" />
+            <element signature="e#3795#3796#0" expanded="true" />
+            <element signature="e#3847#4319#0" expanded="true" />
+            <element signature="e#4308#4309#0" expanded="true" />
+            <element signature="e#4357#4820#0" expanded="true" />
+            <element signature="e#4809#4810#0" expanded="true" />
             <element signature="method#showPopupMenu#0;class#MainNew#0" expanded="false" />
+            <element signature="e#10525#11451#0" expanded="true" />
+            <element signature="e#11440#11441#0" expanded="true" />
             <element signature="method#tablePaymentShow#0;class#MainNew#0" expanded="false" />
-            <element signature="method#testPaymentShow#0;class#MainNew#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="36" selection-start="1156" selection-end="1156" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="252" column="67" selection-start="11725" selection-end="11725" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPaymentDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="24" selection-start="5663" selection-end="5663" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="0" selection-start="4522" selection-end="4522" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/WorkDateDebt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="40" selection-start="9632" selection-end="9632" vertical-scroll-proportion="0.42222223">
+          <folding>
+            <element signature="method#onCreateOptionsMenu#0;class#ListDebt#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#ListDebt#0" expanded="false" />
+            <element signature="method#createListDebt#0;class#ListDebt#0" expanded="false" />
+            <element signature="method#createListDebtArchive#0;class#ListDebt#0" expanded="false" />
+            <element signature="method#addPlateArchive#0;class#ListDebt#0" expanded="false" />
+            <element signature="method#showPopupMenu#0;class#ListDebt#0" expanded="false" />
+            <element signature="method#showPopupMenuForTable#0;class#ListDebt#0" expanded="false" />
+            <element signature="e#23147#23801#0" expanded="true" />
+            <element signature="e#23790#23791#0" expanded="true" />
+            <element signature="method#typeYear#0;class#ListDebt#0" expanded="false" />
+            <element signature="method#Rounding#0;class#ListDebt#0" expanded="false" />
+            <element signature="method#ratingShow#0;class#ListDebt#0" expanded="false" />
           </folding>
         </state>
       </provider>

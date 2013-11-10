@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -135,10 +136,12 @@ public class MainNew extends Activity {
         if (AppData.DEBT_BALANCE.equals("") || AppData.TERM_BALANCE == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
             throw new NullInputDataException(" ");
 
-        //calendar.set(calendar.get(Calendar.YEAR), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.DATE));
-        Long dateFirstPayment = createNextDatePayment(calendar, calendar.getTimeInMillis(), calendarConst.getTimeInMillis());//calendar.getTimeInMillis();
+        //calendar.set(calendar.get(Calendar.YEAR), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.DATE_PAY));
+        WorkDateDebt workDateDebt = new WorkDateDebt();
+        calendar.setTimeInMillis(calendarConst.getTimeInMillis());
+        Long dateFirstPayment = workDateDebt.createNextDatePayment(calendar.getTimeInMillis(), calendarConst.getTimeInMillis());//calendar.getTimeInMillis();
 
-        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + (Integer.valueOf(AppData.param[2])), calendar.get(Calendar.DATE));
+        //calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + (Integer.valueOf(AppData.param[2])), calendar.get(Calendar.DATE_PAY));
         String date = String.valueOf(calendarConst.get(Calendar.DATE))+"."+String.valueOf(calendarConst.get(Calendar.MONTH) + 1)+"."+String.valueOf(calendarConst.get(Calendar.YEAR));
 
             WorkDB workDB = new WorkDB(getBaseContext());
@@ -183,7 +186,7 @@ public class MainNew extends Activity {
                         AppData.TERM_BALANCE + "', '" +
                         arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE) + "', '" +
                         arithmetic.getPaymentInDebt(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE), Double.valueOf(AppData.DEBT_BALANCE)) + "', '" +
-                        arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE)) + "', '" +
+                        arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH) + "', '" +
                         "0.0', '" +
                         dateFirstPayment + "', '" +
                         "0')");
@@ -199,20 +202,6 @@ public class MainNew extends Activity {
         return 1000 + random.nextInt(9000 - 1000 + 1);
     }
 
-    private Long createNextDatePayment(Calendar calendar, Long dateLong, Long dateStart){
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(dateStart);
-        calendar.setTimeInMillis(dateLong);
-        int preMonth = calendar.get(Calendar.MONTH);
-        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, cal.get(Calendar.DATE));
-        int postMonth = calendar.get(Calendar.MONTH);
-        while (postMonth - preMonth > 1){
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)-1);
-            postMonth = calendar.get(Calendar.MONTH);
-        }
-        return calendar.getTimeInMillis();
-    }
-
     private void showPopupMenu(View v){
         final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
         MenuInflater mInflater = pMenu.getMenuInflater();
@@ -221,7 +210,7 @@ public class MainNew extends Activity {
         pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.tableShow:
                         try {
                             tablePaymentShow();

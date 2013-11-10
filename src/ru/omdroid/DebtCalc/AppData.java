@@ -3,9 +3,9 @@ package ru.omdroid.DebtCalc;
 public class AppData {
     public static String[] param = new String[4];
     public static String PAYMENT, GOAL = "", DEBT_BALANCE = "", PAYMENT_DEFAULT, ID_DEBT = "", DEBT = "";
-    public static Long DATE;
+    public static Long DATE_PAY, DATE_DEBT_START;
     public static Double OVER_PAYMENT, PERCENT = 0.0, DELTA;
-    public static int TERM_BALANCE = 0, TERM = 0;
+    public static int TERM_BALANCE = 0, TERM = 0, COUNT_DAY_OF_MONTH = 0, COUNT_DAY_OF_YEAR = 0;
 
     public void addSumCredit(String sumCredit){
         param[0] = sumCredit;
@@ -31,7 +31,11 @@ public class AppData {
     }
 
     public void setDate(Long s){
-        DATE = s;
+        DATE_PAY = s;
+    }
+
+    public void setDateDebtStart(Long dateStart){
+        DATE_DEBT_START = dateStart;
     }
 
     public void setDebtBalance(String s){
@@ -58,6 +62,11 @@ public class AppData {
         TERM = term;
     }
 
+    public void setCountDayOfMonth(int countDayInMonth, int countDayInYear){
+        COUNT_DAY_OF_MONTH = countDayInMonth;
+        COUNT_DAY_OF_YEAR = countDayInYear;
+    }
+
     public void setDelta(Double delta){
         DELTA = delta;
     }
@@ -79,7 +88,7 @@ public class AppData {
         TERM_BALANCE = 0;
         PERCENT = 0.0;
         GOAL = "";
-        DATE = (long) 0;
+        DATE_PAY = (long) 0;
         PAYMENT = "";
     }
 }

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import ru.omdroid.DebtCalc.Arithmetic;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.R;
+import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -25,6 +27,9 @@ import java.util.Calendar;
 public class ListPaymentDB extends Activity {
     View view = null;
     boolean addRecord = true;
+    int countDay = 0;
+
+    AppData appData = new AppData();
 
     public void onCreate(Bundle save){
         super.onCreate(save);
@@ -35,6 +40,8 @@ public class ListPaymentDB extends Activity {
             LinearLayout layout = (LinearLayout)findViewById(R.id.llPaymentInfo);
             @Override
             protected Void doInBackground(Void... voids) {
+
+                WorkDateDebt workDateDebt = new WorkDateDebt();
                 Calendar datePay = Calendar.getInstance();
                 LayoutInflater inflater = (LayoutInflater)getSystemService(getBaseContext().LAYOUT_INFLATER_SERVICE);
                 Cursor cursor = workDB.readValueFromDataBase("SELECT " +
@@ -67,7 +74,7 @@ public class ListPaymentDB extends Activity {
                             cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)),
                             cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_DEBT_PAYMENTS)),
                             cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_PERCENT_PAYMENTS)),
-                            getDate(datePay),
+                            workDateDebt.getDate(datePay),
                             cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY)),
                             cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS)),
                             cursor.getString(cursor.getColumnIndex(DebtCalcDB.F_PAYMENT_UP_PAY)),
@@ -96,19 +103,24 @@ public class ListPaymentDB extends Activity {
                 //balanceDebt = Double.valueOf(AppData.DEBT_BALANCE);
 
 
-                datePay.setTimeInMillis(datePayment);
-                datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE));
-                for (int j = balanceTerm - 1; j > 0; j--){
+
+                //datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE_PAY));
+                //for (int j = balanceTerm - 1; j > 0; j--)
+                while (balanceDebt > 0.01){
                     if (!addRecord)
                         return null;
                     numPayment++;
+                    if (numPayment == 29)
+                        Log.v("","");
                     feePayment = feePayment + payment;
                     balanceDebt = arithmetic.getBalance(payment, balanceDebt, AppData.TERM_BALANCE);
-                    paymentPercent = arithmetic.getPaymentInPercent(balanceDebt);
+
+                    datePay.setTimeInMillis(workDateDebt.createNextDatePayment(datePay.getTimeInMillis(), dateStart));
+                    paymentPercent = arithmetic.getPaymentInPercent(balanceDebt, countDay);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balanceDebt);
-                    addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, getDate(datePay), balanceDebt, feePayment, null, getResources().getDrawable(R.drawable.pay_no_paid));
-                    datePay.setTimeInMillis(createNextDatePayment(datePay, datePay.getTimeInMillis(), dateStart));
-                    //datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE));
+                    addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, workDateDebt.getDate(datePay), balanceDebt, feePayment, null, getResources().getDrawable(R.drawable.pay_no_paid));
+                    //datePay.setTimeInMillis(createNextDatePayment(datePay, datePay.getTimeInMillis(), dateStart));
+                    //datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE_PAY));
                     publishProgress(view);
                 }
                 return null;
@@ -163,7 +175,7 @@ public class ListPaymentDB extends Activity {
                     TextView tvDebt = (TextView)view.findViewById(R.id.tvDebtRecord);
                     TextView tvPercent = (TextView)view.findViewById(R.id.tvPercentRecord);
 
-                    tvBalanceDebt.setText(new DecimalFormat("###,###,###,###").format(balanceDebt));
+                    tvBalanceDebt.setText(new DecimalFormat("###,###,###,###.##").format(balanceDebt));
                     tvDebt.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentDebt));
                     tvPercent.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentPercent));
                     param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -177,30 +189,6 @@ public class ListPaymentDB extends Activity {
             }
         });
         return view;
-    }
-
-    private String getDate(Calendar calendar) {
-        String date;
-        SimpleDateFormat format = new SimpleDateFormat();
-        format.applyPattern("dd");
-        date = format.format(calendar.getTime());
-        format.applyPattern("MM");
-        date = date + "." + format.format(calendar.getTime()) + "." + String.valueOf(calendar.get(Calendar.YEAR));
-        return date;
-    }
-
-    private Long createNextDatePayment(Calendar calendar, Long dateLong, Long dateStart){
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(dateStart);
-        calendar.setTimeInMillis(dateLong);
-        int preMonth = calendar.get(Calendar.MONTH);
-        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, cal.get(Calendar.DATE));
-        int postMonth = calendar.get(Calendar.MONTH);
-        while (postMonth - preMonth > 1){
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)-1);
-            postMonth = calendar.get(Calendar.MONTH);
-        }
-        return calendar.getTimeInMillis();
     }
 
     @Override
