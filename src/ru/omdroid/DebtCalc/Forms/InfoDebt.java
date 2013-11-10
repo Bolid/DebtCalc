@@ -36,7 +36,9 @@ public class InfoDebt extends Activity {
 
     WriteDataInField writeDataInField;
     Arithmetic arithmetic;
+    AppData appData = new AppData();
 
+    Calendar calendar = Calendar.getInstance();
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.debt_info);
@@ -83,9 +85,7 @@ public class InfoDebt extends Activity {
         dataForGraph.createOver(true);
         dataForGraph.createTerm(false);
         dataForGraph.setHeightOver(10);
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(AppData.DATE);
+        calendar.setTimeInMillis(AppData.DATE_PAY);
 
         etPayment.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(AppData.PAYMENT)));
 
@@ -244,8 +244,8 @@ public class InfoDebt extends Activity {
                 deltaAfter = arithmetic.getDeltaNew(AppData.TERM_BALANCE - 1, newDebt, arithmetic.getPayment(newDebt, AppData.TERM_BALANCE - 1));
             else
                 deltaAfter = 0.0;
-
-            Double overPaymentNew = getOverPayment() + arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE)) + deltaAfter;
+            createNextDatePayment(calendar, AppData.DATE_PAY, AppData.DATE_DEBT_START);
+            Double overPaymentNew = getOverPayment() + arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH) + deltaAfter;
             tvDeltaOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew));
             tvTotalOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew + Double.valueOf(AppData.DEBT)));
         }
@@ -256,5 +256,20 @@ public class InfoDebt extends Activity {
             tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment()));
             tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment() + Double.valueOf(AppData.DEBT)));
         }
+    }
+
+    private Long createNextDatePayment(Calendar calendar, Long dateLong, Long dateStart){
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(dateStart);
+        calendar.setTimeInMillis(dateLong);
+        int preMonth = calendar.get(Calendar.MONTH);
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, cal.get(Calendar.DATE));
+        int postMonth = calendar.get(Calendar.MONTH);
+        while (postMonth - preMonth > 1){
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)-1);
+            postMonth = calendar.get(Calendar.MONTH);
+        }
+        appData.setCountDayOfMonth((int) ((calendar.getTimeInMillis() - dateLong) / 86400000), 0);
+        return calendar.getTimeInMillis();
     }
 }
