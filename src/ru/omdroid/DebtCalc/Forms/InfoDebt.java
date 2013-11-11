@@ -15,6 +15,7 @@ import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddPayment;
 import ru.omdroid.DebtCalc.R;
+import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -113,6 +114,8 @@ public class InfoDebt extends Activity {
                 if (i == seekBar.getMax())
                     i--;
                 newPayment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE - i);
+               /* if (Double.valueOf(AppData.DEBT_BALANCE) - newPayment < 0)
+                    newPayment = newPayment + (Double.valueOf(AppData.DEBT_BALANCE) - newPayment);*/
                 etPayment.setText(new DecimalFormat("###,###,###,###").format(newPayment));
                 writeDataInField.setOverAllPayment(i);
                 writeDataInField.setOverOnePayment(newPayment);
@@ -212,6 +215,16 @@ public class InfoDebt extends Activity {
        return  overDebt;
    }
 
+    private Double getPaymentInPercentFromDataBase(){
+        Cursor cursorOver = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_DEBT_PAYMENTS +
+                " FROM " + DebtCalcDB.TABLE_PAYMENTS +
+                " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT + "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
+        cursorOver.moveToNext();
+        Double overDebt = cursorOver.getDouble(cursorOver.getColumnIndex(DebtCalcDB.FIELD_DEBT_PAYMENTS));
+        cursorOver.close();
+        return  overDebt;
+    }
+
     private void showPopupMenu(View v){
         final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
         MenuInflater mInflater = pMenu.getMenuInflater();
@@ -238,13 +251,15 @@ public class InfoDebt extends Activity {
         }
 
         public void setOverOnePayment(Double newPayment){
+            WorkDateDebt workDateDebt = new WorkDateDebt();
+            workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
+
             Double newDebt = arithmetic.getBalance(newPayment, Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
             Double deltaAfter;
             if (AppData.TERM_BALANCE > 1)
                 deltaAfter = arithmetic.getDeltaNew(AppData.TERM_BALANCE - 1, newDebt, arithmetic.getPayment(newDebt, AppData.TERM_BALANCE - 1));
             else
                 deltaAfter = 0.0;
-            createNextDatePayment(calendar, AppData.DATE_PAY, AppData.DATE_DEBT_START);
             Double overPaymentNew = getOverPayment() + arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH) + deltaAfter;
             tvDeltaOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew));
             tvTotalOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew + Double.valueOf(AppData.DEBT)));
@@ -256,20 +271,5 @@ public class InfoDebt extends Activity {
             tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment()));
             tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment() + Double.valueOf(AppData.DEBT)));
         }
-    }
-
-    private Long createNextDatePayment(Calendar calendar, Long dateLong, Long dateStart){
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(dateStart);
-        calendar.setTimeInMillis(dateLong);
-        int preMonth = calendar.get(Calendar.MONTH);
-        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, cal.get(Calendar.DATE));
-        int postMonth = calendar.get(Calendar.MONTH);
-        while (postMonth - preMonth > 1){
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)-1);
-            postMonth = calendar.get(Calendar.MONTH);
-        }
-        appData.setCountDayOfMonth((int) ((calendar.getTimeInMillis() - dateLong) / 86400000), 0);
-        return calendar.getTimeInMillis();
     }
 }

@@ -106,11 +106,11 @@ public class Arithmetic {
        Double allPer = 0.0;
        int i = 0;
        WorkDateDebt workDateDebt = new WorkDateDebt();
+       workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
        listResult = new ArrayList<HashMap<String, String>>();
         while (sumCredit > 0.0){
             listDefaultPayment.add(i, String.valueOf(getPayment(sumCredit, Integer.valueOf(allResult.get(2)) - i)));
             i++;
-            workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_DEBT_START);
             Double perLocal = (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
             allPer = allPer + (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
             if (sumCredit < (addPayment)){
@@ -120,6 +120,7 @@ public class Arithmetic {
             else{
                 sumCredit = Rounding(sumCredit - (getPaymentInDebt(addPayment, sumCredit)));
             }
+            workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_DEBT_START);
         }
         allPer = Rounding(allPer);
         allResult.set(5, String.valueOf(allPer)); //Общая переплата
