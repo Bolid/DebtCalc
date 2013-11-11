@@ -89,6 +89,7 @@ public class ListPaymentDB extends Activity {
                 int balanceTerm = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.F_BALANCE_TERM_PAY));
                 balanceDebt = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY));
                 feePayment = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS));
+                paymentDebt = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_DEBT_PAYMENTS));
                 cursor.close();
 
                 cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_DATE_LONG_START_DEBT + " FROM " + DebtCalcDB.TABLE_CREDITS + " WHERE (" + DebtCalcDB.FIELD_ID_DEBT + " = '" + AppData.ID_DEBT +"')");
@@ -98,29 +99,27 @@ public class ListPaymentDB extends Activity {
                 workDB.disconnectDataBase();
 
                 Arithmetic arithmetic = new Arithmetic(AppData.PERCENT);
-
                 payment = arithmetic.getPayment(balanceDebt, balanceTerm);
-                //balanceDebt = Double.valueOf(AppData.DEBT_BALANCE);
 
+                datePay.setTimeInMillis(workDateDebt.createNextDatePayment(datePayment, dateStart));
+                balanceDebt = balanceDebt - paymentDebt;
 
-
-                //datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE_PAY));
-                //for (int j = balanceTerm - 1; j > 0; j--)
                 while (balanceDebt > 0.01){
                     if (!addRecord)
                         return null;
                     numPayment++;
-                    if (numPayment == 29)
+                    if (numPayment == 10)
                         Log.v("","");
                     feePayment = feePayment + payment;
-                    balanceDebt = arithmetic.getBalance(payment, balanceDebt, AppData.TERM_BALANCE);
+
+                    paymentPercent = arithmetic.getPaymentInPercent(balanceDebt, AppData.COUNT_DAY_OF_MONTH);
+                    paymentDebt = payment - paymentPercent;//arithmetic.getPaymentInDebt(payment, balanceDebt);
+                    addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, workDateDebt.getDate(datePay), balanceDebt, feePayment, null, getResources().getDrawable(R.drawable.pay_no_paid));
 
                     datePay.setTimeInMillis(workDateDebt.createNextDatePayment(datePay.getTimeInMillis(), dateStart));
-                    paymentPercent = arithmetic.getPaymentInPercent(balanceDebt, countDay);
-                    paymentDebt = arithmetic.getPaymentInDebt(payment, balanceDebt);
-                    addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, workDateDebt.getDate(datePay), balanceDebt, feePayment, null, getResources().getDrawable(R.drawable.pay_no_paid));
-                    //datePay.setTimeInMillis(createNextDatePayment(datePay, datePay.getTimeInMillis(), dateStart));
-                    //datePay.set(datePay.get(Calendar.YEAR), datePay.get(Calendar.MONTH) + 1, datePay.get(Calendar.DATE_PAY));
+                    balanceDebt = balanceDebt - paymentDebt;//arithmetic.getBalance(payment, balanceDebt, AppData.TERM_BALANCE);
+
+
                     publishProgress(view);
                 }
                 return null;
@@ -155,7 +154,7 @@ public class ListPaymentDB extends Activity {
 
         tvNumPayment.setText(String.valueOf(numPayment));
         tvPayment.setText(new DecimalFormat("###,###,###,###,###.00").format(payment));
-        tvDatePay.setText(date);
+        tvDatePay.setText(date + ", " + AppData.COUNT_DAY_OF_MONTH);
         tvFeePayment.setText(new DecimalFormat("###,###,###,###,###.00").format(feePayment));
 
         if (upPayment != null)

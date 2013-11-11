@@ -150,6 +150,7 @@ public class MainNew extends Activity {
                     " WHERE " + DebtCalcDB.FIELD_PAID_DEBT + " = '0'") < 15){
                 int numCredit = generateNumCredit();
                 Arithmetic arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
+                Double deltaLocal = arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH);
                 workDB.insertValueToTableDebt("INSERT INTO " + DebtCalcDB.TABLE_CREDITS + " (" +
                         DebtCalcDB.FIELD_ID_DEBT + ", " +
                         DebtCalcDB.FIELD_SUM_DEBT + ", " +
