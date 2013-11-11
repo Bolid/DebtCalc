@@ -22,19 +22,7 @@
     </option>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/AppData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Arithmetic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Dialog/DatePickerFragment.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Dialog/DatePickerFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DB/DebtCalcDB.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DB/DebtCalcDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPayment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPaymentDB.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListPaymentDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainNew.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainNew.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" name="Default" comment="" />
     <ignored path="DebtCalc.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="0eb16a4e-d525-4424-b3f8-ee7c0b410e52" time="1383930532922" ignored="false" />
@@ -227,7 +215,7 @@
       <file leaf-file-name="ListDebt.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="40" selection-start="9632" selection-end="9632" vertical-scroll-proportion="0.42222223">
+            <state line="183" column="34" selection-start="9679" selection-end="9679" vertical-scroll-proportion="0.44444445">
               <folding>
                 <element signature="method#onCreateOptionsMenu#0;class#ListDebt#0" expanded="false" />
                 <element signature="method#onOptionsItemSelected#0;class#ListDebt#0" expanded="false" />
@@ -951,7 +939,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="40" selection-start="9632" selection-end="9632" vertical-scroll-proportion="0.42222223">
+        <state line="183" column="34" selection-start="9679" selection-end="9679" vertical-scroll-proportion="0.44444445">
           <folding>
             <element signature="method#onCreateOptionsMenu#0;class#ListDebt#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#ListDebt#0" expanded="false" />
