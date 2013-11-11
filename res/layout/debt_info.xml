@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:background="@color/background_app"
               android:orientation="vertical">
@@ -8,7 +8,9 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:paddingTop="5dp">
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:paddingTop="5dp"
+            android:id="@+id/linearLayout3"
+            android:layout_centerHorizontal="true" android:layout_alignParentTop="true">
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -24,8 +26,9 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" android:background="@android:color/background_light" android:paddingTop="5dp"
-            android:paddingBottom="5dp">
+            android:background="@android:color/background_light" android:paddingTop="5dp"
+            android:paddingBottom="5dp" android:id="@+id/linearLayout2"
+            android:layout_alignRight="@+id/linearLayout4" android:layout_below="@+id/linearLayout3">
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,7 +69,9 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:paddingTop="5dp" android:layout_gravity="center_horizontal">
+            android:layout_height="wrap_content" android:paddingTop="5dp" android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true" android:layout_below="@+id/linearLayout2"
+            android:id="@+id/linearLayout5">
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,12 +83,61 @@
                 android:id="@+id/textView1" style="@style/styleLabel_2" android:textColor="@color/colorIcon"
                 android:paddingLeft="5dp"/>
     </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" android:paddingTop="5dp"
+                  android:layout_gravity="center_horizontal" android:id="@+id/linearLayout1"
+                  android:layout_alignParentLeft="true" android:layout_marginLeft="68dp"
+                  android:layout_above="@+id/infoDebtLayout">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageView9"
+                   android:src="@drawable/ok" android:tint="@color/colorIcon"/>
+        <TextView style="@style/styleLabel_2" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="@string/param_payment" android:id="@+id/textView7" android:textColor="@color/colorIcon"
+                  android:paddingLeft="5dp"/>
+    </LinearLayout>
+    <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView" android:layout_alignRight="@+id/linearLayout2"
+            android:layout_above="@+id/infoDebtLayout">
+    </ScrollView>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_light"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/linearLayout4" android:layout_alignParentLeft="true">
+        <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etPayment"
+                    android:inputType="numberDecimal" style="@style/styleValue"
+                    android:textSize="34sp" android:singleLine="true" android:layout_weight="1"
+                    android:layout_alignParentLeft="false" android:layout_alignParentTop="false"
+                    android:text="345345" android:layout_centerHorizontal="true"
+                    />
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ivPaymentDefault" android:src="@drawable/payment_default"
+                    android:layout_gravity="right|center_vertical" android:layout_weight="0.1"
+                    android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <SeekBar
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBar" android:layout_marginTop="15dp"/>
+    </LinearLayout>
     <LinearLayout
             android:id="@+id/infoDebtLayout"
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" android:background="@android:color/background_light"
-            android:layout_margin="5dp">
+            android:layout_height="0dp" android:background="@android:color/background_light"
+            android:layout_alignRight="@+id/linearLayout5" android:layout_below="@+id/linearLayout5">
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
@@ -222,44 +276,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
-                  android:layout_height="wrap_content" android:paddingTop="5dp"
-                  android:layout_gravity="center_horizontal" android:id="@+id/linearLayout1">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageView9"
-                   android:src="@drawable/ok" android:tint="@color/colorIcon"/>
-        <TextView style="@style/styleLabel_2" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:text="@string/param_payment" android:id="@+id/textView7" android:textColor="@color/colorIcon"
-                  android:paddingLeft="5dp"/>
-    </LinearLayout>
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/background_light" android:padding="5dp" android:layout_margin="5dp"
-            >
-        <RelativeLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-            <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/etPayment"
-                    android:inputType="numberDecimal" style="@style/styleValue"
-                    android:textSize="34sp" android:singleLine="true" android:layout_weight="1"
-                    android:layout_alignParentLeft="false" android:layout_alignParentTop="false"
-                    android:text="345345" android:layout_centerHorizontal="true"
-                    />
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/ivPaymentDefault" android:src="@drawable/payment_default"
-                    android:layout_gravity="right|center_vertical" android:layout_weight="0.1"
-                    android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
-        </RelativeLayout>
-        <SeekBar
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/seekBar" android:layout_marginTop="15dp"/>
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

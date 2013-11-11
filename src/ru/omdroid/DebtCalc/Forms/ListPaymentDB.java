@@ -99,7 +99,7 @@ public class ListPaymentDB extends Activity {
                 workDB.disconnectDataBase();
 
                 Arithmetic arithmetic = new Arithmetic(AppData.PERCENT);
-                payment = arithmetic.getPayment(balanceDebt, balanceTerm);
+                payment = Double.valueOf(AppData.PAYMENT_DEFAULT); //arithmetic.getPayment(balanceDebt, balanceTerm);
 
                 datePay.setTimeInMillis(workDateDebt.createNextDatePayment(datePayment, dateStart));
                 balanceDebt = balanceDebt - paymentDebt;
@@ -116,8 +116,8 @@ public class ListPaymentDB extends Activity {
                     paymentDebt = payment - paymentPercent;//arithmetic.getPaymentInDebt(payment, balanceDebt);
                     addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, workDateDebt.getDate(datePay), balanceDebt, feePayment, null, getResources().getDrawable(R.drawable.pay_no_paid));
 
-                    datePay.setTimeInMillis(workDateDebt.createNextDatePayment(datePay.getTimeInMillis(), dateStart));
                     balanceDebt = balanceDebt - paymentDebt;//arithmetic.getBalance(payment, balanceDebt, AppData.TERM_BALANCE);
+                    datePay.setTimeInMillis(workDateDebt.createNextDatePayment(datePay.getTimeInMillis(), dateStart));
 
 
                     publishProgress(view);
