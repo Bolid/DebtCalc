@@ -20,6 +20,8 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String FIELD_DATE_STR_START_DEBT = "date_str_start_debt";
     public static final String FIELD_DATE_LONG_START_DEBT = "date_long_start_debt";
     public static final String FIELD_PAID_DEBT = "paid_debt";
+            /*new field*/
+    public static final String F_PAY_DEFAULT_DEBT = "pay_default_debt";
     /*TABLE PAYMENTS*/
     public static final String TABLE_PAYMENTS = "payments_table";
     public static final String FIELD_ID_NUM = "_id";
@@ -51,7 +53,8 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     FIELD_TYPE_DEBT + " STRING, " +
                                                                     FIELD_DATE_LONG_START_DEBT + " LONG, " +
                                                                     FIELD_DATE_STR_START_DEBT + " STRING, " +
-                                                                    FIELD_PAID_DEBT + " STRING);";
+                                                                    FIELD_PAID_DEBT + " STRING, " +
+                                                                    F_PAY_DEFAULT_DEBT + " DOUBLE);";
 
     public static final String REQUEST_CREATE_TABLE_PAYMENTS = "CREATE TABLE " +
                                                                     TABLE_PAYMENTS + " (" +
@@ -76,7 +79,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
             F_NUMBER_START_APP_SET + " INTEGER);";
 
     public DebtCalcDB(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
     }
 
     @Override
@@ -90,7 +93,9 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        /* alter table table1 add A3 varchar(30);*/
+        db.execSQL("ALTER TABLE " + DebtCalcDB.TABLE_CREDITS + " ADD " + DebtCalcDB.F_PAY_DEFAULT_DEBT + " DOUBLE");
     }
 
 

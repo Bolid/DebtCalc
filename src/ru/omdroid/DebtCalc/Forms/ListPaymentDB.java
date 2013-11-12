@@ -27,9 +27,6 @@ import java.util.Calendar;
 public class ListPaymentDB extends Activity {
     View view = null;
     boolean addRecord = true;
-    int countDay = 0;
-
-    AppData appData = new AppData();
 
     public void onCreate(Bundle save){
         super.onCreate(save);
@@ -83,13 +80,16 @@ public class ListPaymentDB extends Activity {
                 }
 
                 Double paymentPercent, paymentDebt, balanceDebt, payment, feePayment = 0.0;
+                int upPayment, termBalance;
 
                 cursor.moveToLast();
                 Long datePayment = cursor.getLong(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS));
-                int balanceTerm = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.F_BALANCE_TERM_PAY));
+                upPayment = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.F_PAYMENT_UP_PAY));
+                termBalance = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.F_BALANCE_TERM_PAY));
                 balanceDebt = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.F_BALANCE_DEBT_PAY));
                 feePayment = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_SUM_PAYMENTS));
                 paymentDebt = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_DEBT_PAYMENTS));
+                payment = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS));
                 cursor.close();
 
                 cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_DATE_LONG_START_DEBT + " FROM " + DebtCalcDB.TABLE_CREDITS + " WHERE (" + DebtCalcDB.FIELD_ID_DEBT + " = '" + AppData.ID_DEBT +"')");
@@ -99,17 +99,15 @@ public class ListPaymentDB extends Activity {
                 workDB.disconnectDataBase();
 
                 Arithmetic arithmetic = new Arithmetic(AppData.PERCENT);
-                payment = Double.valueOf(AppData.PAYMENT_DEFAULT); //arithmetic.getPayment(balanceDebt, balanceTerm);
-
                 datePay.setTimeInMillis(workDateDebt.createNextDatePayment(datePayment, dateStart));
                 balanceDebt = balanceDebt - paymentDebt;
+                if (upPayment == 1)
+                    payment = arithmetic.getPayment(balanceDebt, termBalance - 1);
 
                 while (balanceDebt > 0.01){
                     if (!addRecord)
                         return null;
                     numPayment++;
-                    if (numPayment == 10)
-                        Log.v("","");
                     feePayment = feePayment + payment;
 
                     paymentPercent = arithmetic.getPaymentInPercent(balanceDebt, AppData.COUNT_DAY_OF_MONTH);

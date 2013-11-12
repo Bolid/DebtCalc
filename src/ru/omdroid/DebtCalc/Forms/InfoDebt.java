@@ -10,7 +10,6 @@ import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic;
-import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddPayment;
@@ -49,6 +48,8 @@ public class InfoDebt extends Activity {
         writeDataInField = new WriteDataInField();
         arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
 
+        final SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
+
         TextView tvDebt = (TextView)findViewById(R.id.infoDebt);
         TextView tvTerm = (TextView)findViewById(R.id.infoTerm);
         TextView tvPercent = (TextView)findViewById(R.id.infoPercent);
@@ -56,6 +57,62 @@ public class InfoDebt extends Activity {
         tvDebt.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(AppData.DEBT)));
         tvTerm.setText(String.valueOf(AppData.TERM));
         tvPercent.setText(String.valueOf(AppData.PERCENT));
+
+        LinearLayout llOver = (LinearLayout)findViewById(R.id.llOverPay);
+        LinearLayout llTotal = (LinearLayout)findViewById(R.id.llTotalPay);
+        RelativeLayout llControlPay = (RelativeLayout)findViewById(R.id.rlControlPay);
+
+        llOver.setOnClickListener(new View.OnClickListener() {
+            boolean showOverAll = false;
+            LinearLayout llOverChild = (LinearLayout)findViewById(R.id.llOverAllPay);
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            @Override
+            public void onClick(View view) {
+                if (!showOverAll) {
+                    param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    showOverAll = !showOverAll;
+                }
+                else{
+                    param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
+                    showOverAll = !showOverAll;
+                }
+                llOverChild.setLayoutParams(param);
+            }
+        });
+        llTotal.setOnClickListener(new View.OnClickListener() {
+            boolean showTotalAll = false;
+            LinearLayout llTotalChild = (LinearLayout) findViewById(R.id.llTotalAllPay);
+            LinearLayout.LayoutParams param;
+
+            @Override
+            public void onClick(View view) {
+                if (!showTotalAll) {
+                    param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    showTotalAll = !showTotalAll;
+                } else {
+                    param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
+                    showTotalAll = !showTotalAll;
+                }
+                llTotalChild.setLayoutParams(param);
+            }
+        });
+        llControlPay.setOnLongClickListener(new View.OnLongClickListener() {
+            boolean showSeekBar = true;
+            LinearLayout.LayoutParams param;
+            @Override
+            public boolean onLongClick(View view) {
+                if (!showSeekBar){
+                    param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    showSeekBar = !showSeekBar;
+                }
+                else{
+                    param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
+                    showSeekBar = !showSeekBar;
+                }
+                seekBar.setLayoutParams(param);
+                return false;
+            }
+        });
 
         tvDeltaAllPay = (TextView)findViewById(R.id.infoDeltaAllPayment);
         tvDigitAllPay = (TextView)findViewById(R.id.digitAllPay);
@@ -70,22 +127,16 @@ public class InfoDebt extends Activity {
             public void onClick(View view) {
                 etPayment.removeTextChangedListener(inControlFieldAddPayment);
                 setChangeListener = !setChangeListener;
-                etPayment.setText(new DecimalFormat("###,###,###,###.##").format(Double.valueOf(AppData.PAYMENT_DEFAULT)));
-                newPayment = Double.valueOf(AppData.PAYMENT_DEFAULT);
+                newPayment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
+                etPayment.setText(new DecimalFormat("###,###,###,###.##").format(newPayment));
                 writeDataInField.setOverAllPayment(0);
-                writeDataInField.setOverOnePayment(Double.valueOf(AppData.PAYMENT_DEFAULT));
+                writeDataInField.setOverOnePayment(newPayment);
             }
         });
 
 
         etPayment = (EditText)findViewById(R.id.etPayment);
-        SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
 
-
-        final DataForGraph dataForGraph = new DataForGraph();
-        dataForGraph.createOver(true);
-        dataForGraph.createTerm(false);
-        dataForGraph.setHeightOver(10);
         calendar.setTimeInMillis(AppData.DATE_PAY);
 
         etPayment.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(AppData.PAYMENT)));
@@ -250,17 +301,20 @@ public class InfoDebt extends Activity {
             tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay + Double.valueOf(AppData.DEBT)));
         }
 
-        public void setOverOnePayment(Double newPayment){
+        public void setOverOnePayment(Double currentPayment){
             WorkDateDebt workDateDebt = new WorkDateDebt();
             workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
 
-            Double newDebt = arithmetic.getBalance(newPayment, Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
+            Double newDebt = arithmetic.getBalance(currentPayment, Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
             Double deltaAfter;
+            Double nextPayment = currentPayment;
+            if (AppData.UP_PAYMENT == 1 || currentPayment > Double.valueOf(AppData.PAYMENT))
+                nextPayment =  arithmetic.getPayment(newDebt, AppData.TERM_BALANCE - 1);
             if (AppData.TERM_BALANCE > 1)
-                deltaAfter = arithmetic.getDeltaNew(AppData.TERM_BALANCE - 1, newDebt, arithmetic.getPayment(newDebt, AppData.TERM_BALANCE - 1));
+                deltaAfter = arithmetic.getDeltaNew(AppData.TERM_BALANCE - 1, newDebt, nextPayment);
             else
                 deltaAfter = 0.0;
-            Double overPaymentNew = getOverPayment() + arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH) + deltaAfter;
+            Double overPaymentNew = getOverPayment() + /*arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH)*/ AppData.OVER_PAYMENT + deltaAfter;
             tvDeltaOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew));
             tvTotalOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew + Double.valueOf(AppData.DEBT)));
         }

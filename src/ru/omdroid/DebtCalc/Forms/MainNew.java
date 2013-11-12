@@ -159,7 +159,8 @@ public class MainNew extends Activity {
                         DebtCalcDB.FIELD_TYPE_DEBT + ", " +
                         DebtCalcDB.FIELD_DATE_LONG_START_DEBT + ", " +
                         DebtCalcDB.FIELD_DATE_STR_START_DEBT + ", " +
-                        DebtCalcDB.FIELD_PAID_DEBT + ") " +
+                        DebtCalcDB.FIELD_PAID_DEBT + ", " +
+                        DebtCalcDB.F_PAY_DEFAULT_DEBT + ") " +
                         "VALUES ('" +
                         numCredit + "', '" +
                         AppData.DEBT_BALANCE + "', '" +
@@ -167,7 +168,8 @@ public class MainNew extends Activity {
                         AppData.TERM_BALANCE + "', '" +
                         AppData.GOAL + "', '" +
                         calendarConst.getTimeInMillis() + "', '" +
-                        date + "', '0')");
+                        date + "', '0', '" +
+                        arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE) + "')");
 
                 workDB.insertValueToTablePayment("INSERT INTO " + DebtCalcDB.TABLE_PAYMENTS + " (" +
                         DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + ", " +

@@ -5,12 +5,142 @@
               android:layout_height="match_parent" android:background="@color/background_app"
               android:orientation="vertical">
 
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/scrollView" android:layout_alignRight="@+id/linearLayout2"
+            android:layout_above="@+id/view" android:layout_below="@+id/linearLayout2"
+            android:layout_marginLeft="5dp" android:layout_marginTop="5dp" android:layout_marginRight="5dp"
+            android:layout_alignBottom="@+id/view">
+        <LinearLayout
+                android:id="@+id/infoDebtLayout"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_alignRight="@+id/linearLayout5" android:layout_below="@+id/linearLayout5">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+                          android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+                          android:paddingTop="5dp" android:id="@+id/linearLayout8" android:layout_centerHorizontal="true"
+                          android:layout_alignParentTop="true" android:paddingBottom="5dp">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageView3"
+                           android:src="@drawable/info" android:tint="@color/colorIcon"/>
+                <TextView style="@style/styleLabel_2" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:text="@string/mll_details" android:id="@+id/textView3"
+                          android:textColor="@color/colorIcon" android:paddingLeft="5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:background="@drawable/container_press"
+                    android:id="@+id/llOverPay">
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" android:gravity="center_vertical" android:padding="5dp">
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                               android:id="@+id/imageView7" android:src="@drawable/perc"
+                               android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
+                    <TextView style="@style/styleLabel_2" android:layout_width="0dp" android:layout_height="wrap_content"
+                              android:text="@string/mll_details_overpayment" android:id="@+id/textView9"
+                              android:layout_weight="1" android:paddingLeft="5dp" android:layout_gravity="center_vertical"
+                              android:textSize="16sp"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/infoDeltaOnePayment" android:layout_gravity="right" style="@style/info_value"
+                            android:layout_weight="1"
+                            />
+                </LinearLayout>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp" android:id="@+id/llOverAllPay">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="При постоянной уплате указанной суммы"
+                            android:id="@+id/textView" android:paddingLeft="15dp" android:paddingTop="5dp"
+                            android:textColor="@android:color/black" android:textStyle="bold"
+                            style="@style/styleLabel_2" android:textSize="10sp"/>
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content" android:paddingRight="5dp" android:paddingLeft="5dp"
+                                  android:gravity="center_vertical" android:paddingTop="5dp" android:paddingBottom="5dp"
+                            >
+                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                   android:id="@+id/imageView11" android:src="@drawable/perc"
+                                   android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
+                        <TextView style="@style/styleLabel_2" android:layout_width="0dp" android:layout_height="wrap_content"
+                                  android:text="@string/mll_details_overpayment" android:id="@+id/textView12"
+                                  android:layout_weight="1" android:paddingLeft="5dp" android:textSize="16sp"/>
+                        <TextView style="@style/info_value" android:layout_width="0dp" android:layout_height="wrap_content"
+                                  android:id="@+id/infoDeltaAllPayment" android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:background="@drawable/container_press"
+                    android:id="@+id/llTotalPay">
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content"
+                              android:id="@+id/linearLayout" android:gravity="center_vertical" android:padding="5dp">
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                               android:id="@+id/imageView8" android:src="@drawable/sum"
+                               android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
+                    <TextView style="@style/styleLabel_2" android:layout_width="0dp" android:layout_height="wrap_content"
+                              android:text="@string/mll_details_total" android:id="@+id/textView8" android:paddingLeft="5dp"
+                              android:layout_weight="1" android:textSize="16sp"/>
+                    <TextView style="@style/info_value" android:layout_width="0dp" android:layout_height="wrap_content"
+                              android:id="@+id/tvTotalOnePay" android:layout_weight="1"
+                            />
+                </LinearLayout>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp" android:id="@+id/llTotalAllPay">
+                    <TextView style="@style/styleLabel_2" android:layout_width="wrap_content"
+                              android:layout_height="wrap_content" android:text="При постоянной уплате указанной суммы"
+                              android:id="@+id/textView4" android:paddingLeft="15dp" android:paddingTop="5dp"
+                              android:textStyle="bold"
+                              android:textSize="10sp"/>
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content" android:paddingLeft="5dp" android:paddingRight="5dp"
+                                  android:gravity="center_vertical" android:paddingTop="5dp" android:paddingBottom="5dp"
+                                  android:id="@+id/linearLayout5">
+                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                   android:id="@+id/imageView9" android:src="@drawable/clock32"
+                                   android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
+                        <TextView style="@style/styleLabel_2" android:layout_width="0dp" android:layout_height="wrap_content"
+                                  android:text="@string/container_balance_term_credit" android:id="@+id/textView7"
+                                  android:layout_weight="1" android:paddingLeft="5dp" android:textSize="16sp"
+                                  android:autoText="false"/>
+                        <TextView style="@style/info_value" android:layout_width="0dp" android:layout_height="wrap_content"
+                                  android:id="@+id/digitAllPay" android:paddingLeft="5dp" android:layout_weight="1"/>
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content" android:paddingRight="5dp" android:paddingLeft="5dp"
+                                  android:gravity="center_vertical" android:paddingTop="5dp" android:paddingBottom="5dp"
+                                  android:id="@+id/linearLayout1">
+                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                   android:id="@+id/imageView6" android:src="@drawable/sum"
+                                   android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
+                        <TextView style="@style/styleLabel_2" android:layout_width="0dp" android:layout_height="wrap_content"
+                                  android:text="@string/mll_details_total" android:id="@+id/textView1" android:paddingLeft="5dp"
+                                  android:layout_weight="1" android:textSize="16sp"/>
+                        <TextView style="@style/info_value" android:layout_width="0dp" android:layout_height="wrap_content"
+                                  android:id="@+id/tvTotaAllPay" android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:paddingTop="5dp"
             android:id="@+id/linearLayout3"
-            android:layout_centerHorizontal="true" android:layout_alignParentTop="true">
+            android:layout_centerHorizontal="true" android:layout_alignParentTop="true" android:paddingBottom="5dp">
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,7 +162,7 @@
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageView1" android:src="@drawable/dollar" android:tint="@android:color/darker_gray"/>
+                android:id="@+id/imageView1" android:src="@drawable/dollar_24" android:tint="@android:color/darker_gray"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -40,11 +170,11 @@
                 style="@style/styleValue" android:textColor="@android:color/darker_gray"
                 android:layout_weight="1" android:singleLine="true"
                 android:paddingRight="5dp" android:layout_gravity="center_vertical"
-                android:gravity="center_vertical|center_horizontal"/>
+                android:gravity="center_vertical|center_horizontal" android:textSize="14sp"/>
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageView4" android:src="@drawable/clock"
+                android:id="@+id/imageView4" android:src="@drawable/clock_24"
                 android:tint="@android:color/darker_gray"/>
         <TextView
                 android:layout_width="0dp"
@@ -52,11 +182,11 @@
                 android:id="@+id/infoTerm" android:layout_weight="1" android:singleLine="true"
                 android:layout_gravity="center_vertical" android:paddingRight="5dp"
                 android:textColor="@android:color/darker_gray" style="@style/styleValue"
-                android:gravity="center_vertical|center_horizontal"/>
+                android:gravity="center_vertical|center_horizontal" android:textSize="14sp"/>
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageView5" android:src="@drawable/graph"
+                android:id="@+id/imageView5" android:src="@drawable/graph_24"
                 android:tint="@android:color/darker_gray"/>
         <TextView
                 android:layout_width="0dp"
@@ -64,53 +194,23 @@
                 android:id="@+id/infoPercent" android:layout_weight="1" android:singleLine="true"
                 android:layout_gravity="center_vertical" android:paddingRight="5dp"
                 android:textColor="@android:color/darker_gray" style="@style/styleValue"
-                android:gravity="center_vertical|center_horizontal"/>
+                android:gravity="center_vertical|center_horizontal" android:textSize="14sp"/>
     </LinearLayout>
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:paddingTop="5dp" android:layout_gravity="center_horizontal"
-            android:layout_centerHorizontal="true" android:layout_below="@+id/linearLayout2"
-            android:id="@+id/linearLayout5">
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView6" android:src="@drawable/info" android:tint="@color/colorIcon"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ill_details"
-                android:id="@+id/textView1" style="@style/styleLabel_2" android:textColor="@color/colorIcon"
-                android:paddingLeft="5dp"/>
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
-                  android:layout_height="wrap_content" android:paddingTop="5dp"
-                  android:layout_gravity="center_horizontal" android:id="@+id/linearLayout1"
-                  android:layout_alignParentLeft="true" android:layout_marginLeft="68dp"
-                  android:layout_above="@+id/infoDebtLayout">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageView9"
-                   android:src="@drawable/ok" android:tint="@color/colorIcon"/>
-        <TextView style="@style/styleLabel_2" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:text="@string/param_payment" android:id="@+id/textView7" android:textColor="@color/colorIcon"
-                  android:paddingLeft="5dp"/>
-    </LinearLayout>
-    <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/scrollView" android:layout_alignRight="@+id/linearLayout2"
-            android:layout_above="@+id/infoDebtLayout">
-    </ScrollView>
+    <View android:layout_width="fill_parent"
+                         android:layout_height="5dp"
+                         android:background="@drawable/shadow"
+                         android:id="@+id/view"
+                         android:layout_above="@+id/llPayControl"/>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/background_light"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/linearLayout4" android:layout_alignParentLeft="true">
+            android:id="@+id/llPayControl" android:layout_alignParentLeft="true" android:paddingBottom="5dp" android:layout_alignParentBottom="true">
         <RelativeLayout
                 android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginBottom="10dp" android:id="@+id/rlControlPay">
             <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -130,150 +230,6 @@
         <SeekBar
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/seekBar" android:layout_marginTop="15dp"/>
-    </LinearLayout>
-    <LinearLayout
-            android:id="@+id/infoDebtLayout"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp" android:background="@android:color/background_light"
-            android:layout_alignRight="@+id/linearLayout5" android:layout_below="@+id/linearLayout5">
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent" android:layout_gravity="center_horizontal"
-                android:paddingTop="5dp" android:paddingBottom="5dp">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/overpayment"
-                    android:id="@+id/textView5" style="@style/styleLabel_2"
-                    android:textColor="@android:color/black"/>
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" (Nx)"
-                    android:id="@+id/textView10" android:textColor="@android:color/black" android:textStyle="bold"/>
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" android:paddingLeft="5dp" android:paddingRight="5dp"
-                android:gravity="center_vertical" android:paddingTop="5dp" android:paddingBottom="5dp">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                       android:id="@+id/imageView10" android:src="@drawable/clock32"
-                       android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
-            <TextView style="@style/styleLabel_2" android:layout_width="0dp" android:layout_height="wrap_content"
-                      android:text="@string/container_balance_term_credit" android:id="@+id/textView"
-                      android:layout_weight="1" android:paddingLeft="5dp"
-                      android:textSize="16sp" android:autoText="false"/>
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/digitAllPay"
-                    style="@style/info_value"
-                    android:paddingLeft="5dp" android:layout_weight="1"/>
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:paddingRight="5dp" android:paddingLeft="5dp"
-                android:gravity="center_vertical" android:paddingTop="5dp" android:paddingBottom="5dp">
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView2" android:src="@drawable/perc"
-                    android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mll_details_overpayment"
-                    android:id="@+id/textView4" android:layout_weight="1" android:paddingLeft="5dp"
-                    style="@style/styleLabel_2" android:textSize="16sp"/>
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/infoDeltaAllPayment" style="@style/info_value"
-                    android:layout_weight="1"/>
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" android:paddingRight="5dp" android:paddingLeft="5dp"
-                android:gravity="center_vertical" android:paddingTop="5dp" android:paddingBottom="5dp">
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView3" android:src="@drawable/sum"
-                    android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mll_details_total"
-                    android:id="@+id/textView6" style="@style/styleLabel_2" android:paddingLeft="5dp"
-                    android:layout_weight="1" android:textSize="16sp"/>
-            <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvTotaAllPay" style="@style/info_value"
-                    android:layout_weight="1"
-                    />
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                >
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" android:gravity="center_vertical|center_horizontal"
-                    android:padding="5dp">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/overpayment"
-                        android:id="@+id/textView3" style="@style/styleLabel_2" android:textColor="@android:color/black"
-                        android:layout_gravity="center_horizontal"
-                        />
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:text=" (1x)"
-                        android:id="@+id/textView11" android:gravity="center_vertical"
-                        android:textColor="@android:color/black" android:textStyle="bold"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" android:gravity="center_vertical" android:padding="5dp">
-                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                           android:id="@+id/imageView7" android:src="@drawable/perc"
-                           android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
-                <TextView style="@style/styleLabel_2" android:layout_width="0dp" android:layout_height="wrap_content"
-                          android:text="@string/mll_details_overpayment" android:id="@+id/textView9"
-                          android:layout_weight="1" android:paddingLeft="5dp" android:layout_gravity="center_vertical"
-                          android:textSize="16sp"/>
-                <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/infoDeltaOnePayment" android:layout_gravity="right" style="@style/info_value"
-                        android:layout_weight="1"
-                        />
-            </LinearLayout>
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
-                          android:layout_height="fill_parent"
-                          android:id="@+id/linearLayout" android:gravity="center_vertical" android:padding="5dp">
-                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                           android:id="@+id/imageView8" android:src="@drawable/sum"
-                           android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
-                <TextView style="@style/styleLabel_2" android:layout_width="0dp" android:layout_height="wrap_content"
-                          android:text="@string/mll_details_total" android:id="@+id/textView8" android:paddingLeft="5dp"
-                          android:layout_weight="1" android:textSize="16sp"/>
-                <TextView style="@style/info_value" android:layout_width="0dp" android:layout_height="wrap_content"
-                          android:id="@+id/tvTotalOnePay" android:layout_weight="1"
-                        />
-            </LinearLayout>
-        </LinearLayout>
+                android:id="@+id/seekBar"/>
     </LinearLayout>
 </RelativeLayout>

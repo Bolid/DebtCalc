@@ -20,8 +20,6 @@ import java.util.Calendar;
 public class ListPayment extends Activity {
     View view = null;
     boolean addRecord = true;
-    int countDay = 0;
-    AppData appData = new AppData();
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.payment_info);
