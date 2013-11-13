@@ -26,7 +26,8 @@ public class InfoDebt extends Activity {
             tvDeltaOnePay = null,
             tvTotalAllPay = null,
             tvTotalOnePay = null,
-            tvOverInPercentOne = null;
+            tvOverInPercentOne = null,
+            tvOverInPercentAll = null;
     EditText etPayment = null;
     InControlFieldAddPayment inControlFieldAddPayment;
     WorkDB workDB;
@@ -123,6 +124,7 @@ public class InfoDebt extends Activity {
         tvDeltaOnePay = (TextView)findViewById(R.id.infoDeltaOnePayment);
         tvTotalOnePay = (TextView)findViewById(R.id.tvTotalOnePay);
         tvOverInPercentOne = (TextView)findViewById(R.id.tvRiceOver);
+        tvOverInPercentAll = (TextView)findViewById(R.id.tvRiceOverAll);
 
         ImageView ivPaymentDefault = (ImageView)findViewById(R.id.ivPaymentDefault);
         ivPaymentDefault.setOnClickListener(new View.OnClickListener() {
@@ -330,6 +332,8 @@ public class InfoDebt extends Activity {
             tvDigitAllPay.setText(String.valueOf(Arithmetic.allResult.get(6)));
             tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment()));
             tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment() + Double.valueOf(AppData.DEBT)));
+            int overInPercent = arithmetic.getOverInPercent(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment(), Double.valueOf(AppData.DEBT), 0);
+            tvOverInPercentAll.setText(String.valueOf(overInPercent) + "%");
         }
     }
 }

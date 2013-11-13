@@ -8,6 +8,7 @@ public class WorkDateDebt {
     AppData appData = new AppData();
     Long dateNewLong = (long) 0;
     int countMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int countMonthBis[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public Long createNextDatePayment(Long dateNewLong, Long dateDebtStartLong){
         if (this.dateNewLong == 0)
@@ -47,10 +48,11 @@ public class WorkDateDebt {
     public void getCountDayInMonth(long datePaymentLong){
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(datePaymentLong);
-        int month1 = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) - 1, 15);
-        int month2 = calendar.get(Calendar.MONTH);
-        int test = countMonth[calendar.get(Calendar.MONTH)];
-        appData.setCountDayOfMonth(countMonth[calendar.get(Calendar.MONTH)], 0);
+        if ((year%4 == 0 & year%100 != 0) || (year%400 == 0))
+            appData.setCountDayOfMonth(countMonthBis[calendar.get(Calendar.MONTH)], 366);
+        else
+            appData.setCountDayOfMonth(countMonth[calendar.get(Calendar.MONTH)], 365);
     }
 }
