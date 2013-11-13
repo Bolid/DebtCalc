@@ -71,8 +71,8 @@ public class Arithmetic {
         return delta;
     }
 
-    public int getOverInPercent(){
-        return (int) (getDeltaDefault(getPayment(sumCredit, termCredit), termCredit) * 100  / sumCredit);
+    public int getOverInPercent(Double overDebt, Double sumCredit, int termCredit){
+        return (int) (overDebt * 100  / sumCredit);
     }
 
     public Double getDeltaNew(int termCredit, Double balance, Double payment){

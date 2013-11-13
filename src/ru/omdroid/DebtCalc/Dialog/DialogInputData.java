@@ -95,7 +95,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                     tvSumPre.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1))));
                     tvOverPre.setText("+ " + new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5))));
                     tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
-                    tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
+                    tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent(Double.valueOf(Arithmetic.allResult.get(5)), Double.valueOf(AppData.DEBT_BALANCE), 1)) + "%");
                     tvPayment.setText(new DecimalFormat("###,###,###,###.##").format(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)));
                     appData.setPayment("", String.valueOf(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)));
                 }
@@ -129,7 +129,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                     tvSumPre.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1))));
                     tvOverPre.setText("+ " + new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5))));
                     tvTotal.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(1)) + Double.valueOf(Arithmetic.allResult.get(5))));
-                    tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent()) + "%");
+                    tvOverPercent.setText(String.valueOf(arithmetic.getOverInPercent(Double.valueOf(Arithmetic.allResult.get(5)), Double.valueOf(AppData.DEBT_BALANCE), 1)) + "%");
                     tvPayment.setText(new DecimalFormat("###,###,###,###.##").format(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)));
                     appData.setPayment("", String.valueOf(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)));
                 }

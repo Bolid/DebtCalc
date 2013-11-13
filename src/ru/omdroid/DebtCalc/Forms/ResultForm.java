@@ -34,7 +34,6 @@ public class ResultForm extends Activity {
         final DataForGraph dataForGraph = new DataForGraph();
         dataForGraph.createOver(true);
         dataForGraph.createTerm(true);
-
         final NumberFormat numberFormat = new DecimalFormat("###,###,###,###,###,###,##0.##");
         final View view = (View)findViewById(R.id.graphViewTermDebt);
 

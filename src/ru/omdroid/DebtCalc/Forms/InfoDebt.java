@@ -25,7 +25,8 @@ public class InfoDebt extends Activity {
             tvDigitAllPay = null,
             tvDeltaOnePay = null,
             tvTotalAllPay = null,
-            tvTotalOnePay = null;
+            tvTotalOnePay = null,
+            tvOverInPercentOne = null;
     EditText etPayment = null;
     InControlFieldAddPayment inControlFieldAddPayment;
     WorkDB workDB;
@@ -60,7 +61,7 @@ public class InfoDebt extends Activity {
 
         LinearLayout llOver = (LinearLayout)findViewById(R.id.llOverPay);
         LinearLayout llTotal = (LinearLayout)findViewById(R.id.llTotalPay);
-        RelativeLayout llControlPay = (RelativeLayout)findViewById(R.id.rlControlPay);
+        LinearLayout llControlPay = (LinearLayout)findViewById(R.id.llPayControl);
 
         llOver.setOnClickListener(new View.OnClickListener() {
             boolean showOverAll = false;
@@ -109,6 +110,7 @@ public class InfoDebt extends Activity {
                     param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
                     showSeekBar = !showSeekBar;
                 }
+                findViewById(R.id.llLabelControlPay).setLayoutParams(param);
                 seekBar.setLayoutParams(param);
                 return false;
             }
@@ -120,6 +122,7 @@ public class InfoDebt extends Activity {
 
         tvDeltaOnePay = (TextView)findViewById(R.id.infoDeltaOnePayment);
         tvTotalOnePay = (TextView)findViewById(R.id.tvTotalOnePay);
+        tvOverInPercentOne = (TextView)findViewById(R.id.tvRiceOver);
 
         ImageView ivPaymentDefault = (ImageView)findViewById(R.id.ivPaymentDefault);
         ivPaymentDefault.setOnClickListener(new View.OnClickListener() {
@@ -315,8 +318,11 @@ public class InfoDebt extends Activity {
             else
                 deltaAfter = 0.0;
             Double overPaymentNew = getOverPayment() + /*arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH)*/ AppData.OVER_PAYMENT + deltaAfter;
+
+            int overInPercent = arithmetic.getOverInPercent(overPaymentNew, Double.valueOf(AppData.DEBT), 0);
             tvDeltaOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew));
             tvTotalOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew + Double.valueOf(AppData.DEBT)));
+            tvOverInPercentOne.setText(String.valueOf(overInPercent) + "%");
         }
 
         public void setOverAllPaymentCustom(Double newPayment){

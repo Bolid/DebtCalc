@@ -25,7 +25,7 @@
                 <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageView3"
                            android:src="@drawable/info" android:tint="@color/colorIcon"/>
                 <TextView style="@style/styleLabel_2" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                          android:text="@string/mll_details" android:id="@+id/textView3"
+                          android:text="@string/ill_details" android:id="@+id/textView3"
                           android:textColor="@color/colorIcon" android:paddingLeft="5dp"/>
             </LinearLayout>
             <LinearLayout
@@ -84,7 +84,8 @@
                     android:id="@+id/llTotalPay">
                 <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
                               android:layout_height="wrap_content"
-                              android:id="@+id/linearLayout" android:gravity="center_vertical" android:padding="5dp">
+                              android:id="@+id/linearLayout" android:gravity="center_vertical"
+                              android:paddingLeft="5dp" android:paddingTop="5dp" android:paddingRight="5dp">
                     <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                android:id="@+id/imageView8" android:src="@drawable/sum"
                                android:layout_gravity="center_vertical" android:tint="@android:color/darker_gray"/>
@@ -94,6 +95,21 @@
                     <TextView style="@style/info_value" android:layout_width="0dp" android:layout_height="wrap_content"
                               android:id="@+id/tvTotalOnePay" android:layout_weight="1"
                             />
+                </LinearLayout>
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" android:paddingBottom="5dp">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="удорожание покупки"
+                            android:id="@+id/textView10" android:paddingLeft="32dp"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvRiceOver" android:paddingLeft="5dp"
+                            android:textColor="@android:color/black"/>
                 </LinearLayout>
                 <LinearLayout
                         android:orientation="vertical"
@@ -207,6 +223,22 @@
             android:layout_height="wrap_content"
             android:background="@android:color/background_light"
             android:id="@+id/llPayControl" android:layout_alignParentLeft="true" android:paddingBottom="5dp" android:layout_alignParentBottom="true">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent" android:id="@+id/llLabelControlPay">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_layout_label_credit_dopPayment"
+                    android:id="@+id/textView5" style="@style/styleLabel_2" android:paddingLeft="5dp"
+                    android:paddingTop="5dp" android:paddingRight="5dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="если в следующем месяце заплатить сумму"
+                    android:id="@+id/textView6" android:paddingLeft="5dp" android:paddingBottom="5dp"/>
+        </LinearLayout>
         <RelativeLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
