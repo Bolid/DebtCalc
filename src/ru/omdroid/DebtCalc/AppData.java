@@ -6,6 +6,8 @@ public class AppData {
     public static Long DATE_PAY, DATE_DEBT_START;
     public static Double OVER_PAYMENT, PERCENT = 0.0, DELTA;
     public static int TERM_BALANCE = 0, TERM = 0, COUNT_DAY_OF_MONTH = 0, COUNT_DAY_OF_YEAR = 0, UP_PAYMENT = 0;
+    public static int DAY_IN_JAN, DAY_IN_DEC, DAY_IN_YEAR_JAN, DAY_IN_YEAR_DEC;
+    public static boolean END_YEAR = false;
 
     public void addSumCredit(String sumCredit){
         param[0] = sumCredit;
@@ -69,6 +71,11 @@ public class AppData {
     public void setCountDayOfMonth(int countDayInMonth, int countDayInYear){
         COUNT_DAY_OF_MONTH = countDayInMonth;
         COUNT_DAY_OF_YEAR = countDayInYear;
+        END_YEAR = false;
+    }
+
+    public void setEndYear(boolean endYear, int dayInJan, int dayInDec, int dayInYearJan, int dayInYearDec){
+        END_YEAR = endYear; DAY_IN_JAN = dayInJan; DAY_IN_DEC = dayInDec; DAY_IN_YEAR_JAN = dayInYearJan; DAY_IN_YEAR_DEC = dayInYearDec;
     }
 
     public void setDelta(Double delta){

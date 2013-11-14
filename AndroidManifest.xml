@@ -17,7 +17,8 @@
         <activity
                 android:name="ru.omdroid.DebtCalc.Forms.InfoDebt"
                 android:label="@string/labelName"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden"/>
         <activity
                 android:name="ru.omdroid.DebtCalc.Forms.ListPayment"
                 android:screenOrientation="portrait"/>

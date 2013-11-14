@@ -38,13 +38,11 @@ public class InfoDebt extends Activity {
 
     WriteDataInField writeDataInField;
     Arithmetic arithmetic;
-    AppData appData = new AppData();
 
     Calendar calendar = Calendar.getInstance();
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.debt_info);
-        ActionBar actionBar = getActionBar();
         workDB = new WorkDB(getBaseContext());
 
         writeDataInField = new WriteDataInField();
@@ -200,12 +198,6 @@ public class InfoDebt extends Activity {
         return Double.valueOf(newPay);
     }
 
-    private void setNewPayment(int inc){
-        newPayment = formatValue(etPayment.getText().toString());
-        newPayment = newPayment + inc;
-        etPayment.setText(new DecimalFormat("###,###,###").format(newPayment));
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater actionMenu = getMenuInflater();
@@ -309,7 +301,9 @@ public class InfoDebt extends Activity {
         public void setOverOnePayment(Double currentPayment){
             WorkDateDebt workDateDebt = new WorkDateDebt();
             workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
-
+            Double over = arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), 0);
+            if (currentPayment > Double.valueOf(AppData.DEBT_BALANCE) + over)
+                currentPayment = Double.valueOf(AppData.DEBT_BALANCE) + over;
             Double newDebt = arithmetic.getBalance(currentPayment, Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
             Double deltaAfter;
             Double nextPayment = currentPayment;

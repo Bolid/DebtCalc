@@ -91,9 +91,9 @@ public class Arithmetic {
     }
 
     public Double getPaymentInPercent(Double balance, int countDay){
-        if (endYear)
-            return (balance * countDay * percent)/(countDay * 100);
-        return (balance * countDay * percent)/(countDay * 100);
+        if (AppData.END_YEAR)
+            return ((balance * AppData.DAY_IN_DEC * percent)/(AppData.DAY_IN_YEAR_DEC * 100)) + ((balance * AppData.DAY_IN_JAN * percent)/(AppData.DAY_IN_YEAR_JAN * 100));
+        return (balance * AppData.COUNT_DAY_OF_MONTH * percent)/(AppData.COUNT_DAY_OF_YEAR * 100);
     }
 
     public Double getPaymentInDebt(Double payment, Double balance){

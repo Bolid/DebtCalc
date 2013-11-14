@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic;
+import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -19,7 +20,7 @@ public class InControlFieldAddOverallPayment implements TextWatcher {
     int position;
 
     AppData appData = new AppData();
-
+    WorkDateDebt workDateDebt = new WorkDateDebt();
     Arithmetic arithmetic;
     public InControlFieldAddOverallPayment(EditText etPayment, Double defaultPayment, View view, Arithmetic arithmetic){
         this.etPayment = etPayment;
@@ -48,6 +49,7 @@ public class InControlFieldAddOverallPayment implements TextWatcher {
         if (!s.equals(""))
             if (defaultPayment < Double.valueOf(s)){
                 appData.setPayment(s, String.valueOf(defaultPayment));
+                //workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_PAY);
                 arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), Double.valueOf(s), true);
                 view.invalidate();
             }

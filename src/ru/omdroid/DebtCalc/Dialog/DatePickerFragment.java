@@ -40,5 +40,6 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         calendar.set(year, month, day);
         AppData appData = new AppData();
         appData.setDate(calendar.getTimeInMillis());
+        appData.setDateDebtStart(calendar.getTimeInMillis());
     }
 }

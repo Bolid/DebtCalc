@@ -109,6 +109,7 @@ public class ListPaymentDB extends Activity {
                         return null;
                     numPayment++;
                     feePayment = feePayment + payment;
+                    workDateDebt.getCountDayInMonth(datePay.getTimeInMillis());
 
                     paymentPercent = arithmetic.getPaymentInPercent(balanceDebt, AppData.COUNT_DAY_OF_MONTH);
                     paymentDebt = payment - paymentPercent;//arithmetic.getPaymentInDebt(payment, balanceDebt);
@@ -116,7 +117,6 @@ public class ListPaymentDB extends Activity {
 
                     balanceDebt = balanceDebt - paymentDebt;//arithmetic.getBalance(payment, balanceDebt, AppData.TERM_BALANCE);
                     datePay.setTimeInMillis(workDateDebt.createNextDatePayment(datePay.getTimeInMillis(), dateStart));
-
 
                     publishProgress(view);
                 }
@@ -152,7 +152,7 @@ public class ListPaymentDB extends Activity {
 
         tvNumPayment.setText(String.valueOf(numPayment));
         tvPayment.setText(new DecimalFormat("###,###,###,###,###.00").format(payment));
-        tvDatePay.setText(date + ", " + AppData.COUNT_DAY_OF_MONTH);
+        tvDatePay.setText(date);
         tvFeePayment.setText(new DecimalFormat("###,###,###,###,###.00").format(feePayment));
 
         if (upPayment != null)

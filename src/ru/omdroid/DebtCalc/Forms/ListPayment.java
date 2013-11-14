@@ -52,6 +52,7 @@ public class ListPayment extends Activity {
                     if (!addRecord)
                         return null;
                     feePayment = feePayment + payment;
+                    workDateDebt.getCountDayInMonth(calendar.getTimeInMillis());
                     paymentPercent = arithmetic.getPaymentInPercent(balance, AppData.COUNT_DAY_OF_MONTH);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balance);
                     addRecord(inflater, layout, i, payment, workDateDebt.getDate(calendar), balance, paymentDebt, paymentPercent, feePayment);
