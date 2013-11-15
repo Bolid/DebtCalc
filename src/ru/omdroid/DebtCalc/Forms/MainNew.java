@@ -140,7 +140,7 @@ public class MainNew extends Activity {
         WorkDateDebt workDateDebt = new WorkDateDebt();
         calendar.setTimeInMillis(calendarConst.getTimeInMillis());
         Long dateFirstPayment = workDateDebt.createNextDatePayment(calendar.getTimeInMillis(), calendarConst.getTimeInMillis());//calendar.getTimeInMillis();
-
+        workDateDebt.getCountDayInMonth(dateFirstPayment);
         //calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + (Integer.valueOf(AppData.param[2])), calendar.get(Calendar.DATE_PAY));
         String date = String.valueOf(calendarConst.get(Calendar.DATE))+"."+String.valueOf(calendarConst.get(Calendar.MONTH) + 1)+"."+String.valueOf(calendarConst.get(Calendar.YEAR));
 
@@ -209,7 +209,7 @@ public class MainNew extends Activity {
         final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
         MenuInflater mInflater = pMenu.getMenuInflater();
         mInflater.inflate(R.menu.pm_d_add, pMenu.getMenu());
-        pMenu.getMenu().getItem(1).setVisible(true);
+        //pMenu.getMenu().getItem(1).setVisible(true);
         pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {

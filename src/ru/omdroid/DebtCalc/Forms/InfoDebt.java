@@ -131,7 +131,7 @@ public class InfoDebt extends Activity {
                 etPayment.removeTextChangedListener(inControlFieldAddPayment);
                 setChangeListener = !setChangeListener;
                 newPayment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
-                etPayment.setText(new DecimalFormat("###,###,###,###.##").format(newPayment));
+                etPayment.setText(new DecimalFormat("###,###,###,###").format(newPayment));
                 writeDataInField.setOverAllPayment(0);
                 writeDataInField.setOverOnePayment(newPayment);
             }

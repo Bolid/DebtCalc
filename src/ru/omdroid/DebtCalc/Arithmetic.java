@@ -47,6 +47,7 @@ public class Arithmetic {
         allResult.add(4, String.valueOf(getPayment(sumCredit, termCredit)));
         allResult.add(5, "");
         allResult.set(5, String.valueOf(getDeltaDefault(getPayment(sumCredit, termCredit), termCredit)));
+        //getOverpaymentAllMonth(sumCredit, getPayment(sumCredit, termCredit), true);
         allResult.add(6, String.valueOf(termCredit));
         allResult.add(7, "");
         allResult.add(8, "");

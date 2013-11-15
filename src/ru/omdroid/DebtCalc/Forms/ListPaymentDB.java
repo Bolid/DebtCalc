@@ -103,21 +103,28 @@ public class ListPaymentDB extends Activity {
                 balanceDebt = balanceDebt - paymentDebt;
                 if (upPayment == 1)
                     payment = arithmetic.getPayment(balanceDebt, termBalance - 1);
-
+                numPayment++;
+                termBalance--;
                 while (balanceDebt > 0.01){
                     if (!addRecord)
                         return null;
-                    numPayment++;
-                    feePayment = feePayment + payment;
                     workDateDebt.getCountDayInMonth(datePay.getTimeInMillis());
 
                     paymentPercent = arithmetic.getPaymentInPercent(balanceDebt, AppData.COUNT_DAY_OF_MONTH);
-                    paymentDebt = payment - paymentPercent;//arithmetic.getPaymentInDebt(payment, balanceDebt);
+
+                    if (termBalance == 1)
+                        payment = balanceDebt + paymentPercent;
+
+                    paymentDebt = payment - paymentPercent;
+
+                    feePayment = feePayment + payment;
                     addRecord(inflater, layout, numPayment, payment, paymentDebt, paymentPercent, workDateDebt.getDate(datePay), balanceDebt, feePayment, null, getResources().getDrawable(R.drawable.pay_no_paid));
 
-                    balanceDebt = balanceDebt - paymentDebt;//arithmetic.getBalance(payment, balanceDebt, AppData.TERM_BALANCE);
+                    balanceDebt = balanceDebt - paymentDebt;
                     datePay.setTimeInMillis(workDateDebt.createNextDatePayment(datePay.getTimeInMillis(), dateStart));
 
+                    numPayment++;
+                    termBalance--;
                     publishProgress(view);
                 }
                 return null;

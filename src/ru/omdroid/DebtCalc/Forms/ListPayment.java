@@ -47,18 +47,18 @@ public class ListPayment extends Activity {
                 calendar.setTimeInMillis(workDateDebt.createNextDatePayment(calendar.getTimeInMillis(), AppData.DATE_PAY));
 
                 int i = 1;
-                //for (int j = AppData.TERM_BALANCE; j > 0; j--)
                 while (balance > 0.01){
                     if (!addRecord)
                         return null;
-                    feePayment = feePayment + payment;
                     workDateDebt.getCountDayInMonth(calendar.getTimeInMillis());
                     paymentPercent = arithmetic.getPaymentInPercent(balance, AppData.COUNT_DAY_OF_MONTH);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balance);
+                    if (i == AppData.TERM_BALANCE)
+                        payment = balance + paymentPercent;
+                    feePayment = feePayment + payment;
                     addRecord(inflater, layout, i, payment, workDateDebt.getDate(calendar), balance, paymentDebt, paymentPercent, feePayment);
                     balance = arithmetic.getBalance(payment, balance, AppData.TERM_BALANCE);
                     calendar.setTimeInMillis(workDateDebt.createNextDatePayment(calendar.getTimeInMillis(), AppData.DATE_PAY));
-                    //calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE_PAY));
                     i++;
                     publishProgress(view);
                 }
