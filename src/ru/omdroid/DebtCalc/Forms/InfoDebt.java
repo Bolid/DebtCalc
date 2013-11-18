@@ -1,6 +1,5 @@
 package ru.omdroid.DebtCalc.Forms;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -58,8 +57,8 @@ public class InfoDebt extends Activity {
         tvTerm.setText(String.valueOf(AppData.TERM));
         tvPercent.setText(String.valueOf(AppData.PERCENT));
 
-        LinearLayout llOver = (LinearLayout)findViewById(R.id.llOverPay);
-        LinearLayout llTotal = (LinearLayout)findViewById(R.id.llTotalPay);
+        LinearLayout llOver = (LinearLayout)findViewById(R.id.llOnePay);
+        LinearLayout llTotal = (LinearLayout)findViewById(R.id.llAllPay);
         LinearLayout llControlPay = (LinearLayout)findViewById(R.id.llPayControl);
 
         llOver.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +130,7 @@ public class InfoDebt extends Activity {
                 etPayment.removeTextChangedListener(inControlFieldAddPayment);
                 setChangeListener = !setChangeListener;
                 newPayment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE);
-                etPayment.setText(new DecimalFormat("###,###,###,###.##").format(newPayment));
+                etPayment.setText(new DecimalFormat("###,###,###,###").format(newPayment));
                 writeDataInField.setOverAllPayment(0);
                 writeDataInField.setOverOnePayment(newPayment);
             }
@@ -146,7 +145,8 @@ public class InfoDebt extends Activity {
 
         newPayment = Double.parseDouble(AppData.PAYMENT);
 
-        writeDataInField.setOverAllPayment(0);
+        //writeDataInField.setOverAllPayment(0);
+        writeDataInField.setOverAllPaymentCustom(newPayment);
         writeDataInField.setOverOnePayment(newPayment);
 
         etPayment.setOnClickListener(new View.OnClickListener() {
@@ -242,6 +242,7 @@ public class InfoDebt extends Activity {
                            "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
 
                 workDB.disconnectDataBase();
+                Toast.makeText(getBaseContext(), "Сумма ближайшего платежа установлена.", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.popup:
                 View v = findViewById(R.id.popup);
@@ -293,9 +294,13 @@ public class InfoDebt extends Activity {
 
         public void setOverAllPayment(int i){
             tvDigitAllPay.setText(String.valueOf(AppData.TERM_BALANCE - i));
+            Double a1 = getOverPayment();
+            Double a2 = arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
             Double overPay = getOverPayment() + arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
             tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay));
             tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay + Double.valueOf(AppData.DEBT)));
+            int overInPercent = arithmetic.getOverInPercent(overPay, Double.valueOf(AppData.DEBT), 0);
+            tvOverInPercentAll.setText(String.valueOf(overInPercent) + "%");
         }
 
         public void setOverOnePayment(Double currentPayment){

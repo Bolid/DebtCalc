@@ -47,6 +47,7 @@ public class Arithmetic {
         allResult.add(4, String.valueOf(getPayment(sumCredit, termCredit)));
         allResult.add(5, "");
         allResult.set(5, String.valueOf(getDeltaDefault(getPayment(sumCredit, termCredit), termCredit)));
+        //getOverpaymentAllMonth(sumCredit, getPayment(sumCredit, termCredit), true);
         allResult.add(6, String.valueOf(termCredit));
         allResult.add(7, "");
         allResult.add(8, "");
@@ -107,6 +108,10 @@ public class Arithmetic {
        WorkDateDebt workDateDebt = new WorkDateDebt();
        workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
         while (sumCredit > 0.0){
+<<<<<<< HEAD
+=======
+//            listDefaultPayment.add(i, String.valueOf(getPayment(sumCredit, Integer.valueOf(allResult.get(2)) - i)));
+>>>>>>> 964e832e39972f2b4f44dfc7040ecf23dfef7dd5
             i++;
             allPer = allPer + (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
             if (sumCredit < (addPayment)){
@@ -114,9 +119,10 @@ public class Arithmetic {
                 sumCredit = sumCredit - addPayment;
             }
             else{
-                sumCredit = Rounding(sumCredit - (getPaymentInDebt(addPayment, sumCredit)));
+                sumCredit = Rounding(sumCredit - (addPayment - perLocal));
             }
             workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_DEBT_START);
+            //workDateDebt.getCountDayInMonth(datePayment);
         }
         allPer = Rounding(allPer);
         allResult.set(5, String.valueOf(allPer)); //Общая переплата

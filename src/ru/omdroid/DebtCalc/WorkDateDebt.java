@@ -1,5 +1,7 @@
 package ru.omdroid.DebtCalc;
 
+import android.util.Log;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -20,7 +22,7 @@ public class WorkDateDebt {
         Calendar calendarDateNew = Calendar.getInstance();
         calendarDateNew.setTimeInMillis(this.dateNewLong);
         //appData.setCountDayOfMonth(countMonth[calendarDateNew.get(Calendar.MONTH)], 0);
-        getCountDayInMonth(dateNewLong);
+        getCountDayInMonth(this.dateNewLong);
         int preMonth = calendarDateNew.get(Calendar.MONTH);
         calendarDateNew.set(calendarDateNew.get(Calendar.YEAR), calendarDateNew.get(Calendar.MONTH) + 1, calendarDateStart.get(Calendar.DATE));
         int postMonth = calendarDateNew.get(Calendar.MONTH);
@@ -32,6 +34,7 @@ public class WorkDateDebt {
         //appData.setCountDayOfMonth((int) ((calendarDateNew.getTimeInMillis() - this.dateNewLong) / 86400000), 0);
 
         this.dateNewLong = calendarDateNew.getTimeInMillis();
+        Log.v("Новая дата 1: ", calendarDateNew.get(Calendar.DATE) + "." + calendarDateNew.get(Calendar.MONTH) + "." + calendarDateNew.get(Calendar.YEAR));
         return calendarDateNew.getTimeInMillis();
     }
 
@@ -73,5 +76,7 @@ public class WorkDateDebt {
             else
                 appData.setCountDayOfMonth(countMonth[calendar.get(Calendar.MONTH)], 365);
         }
+
+        Log.v("Новая дата: ", calendar.get(Calendar.DATE) + "." + calendar.get(Calendar.MONTH) + "." + calendar.get(Calendar.YEAR));
     }
 }

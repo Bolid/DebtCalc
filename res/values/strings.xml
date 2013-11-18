@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ottimiz debito</string>
-    <string name="labelName">Ottimiz debito</string>
+    <string name="app_name">Кредитный калькулятор</string>
+    <string name="labelName">Кредитный калькулятор</string>
     <string name="action_menu_rasch">Расчет</string>
     <string name="action_menu_analitic">Аналитика</string>
     <!--Label-->
