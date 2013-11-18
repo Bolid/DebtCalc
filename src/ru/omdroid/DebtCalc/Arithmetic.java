@@ -65,6 +65,11 @@ public class Arithmetic {
         //Rounding(sumCredit * ((percent / 100. / 12) * Math.pow((1 + (percent / 100. / 12)), termCredit)) / (Math.pow((1 + (percent / 100. / 12)), termCredit) - 1));
     }
 
+    public int getTerm(Double payment, Double sumCredit){
+        int n = (int) Math.round(Math.log((payment) / ((payment) - (percent/100./12) * sumCredit)) / Math.log(1 + (percent/100./12)));
+        return n;
+    }
+
     public Double getDeltaDefault(Double payment, int termCredit){
         Double delta = Rounding(payment * termCredit - sumCredit);
         allResult.set(5, String.valueOf(delta));
@@ -101,27 +106,26 @@ public class Arithmetic {
         return payment -getPaymentInPercent(balance, AppData.COUNT_DAY_OF_MONTH);
     }
 
-   public void getOverpaymentAllMonth(Double sumDebt, Double addPayment, boolean overPayment){
+   public void getOverpaymentAllMonth(Double sumDebt, Double addPayment, long date, int dec){
        Double sumCredit = sumDebt;
        Double allPer = 0.0;
        int i = 0;
        WorkDateDebt workDateDebt = new WorkDateDebt();
-       workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
+       workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
         while (sumCredit > 0.0){
-<<<<<<< HEAD
-=======
 //            listDefaultPayment.add(i, String.valueOf(getPayment(sumCredit, Integer.valueOf(allResult.get(2)) - i)));
->>>>>>> 964e832e39972f2b4f44dfc7040ecf23dfef7dd5
+            Double perLocal = (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
             i++;
             allPer = allPer + (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
-            if (sumCredit < (addPayment)){
-                addPayment = sumCredit + (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
+            if (i == AppData.TERM_BALANCE - dec){
+                addPayment = sumCredit + perLocal;
                 sumCredit = sumCredit - addPayment;
             }
             else{
                 sumCredit = Rounding(sumCredit - (addPayment - perLocal));
             }
-            workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_DEBT_START);
+            Log.v("Вывод: ", i + " " +Double.valueOf(perLocal) + " " + Double.valueOf(addPayment - perLocal) +" " + sumCredit +" " + AppData.COUNT_DAY_OF_MONTH);
+            workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
             //workDateDebt.getCountDayInMonth(datePayment);
         }
         allPer = Rounding(allPer);

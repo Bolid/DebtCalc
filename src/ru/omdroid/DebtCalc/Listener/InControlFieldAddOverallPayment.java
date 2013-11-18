@@ -50,7 +50,7 @@ public class InControlFieldAddOverallPayment implements TextWatcher {
             if (defaultPayment < Double.valueOf(s)){
                 appData.setPayment(s, String.valueOf(defaultPayment));
                 //workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_PAY);
-                arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), Double.valueOf(s), true);
+                arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), Double.valueOf(s), AppData.DATE_PAY, 0);
                 view.invalidate();
             }
             else

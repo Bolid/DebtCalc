@@ -34,7 +34,7 @@ public class WorkDateDebt {
         //appData.setCountDayOfMonth((int) ((calendarDateNew.getTimeInMillis() - this.dateNewLong) / 86400000), 0);
 
         this.dateNewLong = calendarDateNew.getTimeInMillis();
-        Log.v("Новая дата 1: ", calendarDateNew.get(Calendar.DATE) + "." + calendarDateNew.get(Calendar.MONTH) + "." + calendarDateNew.get(Calendar.YEAR));
+       // Log.v("Новая дата 1: ", calendarDateNew.get(Calendar.DATE) + "." + calendarDateNew.get(Calendar.MONTH) + "." + calendarDateNew.get(Calendar.YEAR));
         return calendarDateNew.getTimeInMillis();
     }
 
@@ -77,6 +77,6 @@ public class WorkDateDebt {
                 appData.setCountDayOfMonth(countMonth[calendar.get(Calendar.MONTH)], 365);
         }
 
-        Log.v("Новая дата: ", calendar.get(Calendar.DATE) + "." + calendar.get(Calendar.MONTH) + "." + calendar.get(Calendar.YEAR));
+        Log.v("Количество дней: ", countMonth[calendar.get(Calendar.MONTH)] + "Новая дата: " + calendar.get(Calendar.DATE) + "." + Integer.valueOf(calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.YEAR));
     }
 }
