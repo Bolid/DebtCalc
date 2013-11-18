@@ -101,17 +101,13 @@ public class Arithmetic {
     }
 
    public void getOverpaymentAllMonth(Double sumDebt, Double addPayment, boolean overPayment){
-       hmPaymentMonth.clear();
        Double sumCredit = sumDebt;
        Double allPer = 0.0;
        int i = 0;
        WorkDateDebt workDateDebt = new WorkDateDebt();
        workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
-       listResult = new ArrayList<HashMap<String, String>>();
         while (sumCredit > 0.0){
-            listDefaultPayment.add(i, String.valueOf(getPayment(sumCredit, Integer.valueOf(allResult.get(2)) - i)));
             i++;
-            Double perLocal = (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
             allPer = allPer + (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
             if (sumCredit < (addPayment)){
                 addPayment = sumCredit + (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
