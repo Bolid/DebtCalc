@@ -5,7 +5,7 @@ public class AppData {
     public static String PAYMENT, GOAL = "", DEBT_BALANCE = "", PAYMENT_DEFAULT, ID_DEBT = "", DEBT = "";
     public static Long DATE_PAY, DATE_DEBT_START;
     public static Double OVER_PAYMENT, PERCENT = 0.0, DELTA;
-    public static int TERM_BALANCE = 0, TERM = 0, COUNT_DAY_OF_MONTH = 0, COUNT_DAY_OF_YEAR = 0, UP_PAYMENT = 0;
+    public static int TERM_BALANCE = 0, TERM = 0, COUNT_DAY_OF_MONTH = 0, COUNT_DAY_OF_YEAR = 0, UP_PAYMENT = 0, COUNT_PAY_PAID = 0;
     public static int DAY_IN_JAN, DAY_IN_DEC, DAY_IN_YEAR_JAN, DAY_IN_YEAR_DEC;
     public static boolean END_YEAR = false;
 
@@ -38,6 +38,10 @@ public class AppData {
 
     public void setUpPayment(int i){
         UP_PAYMENT = i;
+    }
+
+    public void setCountPayPaid(int i){
+        COUNT_PAY_PAID = i;
     }
 
     public void setDateDebtStart(Long dateStart){

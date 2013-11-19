@@ -321,7 +321,10 @@ public class InfoDebt extends Activity {
             Double deltaAfter;
             Double nextPayment = currentPayment;
             if (/*AppData.UP_PAYMENT == 1 || currentPayment > Double.valueOf(AppData.PAYMENT)*/currentPayment > paymentDefault)
-                nextPayment =  arithmetic.getPayment(newDebt, AppData.TERM_BALANCE - 1);
+                if (AppData.TERM_BALANCE == 1)
+                    nextPayment = paymentDefault;
+                else
+                    nextPayment =  arithmetic.getPayment(newDebt, AppData.TERM_BALANCE - 1);
             if (AppData.TERM_BALANCE > 1){
                 arithmetic.getOverpaymentAllMonth(newDebt, nextPayment, workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_DEBT_START), 1);
                 deltaAfter = Double.valueOf(Arithmetic.allResult.get(5));

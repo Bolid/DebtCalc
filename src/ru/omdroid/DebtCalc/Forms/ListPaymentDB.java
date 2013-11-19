@@ -159,7 +159,7 @@ public class ListPaymentDB extends Activity {
 
         tvNumPayment.setText(String.valueOf(numPayment));
         tvPayment.setText(new DecimalFormat("###,###,###,###,###.00").format(payment));
-        tvDatePay.setText(date + " " + AppData.COUNT_DAY_OF_MONTH);
+        tvDatePay.setText(date);
         tvFeePayment.setText(new DecimalFormat("###,###,###,###,###.00").format(feePayment));
 
         if (upPayment != null)
