@@ -45,6 +45,8 @@
     <string name="popup_archive">Архив</string>
     <string name="popup_current">Текущие</string>
     <string name="popup_table">График платежей</string>
+    <string name="add_notify">Добавить напоминание</string>
+    <string name="del_notify">Удалить напоминание</string>
     <string name="popup_test_payment">Тестирование платежей</string>
     <!--Value-->
     <string name="main_layout_value_credit_sum">900 000</string>

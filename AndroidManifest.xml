@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <receiver
-                android:name=".Receiver.ReceiverArithmetic">
+                android:name=".Receiver.Receiver">
             <intent-filter>
                 <action android:name="GO"/>
                 <action android:name="START"/>

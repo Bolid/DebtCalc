@@ -7,13 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
-import ru.omdroid.DebtCalc.AppData;
-import ru.omdroid.DebtCalc.Arithmetic;
+import ru.omdroid.DebtCalc.*;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddPayment;
-import ru.omdroid.DebtCalc.R;
-import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -287,12 +284,30 @@ public class InfoDebt extends Activity {
         final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
         MenuInflater mInflater = pMenu.getMenuInflater();
         mInflater.inflate(R.menu.pm_d_add, pMenu.getMenu());
-        pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        pMenu.getMenu().getItem(0).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 Intent intent = new Intent(getBaseContext(), ListPaymentDB.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                return false;
+            }
+        });
+
+        pMenu.getMenu().getItem(1).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                WorkNotification workNotification = new WorkNotification(getBaseContext());
+                workNotification.addNotify(AppData.ID_DEBT);
+                return false;
+            }
+        });
+
+        pMenu.getMenu().getItem(2).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                WorkNotification workNotification = new WorkNotification(getBaseContext());
+                workNotification.delNotify();
                 return false;
             }
         });

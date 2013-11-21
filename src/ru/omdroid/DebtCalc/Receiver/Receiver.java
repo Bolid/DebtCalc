@@ -7,15 +7,13 @@ import android.util.Log;
 import ru.omdroid.DebtCalc.Arithmetic;
 
 
-public class ReceiverArithmetic extends BroadcastReceiver {
+public class Receiver extends BroadcastReceiver {
+    String ADD_NOTIFY = "ADD_NOTIFY";
 
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        String[] data = intent.getExtras().getStringArray("DATA");
-        if (action.equals("GO"))
+        if (action.equals(ADD_NOTIFY))
             Log.v("Ресивер: ", "Круто");
-        if (action.equals("START")) {
-        }
     }
 }
