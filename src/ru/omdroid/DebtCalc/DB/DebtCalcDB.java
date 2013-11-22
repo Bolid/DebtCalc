@@ -46,6 +46,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String TABLE_NOTIFY = "notify_table";
     public static final String F_ID_NOTIFY = "_id";
     public static final String F_ID_DEBT_NOTIFY = "id_debt_notify";
+    public static final String F_COUNT_DAY_NOTIFY = "count_day_notify";
 
     public static final String REQUEST_CREATE_TABLE_DEBTS = "CREATE TABLE " +
                                                                     TABLE_CREDITS + " (" +
@@ -76,16 +77,19 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     F_PAYMENT_UP_PAY + " INTEGER, " +
                                                                     F_COUNT_DAY_PAY + " INTEGER);";
 
-    public static final String REQUEST_CREATE_TABLE_NOTIFY = "CREATE TABLE " +
-            TABLE_NOTIFY + " (" +
-            F_ID_NOTIFY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            F_ID_DEBT_NOTIFY + " STRING);";
+
 
     public static final String REQUEST_CREATE_TABLE_SETTING = "CREATE TABLE " +
-            TABLE_SETTING + " (" +
-            F_ID_SET + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            F_RATING_SHOW_SET + " INTEGER, " +
-            F_NUMBER_START_APP_SET + " INTEGER);";
+                                                                TABLE_SETTING + " (" +
+                                                                F_ID_SET + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                                                F_RATING_SHOW_SET + " INTEGER, " +
+                                                                F_NUMBER_START_APP_SET + " INTEGER);";
+
+    public static final String REQUEST_CREATE_TABLE_NOTIFY = "CREATE TABLE " +
+                                                                TABLE_NOTIFY + " (" +
+                                                                F_ID_NOTIFY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                                                F_ID_DEBT_NOTIFY + " STRING, " +
+                                                                F_COUNT_DAY_NOTIFY + " INTEGER);";
 
     public DebtCalcDB(Context context) {
         super(context, DATABASE_NAME, null, 3);

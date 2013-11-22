@@ -1,6 +1,7 @@
 package ru.omdroid.DebtCalc.Forms;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.*;
 import ru.omdroid.DebtCalc.*;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
+import ru.omdroid.DebtCalc.Dialog.DialogNotify;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddPayment;
 
 import java.text.DecimalFormat;
@@ -297,8 +299,8 @@ public class InfoDebt extends Activity {
         pMenu.getMenu().getItem(1).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                WorkNotification workNotification = new WorkNotification(getBaseContext());
-                workNotification.addNotify(AppData.ID_DEBT);
+                DialogNotify dialogNotify = new DialogNotify(getBaseContext());
+                dialogNotify.show(getFragmentManager(), "");
                 return false;
             }
         });
@@ -307,7 +309,7 @@ public class InfoDebt extends Activity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 WorkNotification workNotification = new WorkNotification(getBaseContext());
-                workNotification.delNotify();
+                workNotification.delNotify(AppData.ID_DEBT);
                 return false;
             }
         });

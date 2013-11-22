@@ -41,6 +41,9 @@
     <string name="delete_question">Выполнить удаление?</string>
     <string name="delete_yes">Да</string>
     <string name="delete_no">Нет</string>
+    <!--dialog_notify-->
+    <string name="count_day">За сколько дней напомнить о платеже?</string>
+    <string name="time_not">Выберите время напоминания</string>
     <!--popup-->
     <string name="popup_archive">Архив</string>
     <string name="popup_current">Текущие</string>
@@ -56,6 +59,8 @@
     <string name="list_debt_value_total_payment">0.0</string>
     <!--Button-->
     <string name="buttonNextMainLayout">Сохранить</string>
+    <string name="butCancel">Отмена</string>
+    <string name="butOK">OK</string>
     <string name="buttonNextListDialog">Далее</string>
     <!--Array-->
     <array name="array_types_credit">
