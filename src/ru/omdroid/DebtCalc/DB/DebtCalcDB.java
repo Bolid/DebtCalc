@@ -45,10 +45,13 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     /*TABLE NOTIFICATION version 3*/
     public static final String TABLE_NOTIFY = "notify_table";
     public static final String F_ID_NOTIFY = "_id";
+    public static final String F_ID_ALARM_NOTIFY = "id_alarm_notify";
     public static final String F_ID_DEBT_NOTIFY = "id_debt_notify";
     public static final String F_COUNT_DAY_NOTIFY = "count_day_notify";
+    public static final String F_TIME_NOTIFY = "time_notify";
+    public static final String F_TIME_START_NOTIFY = "time_start_notify";
 
-    public static final String REQUEST_CREATE_TABLE_DEBTS = "CREATE TABLE " +
+    public final String REQUEST_CREATE_TABLE_DEBTS = "CREATE TABLE " +
                                                                     TABLE_CREDITS + " (" +
                                                                     FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                                                     FIELD_ID_DEBT + " INTEGER, " +
@@ -61,7 +64,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     FIELD_PAID_DEBT + " STRING, " +
                                                                     F_PAY_DEFAULT_DEBT + " DOUBLE);";
 
-    public static final String REQUEST_CREATE_TABLE_PAYMENTS = "CREATE TABLE " +
+    public final String REQUEST_CREATE_TABLE_PAYMENTS = "CREATE TABLE " +
                                                                     TABLE_PAYMENTS + " (" +
                                                                     FIELD_ID_NUM + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                                                     FIELD_ID_DEBT_PAYMENTS + " INTEGER, " +
@@ -79,17 +82,20 @@ public class DebtCalcDB extends SQLiteOpenHelper{
 
 
 
-    public static final String REQUEST_CREATE_TABLE_SETTING = "CREATE TABLE " +
+    public final String REQUEST_CREATE_TABLE_SETTING = "CREATE TABLE " +
                                                                 TABLE_SETTING + " (" +
                                                                 F_ID_SET + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                                                 F_RATING_SHOW_SET + " INTEGER, " +
                                                                 F_NUMBER_START_APP_SET + " INTEGER);";
 
-    public static final String REQUEST_CREATE_TABLE_NOTIFY = "CREATE TABLE " +
+    public final String REQUEST_CREATE_TABLE_NOTIFY = "CREATE TABLE " +
                                                                 TABLE_NOTIFY + " (" +
                                                                 F_ID_NOTIFY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                                                F_ID_ALARM_NOTIFY + " INTEGER, " +
                                                                 F_ID_DEBT_NOTIFY + " STRING, " +
-                                                                F_COUNT_DAY_NOTIFY + " INTEGER);";
+                                                                F_COUNT_DAY_NOTIFY + " INTEGER, "+
+                                                                F_TIME_NOTIFY + " STRING, "+
+                                                                F_TIME_START_NOTIFY + " LONG);";
 
     public DebtCalcDB(Context context) {
         super(context, DATABASE_NAME, null, 3);
@@ -112,6 +118,4 @@ public class DebtCalcDB extends SQLiteOpenHelper{
             db.execSQL("ALTER TABLE " + DebtCalcDB.TABLE_CREDITS + " ADD " + DebtCalcDB.F_PAY_DEFAULT_DEBT + " DOUBLE"); /*version 2*/
         db.execSQL(REQUEST_CREATE_TABLE_NOTIFY);
     }
-
-
 }

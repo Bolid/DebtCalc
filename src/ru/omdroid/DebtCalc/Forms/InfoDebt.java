@@ -286,6 +286,9 @@ public class InfoDebt extends Activity {
         final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
         MenuInflater mInflater = pMenu.getMenuInflater();
         mInflater.inflate(R.menu.pm_d_add, pMenu.getMenu());
+        int i = workDB.countDataInDataBase("SELECT * FROM " + DebtCalcDB.TABLE_NOTIFY + " WHERE " + DebtCalcDB.F_ID_DEBT_NOTIFY + " = '" + AppData.ID_DEBT + "'");
+        pMenu.getMenu().getItem(1).setVisible(i == 0);
+        pMenu.getMenu().getItem(2).setVisible(i > 0);
         pMenu.getMenu().getItem(0).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -397,5 +400,5 @@ public class InfoDebt extends Activity {
             tvTotalOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew + Double.valueOf(AppData.DEBT)));
             tvOverInPercentOne.setText(String.valueOf(overInPercent) + "%");
         }
-    }
+    }  //класс для вывода информации по переплате
 }

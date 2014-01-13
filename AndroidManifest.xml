@@ -5,6 +5,7 @@
           android:versionName="2.1"
         android:installLocation="auto">
     <uses-sdk android:minSdkVersion="14"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
     <application
             android:hardwareAccelerated="true"
@@ -38,10 +39,12 @@
             </intent-filter>
         </activity>
         <receiver
-                android:name=".Receiver.Receiver">
+                android:enabled="true"
+                android:name=".Receiver.Receiver"
+                android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
-                <action android:name="GO"/>
-                <action android:name="START"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
     </application>

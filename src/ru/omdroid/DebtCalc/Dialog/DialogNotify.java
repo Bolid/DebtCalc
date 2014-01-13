@@ -20,10 +20,17 @@ public class DialogNotify  extends DialogFragment implements View.OnClickListene
     private Date date;
     private int countDay = 1;
     private Context context;
+    private String idDebt = AppData.ID_DEBT;
 
     public DialogNotify(Context context) {
         this.context = context;
     }
+
+    public DialogNotify(Context context, String idDebt) {
+        this.context = context;
+        this.idDebt = idDebt;
+    }
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         getDialog().setTitle(getResources().getString(R.string.app_name));
@@ -69,7 +76,7 @@ public class DialogNotify  extends DialogFragment implements View.OnClickListene
         switch (view.getId()){
             case R.id.butNotOK:
                 WorkNotification workNotification = new WorkNotification(context);
-                workNotification.addNotify(AppData.ID_DEBT, countDay, date);
+                workNotification.addNotify(idDebt, countDay, date.getTime());
                 break;
         }
     }
