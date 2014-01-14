@@ -136,15 +136,20 @@ public class Receiver extends BroadcastReceiver {
         int icon = R.drawable.ic_launcher;
         CharSequence tickerText = "Внимание! Оплата кредита";
         long when = System.currentTimeMillis();
-        Notification notification = new Notification(icon, tickerText, when);
+        long[] vibrArray = new long[]{100, 200, 300, 400};
+        Intent notificationIntent = new Intent(context, ListDebt.class);
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(),R.layout.notify_layout);
         remoteViews.setTextViewText(R.id.notifyText, textNotify);
-        CharSequence contentTitle = "DebtCalc";
-        Intent notificationIntent = new Intent(context, ListDebt.class);
+        Notification.Builder notification = new Notification.Builder(context);
+                notification.setContentTitle(tickerText);
+        notification.setSmallIcon(icon);
+        notification.setContentText(textNotify);
+        notification.build();
 
-        notification.contentIntent = PendingIntent.getActivity(context, 2908, notificationIntent, 0);
-        notification.contentView = remoteViews;
-        //notification.setLatestEventInfo(context, contentTitle, textNotify, contentIntent);
+        notification.setContentIntent(PendingIntent.getActivity(context, 2908, notificationIntent, 0));
+        notification.sbigContentView;
+        notification.vibrate = vibrArray;
+        //notification.setLatestEventInfo(context, tickerText, textNotify, PendingIntent.getActivity(context, 2908, notificationIntent, 0));
         notification.flags = Notification.FLAG_AUTO_CANCEL;
         mNotificationManager.notify(0, notification);
     }
