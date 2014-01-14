@@ -25,15 +25,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a03eb3f-ecc9-4257-8289-8126dc348593" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Receiver/Receiver.java" afterPath="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Receiver/Receiver.java" />
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DebtCalc.iws" />
     <ignored path=".idea/workspace.xml" />
+<<<<<<< HEAD
     <file path="/Dummy.txt" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1389641994591" ignored="false" />
     <file path="/fragment.java" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1389615087714" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1385372802322" ignored="false" />
     <file path="/Receiver.java" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1389607058439" ignored="false" />
+=======
+    <file path="/Dummy.txt" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1389677687293" ignored="false" />
+    <file path="/fragment.java" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1389693913157" ignored="false" />
+    <file path="/AndroidManifest.xml" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1389703259090" ignored="false" />
+    <file path="/Receiver.java" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1389704541288" ignored="false" />
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
     <file path="/WorkNotification.java" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1385728841786" ignored="false" />
     <file path="/DebtCalcDB.java" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1385720152912" ignored="false" />
     <file path="/DialogNotify.java" changelist="0a03eb3f-ecc9-4257-8289-8126dc348593" time="1385543954565" ignored="false" />
@@ -331,25 +343,55 @@
       <file leaf-file-name="InfoDebt.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/InfoDebt.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="309" column="20" selection-start="14627" selection-end="14627" vertical-scroll-proportion="0.0">
+=======
+            <state line="306" column="20" selection-start="14591" selection-end="14591" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DebtCalcDB.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DB/DebtCalcDB.java">
+      <file leaf-file-name="notify_layout.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/notify_layout.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="12" selection-start="428" selection-end="428" vertical-scroll-proportion="-6.6">
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Receiver.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Receiver/Receiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="90" column="55" selection-start="6185" selection-end="6185" vertical-scroll-proportion="0.0">
               <folding />
+=======
+            <state line="151" column="46" selection-start="8367" selection-end="8367" vertical-scroll-proportion="0.76">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="debt_info.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/layout/debt_info.xml">
           <provider editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+=======
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="63" selection-start="444" selection-end="444" vertical-scroll-proportion="0.0">
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
               <folding />
             </state>
           </provider>
@@ -388,6 +430,7 @@
       <file leaf-file-name="ListDebt.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="241" column="50" selection-start="12146" selection-end="12146" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#3241#3467#0" expanded="true" />
@@ -409,6 +452,10 @@
                 <element signature="e#25091#25411#0" expanded="true" />
                 <element signature="e#25400#25401#0" expanded="true" />
               </folding>
+=======
+            <state line="268" column="56" selection-start="13458" selection-end="13458" vertical-scroll-proportion="0.0">
+              <folding />
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
             </state>
           </provider>
         </entry>
@@ -454,11 +501,19 @@
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/WorkNotification.java" />
         <option value="$PROJECT_DIR$/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/res/layout/notify.xml" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Receiver/Receiver.java" />
         <option value="$PROJECT_DIR$/res/menu/pm_d_add.xml" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" />
         <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DB/DebtCalcDB.java" />
+=======
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DB/DebtCalcDB.java" />
+        <option value="$PROJECT_DIR$/res/menu/pm_d_add.xml" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Receiver/Receiver.java" />
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
       </list>
     </option>
   </component>
@@ -494,6 +549,11 @@
       <sortByType />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -540,7 +600,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="res" />
+=======
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DebtCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Receiver" />
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -826,17 +898,32 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32873562" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.95862067" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.66206896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.95632184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32873562" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24948876" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3900862" sideWeight="0.33563218" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32873562" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6643678" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38854805" sideWeight="0.33563218" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3264368" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924336" sideWeight="0.67126435" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924336" sideWeight="0.67126435" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32873562" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -928,6 +1015,7 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Receiver/Receiver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="42" column="25" selection-start="1293" selection-end="1293" vertical-scroll-proportion="0.0">
@@ -938,6 +1026,11 @@
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="39" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/DB/DebtCalcDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="59" selection-start="7449" selection-end="7449" vertical-scroll-proportion="0.0">
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
           <folding />
         </state>
       </provider>
@@ -965,9 +1058,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="18" selection-start="2884" selection-end="2884" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
+        <state line="52" column="18" selection-start="2884" selection-end="2884" vertical-scroll-proportion="0.33333334" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/MainNew.java">
@@ -993,6 +1084,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Forms/ListDebt.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="241" column="50" selection-start="12146" selection-end="12146" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#3241#3467#0" expanded="true" />
@@ -1013,6 +1105,35 @@
             <element signature="e#25014#25015#0" expanded="true" />
             <element signature="e#25091#25411#0" expanded="true" />
             <element signature="e#25400#25401#0" expanded="true" />
+=======
+        <state line="268" column="56" selection-start="13458" selection-end="13458" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/notify_layout.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="12" selection-start="428" selection-end="428" vertical-scroll-proportion="-6.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="63" selection-start="444" selection-end="444" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/omdroid/DebtCalc/Receiver/Receiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="46" selection-start="8367" selection-end="8367" vertical-scroll-proportion="0.76">
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> 6564776e5fc298b7cd246c598471e2f96c40a49b
           </folding>
         </state>
       </provider>
