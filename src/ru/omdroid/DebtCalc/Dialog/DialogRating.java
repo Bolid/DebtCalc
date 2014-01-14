@@ -7,18 +7,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.R;
 
 public class DialogRating extends DialogFragment implements View.OnClickListener {
-
+    CheckBox checkBox;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         getDialog().setTitle(getResources().getString(R.string.app_name));
         View view = inflater.inflate(R.layout.dialog_rating, null);
         view.findViewById(R.id.butRatYes).setOnClickListener(this);
         view.findViewById(R.id.butRatNo).setOnClickListener(this);
-        view.findViewById(R.id.butRatYesFix).setOnClickListener(this);
+        checkBox = (CheckBox)view.findViewById(R.id.cbYesFix);
         return view;
     }
     @Override
@@ -32,13 +33,19 @@ public class DialogRating extends DialogFragment implements View.OnClickListener
                 break;
             case R.id.butRatNo:
                 dismiss();
-                break;
+                break;/*
             case R.id.butRatYesFix:
                 WorkDB workDB = new WorkDB(getActivity().getBaseContext());
                 workDB.updateData("UPDATE " + DebtCalcDB.TABLE_SETTING + " SET " + DebtCalcDB.F_RATING_SHOW_SET + " = '1'");
                 workDB.disconnectDataBase();
                 dismiss();
-                break;
+                break;*/
         }
+        if (checkBox.isChecked()){
+            WorkDB workDB = new WorkDB(getActivity().getBaseContext());
+            workDB.updateData("UPDATE " + DebtCalcDB.TABLE_SETTING + " SET " + DebtCalcDB.F_RATING_SHOW_SET + " = '1'");
+            workDB.disconnectDataBase();
+        }
+
     }
 }

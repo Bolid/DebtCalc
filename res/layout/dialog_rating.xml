@@ -20,8 +20,8 @@
             android:gravity="center_horizontal"/>
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -32,10 +32,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/rating_no"
                 android:id="@+id/butRatNo" android:layout_weight="1"/>
-        <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/rating_yes_fix"
-                android:id="@+id/butRatYesFix" android:layout_weight="1"/>
     </LinearLayout>
+    <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rating_yes_fix"
+            android:id="@+id/cbYesFix"
+            style="@style/styleLabel_2"
+            android:textSize="12sp"/>
 </LinearLayout>

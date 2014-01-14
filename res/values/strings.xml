@@ -31,11 +31,11 @@
     <!--layout info-->
     <string name="overpayment">Досрочное погашение</string>
     <!--dialog rating-->
-    <string name="rating_text">Ваша оценка поможет в дальнейшем развитии приложения.</string>
+    <string name="rating_text">Ваша оценка поможет в дальнейшем развитии приложения</string>
     <string name="rating_question">Оценить сейчас?</string>
     <string name="rating_yes">Да</string>
     <string name="rating_no">Нет</string>
-    <string name="rating_yes_fix">Оценил</string>
+    <string name="rating_yes_fix">Больше не показывать</string>
     <!--dialog_delete-->
     <string name="delete_text">Внимание! Будет удалена вся информация о выбранных кредитах.</string>
     <string name="delete_question">Выполнить удаление?</string>

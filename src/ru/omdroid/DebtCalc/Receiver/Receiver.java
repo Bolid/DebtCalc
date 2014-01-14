@@ -132,25 +132,18 @@ public class Receiver extends BroadcastReceiver {
     }
 
     private void createNotification(Context context, String textNotify){
-        NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-        int icon = R.drawable.ic_launcher;
-        CharSequence tickerText = "Внимание! Оплата кредита";
-        long when = System.currentTimeMillis();
-        long[] vibrArray = new long[]{100, 200, 300, 400};
         Intent notificationIntent = new Intent(context, ListDebt.class);
-        RemoteViews remoteViews = new RemoteViews(context.getPackageName(),R.layout.notify_layout);
-        remoteViews.setTextViewText(R.id.notifyText, textNotify);
-        Notification.Builder notification = new Notification.Builder(context);
-                notification.setContentTitle(tickerText);
-        notification.setSmallIcon(icon);
-        notification.setContentText(textNotify);
-        notification.build();
+        Notification notification = new Notification.Builder(context)
+                .setTicker("Напоминание! Оплата кредита")
+                .setContentTitle("Напоминание! Оплата кредита")
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setStyle(new Notification.BigTextStyle().bigText(textNotify))
+                .setContentIntent(PendingIntent.getActivity(context, 2908, notificationIntent, 0))
+                .setAutoCancel(true)
+                .setVibrate(new long[]{100, 200, 300, 400})
+                .build();
 
-        notification.setContentIntent(PendingIntent.getActivity(context, 2908, notificationIntent, 0));
-        notification.sbigContentView;
-        notification.vibrate = vibrArray;
-        //notification.setLatestEventInfo(context, tickerText, textNotify, PendingIntent.getActivity(context, 2908, notificationIntent, 0));
-        notification.flags = Notification.FLAG_AUTO_CANCEL;
+        NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(0, notification);
     }
     /*--Запуск напоминания*/
@@ -167,6 +160,8 @@ public class Receiver extends BroadcastReceiver {
             WorkNotification workNotification = new WorkNotification(context);
             workNotification.createAlarm(date, numberAlarm);
         }
+        cursor.close();
+        workDB.disconnectDataBase();
 
     }
 }   /*--Проверка после запуска телефона*/

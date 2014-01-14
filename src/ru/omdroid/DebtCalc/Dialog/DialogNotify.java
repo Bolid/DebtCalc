@@ -36,7 +36,7 @@ public class DialogNotify  extends DialogFragment implements View.OnClickListene
         getDialog().setTitle(getResources().getString(R.string.app_name));
         View view = inflater.inflate(R.layout.dialog_notify, null);
         view.findViewById(R.id.butNotOK).setOnClickListener(this);
-        view.findViewById(R.id.butNotCancel).setOnClickListener(this);
+        view.findViewById(R.id.butCancel).setOnClickListener(this);
         view.findViewById(R.id.tvTimeNot).setOnClickListener(this);
         date = new Date();
         final TextView tvCountDay = (TextView)view.findViewById(R.id.tvCountDayNot);
@@ -72,11 +72,12 @@ public class DialogNotify  extends DialogFragment implements View.OnClickListene
                 final DialogFragment dialogFragment = new TimeNotifyPickerFragment((TextView)view, date);
                 dialogFragment.show(getFragmentManager(), "");
                 break;
-        }
-        switch (view.getId()){
             case R.id.butNotOK:
                 WorkNotification workNotification = new WorkNotification(context);
                 workNotification.addNotify(idDebt, countDay, date.getTime());
+                break;
+            case R.id.butCancel:
+                dismiss();
                 break;
         }
     }
