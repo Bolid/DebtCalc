@@ -41,15 +41,17 @@
     <string name="delete_question">Выполнить удаление?</string>
     <string name="delete_yes">Да</string>
     <string name="delete_no">Нет</string>
-    <!--dialog_notify-->
+    <!--dialog_add_notify-->
+    <string name="dialog_title">Напоминание</string>
     <string name="count_day">За сколько дней напомнить о платеже?</string>
-    <string name="time_not">Выберите время напоминания</string>
+    <string name="select_time_notify">Выберите время напоминания</string>
+    <string name="time_notify">Время напоминания</string>
     <!--popup-->
     <string name="popup_archive">Архив</string>
     <string name="popup_current">Текущие</string>
     <string name="popup_table">График платежей</string>
-    <string name="add_notify">Добавить напоминание</string>
-    <string name="del_notify">Удалить напоминание</string>
+    <string name="menu_add_notify">Добавить напоминание</string>
+    <string name="menu_review_notify">Просмотреть напоминание</string>
     <string name="popup_test_payment">Тестирование платежей</string>
     <!--Value-->
     <string name="main_layout_value_credit_sum">900 000</string>
@@ -61,7 +63,18 @@
     <string name="buttonNextMainLayout">Сохранить</string>
     <string name="butCancel">Отмена</string>
     <string name="butOK">OK</string>
+    <string name="butIns">Установить</string>
+    <string name="butDel">Удалить</string>
     <string name="buttonNextListDialog">Далее</string>
+    <!--Toasts-->
+    <string name="addNotify">Напоминание добавлено</string>
+    <string name="delNotify">Напоминание удалено</string>
+    <!--Notification-->
+    <string name="text_for_titleNotify">Напоминание! Оплата кредита</string>
+    <string name="text_for_notify">Напоминаем о предстоящих платежах по кредитам:</string>
+    <string name="text_for_oneNotify_part1">Напоминаем о предстоящем</string>
+    <string name="text_for_oneNotify_part2">платеже по кредиту за</string>
+    <string name="text_for_notSumPayment">в размере</string>
     <!--Array-->
     <array name="array_types_credit">
         <item>Квартира</item>

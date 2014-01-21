@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.R;
 import ru.omdroid.DebtCalc.WorkNotification;
@@ -16,25 +17,25 @@ import ru.omdroid.DebtCalc.WorkNotification;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DialogNotify  extends DialogFragment implements View.OnClickListener {
+public class DialogAddNotify extends DialogFragment implements View.OnClickListener {
     private Date date;
     private int countDay = 1;
     private Context context;
     private String idDebt = AppData.ID_DEBT;
 
-    public DialogNotify(Context context) {
+    public DialogAddNotify(Context context) {
         this.context = context;
     }
 
-    public DialogNotify(Context context, String idDebt) {
+    public DialogAddNotify(Context context, String idDebt) {
         this.context = context;
         this.idDebt = idDebt;
     }
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        getDialog().setTitle(getResources().getString(R.string.app_name));
-        View view = inflater.inflate(R.layout.dialog_notify, null);
+        getDialog().setTitle(getResources().getString(R.string.dialog_title));
+        View view = inflater.inflate(R.layout.dialog_add_notify, null);
         view.findViewById(R.id.butNotOK).setOnClickListener(this);
         view.findViewById(R.id.butCancel).setOnClickListener(this);
         view.findViewById(R.id.tvTimeNot).setOnClickListener(this);
@@ -75,6 +76,8 @@ public class DialogNotify  extends DialogFragment implements View.OnClickListene
             case R.id.butNotOK:
                 WorkNotification workNotification = new WorkNotification(context);
                 workNotification.addNotify(idDebt, countDay, date.getTime());
+                Toast.makeText(context, context.getResources().getString(R.string.addNotify), Toast.LENGTH_LONG).show();
+                dismiss();
                 break;
             case R.id.butCancel:
                 dismiss();

@@ -71,7 +71,6 @@ public class WorkNotification {
             AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
             alarmManager.cancel(PendingIntent.getBroadcast(context, numberAlarm, intent, 0));
         }
-        Toast.makeText(context, "Напоминание удалено!", Toast.LENGTH_LONG).show();
     }
 
     public void createAlarm(long date, int numberAlarm){
@@ -81,7 +80,6 @@ public class WorkNotification {
 
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, date, 86400 * 1000, pendingIntent);
-        Toast.makeText(context, "Напоминание установлено!", Toast.LENGTH_LONG).show();
     }
 
     private int generateNumCredit(){

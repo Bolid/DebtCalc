@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:background="@color/background_app">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/count_day"
+            android:id="@+id/textView" android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+            style="@style/styleLabel_2" android:gravity="center_horizontal" android:layout_marginTop="15dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:id="@+id/tvCountDayNot" android:layout_centerHorizontal="true" android:layout_below="@+id/textView"
+            android:textColor="@android:color/black" android:textSize="36sp" android:textStyle="bold"
+            android:layout_marginTop="5dp" android:layout_marginBottom="5dp"/>
+    <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbCountDay" android:layout_centerHorizontal="true" android:layout_below="@id/tvCountDayNot"
+            android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:max="9"
+            android:indeterminate="false"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_time_notify"
+            android:id="@+id/textView2" android:layout_centerHorizontal="true" android:layout_below="@+id/sbCountDay"
+            android:layout_marginTop="15dp" style="@style/styleLabel_2"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:00"
+            android:id="@+id/tvTimeNot" android:layout_centerHorizontal="true" android:layout_below="@+id/textView2"
+            android:textColor="@android:color/black" android:textSize="36sp" android:textStyle="bold"
+            android:layout_marginTop="5dp" android:layout_marginBottom="5dp"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTimeNot">
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/butIns"
+                android:id="@+id/butNotOK" android:layout_weight="1"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/butCancel"
+                android:id="@+id/butCancel" android:layout_weight="1"/>
+    </LinearLayout>
+</RelativeLayout>

@@ -42,7 +42,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String F_ID_SET = "_id";
     public static final String F_RATING_SHOW_SET = "RATING_SHOW";
     public static final String F_NUMBER_START_APP_SET = "NUM_START_APP";
-    /*TABLE NOTIFICATION version 3*/
+    /*TABLE NOTIFICATION add version 3*/
     public static final String TABLE_NOTIFY = "notify_table";
     public static final String F_ID_NOTIFY = "_id";
     public static final String F_ID_ALARM_NOTIFY = "id_alarm_notify";
@@ -116,6 +116,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 2)
             db.execSQL("ALTER TABLE " + DebtCalcDB.TABLE_CREDITS + " ADD " + DebtCalcDB.F_PAY_DEFAULT_DEBT + " DOUBLE"); /*version 2*/
-        db.execSQL(REQUEST_CREATE_TABLE_NOTIFY);
+        if (oldVersion < 3)
+            db.execSQL(REQUEST_CREATE_TABLE_NOTIFY);
     }
 }
