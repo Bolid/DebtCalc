@@ -58,19 +58,18 @@ public class WorkNotification {
     public void delNotify(String idDebt){
         WorkDB workDB = new WorkDB(context);
         Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.F_ID_ALARM_NOTIFY + " FROM " + DebtCalcDB.TABLE_NOTIFY + " WHERE " + DebtCalcDB.F_ID_DEBT_NOTIFY + " = '" + idDebt + "'");
-        cursor.moveToNext();
-        int numberAlarm = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.F_ID_ALARM_NOTIFY));
+        if (cursor.moveToNext()){
+            int numberAlarm = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.F_ID_ALARM_NOTIFY));
+            workDB.deleteData("DELETE FROM " + DebtCalcDB.TABLE_NOTIFY + " WHERE " + DebtCalcDB.F_ID_DEBT_NOTIFY + " = '" + idDebt + "'");
+            int countNotification = workDB.countDataInDataBase("SELECT * FROM " + DebtCalcDB.TABLE_NOTIFY + " WHERE " + DebtCalcDB.F_ID_ALARM_NOTIFY + " = '" + numberAlarm + "'");
+            if (countNotification == 0){
+                    Intent intent = new Intent(context, Receiver.class);
+                    intent.setAction(ADD_NOTIFY);
+                    AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
+                    alarmManager.cancel(PendingIntent.getBroadcast(context, numberAlarm, intent, 0));
+                }}
         cursor.close();
-        workDB.deleteData("DELETE FROM " + DebtCalcDB.TABLE_NOTIFY + " WHERE " + DebtCalcDB.F_ID_DEBT_NOTIFY + " = '" + idDebt + "'");
-        int countNotification = workDB.countDataInDataBase("SELECT * FROM " + DebtCalcDB.TABLE_NOTIFY + " WHERE " + DebtCalcDB.F_ID_ALARM_NOTIFY + " = '" + numberAlarm + "'");
         workDB.disconnectDataBase();
-
-        if (countNotification == 0){
-            Intent intent = new Intent(context, Receiver.class);
-            intent.setAction(ADD_NOTIFY);
-            AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
-            alarmManager.cancel(PendingIntent.getBroadcast(context, numberAlarm, intent, 0));
-        }
     }
 
     public void createAlarm(long date, int numberAlarm){
@@ -87,3 +86,4 @@ public class WorkNotification {
         return 100 + random.nextInt(899);
     }
 }
+
