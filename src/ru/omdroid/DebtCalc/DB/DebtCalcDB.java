@@ -37,11 +37,15 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String FIELD_PAID_PAYMENTS = "paid_payments";
     public static final String F_PAYMENT_UP_PAY = "up_payment";
     public static final String F_COUNT_DAY_PAY = "count_day_payment";
+    public static final String MOUTH_WIDGET_PAY = "mouth_widget";
     /*TABLE SETTING*/
     public static final String TABLE_SETTING = "setting_table";
     public static final String F_ID_SET = "_id";
     public static final String F_RATING_SHOW_SET = "RATING_SHOW";
     public static final String F_NUMBER_START_APP_SET = "NUM_START_APP";
+    /*TABLE WIDGET add version 4*/
+    public static final String TABLE_WIDGET = "widget_table";
+    public static final String F_ID_WIDGET = "_id";
     /*TABLE NOTIFICATION add version 3*/
     public static final String TABLE_NOTIFY = "notify_table";
     public static final String F_ID_NOTIFY = "_id";
@@ -78,6 +82,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                     FIELD_DATE_LONG_PAYMENTS + " INTEGER, " +
                                                                     FIELD_PAID_PAYMENTS + " INTEGER, " +
                                                                     F_PAYMENT_UP_PAY + " INTEGER, " +
+                                                                    MOUTH_WIDGET_PAY + " STRING, " +
                                                                     F_COUNT_DAY_PAY + " INTEGER);";
 
 
@@ -96,9 +101,13 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                 F_COUNT_DAY_NOTIFY + " INTEGER, "+
                                                                 F_TIME_NOTIFY + " STRING, "+
                                                                 F_TIME_START_NOTIFY + " LONG);";
+    /*public final String REQUEST_CREATE_TABLE_WIDGET = "CREATE TABLE " +
+                                                                TABLE_WIDGET + " (" +
+                                                                F_ID_WIDGET+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                                                                MOUTH_WIDGET + " STRING);";*/
 
     public DebtCalcDB(Context context) {
-        super(context, DATABASE_NAME, null, 3);
+        super(context, DATABASE_NAME, null, 4);
     }
 
     @Override
@@ -118,5 +127,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
             db.execSQL("ALTER TABLE " + DebtCalcDB.TABLE_CREDITS + " ADD " + DebtCalcDB.F_PAY_DEFAULT_DEBT + " DOUBLE"); /*version 2*/
         if (oldVersion < 3)
             db.execSQL(REQUEST_CREATE_TABLE_NOTIFY);
+        if (oldVersion < 4)
+            db.execSQL("ALTER TABLE " + DebtCalcDB.TABLE_PAYMENTS + " ADD " + DebtCalcDB.MOUTH_WIDGET_PAY + " STRING"); /*version 4*/
     }
 }
