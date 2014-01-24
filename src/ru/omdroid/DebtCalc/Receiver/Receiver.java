@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
-import android.widget.RemoteViews;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.Forms.ListDebt;
@@ -28,7 +27,6 @@ public class Receiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        Log.v(TAG, "Сработал!");
 
         if (action.equals(ADD_NOTIFY)){
             runNotification(context);
@@ -60,7 +58,6 @@ public class Receiver extends BroadcastReceiver {
         while (cursorNotify.moveToNext()){                                                                 //Пробегаемся по полученному курсору
             idDebt = cursorNotify.getString(cursorNotify.getColumnIndex(DebtCalcDB.F_ID_DEBT_NOTIFY));
             countDay = cursorNotify.getInt(cursorNotify.getColumnIndex(DebtCalcDB.F_COUNT_DAY_NOTIFY));
-            Log.v(TAG, "Кредит: " + idDebt +  ". Количество дней: " + countDay);
             Cursor cursorPayment = workDB.readValueFromDataBase("SELECT " +                                 //Получаем платеж и дату по idDebt
                                                                     DebtCalcDB.FIELD_PAYMENT_PAYMENTS + ", " +
                                                                     DebtCalcDB.FIELD_DATE_LONG_PAYMENTS  +" FROM " +
@@ -83,8 +80,6 @@ public class Receiver extends BroadcastReceiver {
                     DebtCalcDB.FIELD_PAID_DEBT + " = '0')");
             cursorGoal.moveToNext();
 
-            Log.v(TAG, "currentDate!" + currentDate.get(Calendar.DATE) + "." + currentDate.get(Calendar.MONTH) + "." + currentDate.get(Calendar.YEAR));
-            Log.v(TAG, "paymentDate!" + paymentDate.get(Calendar.DATE) + "." + paymentDate.get(Calendar.MONTH) + "." + paymentDate.get(Calendar.YEAR));
             if ((currentDate.get(Calendar.DATE) == paymentDate.get(Calendar.DATE)) & (currentDate.get(Calendar.MONTH) == paymentDate.get(Calendar.MONTH)) & (currentDate.get(Calendar.YEAR) == paymentDate.get(Calendar.YEAR)) & currentTime.equals(iterationTime))
             {
                 date.setTime(cursorPayment.getLong(cursorPayment.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS)));
@@ -99,33 +94,33 @@ public class Receiver extends BroadcastReceiver {
 
         if (payment.size() != 0)
             if (payment.size() > 1)
-                    createNotification(context, createSeveralNotify(payment, goal, datePayment));
+                    createNotification(context, createSeveralNotify(payment, goal, datePayment, context));
                 //Toast.makeText(context, createSeveralNotify(payment, goal, date), Toast.LENGTH_LONG).show();
             else
-                createNotification(context, createOneNotify(payment, goal, datePayment));
+                createNotification(context, createOneNotify(payment, goal, datePayment, context));
                 //Toast.makeText(context, createOneNotify(payment, goal, date), Toast.LENGTH_LONG).show();;
     }
 
-    private String createSeveralNotify(ArrayList<String> payment, ArrayList<String> goal, ArrayList<Long> datePayment){
+    private String createSeveralNotify(ArrayList<String> payment, ArrayList<String> goal, ArrayList<Long> datePayment, Context context){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yy");
         Date date = new Date();
-        String textNotify = "Напоминаем о предстоящих платежах по кредитам:";
+        String textNotify = context.getResources().getString(R.string.text_for_notify);
         for (int i = 0; i < payment.size(); i++){
             date.setTime(datePayment.get(i));
             textNotify = textNotify + "\n";
-            textNotify = textNotify + Integer.valueOf(i+1) + ") " + goal.get(i) + ". " + simpleDateFormat.format(date) + ", в размере " + payment.get(i);
+            textNotify = textNotify + Integer.valueOf(i+1) + ") " + goal.get(i) + ". " + simpleDateFormat.format(date) +" "+ context.getResources().getString(R.string.text_for_notSumPayment) +" "+ payment.get(i);
         }
         Log.v(TAG, textNotify);
         return textNotify;
     }
 
-    private String createOneNotify(ArrayList<String> payment, ArrayList<String> goal, ArrayList<Long> datePayment){
+    private String createOneNotify(ArrayList<String> payment, ArrayList<String> goal, ArrayList<Long> datePayment, Context context){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yy");
         Date date = new Date();
         date.setTime(datePayment.get(0));
-        String textNotify = "Напоминаем о предстоящем " + simpleDateFormat.format(date) + " платеже по кредиту за ";
+        String textNotify = context.getResources().getString(R.string.text_for_oneNotify_part1) +" "+ simpleDateFormat.format(date) +" "+ context.getResources().getString(R.string.text_for_oneNotify_part2);
         for (int i = 0; i < payment.size(); i++){
-            textNotify = textNotify + " " +goal.get(i) + " в размере " + payment.get(i);
+            textNotify = textNotify + " " +goal.get(i) +" "+ context.getResources().getString(R.string.text_for_notSumPayment) +" "+ payment.get(i);
         }
         Log.v(TAG, textNotify);
         return textNotify;
@@ -134,13 +129,14 @@ public class Receiver extends BroadcastReceiver {
     private void createNotification(Context context, String textNotify){
         Intent notificationIntent = new Intent(context, ListDebt.class);
         Notification notification = new Notification.Builder(context)
-                .setTicker("Напоминание! Оплата кредита")
-                .setContentTitle("Напоминание! Оплата кредита")
+                .setTicker(context.getResources().getString(R.string.text_for_titleNotify))
+                .setContentTitle(context.getResources().getString(R.string.text_for_titleNotify))
                 .setSmallIcon(R.drawable.ic_launcher)
                 .setStyle(new Notification.BigTextStyle().bigText(textNotify))
                 .setContentIntent(PendingIntent.getActivity(context, 2908, notificationIntent, 0))
                 .setAutoCancel(true)
                 .setVibrate(new long[]{100, 200, 300, 400})
+                .setDefaults(Notification.DEFAULT_SOUND)
                 .build();
 
         NotificationManager mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);

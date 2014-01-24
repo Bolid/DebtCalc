@@ -5,9 +5,9 @@
     <item android:id="@+id/tableShow"
           android:title="@string/popup_table"/>
     <item android:id="@+id/addNotify"
-          android:title="@string/add_notify"/>
+          android:title="@string/menu_add_notify"/>
     <item android:id="@+id/delNotify"
-          android:title="@string/del_notify"/>
+          android:title="@string/menu_review_notify"/>
     <item android:id="@+id/testPayment"
           android:title="@string/popup_test_payment"
             android:visible="false"/>

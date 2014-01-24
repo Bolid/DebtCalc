@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
+              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <ImageView
-            android:id="@+id/notifyIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher" android:padding="5dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/notifyText" android:padding="5dp"/>
+            android:text="Текущий месяц"
+            android:id="@+id/textView" android:layout_gravity="left|center_vertical" style="@style/styleLabel_2"
+            android:layout_margin="5dp"/>
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lViewInWidget"/>
 </LinearLayout>

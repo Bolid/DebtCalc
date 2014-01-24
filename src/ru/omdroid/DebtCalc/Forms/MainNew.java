@@ -210,6 +210,8 @@ public class MainNew extends Activity {
         MenuInflater mInflater = pMenu.getMenuInflater();
         mInflater.inflate(R.menu.pm_d_add, pMenu.getMenu());
         //pMenu.getMenu().getItem(1).setVisible(true);
+        pMenu.getMenu().getItem(1).setVisible(false);
+        pMenu.getMenu().getItem(2).setVisible(false);
         pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
