@@ -121,7 +121,7 @@ class DrawingBar extends View {
     private void drawingTermBar(Canvas canvas){
         int upperBound = DataForGraph.HEIGHT_TERM;
         int lowerBound = DataForGraph.HEIGHT_TERM + 30;
-        sizeWightBar = (double) ((canvas.getWidth() - paddingBar) * DataForGraph.PARAM_NEW / DataForGraph.PARAM_OLD);
+        sizeWightBar = (double) ((canvas.getWidth() - paddingBar) * DataForGraph.TERM_NEW / DataForGraph.TERM_OLD);
 
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
@@ -178,10 +178,10 @@ class DrawingBar extends View {
             paint.setTextAlign(Paint.Align.CENTER);
             paint.setStyle(Paint.Style.FILL_AND_STROKE);
             paint.setStrokeWidth(2);
-            canvas.drawText(setMaskText((double) DataForGraph.PARAM_NEW, "mouth"), (float) (100), upperBound + 23, paint);
+            canvas.drawText(setMaskText((double) DataForGraph.TERM_NEW, "mouth"), (float) (100), upperBound + 23, paint);
         }
         else
-            canvas.drawText(setMaskText((double) DataForGraph.PARAM_NEW, "mouth"), (float) (sizeWightBar / 2), upperBound + 23, paint);
+            canvas.drawText(setMaskText((double) DataForGraph.TERM_NEW, "mouth"), (float) (sizeWightBar / 2), upperBound + 23, paint);
 
     }
 }
@@ -191,11 +191,10 @@ public class DataForGraph{
     public static Double SUM = 1.0;
     public static Double OVER = 1.0;
 
-    public static Double TERM = 1.;
-    public static Double NEW_TERM = 1.;
 
-    public static int PARAM_OLD = 1;
-    public static int PARAM_NEW = 1;
+
+    public static int TERM_OLD = 1;
+    public static int TERM_NEW = 1;
 
     public static int HEIGHT_OVER = 50;
     public static int HEIGHT_TERM = 100;
@@ -212,12 +211,12 @@ public class DataForGraph{
         OVER = over;
     }
 
-    public void setParamOlr(int term){
-        PARAM_OLD = term;
+    public void setOldTerm(int oldTerm){
+        TERM_OLD = oldTerm;
     }
 
-    public void setParamNew(int newTerm){
-        PARAM_NEW = newTerm;
+    public void setNewTerm(int newTerm){
+        TERM_NEW = newTerm;
     }
 
     public void setHeightTerm(int height){

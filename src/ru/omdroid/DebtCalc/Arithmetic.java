@@ -53,9 +53,9 @@ public class Arithmetic {
         allResult.add(8, "");
         allResult.add(9, "");
 
-        dataForGraph.setSum(sumCredit);
-        dataForGraph.setParamOlr(termCredit);
-        dataForGraph.setParamNew(termCredit);
+        /*dataForGraph.setSum(sumCredit);
+        dataForGraph.setOldTerm(termCredit);
+        dataForGraph.setNewTerm(termCredit);*/
     }
 
 
@@ -73,7 +73,6 @@ public class Arithmetic {
     public Double getDeltaDefault(Double payment, int termCredit){
         Double delta = Rounding(payment * termCredit - sumCredit);
         allResult.set(5, String.valueOf(delta));
-        dataForGraph.setOver(delta);
         return delta;
     }
 
@@ -124,47 +123,14 @@ public class Arithmetic {
             else{
                 sumCredit = Rounding(sumCredit - (addPayment - perLocal));
             }
-            Log.v("Вывод: ", i + " " +Double.valueOf(perLocal) + " " + Double.valueOf(addPayment - perLocal) +" " + sumCredit +" " + AppData.COUNT_DAY_OF_MONTH);
             workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
             //workDateDebt.getCountDayInMonth(datePayment);
         }
         allPer = Rounding(allPer);
         allResult.set(5, String.valueOf(allPer)); //Общая переплата
         allResult.set(6, String.valueOf(i)); //Срок погашения
-        dataForGraph.setParamNew(i);
+        dataForGraph.setNewTerm(i);
         dataForGraph.setOver(allPer);
-    }
-
-    public void getOverpaymentSomeMonth(Double addPaymentSomeMonth, Double addPayment, int j){
-        Double sumCredit = Double.valueOf(allResult.get(1));
-        int termCredit = Integer.valueOf(allResult.get(6));
-        int i = 0;
-        Double allPer = 0.0;
-
-        if (j != 0 & !hmPaymentMonth.containsKey(j))
-            hmPaymentMonth.put(j, addPaymentSomeMonth);
-        else if (hmPaymentMonth.containsKey(j)){
-            hmPaymentMonth.remove(j);
-            hmPaymentMonth.put(j, addPaymentSomeMonth);
-        }
-
-        while (sumCredit > 0.0){
-            listDefaultPayment.set(i, String.valueOf(getPayment(sumCredit, Integer.valueOf(allResult.get(2)) - i)));
-            i++;
-            allPer = allPer + (sumCredit * (percent /100.) / 12);
-            if (!hmPaymentMonth.containsKey(i)){
-                if (sumCredit < addPayment)
-                    addPayment = sumCredit + (sumCredit * (percent /100.) / 12);
-                sumCredit = Rounding(sumCredit - (getPayment(sumCredit, termCredit) - (sumCredit * (percent /100.) / 12)));
-            }
-            else{
-                sumCredit = sumCredit - (Rounding(hmPaymentMonth.get(i) - (sumCredit * (percent /100.) / 12)));
-                if (termCredit != 1)
-                    addPayment = getPayment(sumCredit, termCredit - 1);
-            }
-            termCredit--;
-        }
-
     }
 
     public Double Rounding(Double value){
@@ -172,10 +138,4 @@ public class Arithmetic {
         roundValue = roundValue.setScale(2, BigDecimal.ROUND_HALF_DOWN);
         return /*value;//*/Double.valueOf(roundValue.toString());
     }
-
-    public String setMask(Double value){
-        NumberFormat numberFormat = new DecimalFormat("###,###,###,###.00");
-    return String.valueOf(numberFormat.format(value));
-    }
-
 }

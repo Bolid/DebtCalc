@@ -10,6 +10,6 @@
           android:title="@string/menu_review_notify"/>
     <item android:id="@+id/testPayment"
           android:title="@string/popup_test_payment"
-            android:visible="false"/>
+            android:visible="true"/>
 
 </menu>

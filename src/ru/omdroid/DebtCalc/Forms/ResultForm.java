@@ -12,7 +12,6 @@ import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic;
 import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddOverallPayment;
-import ru.omdroid.DebtCalc.Listener.InControlFieldAddPayment;
 import ru.omdroid.DebtCalc.R;
 
 import java.text.DecimalFormat;
@@ -34,8 +33,8 @@ public class ResultForm extends Activity {
         final DataForGraph dataForGraph = new DataForGraph();
         dataForGraph.createOver(true);
         dataForGraph.createTerm(true);
-        final NumberFormat numberFormat = new DecimalFormat("###,###,###,###,###,###,##0.##");
-        final View view = (View)findViewById(R.id.graphViewTermDebt);
+        final NumberFormat numberFormat = new DecimalFormat("###,###,###,###,###,###,##0.00");
+        final View view = findViewById(R.id.graphViewTermDebt);
 
         arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
 
@@ -58,6 +57,10 @@ public class ResultForm extends Activity {
         SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
         etPayment.setText(numberFormat.format(newPayment));
         seekBar.setMax(AppData.TERM_BALANCE);
+        dataForGraph.setOver(arithmetic.getDeltaDefault(newPayment, AppData.TERM_BALANCE));
+        dataForGraph.setSum(Double.valueOf(AppData.DEBT_BALANCE));
+        dataForGraph.setNewTerm(AppData.TERM_BALANCE);
+        dataForGraph.setOldTerm(AppData.TERM_BALANCE);
                 seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -67,13 +70,18 @@ public class ResultForm extends Activity {
                         if (i == seekBar.getMax())
                             i--;
                         newPayment = arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE - i);
-                        etPayment.setText(arithmetic.setMask(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE - i)));
-                        arithmetic.getDeltaDefault(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE - i), AppData.TERM_BALANCE - i);
+                        etPayment.setText(numberFormat.format(newPayment));
+
                         Arithmetic.allResult.set(6, String.valueOf(AppData.TERM_BALANCE - i));
 
                         appData.setPayment(String.valueOf(newPayment), AppData.PAYMENT_DEFAULT);
 
-                        dataForGraph.setParamNew(AppData.TERM_BALANCE - i);
+
+                        dataForGraph.setOver(arithmetic.getDeltaDefault(newPayment, AppData.TERM_BALANCE - i));
+                        dataForGraph.setSum(Double.valueOf(AppData.DEBT_BALANCE));
+                        dataForGraph.setNewTerm(AppData.TERM_BALANCE - i);
+                        dataForGraph.setOldTerm(AppData.TERM_BALANCE);
+
                         view.invalidate();
                         paymentUpdate = true;
                     }
@@ -84,6 +92,7 @@ public class ResultForm extends Activity {
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
+
                     }
                 });
     }
