@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +13,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import ru.omdroid.DebtCalc.AppData;
-import ru.omdroid.DebtCalc.Arithmetic;
+import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.R;
 import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ListPaymentDB extends Activity {
@@ -110,7 +108,7 @@ public class ListPaymentDB extends Activity {
                         return null;
                     workDateDebt.getCountDayInMonth(datePay.getTimeInMillis());
 
-                    paymentPercent = arithmetic.getPaymentInPercent(balanceDebt, AppData.COUNT_DAY_OF_MONTH);
+                    paymentPercent = arithmetic.getOverpaymentOneMonth(balanceDebt);
 
                     if (termBalance == 1)
                         payment = balanceDebt + paymentPercent;

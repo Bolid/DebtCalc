@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
-import ru.omdroid.DebtCalc.Arithmetic;
+import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddOverallPayment;
 import ru.omdroid.DebtCalc.R;

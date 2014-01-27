@@ -7,14 +7,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import ru.omdroid.DebtCalc.AppData;
-import ru.omdroid.DebtCalc.Arithmetic;
+import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 import ru.omdroid.DebtCalc.R;
 import android.app.Activity;
 import android.os.Bundle;
 import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ListPayment extends Activity {
@@ -51,13 +50,13 @@ public class ListPayment extends Activity {
                     if (!addRecord)
                         return null;
                     workDateDebt.getCountDayInMonth(calendar.getTimeInMillis());
-                    paymentPercent = arithmetic.getPaymentInPercent(balance, AppData.COUNT_DAY_OF_MONTH);
+                    paymentPercent = arithmetic.getOverpaymentOneMonth(balance);
                     paymentDebt = arithmetic.getPaymentInDebt(payment, balance);
                     if (i == AppData.TERM_BALANCE)
                         payment = balance + paymentPercent;
                     feePayment = feePayment + payment;
                     addRecord(inflater, layout, i, payment, workDateDebt.getDate(calendar), balance, paymentDebt, paymentPercent, feePayment);
-                    balance = arithmetic.getBalance(payment, balance, AppData.TERM_BALANCE);
+                    balance = arithmetic.getBalance(payment, balance);
                     calendar.setTimeInMillis(workDateDebt.createNextDatePayment(calendar.getTimeInMillis(), AppData.DATE_PAY));
                     i++;
                     publishProgress(view);

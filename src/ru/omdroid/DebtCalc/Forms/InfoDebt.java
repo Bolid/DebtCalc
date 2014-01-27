@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import ru.omdroid.DebtCalc.*;
+import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
+import ru.omdroid.DebtCalc.Arithmetic.ExactArithmetic;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.Dialog.DialogAddNotify;
@@ -320,21 +322,24 @@ public class InfoDebt extends Activity {
     }
 
     public class WriteDataInField{
+        ExactArithmetic exactArithmetic = new ExactArithmetic(AppData.PERCENT);
 
         public void setOverAllPayment(int i){
+
+            Double overPay = getOverPayment() + exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, AppData.DATE_PAY, 0);//arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
+
+
             tvDigitAllPay.setText(String.valueOf(AppData.TERM_BALANCE - i));
-            arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, AppData.DATE_PAY, 0);
-            Double overPay = getOverPayment() + Double.valueOf(Arithmetic.allResult.get(5));//arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
             tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay));
             tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay + Double.valueOf(AppData.SUM_DEBT)));
-            int overInPercent = arithmetic.getOverInPercent(overPay, Double.valueOf(AppData.SUM_DEBT), 0);
+            int overInPercent = arithmetic.getOverInPercent(overPay, Double.valueOf(AppData.SUM_DEBT));
             tvOverInPercentAll.setText(String.valueOf(overInPercent) + "%");
         }
 
         public void setOverOnePayment(Double currentPayment){
             WorkDateDebt workDateDebt = new WorkDateDebt();
             workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
-            Double over = arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), 0);
+            Double over = arithmetic.getOverpaymentOneMonth(Double.valueOf(AppData.DEBT_BALANCE));
             if (currentPayment > Double.valueOf(AppData.DEBT_BALANCE) + over)
                 currentPayment = Double.valueOf(AppData.DEBT_BALANCE) + over;
             Double newDebt = Double.valueOf(AppData.DEBT_BALANCE) - (currentPayment - over);/*arithmetic.getBalance(currentPayment, Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)*/;
@@ -346,25 +351,25 @@ public class InfoDebt extends Activity {
                 else
                     nextPayment =  arithmetic.getPayment(newDebt, AppData.TERM_BALANCE - 1);
             if (AppData.TERM_BALANCE > 1){
-                arithmetic.getOverpaymentAllMonth(newDebt, nextPayment, workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_DEBT_START), 1);
-                deltaAfter = Double.valueOf(Arithmetic.allResult.get(5));
+                deltaAfter = exactArithmetic.getOverpaymentAllMonth(newDebt, nextPayment, workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_DEBT_START), 1);
             }//arithmetic.getDeltaNew(AppData.TERM_BALANCE - 1, newDebt, nextPayment);
             else
                 deltaAfter = 0.0;
-            Double overPaymentNew = getOverPayment() + /*arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH)*/ AppData.OVER_PAYMENT + deltaAfter;
+            Double overPaymentNew = getOverPayment() + /*arithmetic.getOverpaymentOneMonth(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH)*/ AppData.OVER_PAYMENT + deltaAfter;
 
-            int overInPercent = arithmetic.getOverInPercent(overPaymentNew, Double.valueOf(AppData.SUM_DEBT), 0);
+            int overInPercent = arithmetic.getOverInPercent(overPaymentNew, Double.valueOf(AppData.SUM_DEBT));
             tvDeltaOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew));
             tvTotalOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew + Double.valueOf(AppData.SUM_DEBT)));
             tvOverInPercentOne.setText(String.valueOf(overInPercent) + "%");
         }
 
         public void setOverAllPaymentCustom(Double newPayment){
-            arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, AppData.DATE_PAY, 0);
+            Double overAllMouth =  exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, AppData.DATE_PAY, 0);
+
             tvDigitAllPay.setText(String.valueOf(Arithmetic.allResult.get(6)));
-            tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment()));
-            tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment() + Double.valueOf(AppData.SUM_DEBT)));
-            int overInPercent = arithmetic.getOverInPercent(Double.valueOf(Arithmetic.allResult.get(5)) + getOverPayment(), Double.valueOf(AppData.SUM_DEBT), 0);
+            tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(overAllMouth + getOverPayment()));
+            tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(overAllMouth + getOverPayment() + Double.valueOf(AppData.SUM_DEBT)));
+            int overInPercent = arithmetic.getOverInPercent(overAllMouth + getOverPayment(), Double.valueOf(AppData.SUM_DEBT));
             tvOverInPercentAll.setText(String.valueOf(overInPercent) + "%");
         }
 
@@ -373,14 +378,14 @@ public class InfoDebt extends Activity {
             Double overPay = getOverPayment() + arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
             tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay));
             tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay + Double.valueOf(AppData.SUM_DEBT)));
-            int overInPercent = arithmetic.getOverInPercent(overPay, Double.valueOf(AppData.SUM_DEBT), 0);
+            int overInPercent = arithmetic.getOverInPercent(overPay, Double.valueOf(AppData.SUM_DEBT));
             tvOverInPercentAll.setText(String.valueOf(overInPercent) + "%");
         }
 
         public void setOverOneForSeekBar(Double currentPayment){
             WorkDateDebt workDateDebt = new WorkDateDebt();
             workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
-            Double over = arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), 0);
+            Double over = arithmetic.getOverpaymentOneMonth(Double.valueOf(AppData.DEBT_BALANCE));
             if (currentPayment > Double.valueOf(AppData.DEBT_BALANCE) + over)
                 currentPayment = Double.valueOf(AppData.DEBT_BALANCE) + over;
             Double newDebt = Double.valueOf(AppData.DEBT_BALANCE) - (currentPayment - over);/*arithmetic.getBalance(currentPayment, Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE)*/;
@@ -393,9 +398,9 @@ public class InfoDebt extends Activity {
             }
             else
                 deltaAfter = 0.0;
-            Double overPaymentNew = getOverPayment() + /*arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH)*/ AppData.OVER_PAYMENT + deltaAfter;
+            Double overPaymentNew = getOverPayment() + /*arithmetic.getOverpaymentOneMonth(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH)*/ AppData.OVER_PAYMENT + deltaAfter;
 
-            int overInPercent = arithmetic.getOverInPercent(overPaymentNew, Double.valueOf(AppData.SUM_DEBT), 0);
+            int overInPercent = arithmetic.getOverInPercent(overPaymentNew, Double.valueOf(AppData.SUM_DEBT));
             tvDeltaOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew));
             tvTotalOnePay.setText(new DecimalFormat("###,###,###,###").format(overPaymentNew + Double.valueOf(AppData.SUM_DEBT)));
             tvOverInPercentOne.setText(String.valueOf(overInPercent) + "%");

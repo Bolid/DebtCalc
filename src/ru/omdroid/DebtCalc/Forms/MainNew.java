@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import ru.omdroid.DebtCalc.*;
+import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.Dialog.DatePickerFragment;
@@ -150,7 +150,7 @@ public class MainNew extends Activity {
                     " WHERE " + DebtCalcDB.FIELD_PAID_DEBT + " = '0'") < 15){
                 int numCredit = generateNumCredit();
                 Arithmetic arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
-                Double deltaLocal = arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH);
+                Double deltaLocal = arithmetic.getOverpaymentOneMonth(Double.valueOf(AppData.DEBT_BALANCE));
                 workDB.insertValueToTableDebt("INSERT INTO " + DebtCalcDB.TABLE_CREDITS + " (" +
                         DebtCalcDB.FIELD_ID_DEBT + ", " +
                         DebtCalcDB.FIELD_SUM_DEBT + ", " +
@@ -189,7 +189,7 @@ public class MainNew extends Activity {
                         AppData.TERM_BALANCE + "', '" +
                         arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE) + "', '" +
                         arithmetic.getPaymentInDebt(arithmetic.getPayment(Double.valueOf(AppData.DEBT_BALANCE), AppData.TERM_BALANCE), Double.valueOf(AppData.DEBT_BALANCE)) + "', '" +
-                        arithmetic.getPaymentInPercent(Double.valueOf(AppData.DEBT_BALANCE), AppData.COUNT_DAY_OF_MONTH) + "', '" +
+                        arithmetic.getOverpaymentOneMonth(Double.valueOf(AppData.DEBT_BALANCE)) + "', '" +
                         "0.0', '" +
                         dateFirstPayment + "', '" +
                         "0')");

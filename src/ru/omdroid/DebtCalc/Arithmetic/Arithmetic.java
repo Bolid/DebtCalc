@@ -1,31 +1,24 @@
-package ru.omdroid.DebtCalc;
+package ru.omdroid.DebtCalc.Arithmetic;
 
 
 import android.util.Log;
-
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-
+import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 
-public class Arithmetic {
-    final String TAG = "ru.omdroid.DebtCalc.Arithmetic";
+import java.math.BigDecimal;
+import java.util.ArrayList;
 
-    private HashMap<Integer, Double> hmPaymentMonth;
+public class Arithmetic {
+
 
     public static ArrayList <String> allResult;
     public static ArrayList <String> listDefaultPayment;
-    public static ArrayList <HashMap<String, String>> listResult = null;
 
 
     int termCredit = 0;
     Double sumCredit = 0.0, percent = 0.0, dopPlatej;
 
     DataForGraph dataForGraph = new DataForGraph();
-
     public Arithmetic(Double percent){
         this.percent = percent;
     }
@@ -37,7 +30,6 @@ public class Arithmetic {
 
         allResult = new ArrayList<String>();
         listDefaultPayment = new ArrayList<String>();
-        hmPaymentMonth = new HashMap<Integer, Double>();
 
         allResult.add(0, String.valueOf(dopPlatej)); //исходные данные Дополнительный платеж
         allResult.add(1, String.valueOf(sumCredit)); //исходные данные Сумма кредита
@@ -66,8 +58,7 @@ public class Arithmetic {
     }
 
     public int getTerm(Double payment, Double sumCredit){
-        int n = (int) Math.round(Math.log((payment) / ((payment) - (percent/100./12) * sumCredit)) / Math.log(1 + (percent/100./12)));
-        return n;
+        return (int) Math.round(Math.log((payment) / ((payment) - (percent/100./12) * sumCredit)) / Math.log(1 + (percent/100./12)));
     }
 
     public Double getDeltaDefault(Double payment, int termCredit){
@@ -76,7 +67,7 @@ public class Arithmetic {
         return delta;
     }
 
-    public int getOverInPercent(Double overDebt, Double sumCredit, int termCredit){
+    public int getOverInPercent(Double overDebt, Double sumCredit){
         return (int) (overDebt * 100  / sumCredit);
     }
 
@@ -84,10 +75,10 @@ public class Arithmetic {
         return Rounding(payment * termCredit - balance);
     }
 
-    public Double getBalance (Double payment, Double balance, int termCredit){
+    public Double getBalance (Double payment, Double balance){
 
         Double a1 = 0.0;
-        try{a1 = Rounding(balance - Rounding(payment - getPaymentInPercent(balance, AppData.COUNT_DAY_OF_MONTH))); }
+        try{a1 = Rounding(balance - Rounding(payment - getOverpaymentOneMonth(balance))); }
         catch (Exception e){
             Log.v("Error", "Error");
         }
@@ -95,43 +86,17 @@ public class Arithmetic {
         //return Rounding(balance - Rounding(payment - Rounding(balance * (percent /100.) / 12)));
     }
 
-    public Double getPaymentInPercent(Double balance, int countDay){
+    public Double getOverpaymentOneMonth(Double balance){
         if (AppData.END_YEAR)
             return ((balance * AppData.DAY_IN_DEC * percent)/(AppData.DAY_IN_YEAR_DEC * 100)) + ((balance * AppData.DAY_IN_JAN * percent)/(AppData.DAY_IN_YEAR_JAN * 100));
         return (balance * AppData.COUNT_DAY_OF_MONTH * percent)/(AppData.COUNT_DAY_OF_YEAR * 100);
     }
 
     public Double getPaymentInDebt(Double payment, Double balance){
-        return payment -getPaymentInPercent(balance, AppData.COUNT_DAY_OF_MONTH);
+        return payment - getOverpaymentOneMonth(balance);
     }
 
-   public void getOverpaymentAllMonth(Double sumDebt, Double addPayment, long date, int dec){
-       Double sumCredit = sumDebt;
-       Double allPer = 0.0;
-       int i = 0;
-       WorkDateDebt workDateDebt = new WorkDateDebt();
-       workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
-        while (sumCredit > 0.0){
-//            listDefaultPayment.add(i, String.valueOf(getPayment(sumCredit, Integer.valueOf(allResult.get(2)) - i)));
-            Double perLocal = (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
-            i++;
-            allPer = allPer + (getPaymentInPercent(sumCredit, AppData.COUNT_DAY_OF_MONTH));
-            if (i == AppData.TERM_BALANCE - dec){
-                addPayment = sumCredit + perLocal;
-                sumCredit = sumCredit - addPayment;
-            }
-            else{
-                sumCredit = Rounding(sumCredit - (addPayment - perLocal));
-            }
-            workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
-            //workDateDebt.getCountDayInMonth(datePayment);
-        }
-        allPer = Rounding(allPer);
-        allResult.set(5, String.valueOf(allPer)); //Общая переплата
-        allResult.set(6, String.valueOf(i)); //Срок погашения
-        dataForGraph.setNewTerm(i);
-        dataForGraph.setOver(allPer);
-    }
+
 
     public Double Rounding(Double value){
         BigDecimal roundValue = BigDecimal.valueOf(value);
