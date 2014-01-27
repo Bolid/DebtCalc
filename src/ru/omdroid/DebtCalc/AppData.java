@@ -2,10 +2,10 @@ package ru.omdroid.DebtCalc;
 
 public class AppData {
     public static String[] param = new String[4];
-    public static String PAYMENT, GOAL = "", DEBT_BALANCE = "", PAYMENT_DEFAULT, ID_DEBT = "", DEBT = "";
+    public static String PAYMENT, GOAL = "", DEBT_BALANCE = "", PAYMENT_DEFAULT, ID_DEBT = "", SUM_DEBT = "";
     public static Long DATE_PAY, DATE_DEBT_START;
     public static Double OVER_PAYMENT, PERCENT = 0.0, DELTA;
-    public static int TERM_BALANCE = 0, TERM = 0, COUNT_DAY_OF_MONTH = 0, COUNT_DAY_OF_YEAR = 0, UP_PAYMENT = 0, COUNT_PAY_PAID = 0;
+    public static int TERM_BALANCE = 0, TERM_DEBT = 0, COUNT_DAY_OF_MONTH = 0, COUNT_DAY_OF_YEAR = 0, UP_PAYMENT = 0, COUNT_PAY_PAID = 0;
     public static int DAY_IN_JAN, DAY_IN_DEC, DAY_IN_YEAR_JAN, DAY_IN_YEAR_DEC;
     public static boolean END_YEAR = false;
 
@@ -64,12 +64,12 @@ public class AppData {
         OVER_PAYMENT = overPayment;
     }
 
-    public void setDebt(String debt){
-        DEBT = debt;
+    public void setSumDebt(String sumDebt){
+        SUM_DEBT = sumDebt;
     }
 
     public void setTerm(int term){
-        TERM = term;
+        TERM_DEBT = term;
     }
 
     public void setCountDayOfMonth(int countDayInMonth, int countDayInYear){
