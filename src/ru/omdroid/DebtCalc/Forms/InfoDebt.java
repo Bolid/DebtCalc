@@ -329,7 +329,7 @@ public class InfoDebt extends Activity {
             Double overPay = getOverPayment() + exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, AppData.DATE_PAY, 0);//arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
 
 
-            tvDigitAllPay.setText(String.valueOf(AppData.TERM_BALANCE - i));
+            tvDigitAllPay.setText(exactArithmetic.getTotalTerm());
             tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay));
             tvTotalAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay + Double.valueOf(AppData.SUM_DEBT)));
             int overInPercent = arithmetic.getOverInPercent(overPay, Double.valueOf(AppData.SUM_DEBT));

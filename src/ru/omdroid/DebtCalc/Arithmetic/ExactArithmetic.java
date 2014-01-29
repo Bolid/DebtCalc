@@ -5,7 +5,7 @@ import ru.omdroid.DebtCalc.WorkDateDebt;
 
 
 public class ExactArithmetic extends Arithmetic {
-    public int totalTerm = 0;
+    private int totalTerm = 0;
 
     public ExactArithmetic(Double percent) {
         super(percent);
@@ -38,5 +38,9 @@ public class ExactArithmetic extends Arithmetic {
         dataForGraph.setNewTerm(i);
         dataForGraph.setOver(totalOver);
         return totalOver;
+    }
+
+    public String getTotalTerm(){
+        return String.valueOf(totalTerm);
     }
 }
