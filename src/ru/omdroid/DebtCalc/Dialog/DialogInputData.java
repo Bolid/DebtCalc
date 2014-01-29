@@ -115,7 +115,7 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
                     case R.layout.dialog_input_percent:
                         imm.hideSoftInputFromWindow(etData.getWindowToken(), 0);
                         appData.setPercent(formatValue(etData.getText().toString()));
-                        DialogFragment dialogFragment = new DatePickerFragment((TextView)getActivity().findViewById(R.id.tvDateStartCredit), calendarConst, calendar);
+                        DialogFragment dialogFragment = new DialogDateSelect((TextView)getActivity().findViewById(R.id.tvDateStartCredit), calendarConst, calendar);
                         dialogFragment.show(getFragmentManager(), getResources().getString(R.string.app_name));
                         dismiss();
                         break;

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.*;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
+import ru.omdroid.DebtCalc.Arithmetic.ExactArithmetic;
 import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddOverallPayment;
 import ru.omdroid.DebtCalc.R;
@@ -21,6 +22,7 @@ import java.text.NumberFormat;
 public class ResultForm extends Activity {
     static Double newPayment;
     public static Arithmetic arithmetic;
+    private ExactArithmetic exactArithmetic;
     static boolean paymentUpdate;
     static boolean overPayment;
     boolean changeListener = false;
@@ -37,6 +39,7 @@ public class ResultForm extends Activity {
         final View view = findViewById(R.id.graphViewTermDebt);
 
         arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
+        exactArithmetic = new ExactArithmetic(AppData.PERCENT);
 
         final EditText etPayment = (EditText)findViewById(R.id.valuePayment);
         final InControlFieldAddOverallPayment inControlFieldAddPayment = new InControlFieldAddOverallPayment(etPayment, Double.valueOf(AppData.PAYMENT_DEFAULT), view, arithmetic);
@@ -92,7 +95,12 @@ public class ResultForm extends Activity {
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-
+                        dataForGraph.setOver(exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, AppData.DATE_PAY, 0));
+                        dataForGraph.setSum(Double.valueOf(AppData.DEBT_BALANCE));
+                        dataForGraph.setNewTerm(Integer.valueOf(exactArithmetic.getTotalTerm()));
+                        dataForGraph.setOldTerm(AppData.TERM_BALANCE);
+                        view.invalidate();
+                        paymentUpdate = true;
                     }
                 });
     }

@@ -12,11 +12,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+public class DialogDateSelect extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     TextView textView;
     Calendar calendarConst;
     Calendar calendar;
-    public DatePickerFragment(TextView textView, Calendar calendarConst, Calendar calendar){
+    public DialogDateSelect(TextView textView, Calendar calendarConst, Calendar calendar){
         this.textView = textView;
         this.calendarConst = calendarConst;
         this.calendar = calendar;

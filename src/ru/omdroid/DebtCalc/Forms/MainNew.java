@@ -13,7 +13,7 @@ import ru.omdroid.DebtCalc.*;
 import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
-import ru.omdroid.DebtCalc.Dialog.DatePickerFragment;
+import ru.omdroid.DebtCalc.Dialog.DialogDateSelect;
 import ru.omdroid.DebtCalc.Dialog.DialogInputData;
 import ru.omdroid.DebtCalc.Exceptions.NullInputDataException;
 
@@ -57,11 +57,11 @@ public class MainNew extends Activity {
         tvDate.setText(String.valueOf(calendar.get(Calendar.DATE))+"."+String.valueOf(calendar.get(Calendar.MONTH) + 1)+"."+String.valueOf(calendar.get(Calendar.YEAR)));
         appData.setDate(calendar.getTimeInMillis());
 
-        final DialogFragment dialogFragment = new DatePickerFragment(tvDate, calendarConst, calendar);
+        final DialogFragment dialogDateSelect = new DialogDateSelect(tvDate, calendarConst, calendar);
         llDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialogFragment.show(getFragmentManager(), getResources().getString(R.string.app_name));
+                dialogDateSelect.show(getFragmentManager(), getResources().getString(R.string.app_name));
             }
         });
 
