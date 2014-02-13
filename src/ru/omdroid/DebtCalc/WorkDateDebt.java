@@ -16,12 +16,15 @@ public class WorkDateDebt {
         if (this.dateNewLong == 0)
             this.dateNewLong = dateNewLong;
 
+        Log.v("ResultForm", String.valueOf(dateNewLong));
+
+
         Calendar calendarDateStart = Calendar.getInstance();
         calendarDateStart.setTimeInMillis(dateDebtStartLong);
 
         Calendar calendarDateNew = Calendar.getInstance();
         calendarDateNew.setTimeInMillis(this.dateNewLong);
-        //appData.setCountDayOfMonth(countMonth[calendarDateNew.get(Calendar.MONTH)], 0);
+
         getCountDayInMonth(this.dateNewLong);
         int preMonth = calendarDateNew.get(Calendar.MONTH);
         calendarDateNew.set(calendarDateNew.get(Calendar.YEAR), calendarDateNew.get(Calendar.MONTH) + 1, calendarDateStart.get(Calendar.DATE));
@@ -31,14 +34,14 @@ public class WorkDateDebt {
             postMonth = calendarDateNew.get(Calendar.MONTH);
         }
 
-        //appData.setCountDayOfMonth((int) ((calendarDateNew.getTimeInMillis() - this.dateNewLong) / 86400000), 0);
-
         this.dateNewLong = calendarDateNew.getTimeInMillis();
-       // Log.v("Новая дата 1: ", calendarDateNew.get(Calendar.DATE) + "." + calendarDateNew.get(Calendar.MONTH) + "." + calendarDateNew.get(Calendar.YEAR));
+        Log.v("ResultForm", calendarDateNew.get(Calendar.DATE) + "." + calendarDateNew.get(Calendar.MONTH) + "." + calendarDateNew.get(Calendar.YEAR));
         return calendarDateNew.getTimeInMillis();
     }
 
-    public String getDate(Calendar calendar) {
+    public String getDate(long dateTimeMillis) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(dateTimeMillis);
         String date;
         SimpleDateFormat format = new SimpleDateFormat();
         format.applyPattern("dd");
@@ -77,6 +80,6 @@ public class WorkDateDebt {
                 appData.setCountDayOfMonth(countMonth[calendar.get(Calendar.MONTH)], 365);
         }
 
-        Log.v("Количество дней: ", countMonth[calendar.get(Calendar.MONTH)] + "Новая дата: " + calendar.get(Calendar.DATE) + "." + Integer.valueOf(calendar.get(Calendar.MONTH) + 1) + "." + calendar.get(Calendar.YEAR));
+        Log.v("ResultForm", String.valueOf(countMonth[calendar.get(Calendar.MONTH)]));
     }
 }

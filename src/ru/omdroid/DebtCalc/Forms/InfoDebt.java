@@ -292,7 +292,7 @@ public class InfoDebt extends Activity {
         pMenu.getMenu().getItem(0).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Intent intent = new Intent(getBaseContext(), ListPaymentDB.class);
+                Intent intent = new Intent(getBaseContext(), /*ListPaymentDB*/TablePaymentSavedDebt.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return false;
@@ -325,9 +325,11 @@ public class InfoDebt extends Activity {
         ExactArithmetic exactArithmetic = new ExactArithmetic(AppData.PERCENT);
 
         public void setOverAllPayment(int i){
+            Log.d("ResultForm", "------------------Форма платежа------------------");
 
             Double overPay = getOverPayment() + exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, AppData.DATE_PAY, 0);//arithmetic.getDeltaNew(AppData.TERM_BALANCE - i, Double.valueOf(AppData.DEBT_BALANCE), newPayment);
 
+            Log.d("ResultForm", "==================Форма платежа==================");
 
             tvDigitAllPay.setText(exactArithmetic.getTotalTerm());
             tvDeltaAllPay.setText(new DecimalFormat("###,###,###,###").format(overPay));
