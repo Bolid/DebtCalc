@@ -3,6 +3,7 @@ package ru.omdroid.DebtCalc.Forms;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import ru.omdroid.DebtCalc.Arithmetic.ExactArithmetic;
 import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddOverallPayment;
 import ru.omdroid.DebtCalc.R;
+import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -65,6 +67,9 @@ public class ResultForm extends Activity {
         dataForGraph.setNewTerm(AppData.TERM_BALANCE);
         dataForGraph.setOldTerm(AppData.TERM_BALANCE);
                 seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    WorkDateDebt workDateDebt = new WorkDateDebt();
+                    long date = workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_DEBT_START);
+
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                         etPayment.removeTextChangedListener(inControlFieldAddPayment);
@@ -95,7 +100,10 @@ public class ResultForm extends Activity {
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-                        dataForGraph.setOver(exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, AppData.DATE_PAY, 0));
+                        Log.d("ResultForm", "------------------Форма результата------------------");
+                        dataForGraph.setOver(exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, date, 0));
+
+                        Log.d("ResultForm", "==================Форма результата==================");
                         dataForGraph.setSum(Double.valueOf(AppData.DEBT_BALANCE));
                         dataForGraph.setNewTerm(Integer.valueOf(exactArithmetic.getTotalTerm()));
                         dataForGraph.setOldTerm(AppData.TERM_BALANCE);

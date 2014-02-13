@@ -1,5 +1,6 @@
 package ru.omdroid.DebtCalc.Arithmetic;
 
+import android.util.Log;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.WorkDateDebt;
 
@@ -22,6 +23,7 @@ public class ExactArithmetic extends Arithmetic {
             Double perLocal = (getOverpaymentOneMonth(sumCredit));
             i++;
             totalOver = totalOver + (getOverpaymentOneMonth(sumCredit));
+            Log.d("ResultForm", "Форма арифметики "  + totalOver);
             if (i == AppData.TERM_BALANCE - dec){
                 addPayment = sumCredit + perLocal;
                 sumCredit = sumCredit - addPayment;

@@ -55,7 +55,7 @@ public class ListPayment extends Activity {
                     if (i == AppData.TERM_BALANCE)
                         payment = balance + paymentPercent;
                     feePayment = feePayment + payment;
-                    addRecord(inflater, layout, i, payment, workDateDebt.getDate(calendar), balance, paymentDebt, paymentPercent, feePayment);
+                    addRecord(inflater, layout, i, payment, workDateDebt.getDate(/*calendar*/123445566), balance, paymentDebt, paymentPercent, feePayment);
                     balance = arithmetic.getBalance(payment, balance);
                     calendar.setTimeInMillis(workDateDebt.createNextDatePayment(calendar.getTimeInMillis(), AppData.DATE_PAY));
                     i++;
