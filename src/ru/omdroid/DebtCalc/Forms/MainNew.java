@@ -1,7 +1,9 @@
 package ru.omdroid.DebtCalc.Forms;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +15,8 @@ import ru.omdroid.DebtCalc.*;
 import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
+import ru.omdroid.DebtCalc.Dialog.DialogChangePercent;
+import ru.omdroid.DebtCalc.Dialog.DialogControlSaveDebt;
 import ru.omdroid.DebtCalc.Dialog.DialogDateSelect;
 import ru.omdroid.DebtCalc.Dialog.DialogInputData;
 import ru.omdroid.DebtCalc.Exceptions.NullInputDataException;
@@ -23,8 +27,8 @@ import java.util.Random;
 public class MainNew extends Activity {
     Calendar calendar;
     Calendar calendarConst;
-    EditText etType;
     AppData appData;
+
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.main_new);
@@ -119,6 +123,7 @@ public class MainNew extends Activity {
             case R.id.apply_payment:
                 try {
                     saveDataInDataBase();
+                    finish();
                 } catch (NullInputDataException e) {
                     Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
@@ -130,6 +135,12 @@ public class MainNew extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        DialogControlSaveDebt dialogControlSaveDebt = new DialogControlSaveDebt(new ControlSaveDebt());
+        dialogControlSaveDebt.show(getFragmentManager(), "");
     }
 
     private void saveDataInDataBase() throws NullInputDataException {
@@ -150,7 +161,6 @@ public class MainNew extends Activity {
                     " WHERE " + DebtCalcDB.FIELD_PAID_DEBT + " = '0'") < 15){
                 int numCredit = generateNumCredit();
                 Arithmetic arithmetic = new Arithmetic(Double.valueOf(AppData.DEBT_BALANCE), AppData.PERCENT, AppData.TERM_BALANCE);
-                Double deltaLocal = arithmetic.getOverpaymentOneMonth(Double.valueOf(AppData.DEBT_BALANCE));
                 workDB.insertValueToTableDebt("INSERT INTO " + DebtCalcDB.TABLE_CREDITS + " (" +
                         DebtCalcDB.FIELD_ID_DEBT + ", " +
                         DebtCalcDB.FIELD_SUM_DEBT + ", " +
@@ -208,10 +218,10 @@ public class MainNew extends Activity {
     private void showPopupMenu(View v){
         final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
         MenuInflater mInflater = pMenu.getMenuInflater();
-        mInflater.inflate(R.menu.pm_d_add, pMenu.getMenu());
+        mInflater.inflate(R.menu.pm_main_form, pMenu.getMenu());/*
         //pMenu.getMenu().getItem(1).setVisible(true);
         pMenu.getMenu().getItem(1).setVisible(false);
-        pMenu.getMenu().getItem(2).setVisible(false);
+        pMenu.getMenu().getItem(2).setVisible(false);*/
         pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -223,9 +233,9 @@ public class MainNew extends Activity {
                             Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
                         }
                         break;
-                    case R.id.testPayment:
+                    case R.id.overPayment:
                         try {
-                            testPaymentShow();
+                            overPaymentShow();
                         } catch (NullInputDataException e) {
                             Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
                         }
@@ -240,16 +250,32 @@ public class MainNew extends Activity {
     private void tablePaymentShow() throws NullInputDataException{
         if (AppData.DEBT_BALANCE.equals("") || AppData.TERM_BALANCE == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
             throw new NullInputDataException("Таблица");
-        Intent intent = new Intent(getBaseContext(), ListPayment.class);
+        Intent intent = new Intent(getBaseContext(), TablePaymentNotSavedDebt.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
-    private void testPaymentShow() throws NullInputDataException{
+    private void overPaymentShow() throws NullInputDataException{
         if (AppData.DEBT_BALANCE.equals("") || AppData.TERM_BALANCE == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
             throw new NullInputDataException("Таблица");
         Intent intent = new Intent(getBaseContext(), ResultForm.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    public class ControlSaveDebt{
+
+        public void saveDebt(){
+            try {
+                saveDataInDataBase();
+                finish();
+            } catch (NullInputDataException e) {
+                Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
+            }
+        }
+
+        public void notSaveDebt(){
+            finish();
+        }
     }
 }

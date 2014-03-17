@@ -2,10 +2,12 @@ package ru.omdroid.DebtCalc.Listener;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
+import ru.omdroid.DebtCalc.Arithmetic.ExactArithmetic;
 import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
@@ -20,13 +22,12 @@ public class InControlFieldAddOverallPayment implements TextWatcher {
     int position;
 
     AppData appData = new AppData();
-    WorkDateDebt workDateDebt = new WorkDateDebt();
-    Arithmetic arithmetic;
-    public InControlFieldAddOverallPayment(EditText etPayment, Double defaultPayment, View view, Arithmetic arithmetic){
+    ExactArithmetic exactArithmetic;
+    public InControlFieldAddOverallPayment(EditText etPayment, Double defaultPayment, View view, ExactArithmetic exactArithmetic){
         this.etPayment = etPayment;
         this.defaultPayment = defaultPayment;
         this.view = view;
-        this.arithmetic = arithmetic;
+        this.exactArithmetic = exactArithmetic;
     }
 
     @Override
@@ -49,8 +50,10 @@ public class InControlFieldAddOverallPayment implements TextWatcher {
         if (!s.equals(""))
             if (defaultPayment < Double.valueOf(s)){
                 appData.setPayment(s, String.valueOf(defaultPayment));
-                //workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_PAY);
-                //arithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), Double.valueOf(s), AppData.DATE_PAY, 0);
+                WorkDateDebt workDateDebt = new WorkDateDebt();
+                long date = workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_PAY);
+                Log.v("ДатаДата main", String.valueOf(date));
+                exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), Double.valueOf(s), date, 0);
                 view.invalidate();
             }
             else

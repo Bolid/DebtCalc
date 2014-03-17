@@ -24,6 +24,7 @@
     <string name="container_balance_credit">Долг</string>
     <string name="container_date_credit">Дата</string>
     <string name="container_balance_term_credit">Срок</string>
+    <string name="container_balance_next_pay_credit">Будущий платеж</string>
     <string name="list_debt_label_total_payment">Итого в месяц</string>
     <string name="info_payment_label">Платеж</string>
     <string name="info_debt_label">Долг</string>
@@ -46,13 +47,24 @@
     <string name="count_day">За сколько дней напомнить о платеже?</string>
     <string name="select_time_notify">Выберите время напоминания</string>
     <string name="time_notify">Время напоминания</string>
+    <!--dialog_change_percent-->
+    <string name="dChangePercent_title">Изменение процентной ставки</string>
+    <string name="dChangePercent_text">Введите новое значение процентной ставки</string>
+    <!--dialog_change_goal-->
+    <string name="dChangeGoal_title">Изменение цели кредита</string>
+    <string name="dChangeGoal_text">Введите новую цель кредита</string>
+    <!--dialog_control_save_debt-->
+    <string name="dControlSaveDebt_text">Программа позволяет сохранять кредиты для дальнейшего контроля их погашения.</string>
+    <string name="dControlSaveDebt_question">Сохранить кредит?</string>
     <!--popup-->
     <string name="popup_archive">Архив</string>
     <string name="popup_current">Текущие</string>
     <string name="popup_table">График платежей</string>
     <string name="menu_add_notify">Добавить напоминание</string>
     <string name="menu_review_notify">Просмотреть напоминание</string>
-    <string name="popup_test_payment">Тестирование платежей</string>
+    <string name="popup_over_payment">Досрочное погашение</string>
+    <string name="popup_percent_change">Изменить ставку</string>
+    <string name="popup_goal_change">Изменить цель кредита</string>
     <!--Value-->
     <string name="main_layout_value_credit_sum">900 000</string>
     <string name="main_layout_value_credit_percent">12</string>
@@ -63,6 +75,8 @@
     <string name="buttonNextMainLayout">Сохранить</string>
     <string name="butCancel">Отмена</string>
     <string name="butOK">OK</string>
+    <string name="butYes">Да</string>
+    <string name="butNo">Нет</string>
     <string name="butIns">Установить</string>
     <string name="butDel">Удалить</string>
     <string name="buttonNextListDialog">Далее</string>

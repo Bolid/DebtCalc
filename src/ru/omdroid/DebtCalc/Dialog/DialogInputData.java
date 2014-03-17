@@ -55,7 +55,6 @@ public class DialogInputData extends DialogFragment implements OnClickListener {
         imm = (InputMethodManager)getActivity().getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 1);
 
-        etData.selectAll();
 
         view.findViewById(R.id.butDialogApplyData).setOnClickListener(this);
         view.findViewById(R.id.butNext).setOnClickListener(this);

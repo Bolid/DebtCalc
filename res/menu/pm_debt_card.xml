@@ -8,8 +8,9 @@
           android:title="@string/menu_add_notify"/>
     <item android:id="@+id/delNotify"
           android:title="@string/menu_review_notify"/>
-    <item android:id="@+id/testPayment"
-          android:title="@string/popup_test_payment"
-            android:visible="true"/>
+    <item android:id="@+id/percentChange"
+          android:title="@string/popup_percent_change"/>
+    <item android:id="@+id/goalChange"
+          android:title="@string/popup_goal_change"/>
 
 </menu>

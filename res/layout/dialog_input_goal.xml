@@ -27,9 +27,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/etDialogField" android:singleLine="true" style="@style/styleLabel_2"
             android:textColor="@android:color/black"
-            android:gravity="center_vertical|center_horizontal">
-        <requestFocus/>
-    </EditText>
+            android:gravity="center_vertical|center_horizontal"
+            android:inputType="textCapWords"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"

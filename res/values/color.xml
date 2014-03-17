@@ -24,4 +24,5 @@
     <color name="infoPaymentIcon">#ff42ba38</color>
     <color name="infoDateBackground">#150a99f9</color>
     <color name="infoOverBackground">#15ac076b</color>
+    <color name="bgPopupMenu">#fff5301f</color>
 </resources>

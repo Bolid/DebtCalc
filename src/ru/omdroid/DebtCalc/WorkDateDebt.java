@@ -24,10 +24,13 @@ public class WorkDateDebt {
 
         Calendar calendarDateNew = Calendar.getInstance();
         calendarDateNew.setTimeInMillis(this.dateNewLong);
+        Log.v("ResultForm до смены", getDate(calendarDateNew.getTimeInMillis()));
+
 
         getCountDayInMonth(this.dateNewLong);
         int preMonth = calendarDateNew.get(Calendar.MONTH);
         calendarDateNew.set(calendarDateNew.get(Calendar.YEAR), calendarDateNew.get(Calendar.MONTH) + 1, calendarDateStart.get(Calendar.DATE));
+
         int postMonth = calendarDateNew.get(Calendar.MONTH);
         while (postMonth - preMonth > 1){
             calendarDateNew.set(calendarDateNew.get(Calendar.YEAR), calendarDateNew.get(Calendar.MONTH), calendarDateNew.get(Calendar.DATE)-1);
@@ -35,8 +38,8 @@ public class WorkDateDebt {
         }
 
         this.dateNewLong = calendarDateNew.getTimeInMillis();
-        Log.v("ResultForm", calendarDateNew.get(Calendar.DATE) + "." + calendarDateNew.get(Calendar.MONTH) + "." + calendarDateNew.get(Calendar.YEAR));
-        return calendarDateNew.getTimeInMillis();
+        Log.v("ResultForm", getDate(calendarDateNew.getTimeInMillis()));
+        return this.dateNewLong;
     }
 
     public String getDate(long dateTimeMillis) {
