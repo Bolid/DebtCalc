@@ -4,6 +4,9 @@ import android.util.Log;
 import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.WorkDateDebt;
 
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class ExactArithmetic extends Arithmetic {
     private int totalTerm = 0;
@@ -13,6 +16,10 @@ public class ExactArithmetic extends Arithmetic {
     }
 
     public Double getOverpaymentAllMonth(Double sumDebt, Double addPayment, long date, int dec){
+        Calendar dateD = Calendar.getInstance();
+        dateD.setTimeInMillis(date);
+        Log.v("Дата и время: ", dateD.getTime().toString());
+
         Double totalOver = 0.0;
         totalTerm = 0;
         Double sumCredit = sumDebt;
@@ -23,7 +30,6 @@ public class ExactArithmetic extends Arithmetic {
             Double perLocal = (getOverpaymentOneMonth(sumCredit));
             i++;
             totalOver = totalOver + (getOverpaymentOneMonth(sumCredit));
-            Log.d("ResultForm", "Форма арифметики "  + totalOver);
             if (i == AppData.TERM_BALANCE - dec){
                 addPayment = sumCredit + perLocal;
                 sumCredit = sumCredit - addPayment;

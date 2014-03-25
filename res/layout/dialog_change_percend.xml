@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:background="@color/background_app">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/styleLabel_2" android:textColor="@android:color/darker_gray"
+            android:text="@string/dChangePercent_text"
+            android:paddingLeft="5dp" android:layout_gravity="center_horizontal" android:gravity="center_horizontal"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etNewPercent" android:singleLine="true" style="@style/styleLabel_2"
+            android:textColor="@android:color/black"
+            android:gravity="center_vertical|center_horizontal"
+            android:inputType="numberDecimal"
+            android:maxLength="5"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/butOK"
+                android:id="@+id/butOK" android:layout_weight="1"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/butCancel"
+                android:id="@+id/butCancel" android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="ru.omdroid.DebtCalc"
-          android:versionCode="9"
+          android:versionCode="10"
           android:versionName="2.1"
         android:installLocation="auto">
-    <uses-sdk android:minSdkVersion="14"/>
+    <uses-sdk android:minSdkVersion="15"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
     <application
@@ -22,7 +23,7 @@
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateHidden"/>
         <activity
-                android:name="ru.omdroid.DebtCalc.Forms.ListPayment"
+                android:name="ru.omdroid.DebtCalc.TablePaymentNotSavedDebt"
                 android:screenOrientation="portrait"/>
         <activity
                 android:name="ru.omdroid.DebtCalc.TablePaymentSavedDebt"
@@ -31,6 +32,9 @@
                 android:name=".Forms.ResultForm"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan"/>
+        <activity
+                android:name=".Forms.HelperForOverpayment"
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".Forms.ListDebt"
                 android:screenOrientation="portrait"

@@ -15,6 +15,7 @@ import ru.omdroid.DebtCalc.Arithmetic.ExactArithmetic;
 import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddOverallPayment;
 import ru.omdroid.DebtCalc.R;
+import ru.omdroid.DebtCalc.TablePaymentNotSavedDebt;
 import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
@@ -44,7 +45,7 @@ public class ResultForm extends Activity {
         exactArithmetic = new ExactArithmetic(AppData.PERCENT);
 
         final EditText etPayment = (EditText)findViewById(R.id.valuePayment);
-        final InControlFieldAddOverallPayment inControlFieldAddPayment = new InControlFieldAddOverallPayment(etPayment, Double.valueOf(AppData.PAYMENT_DEFAULT), view, arithmetic);
+        final InControlFieldAddOverallPayment inControlFieldAddPayment = new InControlFieldAddOverallPayment(etPayment, Double.valueOf(AppData.PAYMENT_DEFAULT), view, exactArithmetic);
 
         etPayment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,12 +137,13 @@ public class ResultForm extends Activity {
     private void showPopupMenu(View v){
         final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
         MenuInflater mInflater = pMenu.getMenuInflater();
-        mInflater.inflate(R.menu.pm_d_add, pMenu.getMenu());
+        mInflater.inflate(R.menu.pm_main_form, pMenu.getMenu());
+        pMenu.getMenu().getItem(1).setVisible(false);
         pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
 
-                Intent intent = new Intent(getBaseContext(), ListPayment.class);
+                Intent intent = new Intent(getBaseContext(), TablePaymentNotSavedDebt.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 return false;

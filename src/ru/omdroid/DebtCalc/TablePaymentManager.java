@@ -10,6 +10,8 @@ public interface TablePaymentManager {
     void manageData();
     Cursor readDataFromDB();
     View createDataFromDB(Double payment, Double feePayment, String date, String upPayment, int numPayment, final Double balanceDebt, final Double paymentDebt, final Double paymentPercent, Drawable color);
-    void createDataFromArithmetic();
+    View createDataFromArithmetic(Double payment, Double feePayment, String date, int numPayment, final Double balanceDebt, final Double paymentDebt, final Double paymentPercent);
     void insertField(View view);
+    void addDataForUnload(String date, String payment, String paymentDebt, String paymentPercent, String balanceDebt);
+    void saveDataInCSV();
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:background="@color/background_app">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/styleLabel_2" android:textColor="@android:color/darker_gray"
+            android:text="@string/dControlSaveDebt_text"
+            android:paddingLeft="5dp" android:layout_gravity="center_horizontal" android:gravity="center_horizontal"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/styleLabel_2" android:textColor="@android:color/black"
+        android:text="@string/dControlSaveDebt_question"
+        android:paddingLeft="5dp" android:layout_gravity="center_horizontal" android:gravity="center_horizontal"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/butYes"
+                android:id="@+id/butYes" android:layout_weight="1"/>
+        <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/butNo"
+                android:id="@+id/butNo" android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

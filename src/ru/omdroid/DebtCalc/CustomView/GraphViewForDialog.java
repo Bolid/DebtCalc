@@ -8,13 +8,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-/**
- * Created with IntelliJ IDEA.
- * User: dima
- * Date: 9/11/13
- * Time: 4:36 PM
- * To change this template use File | Settings | File Templates.
- */
+
 public class GraphViewForDialog extends View {
 
     public GraphViewForDialog(Context context) {

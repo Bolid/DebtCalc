@@ -4,7 +4,6 @@
     <color name="buttonNextStroke">#ffbecac2</color>
     <color name="background">#FFF</color>
     <color name="background_app">#e5e5e5</color>
-    <color name="substrate">#eafdf4</color>
     <color name="colorLabel">#fc9c14</color>
     <color name="colorTintIco">#fc9c14</color>
     <color name="colorValue">#021460</color>
@@ -24,4 +23,10 @@
     <color name="infoPaymentIcon">#ff42ba38</color>
     <color name="infoDateBackground">#150a99f9</color>
     <color name="infoOverBackground">#15ac076b</color>
+    <color name="bgPopupMenu">#fff5301f</color>
+    <color name="itemWidget">#ffff0000</color>
+    <color name='press_trans_green'>#4532ff0c</color>
+    <color name='no_press_trans_green'>#1532ff0c</color>
+    <color name='press_trans_red'>#45ff0007</color>
+    <color name='no_press_trans_red'>#15ff0007</color>
 </resources>

@@ -23,13 +23,10 @@
         <item name="android:gravity">right|center_vertical</item>
         <item name="android:singleLine">true</item>
     </style>
-    <style name="popupMenu" parent="@android:style/Widget.Holo.ListPopupWindow">
-        <item name="android:popupBackground">@color/background</item>
+    <style name="MyHoloLight" parent="@android:style/Theme.Holo.Light">
+        <item name="android:popupMenuStyle">@style/popupMenuStyle</item>
     </style>
-    <style name="actionBar" parent="android:Widget.Holo.Light.ActionBar">
-        <item name="android:colorBackground">@color/background</item>
-    </style>
-    <style name="ThemeActionBar" parent="android:style/Widget.Holo.Light">
-        <item name="android:actionBarStyle">@style/actionBar</item>
+    <style name="popupMenuStyle" parent="@android:style/Widget.PopupMenu">
+        <item name="android:popupBackground">@drawable/bg_popup_menu</item>
     </style>
 </resources>
