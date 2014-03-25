@@ -1,10 +1,9 @@
 package ru.omdroid.DebtCalc.Forms;
 
 import android.app.Activity;
-import android.support.v4.app.DialogFragment;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,7 +24,7 @@ import ru.omdroid.DebtCalc.Exceptions.NullInputDataException;
 import java.util.Calendar;
 import java.util.Random;
 
-public class MainNew extends FragmentActivity {
+public class MainNew extends Activity {
     Calendar calendar;
     Calendar calendarConst;
     AppData appData;
@@ -66,7 +65,7 @@ public class MainNew extends FragmentActivity {
         llDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialogDateSelect.show(getSupportFragmentManager(), getResources().getString(R.string.app_name));
+                dialogDateSelect.show(getFragmentManager(), getResources().getString(R.string.app_name));
             }
         });
 
@@ -76,7 +75,7 @@ public class MainNew extends FragmentActivity {
                 int res = R.layout.dialog_input_sum;
                 String value = AppData.DEBT_BALANCE;
                 DialogFragment dFragment = new DialogInputData(value, tvSum, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, tvPayment, res, calendar, calendarConst);
-                dFragment.show(getSupportFragmentManager(), "");
+                dFragment.show(getFragmentManager(), "");
             }
         });
 
@@ -86,7 +85,7 @@ public class MainNew extends FragmentActivity {
                 int res = R.layout.dialog_input_term;
                 String value = String.valueOf(AppData.TERM_BALANCE);
                 DialogFragment dFragment = new DialogInputData(value, tvTerm, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, tvPayment, res, calendar, calendarConst);
-                dFragment.show(getSupportFragmentManager(), "");
+                dFragment.show(getFragmentManager(), "");
             }
         });
 
@@ -96,7 +95,7 @@ public class MainNew extends FragmentActivity {
                 int res = R.layout.dialog_input_percent;
                 String value = String.valueOf(AppData.PERCENT);
                 DialogFragment dFragment = new DialogInputData(value, tvPercent, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, tvPayment, res, calendar, calendarConst);
-                dFragment.show(getSupportFragmentManager(), "");
+                dFragment.show(getFragmentManager(), "");
             }
         });
 
@@ -106,7 +105,7 @@ public class MainNew extends FragmentActivity {
                 int res = R.layout.dialog_input_goal;
                 String value = String.valueOf(AppData.GOAL);
                 DialogFragment dFragment = new DialogInputData(value, tvGoal, preCalc, tvSumPre, tvOverPay, tvTotal, tvOverPerc, tvPayment, res, calendar, calendarConst);
-                dFragment.show(getSupportFragmentManager(), "");
+                dFragment.show(getFragmentManager(), "");
             }
         });
     }
@@ -141,7 +140,7 @@ public class MainNew extends FragmentActivity {
     @Override
     public void onBackPressed(){
         DialogControlSaveDebt dialogControlSaveDebt = new DialogControlSaveDebt(new ControlSaveDebt());
-        dialogControlSaveDebt.show(getSupportFragmentManager(), "");
+        dialogControlSaveDebt.show(getFragmentManager(), "");
     }
 
     private void saveDataInDataBase() throws NullInputDataException {
