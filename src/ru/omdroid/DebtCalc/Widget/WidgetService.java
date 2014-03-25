@@ -2,6 +2,7 @@ package ru.omdroid.DebtCalc.Widget;
 
 import android.content.Intent;
 import android.util.Log;
+
 import android.widget.RemoteViewsService;
 
 

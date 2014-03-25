@@ -6,7 +6,13 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
-import android.widget.*;
+import android.widget.EditText;
+import android.support.v7.widget.PopupMenu;
+import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.Toast;
 import ru.omdroid.DebtCalc.*;
 import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 import ru.omdroid.DebtCalc.Arithmetic.ExactArithmetic;
@@ -264,6 +270,16 @@ public class InfoDebt extends Activity {
                 View v = findViewById(R.id.popup);
                 showPopupMenu(v);
                 return true;
+            case R.id.helper:
+                if (newPayment <= Double.valueOf(AppData.PAYMENT))
+                    Toast.makeText(getBaseContext(), "Введите платеж", Toast.LENGTH_LONG).show();
+                else{
+                Double addPayment = newPayment - Double.valueOf(AppData.PAYMENT_DEFAULT);
+                Intent showHelperIntent = new Intent(getBaseContext(), HelperForOverpayment.class);
+                showHelperIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                showHelperIntent.putExtra("ADD_PAYMENT", addPayment);
+                startActivity(showHelperIntent); }
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -279,16 +295,6 @@ public class InfoDebt extends Activity {
        cursorOver.close();
        return  overDebt;
    }
-
-    private Double getPaymentInPercentFromDataBase(){
-        Cursor cursorOver = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_DEBT_PAYMENTS +
-                " FROM " + DebtCalcDB.TABLE_PAYMENTS +
-                " WHERE (" + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT + "' AND " + DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0')");
-        cursorOver.moveToNext();
-        Double overDebt = cursorOver.getDouble(cursorOver.getColumnIndex(DebtCalcDB.FIELD_DEBT_PAYMENTS));
-        cursorOver.close();
-        return  overDebt;
-    }
 
     private void showPopupMenu(View v){
         final PopupMenu pMenu = new PopupMenu(getBaseContext(), v);
@@ -357,6 +363,7 @@ public class InfoDebt extends Activity {
         }
 
         public void setOverOnePayment(Double currentPayment){
+            newPayment = currentPayment;
             WorkDateDebt workDateDebt = new WorkDateDebt();
             workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
             Double over = arithmetic.getOverpaymentOneMonth(Double.valueOf(AppData.DEBT_BALANCE));

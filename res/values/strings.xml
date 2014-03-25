@@ -29,6 +29,7 @@
     <string name="info_payment_label">Платеж</string>
     <string name="info_debt_label">Долг</string>
     <string name="container_over_debt">Выплачено</string>
+    <string name="sum_add_payment">Сумма досрочного погашения</string>
     <!--layout info-->
     <string name="overpayment">Досрочное погашение</string>
     <!--dialog rating-->
