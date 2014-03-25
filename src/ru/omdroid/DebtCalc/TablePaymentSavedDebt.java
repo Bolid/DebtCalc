@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.*;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.*;
 import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
@@ -22,6 +20,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class TablePaymentSavedDebt extends Activity implements TablePaymentManager{
+    final String TAG = "ru.omdroid.DebtCalc.TablePaymentSavedDebt";
     View view = null;
     WorkDB workDB;
     WorkDateDebt workDateDebt = new WorkDateDebt();
@@ -34,6 +33,7 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
     ArrayList <String> listPaymentPercent = new ArrayList <String>();
     ArrayList <String> listPaymentDebt = new ArrayList <String>();
     ArrayList <String> listBalanceDebt = new ArrayList <String>();
+    String fileName;
 
     DecimalFormat dFormat = new DecimalFormat("###,###,###,###,###.00");
     public void onCreate(Bundle save){
@@ -84,8 +84,9 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
                     publishProgress(createDataFromDB(payment, feePayment, date, upPayment, numPayment, balanceDebt, paymentDebt, paymentPercent, color));
                 }
 
-                cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_DATE_LONG_START_DEBT  +", "+ DebtCalcDB.FIELD_PERCENT_DEBT + " FROM " + DebtCalcDB.TABLE_CREDITS + " WHERE (" + DebtCalcDB.FIELD_ID_DEBT + " = '" + AppData.ID_DEBT +"')");
+                cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_TYPE_DEBT + ", " + DebtCalcDB.FIELD_DATE_LONG_START_DEBT  +", "+ DebtCalcDB.FIELD_PERCENT_DEBT + " FROM " + DebtCalcDB.TABLE_CREDITS + " WHERE (" + DebtCalcDB.FIELD_ID_DEBT + " = '" + AppData.ID_DEBT +"')");
                 cursor.moveToNext();
+                fileName = "/Debt_" + cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TYPE_DEBT)) + ".csv";
                 Long dateStart = cursor.getLong(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_START_DEBT));
                 Double percent = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_PERCENT_DEBT));
                 cursor.close();
@@ -215,15 +216,16 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
     @Override
     public void saveDataInCSV() {
         try {
-            FileWriter fileWriter = new FileWriter(Environment.getExternalStorageDirectory() + "/CreditTest.csv");
-            fileWriter.append("Дата платежа;Сумма платежа;Сумма в счет долга;Сумма в счет процентов;Остаток по кредиту\n");
+            FileWriter fileWriter = new FileWriter(Environment.getExternalStorageDirectory() + fileName);
+            fileWriter.append("Номер платежа;Дата платежа;Сумма платежа;Сумма в счет долга;Сумма в счет процентов;Остаток по кредиту\n");
             for (int i = 0; i < listDatePayment.size(); i++){
-                fileWriter.append(listDatePayment.get(i)).append(";").append(listPayment.get(i)).append(";").append(listPaymentDebt.get(i)).append(";").append(listPaymentPercent.get(i)).append(";").append(listBalanceDebt.get(i)).append("\n");
+                fileWriter.append(String.valueOf(i)).append(";").append(listDatePayment.get(i)).append(";").append(listPayment.get(i)).append(";").append(listPaymentDebt.get(i)).append(";").append(listPaymentPercent.get(i)).append(";").append(listBalanceDebt.get(i)).append("\n");
             }
-            Log.i("Приложение", "Данные сохранены");
+            Log.i(TAG, "Data save");
+            Toast.makeText(getBaseContext(), "График платежей сохранен", Toast.LENGTH_LONG).show();
             fileWriter.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error IO", e);
         }
     }
 
@@ -248,7 +250,6 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
     @Override
     public void onDestroy(){
         super.onDestroy();
-
         listDatePayment.clear();
         listPayment.clear();
         listPaymentDebt.clear();

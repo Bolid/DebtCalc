@@ -27,6 +27,5 @@
     <color name="itemWidget">#ffff0000</color>
     <color name='press_trans_green'>#4532ff0c</color>
     <color name='no_press_trans_green'>#1532ff0c</color>
-    <color name='press_trans_red'>#45ff0007</color>
-    <color name='no_press_trans_red'>#15ff0007</color>
+    <color name='press_trans_red'>#ffe6e6e6</color>
 </resources>

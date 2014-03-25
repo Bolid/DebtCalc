@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
+import ru.omdroid.DebtCalc.Arithmetic.ExactArithmetic;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 import ru.omdroid.DebtCalc.R;
@@ -24,7 +26,9 @@ public class HelperForOverpayment extends Activity {
     final String LABEL = "CREDIT_";
 
     WorkDB workDB;
+    AppData appData = new AppData();
     Arithmetic arithmetic = new Arithmetic(null);
+    ExactArithmetic exactArithmetic = new ExactArithmetic(null);
 
     HashMap <String, String> idDebt = new HashMap<String, String>();
 
@@ -39,6 +43,7 @@ public class HelperForOverpayment extends Activity {
     HashMap <String, String> goalDebt = new HashMap<String, String>();
     HashMap <String, Integer> balanceTerm = new HashMap<String, Integer>();
     HashMap <String, Long> datePayment = new HashMap<String, Long>();
+    HashMap <String, Long> dateDebtStart = new HashMap<String, Long>();
 
     Double addPayment;
     int numberProfitable = 0;
@@ -68,7 +73,7 @@ public class HelperForOverpayment extends Activity {
 
     private void initData(){
         int i = 0;
-        Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_ID_DEBT + ", " + DebtCalcDB.FIELD_TYPE_DEBT + ", " + DebtCalcDB.FIELD_PERCENT_DEBT + ", " + DebtCalcDB.F_PAY_DEFAULT_DEBT + ", " + DebtCalcDB.F_BALANCE_DEBT_PAY + ", " + DebtCalcDB.F_BALANCE_TERM_PAY + ", " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS + ", " + DebtCalcDB.FIELD_DATE_LONG_PAYMENTS + " FROM " + DebtCalcDB.TABLE_CREDITS + " INNER JOIN " + DebtCalcDB.TABLE_PAYMENTS + " ON " + DebtCalcDB.FIELD_ID_DEBT + " = " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " WHERE (" + /*DebtCalcDB.FIELD_PAID_DEBT + " = '0' AND " + */DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0' )");
+        Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_ID_DEBT + ", " + DebtCalcDB.FIELD_TYPE_DEBT + ", " + DebtCalcDB.FIELD_PERCENT_DEBT + ", " + DebtCalcDB.F_PAY_DEFAULT_DEBT + ", " + DebtCalcDB.FIELD_DATE_LONG_START_DEBT + ", " + DebtCalcDB.F_BALANCE_DEBT_PAY + ", " + DebtCalcDB.F_BALANCE_TERM_PAY + ", " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS + ", " + DebtCalcDB.FIELD_DATE_LONG_PAYMENTS + " FROM " + DebtCalcDB.TABLE_CREDITS + " INNER JOIN " + DebtCalcDB.TABLE_PAYMENTS + " ON " + DebtCalcDB.FIELD_ID_DEBT + " = " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " WHERE (" + /*DebtCalcDB.FIELD_PAID_DEBT + " = '0' AND " + */DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0' )");
         while (cursor.moveToNext()){
             idDebt.put(LABEL + i, cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_ID_DEBT)));
             goalDebt.put(LABEL + i, cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TYPE_DEBT)));
@@ -77,6 +82,7 @@ public class HelperForOverpayment extends Activity {
             payment.put(LABEL + i, cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_PAYMENT_PAYMENTS)));
             paymentDefault.put(LABEL + i, cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.F_PAY_DEFAULT_DEBT)));
             datePayment.put(LABEL + i, cursor.getLong(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS)));
+            dateDebtStart.put(LABEL + i, cursor.getLong(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_START_DEBT)));
             percentDebt.put(LABEL + i, cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_PERCENT_DEBT)));
             i++;
         }
@@ -95,7 +101,10 @@ public class HelperForOverpayment extends Activity {
 
     private void getOverpaymentDefault(){
         for (int i = 0; i < idDebt.size(); i++){
-            overPaymentDefault.put(LABEL + i, arithmetic.getDeltaNew(balanceTerm.get(LABEL + i), balanceDebt.get(LABEL + i), payment.get(LABEL + i)) + oldOverpayment.get(LABEL + i));
+            appData.setDateDebtStart(dateDebtStart.get(LABEL + i));
+            exactArithmetic = new ExactArithmetic(percentDebt.get(LABEL + i));
+            overPaymentDefault.put(LABEL + i, exactArithmetic.getOverpaymentAllMonth(balanceDebt.get(LABEL + i), payment.get(LABEL + i),  datePayment.get(LABEL + i), 0) + oldOverpayment.get(LABEL + i));
+            //overPaymentDefault.put(LABEL + i, arithmetic.getDeltaNew(balanceTerm.get(LABEL + i), balanceDebt.get(LABEL + i), payment.get(LABEL + i)) + oldOverpayment.get(LABEL + i));
         }
     }
 
@@ -104,6 +113,7 @@ public class HelperForOverpayment extends Activity {
         Arithmetic arithmetic;
         for (int i = 0; i < goalDebt.size(); i++){
             arithmetic = new Arithmetic(percentDebt.get(LABEL + i));
+            exactArithmetic = new ExactArithmetic(percentDebt.get(LABEL + i));
             currentPayment = payment.get(LABEL + i) + addPayment;
             WorkDateDebt workDateDebt = new WorkDateDebt();
             workDateDebt.getCountDayInMonth(datePayment.get(LABEL + i));
@@ -120,7 +130,9 @@ public class HelperForOverpayment extends Activity {
                 else
                     nextPayment =  arithmetic.getPayment(newDebt, balanceTerm.get(LABEL + i) - 1);
             if (balanceTerm.get(LABEL + i) > 1){
-                deltaAfter = arithmetic.getDeltaNew(balanceTerm.get(LABEL + i) - 1, newDebt, nextPayment);
+                //deltaAfter = arithmetic.getDeltaNew(balanceTerm.get(LABEL + i) - 1, newDebt, nextPayment);
+                appData.setDateDebtStart(dateDebtStart.get(LABEL + i));
+                deltaAfter = exactArithmetic.getOverpaymentAllMonth(newDebt, nextPayment, workDateDebt.createNextDatePayment(datePayment.get(LABEL + i), AppData.DATE_DEBT_START), 1);
             }
             else
                 deltaAfter = 0.0;
