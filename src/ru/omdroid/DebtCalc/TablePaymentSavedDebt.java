@@ -6,9 +6,9 @@ import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Environment;
+import android.util.Log;
+import android.view.*;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,7 +16,10 @@ import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class TablePaymentSavedDebt extends Activity implements TablePaymentManager{
     View view = null;
@@ -25,6 +28,14 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
     boolean addRecord = true;
     LinearLayout layout;
     LayoutInflater inflater;
+
+    ArrayList<String> listDatePayment = new ArrayList <String>();
+    ArrayList <String> listPayment = new ArrayList <String>();
+    ArrayList <String> listPaymentPercent = new ArrayList <String>();
+    ArrayList <String> listPaymentDebt = new ArrayList <String>();
+    ArrayList <String> listBalanceDebt = new ArrayList <String>();
+
+    DecimalFormat dFormat = new DecimalFormat("###,###,###,###,###.00");
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.payment_info);
@@ -135,6 +146,7 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
 
     @Override
     public View createDataFromDB(Double payment, Double feePayment, String date, String upPayment, int numPayment, final Double balanceDebt, final Double paymentDebt, final Double paymentPercent, Drawable color) {
+        addDataForUnload(date, dFormat.format(payment), dFormat.format(paymentDebt), dFormat.format(paymentPercent), dFormat.format(balanceDebt));
         view = inflater.inflate(R.layout.payment_info_record, layout, false);
         view.setBackground(color);
 
@@ -144,9 +156,9 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
         TextView tvFeePayment = (TextView)view.findViewById(R.id.tvSumPaymentRecord);
 
         tvNumPayment.setText(String.valueOf(numPayment));
-        tvPayment.setText(new DecimalFormat("###,###,###,###,###.00").format(payment));
+        tvPayment.setText(dFormat.format(payment));
         tvDatePay.setText(date);
-        tvFeePayment.setText(new DecimalFormat("###,###,###,###,###.00").format(feePayment));
+        tvFeePayment.setText(dFormat.format(feePayment));
 
         if (upPayment != null)
             if (upPayment.equals("1")){
@@ -165,9 +177,9 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
                     TextView tvDebt = (TextView)view.findViewById(R.id.tvDebtRecord);
                     TextView tvPercent = (TextView)view.findViewById(R.id.tvPercentRecord);
 
-                    tvBalanceDebt.setText(new DecimalFormat("###,###,###,###.##").format(balanceDebt));
-                    tvDebt.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentDebt));
-                    tvPercent.setText(new DecimalFormat("###,###,###,###,###.00").format(paymentPercent));
+                    tvBalanceDebt.setText(dFormat.format(balanceDebt));
+                    tvDebt.setText(dFormat.format(paymentDebt));
+                    tvPercent.setText(dFormat.format(paymentPercent));
                     param = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     infoDetail = !infoDetail;
                 }
@@ -189,5 +201,58 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
     @Override
     public void insertField(View view) {
         layout.addView(view);
+    }
+
+    @Override
+    public void addDataForUnload(String date, String payment, String paymentDebt, String paymentPercent, String balanceDebt) {
+        listDatePayment.add(date);
+        listPayment.add(payment);
+        listPaymentDebt.add(paymentDebt);
+        listPaymentPercent.add(paymentPercent);
+        listBalanceDebt.add(balanceDebt);
+    }
+
+    @Override
+    public void saveDataInCSV() {
+        try {
+            FileWriter fileWriter = new FileWriter(Environment.getExternalStorageDirectory() + "/CreditTest.csv");
+            fileWriter.append("Дата платежа;Сумма платежа;Сумма в счет долга;Сумма в счет процентов;Остаток по кредиту\n");
+            for (int i = 0; i < listDatePayment.size(); i++){
+                fileWriter.append(listDatePayment.get(i)).append(";").append(listPayment.get(i)).append(";").append(listPaymentDebt.get(i)).append(";").append(listPaymentPercent.get(i)).append(";").append(listBalanceDebt.get(i)).append("\n");
+            }
+            Log.i("Приложение", "Данные сохранены");
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater actionMenu = getMenuInflater();
+        actionMenu.inflate(R.menu.pm_payment_table, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.saveDataInCSV:
+                saveDataInCSV();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+
+        listDatePayment.clear();
+        listPayment.clear();
+        listPaymentDebt.clear();
+        listPaymentPercent.clear();
+        listBalanceDebt.clear();
     }
 }

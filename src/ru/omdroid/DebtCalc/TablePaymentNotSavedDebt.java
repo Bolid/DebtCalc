@@ -14,12 +14,20 @@ import android.widget.TextView;
 import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class TablePaymentNotSavedDebt extends Activity implements TablePaymentManager{
     View view = null;
     boolean addRecord = true;
     LinearLayout layout;
     LayoutInflater inflater;
+
+    ArrayList <String> datePayment = new ArrayList <String>();
+    ArrayList <String> payment = new ArrayList <String>();
+    ArrayList <String> paymentePercent = new ArrayList <String>();
+    ArrayList <String> paymentDebt = new ArrayList <String>();
+    ArrayList <String> balancceDebt = new ArrayList <String>();
+
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.payment_info);
@@ -138,6 +146,16 @@ public class TablePaymentNotSavedDebt extends Activity implements TablePaymentMa
     @Override
     public void insertField(View view) {
         layout.addView(view);
+    }
+
+    @Override
+    public void addDataForUnload(String date, String payment, String paymentDebt, String paymentPercent, String balanceDebt) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void saveDataInCSV() {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 }
 
