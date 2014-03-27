@@ -53,7 +53,7 @@ public class InControlFieldAddOverallPayment implements TextWatcher {
                 WorkDateDebt workDateDebt = new WorkDateDebt();
                 long date = workDateDebt.createNextDatePayment(AppData.DATE_PAY, AppData.DATE_PAY);
                 Log.v("ДатаДата main", String.valueOf(date));
-                exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), Double.valueOf(s), date, 0);
+                exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), Double.valueOf(s), AppData.TERM_BALANCE, date, 0);
                 view.invalidate();
             }
             else

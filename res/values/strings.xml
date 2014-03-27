@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Кредитный калькулятор</string>
+    <string name="app_version">2.1</string>
     <string name="labelName">Кредитный калькулятор</string>
     <string name="action_menu_rasch">Расчет</string>
     <string name="action_menu_analitic">Аналитика</string>
@@ -43,6 +44,8 @@
     <string name="delete_question">Выполнить удаление?</string>
     <string name="delete_yes">Да</string>
     <string name="delete_no">Нет</string>
+    <!--dialog_about-->
+    <string name="dialog_about_title">О программе</string>
     <!--dialog_add_notify-->
     <string name="dialog_title">Напоминание</string>
     <string name="count_day">За сколько дней напомнить о платеже?</string>
@@ -60,12 +63,14 @@
     <!--popup-->
     <string name="popup_archive">Архив</string>
     <string name="popup_current">Текущие</string>
+    <string name="popup_about">О программе</string>
     <string name="popup_table">График платежей</string>
     <string name="menu_add_notify">Добавить напоминание</string>
     <string name="menu_review_notify">Просмотреть напоминание</string>
     <string name="popup_over_payment">Досрочное погашение</string>
     <string name="popup_percent_change">Изменить ставку</string>
     <string name="popup_goal_change">Изменить цель кредита</string>
+    <string name="popup_save_in_file">Сохранить в файл</string>
     <!--Value-->
     <string name="main_layout_value_credit_sum">900 000</string>
     <string name="main_layout_value_credit_percent">12</string>

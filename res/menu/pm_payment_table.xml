@@ -2,6 +2,9 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/saveDataInCSV"
-          android:title="Сохранить в файл"
+          android:title="@string/popup_save_in_file"
           android:icon="@drawable/arrow"/>
+    <item android:id="@+id/itemAbout"
+          android:title="@string/popup_about"
+          android:visible="true"/>
 </menu>

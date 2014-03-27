@@ -6,4 +6,7 @@
     <item android:id="@+id/overPayment"
           android:title="@string/popup_over_payment"
           android:visible="true"/>
+    <item android:id="@+id/itemAbout"
+          android:title="@string/popup_about"
+          android:visible="true"/>
 </menu>
