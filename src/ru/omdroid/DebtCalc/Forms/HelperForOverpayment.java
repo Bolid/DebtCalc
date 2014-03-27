@@ -27,7 +27,6 @@ public class HelperForOverpayment extends Activity {
 
     WorkDB workDB;
     AppData appData = new AppData();
-    Arithmetic arithmetic = new Arithmetic(null);
     ExactArithmetic exactArithmetic = new ExactArithmetic(null);
 
     HashMap <String, String> idDebt = new HashMap<String, String>();
@@ -102,8 +101,9 @@ public class HelperForOverpayment extends Activity {
     private void getOverpaymentDefault(){
         for (int i = 0; i < idDebt.size(); i++){
             appData.setDateDebtStart(dateDebtStart.get(LABEL + i));
+            appData.setTermBalance(String.valueOf(balanceTerm.get(LABEL + i)));
             exactArithmetic = new ExactArithmetic(percentDebt.get(LABEL + i));
-            overPaymentDefault.put(LABEL + i, exactArithmetic.getOverpaymentAllMonth(balanceDebt.get(LABEL + i), payment.get(LABEL + i),  datePayment.get(LABEL + i), 0) + oldOverpayment.get(LABEL + i));
+            overPaymentDefault.put(LABEL + i, exactArithmetic.getOverpaymentAllMonth(balanceDebt.get(LABEL + i), payment.get(LABEL + i), balanceTerm.get(LABEL + i), datePayment.get(LABEL + i), 0) + oldOverpayment.get(LABEL + i));
             //overPaymentDefault.put(LABEL + i, arithmetic.getDeltaNew(balanceTerm.get(LABEL + i), balanceDebt.get(LABEL + i), payment.get(LABEL + i)) + oldOverpayment.get(LABEL + i));
         }
     }
@@ -132,7 +132,8 @@ public class HelperForOverpayment extends Activity {
             if (balanceTerm.get(LABEL + i) > 1){
                 //deltaAfter = arithmetic.getDeltaNew(balanceTerm.get(LABEL + i) - 1, newDebt, nextPayment);
                 appData.setDateDebtStart(dateDebtStart.get(LABEL + i));
-                deltaAfter = exactArithmetic.getOverpaymentAllMonth(newDebt, nextPayment, workDateDebt.createNextDatePayment(datePayment.get(LABEL + i), AppData.DATE_DEBT_START), 1);
+                appData.setTermBalance(String.valueOf(balanceTerm.get(LABEL + i)));
+                deltaAfter = exactArithmetic.getOverpaymentAllMonth(newDebt, nextPayment, balanceTerm.get(LABEL + i), workDateDebt.createNextDatePayment(datePayment.get(LABEL + i), AppData.DATE_DEBT_START), 1);
             }
             else
                 deltaAfter = 0.0;

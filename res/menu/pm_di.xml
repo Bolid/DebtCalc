@@ -6,4 +6,7 @@
     <item android:id="@+id/itemCurrent"
           android:title="@string/popup_current"
           android:visible="false"/>
+    <item android:id="@+id/itemAbout"
+          android:title="@string/popup_about"
+          android:visible="true"/>
 </menu>

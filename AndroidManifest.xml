@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="ru.omdroid.DebtCalc"
           android:versionCode="10"
-          android:versionName="2.1"
+          android:versionName="@string/app_version"
         android:installLocation="auto">
     <uses-sdk android:minSdkVersion="15"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>

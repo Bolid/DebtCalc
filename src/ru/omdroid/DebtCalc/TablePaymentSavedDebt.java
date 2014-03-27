@@ -219,7 +219,7 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
             FileWriter fileWriter = new FileWriter(Environment.getExternalStorageDirectory() + fileName);
             fileWriter.append("Номер платежа;Дата платежа;Сумма платежа;Сумма в счет долга;Сумма в счет процентов;Остаток по кредиту\n");
             for (int i = 0; i < listDatePayment.size(); i++){
-                fileWriter.append(String.valueOf(i)).append(";").append(listDatePayment.get(i)).append(";").append(listPayment.get(i)).append(";").append(listPaymentDebt.get(i)).append(";").append(listPaymentPercent.get(i)).append(";").append(listBalanceDebt.get(i)).append("\n");
+                fileWriter.append(String.valueOf(i+1)).append(";").append(listDatePayment.get(i)).append(";").append(listPayment.get(i)).append(";").append(listPaymentDebt.get(i)).append(";").append(listPaymentPercent.get(i)).append(";").append(listBalanceDebt.get(i)).append("\n");
             }
             Log.i(TAG, "Data save");
             Toast.makeText(getBaseContext(), "График платежей сохранен", Toast.LENGTH_LONG).show();

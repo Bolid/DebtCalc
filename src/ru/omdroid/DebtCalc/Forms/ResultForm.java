@@ -102,7 +102,7 @@ public class ResultForm extends Activity {
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
                         Log.d("ResultForm", "------------------Форма результата------------------");
-                        dataForGraph.setOver(exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, date, 0));
+                        dataForGraph.setOver(exactArithmetic.getOverpaymentAllMonth(Double.valueOf(AppData.DEBT_BALANCE), newPayment, AppData.TERM_BALANCE, date, 0));
 
                         Log.d("ResultForm", "==================Форма результата==================");
                         dataForGraph.setSum(Double.valueOf(AppData.DEBT_BALANCE));

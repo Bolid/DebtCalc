@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@color/background_app" android:paddingLeft="5dp"
+              android:paddingRight="5dp">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="5dp" android:paddingRight="5dp"
+            android:gravity="right">
+    </LinearLayout>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Кредитный калькулятор версия "
+            android:id="@+id/tv2DialogAbout" android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:shadowColor="#000000"
+            android:shadowRadius="5"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:textStyle="bold"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="© Omdroid 2013-2014"
+            android:id="@+id/textView1"
+            android:textColor="#ffffff"
+            android:shadowColor="#000000"
+            android:shadowRadius="5"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:textStyle="bold"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:textColorLink="#0613b1"
+            android:text="www.omdroid.ru"
+            android:id="@+id/textView2"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Не почитай денег ни больше, ни меньше, чем они того стоят; это хороший слуга и плохой хозяин."
+            android:id="@+id/textView3"
+            android:textColor="@android:color/black" android:layout_marginTop="15dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Александр Дюма - сын"
+            android:id="@+id/textView4" android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="right"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/butOK"
+            android:id="@+id/dAboutOk" android:layout_gravity="center_horizontal" android:layout_marginTop="10dp"
+            android:paddingLeft="25dp" android:paddingRight="25dp"/>
+</LinearLayout>

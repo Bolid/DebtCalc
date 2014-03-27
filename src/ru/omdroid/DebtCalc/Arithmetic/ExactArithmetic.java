@@ -15,7 +15,7 @@ public class ExactArithmetic extends Arithmetic {
         super(percent);
     }
 
-    public Double getOverpaymentAllMonth(Double sumDebt, Double addPayment, long date, int dec){
+    public Double getOverpaymentAllMonth(Double sumDebt, Double addPayment, int balanceTerm, long date, int dec){
         Calendar dateD = Calendar.getInstance();
         dateD.setTimeInMillis(date);
         Log.v("Дата и время: ", dateD.getTime().toString());
@@ -30,7 +30,7 @@ public class ExactArithmetic extends Arithmetic {
             Double perLocal = (getOverpaymentOneMonth(sumCredit));
             i++;
             totalOver = totalOver + (getOverpaymentOneMonth(sumCredit));
-            if (i == AppData.TERM_BALANCE - dec){
+            if (i == balanceTerm - dec){
                 addPayment = sumCredit + perLocal;
                 sumCredit = sumCredit - addPayment;
             }
