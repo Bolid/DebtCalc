@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Кредитный калькулятор</string>
     <string name="app_version">2.1</string>
+    <string name="web_site">http://omdroid.ru</string>
     <string name="labelName">Кредитный калькулятор</string>
     <string name="action_menu_rasch">Расчет</string>
     <string name="action_menu_analitic">Аналитика</string>
@@ -31,6 +32,9 @@
     <string name="info_debt_label">Долг</string>
     <string name="container_over_debt">Выплачено</string>
     <string name="sum_add_payment">Сумма досрочного погашения</string>
+    <!--form_about-->
+    <string name="quote_about">Не почитай денег ни больше, ни меньше, чем они того стоят; это хороший слуга и плохой хозяин.</string>
+    <string name="author_quote_about">Александр Дюма (сын)</string>
     <!--layout info-->
     <string name="overpayment">Досрочное погашение</string>
     <!--dialog rating-->
