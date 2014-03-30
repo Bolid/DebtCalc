@@ -3,7 +3,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:padding="5dp" android:background="@color/background_app">
+              android:layout_height="match_parent" android:background="@color/background_app"
+              android:paddingLeft="5dp" android:paddingRight="5dp"
+              android:paddingTop="15dp">
 
     <ImageView
             android:layout_width="fill_parent"
@@ -13,49 +15,46 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/quote_about"
-            android:id="@+id/textView" android:gravity="center_horizontal" android:textStyle="bold|italic"/>
+            android:id="@+id/textView" android:gravity="center_horizontal" android:textStyle="bold|italic"
+            android:paddingTop="15dp" android:textColor="@android:color/black" android:textSize="15sp"/>
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/author_quote_about"
             android:id="@+id/textView1" android:gravity="right" android:textStyle="italic"/>
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" android:gravity="center_horizontal|bottom" android:paddingBottom="25dp">
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView1" android:background="@drawable/press_twit" android:paddingLeft="15dp"
-                android:paddingRight="15dp"/>
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView2" android:src="@drawable/press_face" android:paddingLeft="15dp"
-                android:paddingRight="15dp"/>
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView3" android:src="@drawable/press_vk" android:paddingLeft="15dp"
-                android:paddingRight="15dp"/>
-    </LinearLayout>
     <RelativeLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:paddingBottom="10dp">
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:id="@+id/name" android:layout_gravity="center_horizontal|bottom"
-            android:layout_above="@+id/ver" android:layout_centerHorizontal="true" android:textStyle="bold"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_version"
-            android:id="@+id/ver" android:layout_gravity="center_horizontal|bottom"
-            android:layout_above="@+id/web" android:layout_centerHorizontal="true" android:textStyle="bold"/>
-    <TextView
+            android:layout_height="match_parent" android:paddingBottom="15dp">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal" android:layout_alignParentLeft="false"
+                android:layout_above="@+id/linearLayout" android:paddingBottom="55dp">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ivAboutTwi" android:background="@drawable/press_twit"
+                    android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ivAboutFace" android:src="@drawable/press_face"
+                    android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ivAboutVK" android:src="@drawable/press_vk"
+                    android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+        </LinearLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/copyrigth"
+                android:id="@+id/appCopyright" android:layout_centerHorizontal="true" android:layout_above="@+id/web"
+                android:paddingTop="5dp" android:textColor="@android:color/black" android:textStyle="bold"/>
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/web_site"
@@ -64,5 +63,26 @@
             android:textColorLink="#0707ff"
             android:id="@+id/web" android:layout_gravity="center_horizontal|bottom"
             android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_above="@+id/appCopyright"
+                android:layout_centerHorizontal="true" android:id="@+id/linearLayout" android:paddingBottom="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:id="@+id/name" android:layout_gravity="center_horizontal|bottom"
+                android:layout_centerHorizontal="true" android:textStyle="bold"
+                android:textColor="@android:color/black" android:layout_toLeftOf="@+id/ver"
+                android:layout_above="@+id/appCopyright" android:paddingRight="5sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_version"
+                android:id="@+id/ver" android:layout_gravity="center_horizontal|bottom"
+                android:layout_above="@+id/appCopyright" android:layout_centerHorizontal="true" android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
