@@ -35,17 +35,17 @@
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ivAboutTwi" android:background="@drawable/press_twit"
+                    android:id="@+id/ivAboutRating" android:background="@drawable/press_rating"
                     android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ivAboutFace" android:src="@drawable/press_face"
+                    android:id="@+id/ivAboutMail" android:src="@drawable/press_mail"
                     android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ivAboutVK" android:src="@drawable/press_vk"
+                    android:id="@+id/ivAboutShare" android:src="@drawable/press_share"
                     android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
         </LinearLayout>
         <TextView
