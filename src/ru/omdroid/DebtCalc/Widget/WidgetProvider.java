@@ -1,6 +1,7 @@
 package ru.omdroid.DebtCalc.Widget;
 
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
+import ru.omdroid.DebtCalc.Forms.ListDebt;
 import ru.omdroid.DebtCalc.R;
 
 
@@ -18,6 +20,9 @@ public class WidgetProvider extends AppWidgetProvider{
     public static final String UPDATE_WIDGET = "UPDATE_WIDGET";
     boolean createWidget = false;
     WorkDB workDB;
+    final String OPEN_CALC = "OPEN_CALC";
+    Intent intentOpenCalc;
+    PendingIntent pIntentOpenCalc;
     @Override
     public void onEnabled(Context context){
         createWidget = true;
@@ -25,6 +30,12 @@ public class WidgetProvider extends AppWidgetProvider{
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds){
+
+        intentOpenCalc = new Intent(context.getApplicationContext(), WidgetProvider.class);
+        intentOpenCalc.setAction(OPEN_CALC);
+        intentOpenCalc.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds);
+        pIntentOpenCalc = PendingIntent.getBroadcast(context, 0, intentOpenCalc, 0);
+
         for (int appWidgetId : appWidgetIds) {
             onUpdateWidget(context, appWidgetManager, appWidgetId);
         }
@@ -35,13 +46,10 @@ public class WidgetProvider extends AppWidgetProvider{
         Intent intent = new Intent(context, WidgetService.class);
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         rView.setRemoteAdapter(R.id.lViewInWidget, intent);
+
+        rView.setOnClickPendingIntent(R.id.llParentWidget, pIntentOpenCalc);
         appWidgetManager.updateAppWidget(appWidgetId, rView);
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.lViewInWidget);
-    }
-
-    private void updateData(AppWidgetManager appWidgetManager, int[] ids){
-        for (int id : ids)
-            appWidgetManager.notifyAppWidgetViewDataChanged(id, R.id.lViewInWidget);
     }
 
     @Override
@@ -55,22 +63,11 @@ public class WidgetProvider extends AppWidgetProvider{
             int[] ids = manager.getAppWidgetIds(cName);
             onUpdate(context, manager, ids);
         }
-    }
 
-    private void saveIdWidget(int[] ids){
-        for (int id : ids)
-            workDB.insertValueToTablePayment("INSERT INTO " + DebtCalcDB.TABLE_WIDGET + "(" + DebtCalcDB.F_ID_ID_WIDGET + ") VALUES ('" + id + "')");
+        if (action.equals(OPEN_CALC)){
+            Intent intentFormStart = new Intent(context, ListDebt.class);
+            intentFormStart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            context.startActivity(intentFormStart);
         }
-
-    private int[] getSavedIdWidget(Context context){
-        workDB = new WorkDB(context);
-        Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.F_ID_ID_WIDGET + " FROM " + DebtCalcDB.TABLE_WIDGET);
-        int[] ids = new int[cursor.getCount()];
-        while (cursor.moveToNext()){
-            ids[cursor.getPosition()] = cursor.getInt(cursor.getColumnIndex(DebtCalcDB.F_ID_ID_WIDGET));
-            Log.i("Проверки из БД ", String.valueOf(cursor.getInt(cursor.getColumnIndex(DebtCalcDB.F_ID_ID_WIDGET))));
-        }
-        workDB.disconnectDataBase();
-        return ids;
     }
 }
