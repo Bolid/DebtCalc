@@ -46,13 +46,6 @@ public class WorkNotification {
                                             ") VALUES ('" + idDebt +  "', '" + numberAlarm + "', '" + countDay + "', '" + timeIteration + "', '" + dateLong + "')");
         workDB.disconnectDataBase();
         createAlarm(dateLong, numberAlarm);
-        /*Intent intent = new Intent(context, Receiver.class);
-        intent.setAction(ADD_NOTIFY);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-
-        AlarmManager alarmManager = (AlarmManager)context.getSystemService(context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, date.getTime(), 86400 * 1000, pendingIntent);
-        Toast.makeText(context, "Напоминание установлено!", Toast.LENGTH_LONG).show();*/
     }
 
     public void delNotify(String idDebt){

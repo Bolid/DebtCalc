@@ -1,6 +1,7 @@
 package ru.omdroid.DebtCalc.Widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.util.Log;
@@ -97,6 +98,10 @@ public class WidgetAdapter implements RemoteViewsFactory {
         rView.setTextViewText(R.id.tvGoalInWidget, hmGoal.get(alIdDebt.get(i)));
         rView.setTextViewText(R.id.tvDatePayment, workDateDebt.getDate(hmDatePay.get(alIdDebt.get(i))));
         rView.setTextColor(R.id.tvDatePayment, Color.parseColor(getColor(hmDatePay.get(alIdDebt.get(i)))));
+
+        Intent intent = new Intent();
+        intent.putExtra("POSITION", i);
+        rView.setOnClickFillInIntent(R.id.rlItemWidget, intent);
         return rView;
     }
 

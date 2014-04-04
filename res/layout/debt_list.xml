@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_above="@id/textView1"
-            android:text="@string/list_debt_label_total_payment" android:textAllCaps="true"/>
+            android:text="@string/list_debt_label_total_payment" android:textAllCaps="true"
+            android:textColor="@android:color/darker_gray"/>
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="1dp"

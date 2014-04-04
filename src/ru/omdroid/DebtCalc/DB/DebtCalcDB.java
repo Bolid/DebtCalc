@@ -44,9 +44,9 @@ public class DebtCalcDB extends SQLiteOpenHelper{
     public static final String F_RATING_SHOW_SET = "RATING_SHOW";
     public static final String F_NUMBER_START_APP_SET = "NUM_START_APP";
     /*TABLE WIDGET add version 5 (проверить правильность указания версии, сравнить с гитхаб)*/
-    public static final String TABLE_WIDGET = "widget_table";
+    /*public static final String TABLE_WIDGET = "widget_table";
     public static final String F_ID_WIDGET = "_id";
-    public static final String F_ID_ID_WIDGET = "id_widget";
+    public static final String F_ID_ID_WIDGET = "id_widget";*/
     /*TABLE NOTIFICATION add version 3*/
     public static final String TABLE_NOTIFY = "notify_table";
     public static final String F_ID_NOTIFY = "_id";
@@ -109,10 +109,10 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                                                 F_TIME_NOTIFY + " STRING, "+
                                                                 F_TIME_START_NOTIFY + " LONG);";
 
-    public final String REQUEST_CREATE_TABLE_WIDGET = "CREATE TABLE " +
+    /*public final String REQUEST_CREATE_TABLE_WIDGET = "CREATE TABLE " +
                                                                 TABLE_WIDGET + " (" +
                                                                 F_ID_WIDGET+ " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                                                F_ID_ID_WIDGET + " INTEGER);";
+                                                                F_ID_ID_WIDGET + " INTEGER);";*/
 
 
     public final String REQUEST_CREATE_TABLE_CHANGED = "CREATE TABLE " +
@@ -136,7 +136,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
                                     DebtCalcDB.F_RATING_SHOW_SET + ", " +
                                     DebtCalcDB.F_NUMBER_START_APP_SET + ") VALUES ('0', '0')");
         db.execSQL(REQUEST_CREATE_TABLE_CHANGED);
-        db.execSQL(REQUEST_CREATE_TABLE_WIDGET);
+        //db.execSQL(REQUEST_CREATE_TABLE_WIDGET);
     }
 
     @Override
@@ -147,7 +147,7 @@ public class DebtCalcDB extends SQLiteOpenHelper{
             db.execSQL(REQUEST_CREATE_TABLE_NOTIFY);
         if (oldVersion < 4)
             db.execSQL(REQUEST_CREATE_TABLE_CHANGED); /*version 4*/
-        if (oldVersion < 5)
-            db.execSQL(REQUEST_CREATE_TABLE_WIDGET); /*version 5*/
+        /*if (oldVersion < 5)
+            db.execSQL(REQUEST_CREATE_TABLE_WIDGET); *//*version 5*/
     }
 }

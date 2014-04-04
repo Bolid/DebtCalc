@@ -32,7 +32,7 @@ public class MainNew extends Activity {
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.main_new);
-
+        setTitle("Новый кредит");
         appData = new AppData();
         appData.allRemove();
 
@@ -114,6 +114,7 @@ public class MainNew extends Activity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater actionMenu = getMenuInflater();
         actionMenu.inflate(R.menu.di_action_menu, menu);
+        menu.getItem(2).setVisible(false);
         return super.onCreateOptionsMenu(menu);
     }
 

@@ -5,7 +5,6 @@ import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.util.Calendar;
-import java.util.Date;
 
 
 public class ExactArithmetic extends Arithmetic {
@@ -16,17 +15,21 @@ public class ExactArithmetic extends Arithmetic {
     }
 
     public Double getOverpaymentAllMonth(Double sumDebt, Double addPayment, int balanceTerm, long date, int dec){
+
         Calendar dateD = Calendar.getInstance();
         dateD.setTimeInMillis(date);
-        Log.v("Дата и время: ", dateD.getTime().toString());
+        long date1 = 0;
 
         Double totalOver = 0.0;
         totalTerm = 0;
         Double sumCredit = sumDebt;
         int i = 0;
         WorkDateDebt workDateDebt = new WorkDateDebt();
-        workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
+        //date1 = workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
+        Log.v("Дата и время: ", workDateDebt.getDate(date));
         while (sumCredit > 0.0){
+            date1 = workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
+            Log.v("Дата и время: ", workDateDebt.getDate(date1));
             Double perLocal = (getOverpaymentOneMonth(sumCredit));
             i++;
             totalOver = totalOver + (getOverpaymentOneMonth(sumCredit));
@@ -37,7 +40,6 @@ public class ExactArithmetic extends Arithmetic {
             else{
                 sumCredit = Rounding(sumCredit - (addPayment - perLocal));
             }
-            workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
         }
         totalOver = Rounding(totalOver);
         totalTerm = i;
@@ -46,6 +48,33 @@ public class ExactArithmetic extends Arithmetic {
         dataForGraph.setNewTerm(i);
         dataForGraph.setOver(totalOver);
         return totalOver;
+    }
+
+    public double getOverpaymentAllMouthAtOneRepayment(Double sumDebt, Double addPayment, int balanceTerm, long date, int dec){
+        WorkDateDebt workDateDebt = new WorkDateDebt();
+        workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
+        //Double sumDebt = sumDebt;
+        double totalOverpayment = getOverpaymentOneMonth(sumDebt);
+        sumDebt = sumDebt - (addPayment - totalOverpayment);
+        addPayment = getPayment(sumDebt, balanceTerm - 1);
+        int i = 0;
+        Double overpaymentOneMonth;
+        workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
+
+        while (sumDebt > 0.0){
+            overpaymentOneMonth = (getOverpaymentOneMonth(sumDebt));
+            i++;
+            totalOverpayment = totalOverpayment + overpaymentOneMonth;
+            if (i == balanceTerm - dec){
+                addPayment = sumDebt + overpaymentOneMonth;
+                sumDebt = sumDebt - addPayment;
+            }
+            else{
+                sumDebt = Rounding(sumDebt - (addPayment - overpaymentOneMonth));
+            }
+            workDateDebt.createNextDatePayment(date, AppData.DATE_DEBT_START);
+        }
+        return totalOverpayment;
     }
 
     public String getTotalTerm(){

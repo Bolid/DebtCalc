@@ -22,7 +22,8 @@
             android:layout_gravity="left|top"
             style="@style/styleLabel"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="15dp" android:layout_marginLeft="5dp" android:textAllCaps="true"/>
+            android:layout_marginTop="15dp" android:layout_marginLeft="5dp" android:textAllCaps="true"
+            android:textColor="@android:color/darker_gray" android:textStyle="bold"/>
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="1dp"

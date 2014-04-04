@@ -131,7 +131,7 @@ public class Receiver extends BroadcastReceiver {
         Notification notification = new Notification.Builder(context)
                 .setTicker(context.getResources().getString(R.string.text_for_titleNotify))
                 .setContentTitle(context.getResources().getString(R.string.text_for_titleNotify))
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.notyfi_icon)
                 .setStyle(new Notification.BigTextStyle().bigText(textNotify))
                 .setContentIntent(PendingIntent.getActivity(context, 2908, notificationIntent, 0))
                 .setAutoCancel(true)

@@ -8,7 +8,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/scrollView"
-            android:background="@color/background_app" android:layout_above="@+id/llPayControl">
+            android:background="@color/background_app" android:layout_above="@+id/llPayControl"
+            android:layout_below="@+id/llTitle">
         <LinearLayout
                 android:id="@+id/listHelper"
                 android:orientation="vertical"
@@ -49,5 +50,22 @@
                     android:layout_alignParentLeft="false" android:layout_alignParentTop="false"
                     android:layout_gravity="center_horizontal" android:padding="5dp"/>
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/llTitle"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:gravity="center_horizontal" android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView" android:src="@drawable/helper_label" android:tint="@color/colorIcon"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Рекомендации"
+                android:id="@+id/textView1" android:textColor="@color/colorIcon" android:paddingLeft="5dp"
+                style="@style/styleLabel_2"/>
     </LinearLayout>
 </RelativeLayout>

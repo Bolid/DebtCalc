@@ -15,7 +15,6 @@ import ru.omdroid.DebtCalc.Arithmetic.ExactArithmetic;
 import ru.omdroid.DebtCalc.CustomView.DataForGraph;
 import ru.omdroid.DebtCalc.Listener.InControlFieldAddOverallPayment;
 import ru.omdroid.DebtCalc.R;
-import ru.omdroid.DebtCalc.TablePaymentNotSavedDebt;
 import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
@@ -119,6 +118,7 @@ public class ResultForm extends Activity {
         MenuInflater actionMenu = getMenuInflater();
         actionMenu.inflate(R.menu.di_action_menu, menu);
         menu.getItem(0).setVisible(false);
+        menu.getItem(2).setVisible(false);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -139,6 +139,7 @@ public class ResultForm extends Activity {
         MenuInflater mInflater = pMenu.getMenuInflater();
         mInflater.inflate(R.menu.pm_main_form, pMenu.getMenu());
         pMenu.getMenu().getItem(1).setVisible(false);
+        pMenu.getMenu().getItem(2).setVisible(false);
         pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {

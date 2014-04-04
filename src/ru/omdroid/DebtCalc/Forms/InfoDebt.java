@@ -44,10 +44,13 @@ public class InfoDebt extends Activity {
     Arithmetic arithmetic;
     DecimalFormat dFormat = new DecimalFormat("###,###,###,###");
     Calendar calendar = Calendar.getInstance();
-
+    String formName;
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.debt_info);
+        formName = getIntent().getExtras().getString("FORM_NAME");
+        setTitle(formName);
+
         workDB = new WorkDB(getBaseContext());
         Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.F_BALANCE_TERM_PAY + " FROM " + DebtCalcDB.TABLE_PAYMENTS + " WHERE (" + DebtCalcDB.FIELD_PAID_PAYMENTS + "='0' AND " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " = '" + AppData.ID_DEBT + "')");
         cursor.moveToNext();
@@ -221,7 +224,6 @@ public class InfoDebt extends Activity {
         MenuInflater actionMenu = getMenuInflater();
         actionMenu.inflate(R.menu.di_action_menu, menu);
         this.menu = menu;
-
         inControlFieldAddPayment = new InControlFieldAddPayment(etPayment, Double.valueOf(AppData.PAYMENT_DEFAULT), this.menu, writeDataInField);
         return super.onCreateOptionsMenu(menu);
     }
@@ -269,12 +271,11 @@ public class InfoDebt extends Activity {
                 showPopupMenu(v);
                 return true;
             case R.id.helper:
-                if (newPayment <= Double.valueOf(AppData.PAYMENT))
+                if (newPayment <= Double.valueOf(AppData.PAYMENT_DEFAULT))
                     Toast.makeText(getBaseContext(), "Введите платеж", Toast.LENGTH_LONG).show();
                 else{
                 Double addPayment = newPayment - Double.valueOf(AppData.PAYMENT_DEFAULT);
                 Intent showHelperIntent = new Intent(getBaseContext(), HelperForOverpayment.class);
-                showHelperIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 showHelperIntent.putExtra("ADD_PAYMENT", addPayment);
                 startActivity(showHelperIntent); }
                 return true;
@@ -306,6 +307,7 @@ public class InfoDebt extends Activity {
             public boolean onMenuItemClick(MenuItem menuItem) {
                 Intent intent = new Intent(getBaseContext(), TablePaymentSavedDebt.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("FORM_NAME", formName);
                 startActivity(intent);
                 return false;
             }
@@ -361,9 +363,11 @@ public class InfoDebt extends Activity {
         }
 
         public void setOverOnePayment(Double currentPayment){
+            Log.i("Расчет одно месяца", formName);
             newPayment = currentPayment;
             WorkDateDebt workDateDebt = new WorkDateDebt();
             workDateDebt.getCountDayInMonth(AppData.DATE_PAY);
+            Log.v("Дата и время_: ", workDateDebt.getDate(AppData.DATE_PAY));
             Double over = arithmetic.getOverpaymentOneMonth(Double.valueOf(AppData.DEBT_BALANCE));
             if (currentPayment > Double.valueOf(AppData.DEBT_BALANCE) + over)
                 currentPayment = Double.valueOf(AppData.DEBT_BALANCE) + over;

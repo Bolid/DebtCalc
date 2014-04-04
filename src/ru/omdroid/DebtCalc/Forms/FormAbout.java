@@ -23,8 +23,8 @@ public class FormAbout extends Activity {
                 emailIntent.setType("plain/text");
                 emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
                         new String[]{"dmitriy.grigorev@gmail.com"});
-                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Test");
-                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Test");
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Кредитный калькулятор v." + getResources().getString(R.string.app_version));
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Здравствуйте!\n\n");
 
                 emailIntent.setType("text/video");
                 startActivity(Intent.createChooser(emailIntent,

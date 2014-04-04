@@ -1,4 +1,4 @@
-package ru.omdroid.DebtCalc;
+package ru.omdroid.DebtCalc.Forms;
 
 
 import android.app.Activity;
@@ -10,17 +10,21 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
+import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
 import ru.omdroid.DebtCalc.DB.DebtCalcDB;
 import ru.omdroid.DebtCalc.DB.WorkDB;
+import ru.omdroid.DebtCalc.R;
+import ru.omdroid.DebtCalc.TablePaymentManager;
+import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class TablePaymentSavedDebt extends Activity implements TablePaymentManager{
-    final String TAG = "ru.omdroid.DebtCalc.TablePaymentSavedDebt";
+public class TablePaymentSavedDebt extends Activity implements TablePaymentManager {
+    final String TAG = "ru.omdroid.DebtCalc.Forms.TablePaymentSavedDebt";
     View view = null;
     WorkDB workDB;
     WorkDateDebt workDateDebt = new WorkDateDebt();
@@ -39,6 +43,8 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.payment_info);
+        setTitle(getIntent().getExtras().getString("FORM_NAME"));
+
         workDB = new WorkDB(getBaseContext());
         layout = (LinearLayout)findViewById(R.id.llPaymentInfo);
         getBaseContext();
@@ -86,7 +92,7 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
 
                 cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_TYPE_DEBT + ", " + DebtCalcDB.FIELD_DATE_LONG_START_DEBT  +", "+ DebtCalcDB.FIELD_PERCENT_DEBT + " FROM " + DebtCalcDB.TABLE_CREDITS + " WHERE (" + DebtCalcDB.FIELD_ID_DEBT + " = '" + AppData.ID_DEBT +"')");
                 cursor.moveToNext();
-                fileName = "/Debt_" + cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TYPE_DEBT)) + ".csv";
+                fileName = cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TYPE_DEBT)) + ".csv";
                 Long dateStart = cursor.getLong(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_START_DEBT));
                 Double percent = cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_PERCENT_DEBT));
                 cursor.close();
@@ -216,13 +222,12 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
     @Override
     public void saveDataInCSV() {
         try {
-            FileWriter fileWriter = new FileWriter(Environment.getExternalStorageDirectory() + fileName);
+            FileWriter fileWriter = new FileWriter(Environment.getExternalStorageDirectory() + "/Debt_" +  fileName);
             fileWriter.append("Номер платежа;Дата платежа;Сумма платежа;Сумма в счет долга;Сумма в счет процентов;Остаток по кредиту\n");
             for (int i = 0; i < listDatePayment.size(); i++){
                 fileWriter.append(String.valueOf(i+1)).append(";").append(listDatePayment.get(i)).append(";").append(listPayment.get(i)).append(";").append(listPaymentDebt.get(i)).append(";").append(listPaymentPercent.get(i)).append(";").append(listBalanceDebt.get(i)).append("\n");
             }
-            Log.i(TAG, "Data save");
-            Toast.makeText(getBaseContext(), "График платежей сохранен", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "График платежей сохранен на SD под именем " + fileName + "", Toast.LENGTH_LONG).show();
             fileWriter.close();
         } catch (IOException e) {
             Log.e(TAG, "Error IO", e);

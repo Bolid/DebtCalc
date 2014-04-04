@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import ru.omdroid.DebtCalc.AppData;
@@ -35,6 +36,7 @@ public class HelperForOverpayment extends Activity {
     HashMap <String, Double> overPaymentAdd = new HashMap<String, Double>();
     HashMap <String, Double> balanceDebt = new HashMap<String, Double>();
     HashMap <String, Double> payment = new HashMap<String, Double>();
+    HashMap <String, Integer> upPayment = new HashMap<String, Integer>();
     HashMap <String, Double> paymentDefault = new HashMap<String, Double>();
     HashMap <String, Double> oldOverpayment = new HashMap<String, Double>();
     HashMap <String, Double> percentDebt = new HashMap<String, Double>();
@@ -72,7 +74,7 @@ public class HelperForOverpayment extends Activity {
 
     private void initData(){
         int i = 0;
-        Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_ID_DEBT + ", " + DebtCalcDB.FIELD_TYPE_DEBT + ", " + DebtCalcDB.FIELD_PERCENT_DEBT + ", " + DebtCalcDB.F_PAY_DEFAULT_DEBT + ", " + DebtCalcDB.FIELD_DATE_LONG_START_DEBT + ", " + DebtCalcDB.F_BALANCE_DEBT_PAY + ", " + DebtCalcDB.F_BALANCE_TERM_PAY + ", " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS + ", " + DebtCalcDB.FIELD_DATE_LONG_PAYMENTS + " FROM " + DebtCalcDB.TABLE_CREDITS + " INNER JOIN " + DebtCalcDB.TABLE_PAYMENTS + " ON " + DebtCalcDB.FIELD_ID_DEBT + " = " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " WHERE (" + /*DebtCalcDB.FIELD_PAID_DEBT + " = '0' AND " + */DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0' )");
+        Cursor cursor = workDB.readValueFromDataBase("SELECT " + DebtCalcDB.FIELD_ID_DEBT + ", " + DebtCalcDB.FIELD_TYPE_DEBT + ", " + DebtCalcDB.FIELD_PERCENT_DEBT + ", " + DebtCalcDB.F_PAY_DEFAULT_DEBT + ", " + DebtCalcDB.F_PAYMENT_UP_PAY + ", " + DebtCalcDB.FIELD_DATE_LONG_START_DEBT + ", " + DebtCalcDB.F_BALANCE_DEBT_PAY + ", " + DebtCalcDB.F_BALANCE_TERM_PAY + ", " + DebtCalcDB.FIELD_PAYMENT_PAYMENTS + ", " + DebtCalcDB.FIELD_DATE_LONG_PAYMENTS + " FROM " + DebtCalcDB.TABLE_CREDITS + " INNER JOIN " + DebtCalcDB.TABLE_PAYMENTS + " ON " + DebtCalcDB.FIELD_ID_DEBT + " = " + DebtCalcDB.FIELD_ID_DEBT_PAYMENTS + " WHERE (" + /*DebtCalcDB.FIELD_PAID_DEBT + " = '0' AND " + */DebtCalcDB.FIELD_PAID_PAYMENTS + " = '0' )");
         while (cursor.moveToNext()){
             idDebt.put(LABEL + i, cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_ID_DEBT)));
             goalDebt.put(LABEL + i, cursor.getString(cursor.getColumnIndex(DebtCalcDB.FIELD_TYPE_DEBT)));
@@ -83,6 +85,7 @@ public class HelperForOverpayment extends Activity {
             datePayment.put(LABEL + i, cursor.getLong(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_PAYMENTS)));
             dateDebtStart.put(LABEL + i, cursor.getLong(cursor.getColumnIndex(DebtCalcDB.FIELD_DATE_LONG_START_DEBT)));
             percentDebt.put(LABEL + i, cursor.getDouble(cursor.getColumnIndex(DebtCalcDB.FIELD_PERCENT_DEBT)));
+            upPayment.put(LABEL + i, cursor.getInt(cursor.getColumnIndex(DebtCalcDB.F_PAYMENT_UP_PAY)));
             i++;
         }
         cursor.close();
@@ -103,7 +106,7 @@ public class HelperForOverpayment extends Activity {
             appData.setDateDebtStart(dateDebtStart.get(LABEL + i));
             appData.setTermBalance(String.valueOf(balanceTerm.get(LABEL + i)));
             exactArithmetic = new ExactArithmetic(percentDebt.get(LABEL + i));
-            overPaymentDefault.put(LABEL + i, exactArithmetic.getOverpaymentAllMonth(balanceDebt.get(LABEL + i), payment.get(LABEL + i), balanceTerm.get(LABEL + i), datePayment.get(LABEL + i), 0) + oldOverpayment.get(LABEL + i));
+            overPaymentDefault.put(LABEL + i, exactArithmetic.getOverpaymentAllMonth(balanceDebt.get(LABEL + i), paymentDefault.get(LABEL + i), balanceTerm.get(LABEL + i), datePayment.get(LABEL + i), 0) + oldOverpayment.get(LABEL + i));
             //overPaymentDefault.put(LABEL + i, arithmetic.getDeltaNew(balanceTerm.get(LABEL + i), balanceDebt.get(LABEL + i), payment.get(LABEL + i)) + oldOverpayment.get(LABEL + i));
         }
     }
@@ -114,9 +117,10 @@ public class HelperForOverpayment extends Activity {
         for (int i = 0; i < goalDebt.size(); i++){
             arithmetic = new Arithmetic(percentDebt.get(LABEL + i));
             exactArithmetic = new ExactArithmetic(percentDebt.get(LABEL + i));
-            currentPayment = payment.get(LABEL + i) + addPayment;
+            currentPayment = paymentDefault.get(LABEL + i) + addPayment;
             WorkDateDebt workDateDebt = new WorkDateDebt();
             workDateDebt.getCountDayInMonth(datePayment.get(LABEL + i));
+            Log.i("Вызов из helper", String.valueOf(datePayment.get(LABEL + i)));
 
             Double over = arithmetic.getOverpaymentOneMonth(balanceDebt.get(LABEL + i));
             if (currentPayment > balanceDebt.get(LABEL + i) + over)
@@ -172,6 +176,7 @@ public class HelperForOverpayment extends Activity {
         TextView tvOverpayParent;
         TextView tvGoalChild;
         TextView tvOverpayChild;
+        ImageView ivUpPayment;
         for (int i = 0; i < idDebt.size(); i++){
             containerParent = layoutInflater.inflate(R.layout.parent_item_helper, llParent, false);
             tvGoalParent = (TextView) containerParent.findViewById(R.id.tvPGoal);
@@ -184,9 +189,12 @@ public class HelperForOverpayment extends Activity {
                 containerChild = layoutInflater.inflate(R.layout.child_item_helper, llChild, false);
                 tvGoalChild = (TextView)containerChild.findViewById(R.id.tvCGoal);
                 tvOverpayChild = (TextView)containerChild.findViewById(R.id.tvCOverpay);
+                ivUpPayment = (ImageView)containerChild.findViewById(R.id.ivCUpPay);
                 tvGoalChild.setText(goalDebt.get(LABEL + j));
-                if (j == i)
+                if (j == i){
                     tvOverpayChild.setText(numberFormat.format(overPaymentAdd.get(LABEL + j)));
+                    ivUpPayment.setImageResource(R.drawable.arrow);
+                }
                 else
                     tvOverpayChild.setText(numberFormat.format(overPaymentDefault.get(LABEL + j)));
                 llChild.addView(containerChild);

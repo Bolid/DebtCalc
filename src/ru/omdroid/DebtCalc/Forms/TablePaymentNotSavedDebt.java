@@ -1,4 +1,4 @@
-package ru.omdroid.DebtCalc;
+package ru.omdroid.DebtCalc.Forms;
 
 
 import android.app.Activity;
@@ -11,22 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import ru.omdroid.DebtCalc.AppData;
 import ru.omdroid.DebtCalc.Arithmetic.Arithmetic;
+import ru.omdroid.DebtCalc.R;
+import ru.omdroid.DebtCalc.TablePaymentManager;
+import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
-public class TablePaymentNotSavedDebt extends Activity implements TablePaymentManager{
+public class TablePaymentNotSavedDebt extends Activity implements TablePaymentManager {
     View view = null;
     boolean addRecord = true;
     LinearLayout layout;
     LayoutInflater inflater;
-
-    ArrayList <String> datePayment = new ArrayList <String>();
-    ArrayList <String> payment = new ArrayList <String>();
-    ArrayList <String> paymentePercent = new ArrayList <String>();
-    ArrayList <String> paymentDebt = new ArrayList <String>();
-    ArrayList <String> balancceDebt = new ArrayList <String>();
 
     public void onCreate(Bundle save){
         super.onCreate(save);
@@ -150,12 +147,10 @@ public class TablePaymentNotSavedDebt extends Activity implements TablePaymentMa
 
     @Override
     public void addDataForUnload(String date, String payment, String paymentDebt, String paymentPercent, String balanceDebt) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public void saveDataInCSV() {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 }
 

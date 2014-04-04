@@ -27,7 +27,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/ivUpPayRecord" android:layout_weight="0.1"
-                />
+                android:tint="@android:color/darker_gray"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

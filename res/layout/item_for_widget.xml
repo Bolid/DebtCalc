@@ -13,18 +13,20 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/llItemWidget"
             android:layout_below="@id/tvDatePayment">
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvGoalInWidget" android:layout_alignLeft="@+id/tvPymentInWidget"
                 android:layout_below="@+id/tvPymentInWidget"
-                android:textAllCaps="true" android:singleLine="true" android:layout_weight="1"/>
+                android:textAllCaps="true" android:singleLine="true" android:layout_weight="1"
+                android:textColor="@android:color/white"/>
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvPymentInWidget" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-                android:layout_weight="1" android:textStyle="bold"
-                android:gravity="right"/>
+                android:layout_weight="1"
+                android:gravity="right" android:textColor="@android:color/white"/>
     </LinearLayout>
 </RelativeLayout>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Кредитный калькулятор</string>
-    <string name="app_version">2.1</string>
+    <string name="app_version">2.2</string>
     <string name="web_site">http://omdroid.ru</string>
     <string name="about_label">О программе</string>
     <string name="labelName">Кредитный калькулятор</string>
-    <string name="copyrigth">© Omdroid 2013-2014</string>
+    <string name="copyright">© Omdroid 2013–2014</string>
     <string name="action_menu_rasch">Расчет</string>
     <string name="action_menu_analitic">Аналитика</string>
     <!--Label-->

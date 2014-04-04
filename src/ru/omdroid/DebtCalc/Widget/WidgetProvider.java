@@ -31,11 +31,6 @@ public class WidgetProvider extends AppWidgetProvider{
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds){
 
-        intentOpenCalc = new Intent(context.getApplicationContext(), WidgetProvider.class);
-        intentOpenCalc.setAction(OPEN_CALC);
-        intentOpenCalc.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds);
-        pIntentOpenCalc = PendingIntent.getBroadcast(context, 0, intentOpenCalc, 0);
-
         for (int appWidgetId : appWidgetIds) {
             onUpdateWidget(context, appWidgetManager, appWidgetId);
         }
@@ -47,9 +42,17 @@ public class WidgetProvider extends AppWidgetProvider{
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         rView.setRemoteAdapter(R.id.lViewInWidget, intent);
 
-        rView.setOnClickPendingIntent(R.id.llParentWidget, pIntentOpenCalc);
+        setItemClick(rView, context, appWidgetId);
         appWidgetManager.updateAppWidget(appWidgetId, rView);
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.lViewInWidget);
+    }
+
+    private void setItemClick(RemoteViews rv, Context context, int appWidgetId){
+        Intent intentOpenCalc = new Intent(context.getApplicationContext(), WidgetProvider.class);
+        intentOpenCalc.setAction(OPEN_CALC);
+        intentOpenCalc.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+        PendingIntent pIntentOpenCalc = PendingIntent.getBroadcast(context, 0, intentOpenCalc, 0);
+        rv.setPendingIntentTemplate(R.id.lViewInWidget, pIntentOpenCalc);
     }
 
     @Override
@@ -66,7 +69,7 @@ public class WidgetProvider extends AppWidgetProvider{
 
         if (action.equals(OPEN_CALC)){
             Intent intentFormStart = new Intent(context, ListDebt.class);
-            intentFormStart.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intentFormStart.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intentFormStart);
         }
     }
