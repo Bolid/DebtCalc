@@ -2,6 +2,7 @@ package ru.omdroid.DebtCalc.Forms;
 
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -221,13 +222,14 @@ public class TablePaymentSavedDebt extends Activity implements TablePaymentManag
 
     @Override
     public void saveDataInCSV() {
+        Resources res = getResources();
         try {
             FileWriter fileWriter = new FileWriter(Environment.getExternalStorageDirectory() + "/Debt_" +  fileName);
-            fileWriter.append("Номер платежа;Дата платежа;Сумма платежа;Сумма в счет долга;Сумма в счет процентов;Остаток по кредиту\n");
+            fileWriter.append(res.getString(R.string.number_payment)).append(";").append(res.getString(R.string.date_payment)).append(";").append(res.getString(R.string.sum_payment)).append(";").append(res.getString(R.string.sum_pay_in_debt)).append(";").append(res.getString(R.string.sum_pay_in_percent)).append(";").append(res.getString(R.string.balance_debt)).append("\n");
             for (int i = 0; i < listDatePayment.size(); i++){
                 fileWriter.append(String.valueOf(i+1)).append(";").append(listDatePayment.get(i)).append(";").append(listPayment.get(i)).append(";").append(listPaymentDebt.get(i)).append(";").append(listPaymentPercent.get(i)).append(";").append(listBalanceDebt.get(i)).append("\n");
             }
-            Toast.makeText(getBaseContext(), "График платежей сохранен на SD под именем " + fileName + "", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), res.getString(R.string.notify_for_save_csv) + fileName, Toast.LENGTH_LONG).show();
             fileWriter.close();
         } catch (IOException e) {
             Log.e(TAG, "Error IO", e);

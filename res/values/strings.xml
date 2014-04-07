@@ -10,6 +10,7 @@
     <string name="action_menu_analitic">Аналитика</string>
     <!--Label-->
     <string name="main_layout_label_title">Параметры кредита</string>
+    <string name="title_new_debt">Новый кредит</string>
     <string name="param_payment">Параметры платежа</string>
     <string name="mll_details">Детали кредита</string>
     <string name="ill_details">Детали платежа</string>
@@ -34,6 +35,14 @@
     <string name="info_debt_label">Долг</string>
     <string name="container_over_debt">Выплачено</string>
     <string name="sum_add_payment">Сумма досрочного погашения</string>
+    <!--form_TablePaymentSavedDebt-->
+    <string name="number_payment">Номер платежа</string>
+    <string name="date_payment">Дата платежа</string>
+    <string name="sum_payment">Сумма платежа</string>
+    <string name="sum_pay_in_debt">Сумма в счет долга</string>
+    <string name="sum_pay_in_percent">Сумма в счет процентов</string>
+    <string name="balance_debt">Остаток по кредиту</string>
+    <string name="notify_for_save_csv">График платежей сохранен на SD под именем Debt_</string>
     <!--form_about-->
     <string name="quote_about">Не почитай денег ни больше, ни меньше, чем они того стоят; это хороший слуга и плохой хозяин.</string>
     <string name="author_quote_about">Александр Дюма (сын)</string>

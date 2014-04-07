@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import ru.omdroid.DebtCalc.AppData;
+import ru.omdroid.DebtCalc.WorkDateDebt;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -34,12 +35,19 @@ public class DialogDateSelect extends DialogFragment implements DatePickerDialog
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        textView.setText(String.valueOf(day)+"."+String.valueOf(month + 1)+"."+String.valueOf(year));
+        WorkDateDebt workDateDebt = new WorkDateDebt();
+        textView.setText(workDateDebt.getDate(convertDateIntInLong(year, month, day)));
         calendarConst.set(year, month, day);
 
         calendar.set(year, month, day);
         AppData appData = new AppData();
         appData.setDate(calendar.getTimeInMillis());
         appData.setDateDebtStart(calendar.getTimeInMillis());
+    }
+
+    public long convertDateIntInLong(int year, int month, int day){
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day);
+        return cal.getTimeInMillis();
     }
 }
