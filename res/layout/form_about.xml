@@ -8,9 +8,9 @@
               android:paddingTop="15dp">
 
     <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView" android:src="@drawable/app_icon"/>
+            android:layout_width="172dp"
+            android:layout_height="172dp"
+            android:id="@+id/imageView" android:src="@drawable/new_icon512" android:layout_gravity="center_horizontal"/>
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/app_version"
+                android:text="@string/app_version_major"
                 android:id="@+id/ver" android:layout_gravity="center_horizontal|bottom"
                 android:layout_above="@+id/appCopyright" android:layout_centerHorizontal="true" android:textStyle="bold"
                 android:textColor="@android:color/black"/>

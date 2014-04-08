@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 import ru.omdroid.DebtCalc.R;
@@ -23,7 +22,7 @@ public class FormAbout extends Activity {
                 emailIntent.setType("plain/text");
                 emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
                         new String[]{"dmitriy.grigorev@gmail.com"});
-                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Кредитный калькулятор v." + getResources().getString(R.string.app_version));
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Кредитный калькулятор v." + getResources().getString(R.string.app_version_major) + "." + getResources().getString(R.string.app_version_minor));
                 emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Здравствуйте!\n\n");
 
                 emailIntent.setType("text/video");

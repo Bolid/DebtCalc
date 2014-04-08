@@ -14,7 +14,7 @@ public class DialogAbout  extends DialogFragment {
         getDialog().setTitle(getResources().getString(R.string.dialog_about_title));
         View view = inflater.inflate(R.layout.dialog_about, null);
         TextView tv1 = (TextView)view.findViewById(R.id.tv2DialogAbout);
-        tv1.append(getResources().getString(R.string.app_version));
+        tv1.append(getResources().getString(R.string.app_version_major));
         view.findViewById(R.id.dAboutOk).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
