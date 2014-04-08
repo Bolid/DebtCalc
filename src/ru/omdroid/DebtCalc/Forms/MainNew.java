@@ -28,12 +28,14 @@ public class MainNew extends Activity {
     Calendar calendar;
     Calendar calendarConst;
     AppData appData;
+    WorkDateDebt workDateDebt;
 
     public void onCreate(Bundle save){
         super.onCreate(save);
         setContentView(R.layout.main_new);
-        setTitle("Новый кредит");
+        setTitle(getResources().getString(R.string.title_new_debt));
         appData = new AppData();
+        workDateDebt = new WorkDateDebt();
         appData.allRemove();
 
         final TextView tvSum = (TextView)findViewById(R.id.tvLabSum);
@@ -58,7 +60,7 @@ public class MainNew extends Activity {
 
         calendar = Calendar.getInstance();
         calendarConst = Calendar.getInstance();
-        tvDate.setText(String.valueOf(calendar.get(Calendar.DATE))+"."+String.valueOf(calendar.get(Calendar.MONTH) + 1)+"."+String.valueOf(calendar.get(Calendar.YEAR)));
+        tvDate.setText(workDateDebt.getDate(calendar.getTimeInMillis()));
         appData.setDate(calendar.getTimeInMillis());
 
         final DialogFragment dialogDateSelect = new DialogDateSelect(tvDate, calendarConst, calendar);
@@ -146,10 +148,10 @@ public class MainNew extends Activity {
 
     private void saveDataInDataBase() throws NullInputDataException {
         if (AppData.DEBT_BALANCE.equals("") || AppData.TERM_BALANCE == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
-            throw new NullInputDataException(" ");
+            throw new NullInputDataException();
 
         //calendar.set(calendar.get(Calendar.YEAR), (calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.DATE_PAY));
-        WorkDateDebt workDateDebt = new WorkDateDebt();
+
         calendar.setTimeInMillis(calendarConst.getTimeInMillis());
         Long dateFirstPayment = workDateDebt.createNextDatePayment(calendar.getTimeInMillis(), calendarConst.getTimeInMillis());//calendar.getTimeInMillis();
         workDateDebt.getCountDayInMonth(dateFirstPayment);
@@ -221,8 +223,8 @@ public class MainNew extends Activity {
         MenuInflater mInflater = pMenu.getMenuInflater();
         mInflater.inflate(R.menu.pm_main_form, pMenu.getMenu());/*
         //pMenu.getMenu().getItem(1).setVisible(true);
-        pMenu.getMenu().getItem(1).setVisible(false);
-        pMenu.getMenu().getItem(2).setVisible(false);*/
+        pMenu.getMenu().getItem(1).setVisible(false);*/
+        pMenu.getMenu().getItem(2).setVisible(false);
         pMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -250,7 +252,7 @@ public class MainNew extends Activity {
 
     private void tablePaymentShow() throws NullInputDataException{
         if (AppData.DEBT_BALANCE.equals("") || AppData.TERM_BALANCE == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
-            throw new NullInputDataException("Таблица");
+            throw new NullInputDataException();
         Intent intent = new Intent(getBaseContext(), TablePaymentNotSavedDebt.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
@@ -258,7 +260,7 @@ public class MainNew extends Activity {
 
     private void overPaymentShow() throws NullInputDataException{
         if (AppData.DEBT_BALANCE.equals("") || AppData.TERM_BALANCE == 0 || AppData.PERCENT == 0.0 || AppData.GOAL.equals(""))
-            throw new NullInputDataException("Таблица");
+            throw new NullInputDataException();
         Intent intent = new Intent(getBaseContext(), ResultForm.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
